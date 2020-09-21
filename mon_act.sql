@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2020 at 10:35 AM
+-- Generation Time: Sep 21, 2020 at 01:02 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -106,6 +106,7 @@ CREATE TABLE `mitra` (
   `no telp` varchar(20) NOT NULL,
   `fax` varchar(20) NOT NULL,
   `email` varchar(200) NOT NULL,
+  `password` varchar(20) NOT NULL,
   `npwp` varchar(20) NOT NULL,
   `create by` int(10) NOT NULL,
   `create on` date NOT NULL,

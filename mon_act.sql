@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2020 at 10:18 AM
+-- Generation Time: Sep 21, 2020 at 10:35 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -74,6 +74,27 @@ CREATE TABLE `customer` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `material`
+--
+
+CREATE TABLE `material` (
+  `material_id` int(10) NOT NULL,
+  `nama material` varchar(200) NOT NULL,
+  `brand` varchar(200) NOT NULL,
+  `stok` int(20) NOT NULL,
+  `storage bin` varchar(200) NOT NULL,
+  `create by` int(10) NOT NULL,
+  `create on` date NOT NULL,
+  `update by` int(10) NOT NULL,
+  `update on` date NOT NULL,
+  `delete by` int(10) NOT NULL,
+  `delete on` date NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mitra`
 --
 
@@ -120,6 +141,26 @@ CREATE TABLE `pegawai` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pekerjaan`
+--
+
+CREATE TABLE `pekerjaan` (
+  `pekerjaan_id` int(10) NOT NULL,
+  `nama pekerjaan` varchar(200) NOT NULL,
+  `satuan` varchar(200) NOT NULL,
+  `price` int(50) NOT NULL,
+  `create on` date NOT NULL,
+  `create by` int(10) NOT NULL,
+  `update on` date NOT NULL,
+  `update by` int(10) NOT NULL,
+  `delete on` date NOT NULL,
+  `delete by` int(10) NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 
@@ -153,6 +194,12 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`customer_id`);
 
 --
+-- Indexes for table `material`
+--
+ALTER TABLE `material`
+  ADD PRIMARY KEY (`material_id`);
+
+--
 -- Indexes for table `mitra`
 --
 ALTER TABLE `mitra`
@@ -163,6 +210,12 @@ ALTER TABLE `mitra`
 --
 ALTER TABLE `pegawai`
   ADD PRIMARY KEY (`Pegawai_ID`);
+
+--
+-- Indexes for table `pekerjaan`
+--
+ALTER TABLE `pekerjaan`
+  ADD PRIMARY KEY (`pekerjaan_id`);
 
 --
 -- Indexes for table `product`
@@ -187,6 +240,12 @@ ALTER TABLE `customer`
   MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `material`
+--
+ALTER TABLE `material`
+  MODIFY `material_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `mitra`
 --
 ALTER TABLE `mitra`
@@ -197,6 +256,12 @@ ALTER TABLE `mitra`
 --
 ALTER TABLE `pegawai`
   MODIFY `Pegawai_ID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pekerjaan`
+--
+ALTER TABLE `pekerjaan`
+  MODIFY `pekerjaan_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`

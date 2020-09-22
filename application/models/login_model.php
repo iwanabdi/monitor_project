@@ -8,16 +8,17 @@ class Login_model extends CI_Model {
 		$this->load->database();
 	}
 
-	public function cekLogin($user,$pass){
-		$query = $this->db
-					->FROM("pegawai")
-					->SELECT("count(*) as jumlah")
-					->WHERE("Nama_Pegawai", $user)
-					->WHERE("Password", $pass)
-					->get();
-		$berhasil = $query->row()->jumlah;
-		return $berhasil;
+	//cek login pegawai
+	function auth_pegawai($username,$password){
+		$query = $this->db->query("SELECT * FROM pegawai WHERE Email=$username AND Password=MD5($password) LIMIT 1");
+		return $query;
 	}
+	// cek login mitra
+	function auth_mitra($username, $password){
+		$query = $this->db->query("SELECT * FROM mitra WHERE Email=$username AND Password=MD5($password) LIMIT 1");
+		return $query;
+	}
+	
 }
 
 /* End of file login_model.php */

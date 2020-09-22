@@ -45,7 +45,7 @@
                     <hr>
                     <div class="row">
                     <div class="col-sm-6">
-                      <a href="<?php echo site_url('Pegawai')?>" class="btn btn-danger btn-user btn-block">
+                      <a href="<?php echo site_url('auth')?>" class="btn btn-danger btn-user btn-block">
                         <i class="fas fa-fw fa-user-tie"></i> Login Sebagai Pegawai
                       </a>
                     </div>

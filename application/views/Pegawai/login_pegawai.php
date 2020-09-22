@@ -38,16 +38,25 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Silahkan Login Pegawai</h1>
                   </div>
-                  <form class="user">
+                  <?php 
+                    if ($this->session->flashdata('msg')) { // cek session msg
+                      echo '<div class="alert alert-danger">'.$this->session->flashdata('msg').'</div>';
+                    }
+                  ?>
+
+                  <form class="user" action="<?php echo base_url('auth/login');?>" method="post">
+                    <!-- <?php echo $this->session->flashdata('msg');?> -->
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input type="email" class="form-control form-control-user" name="email" 
+                      id="Email" aria-describedby="emailHelp" placeholder="Enter Email Address..." required autofocus="">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <input type="password" class="form-control form-control-user" name="password" 
+                      id="password" placeholder="Password" required>
                     </div>
-                    <a href="index.html" class="btn btn-primary btn-user btn-block">
+                    <button class="btn btn-primary btn-user btn-block" type="submit">
                       Login
-                    </a>
+                    </button>
                   </form>
                   <hr>
                   <div class="text-center">

@@ -1,16 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pegawai extends MY_Controller {
+class Pegawai extends CI_Controller {
 
-	public function home()
+	public function index()
 	{
-		$this->load->view('Pegawai/dashboard');
+		cekblm_login_pegawai();
+		$this->template->load('template_pegawai', 'Pegawai/dashboard');
+		// $this->load->view('template');
 	}
 
-	public function master_pegawai()
+	public function profile()
 	{
-		$this->load->view('Pegawai/data_pegawai');
+		// cekblm_login_pegawai();
+		$this->template->load('template_pegawai', 'Pegawai/profile');
 	}
 
 }

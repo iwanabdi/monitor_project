@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Login</title>
+  <title>Monitoring Project</title>
 
   <!-- Custom fonts for this template-->
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,12 +22,12 @@
 
 <body class="bg-gradient-primary">
 
-  <div class="container">
+  <div class="container my-5">
 
     <!-- Outer Row -->
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mx-auto">
 
-      <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="col-xl-8 my-5">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
@@ -45,13 +45,13 @@
                     <hr>
                     <div class="row">
                     <div class="col-sm-6">
-                      <a href="<?php echo site_url('auth')?>" class="btn btn-danger btn-user btn-block">
-                        <i class="fas fa-fw fa-user-tie"></i> Login Sebagai Pegawai
+                      <a href="<?=site_url('Auth/login_pegawai')?>" class="btn btn-primary btn-user btn-block">
+                        <i class="fas fa-fw fa-user-tie"></i> Login Pegawai
                       </a>
                     </div>
                     <div class="col-sm-6">
-                    <a href="<?php echo site_url('Mitra')?>" class="btn btn-info btn-user btn-block">
-                      <i class="fas fa-fw fa-handshake"></i> Login Sebagai Mitra
+                    <a href="<?=site_url('Auth/login_mitra')?>" class="btn btn-danger btn-user btn-block">
+                      <i class="fas fa-fw fa-handshake"></i> Login Mitra
                     </a>
                     </div>
                     </div>

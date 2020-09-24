@@ -1,51 +1,89 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends MY_Controller {
+class Auth extends CI_Controller {
 
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
-
 		$this->load->model('UserModel');
 	}
 
-	public function index(){
-		if($this->session->userdata('authenticated')) // Jika user sudah login (Session authenticated ditemukan)
-			redirect('Pegawai/home'); // Redirect ke page home
-
-		// function render_login tersebut dari file core/MY_Controller.php
-		$this->render_login('Pegawai/login_pegawai'); // Load view login.php
+	public function login_pegawai()
+	{
+		ceksdh_login_pegawai();
+		$this->load->view('pegawai/login_pegawai');
 	}
 
-	public function login(){
-		$username = $this->input->post('email'); // Ambil isi dari inputan username pada form login
-		$password = md5($this->input->post('password')); // Ambil isi dari inputan password pada form login dan encrypt dengan md5
-
-		$user = $this->UserModel->get($username); // Panggil fungsi get yang ada di UserModel.php
-
-		if(empty($user)){ // Jika hasilnya kosong / user tidak ditemukan
-			$this->session->set_flashdata('msg', 'Username tidak ditemukan'); // Buat session flashdata
-			redirect('auth'); // Redirect ke halaman login
-		}else{
-			if($password == $user->Password){ // Jika password yang diinput sama dengan password yang didatabase
-				$session = array(
-					'authenticated'	=> TRUE, // Buat session authenticated dengan value true
-					'Email'			=> $user->Email,  // Buat session username
-					'Nama_Pegawai'	=> $user->Nama_Pegawai, // Buat session nama
-					'Jabatan'		=> $user->Jabatan // Buat session role
+	public function process_pegawai()
+	{
+		$post = $this->input->POST(NULL, TRUE);
+		if (isset($post['login_pegawai'])) {
+			$query = $this->UserModel->login_pegawai($post);
+			if ($query->num_rows() > 0) {
+				$row = $query->row();
+				$param = array(
+					'pegawai_id' 	=> $row->pegawai_id,
+					'nama_pegawai' 	=> $row->nama_pegawai,
+					'email'			=> $row->email,
+					'no_telp'		=> $row->no_telp,
+					'jabatan'		=> $row->jabatan
 				);
-
-				$this->session->set_userdata($session); // Buat session sesuai $session
-				redirect('Pegawai/home'); // Redirect ke halaman home
+				$this->session->set_userdata($param);
+				echo 
+				"<script>
+					alert('Login Berhasil');
+					window.location='".site_url('pegawai')."';
+				</script>";
 			}else{
-				$this->session->set_flashdata('msg', 'Password salah'); // Buat session flashdata
-				redirect('auth'); // Redirect ke halaman login
+				echo 
+				"<script>
+					alert('Login Gagal');
+					window.location='".redirect('auth/login_pegawai','refresh')."';
+				</script>";
 			}
 		}
 	}
 
-	public function logout(){
-		$this->session->sess_destroy(); // Hapus semua session
-		redirect('auth'); // Redirect ke halaman login
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect('home','refresh');
 	}
+
+	public function login_mitra()
+	{
+		$this->load->view('mitra/login_mitra');
+	}
+
+	public function process_mitra()
+	{
+		$post = $this->input->POST(NULL, TRUE);
+		if (isset($post['login_mitra'])) {
+			$query = $this->UserModel->login_mitra($post);
+			if ($query->num_rows() > 0) {
+				$row = $query->row();
+				$param = array(
+					'mitra_id' 		=> $row->mitra_id,
+					'nama_mitra'	=> $row->nama_mitra
+				);
+				$this->session->set_userdata($param);
+				echo 
+				"<script>
+					alert('Login Berhasil');
+					window.location='".site_url('mitra')."';
+				</script>";
+			}else{
+				echo 
+				"<script>
+					alert('Login Gagal');
+					window.location='".redirect('auth/login_mitra','refresh')."';
+				</script>";
+			}
+		}
+	}
+
 }
+
+/* End of file Auth.php */
+/* Location: ./application/controllers/Auth.php */

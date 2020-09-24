@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2020 at 10:18 AM
+-- Generation Time: Sep 23, 2020 at 03:47 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -37,13 +37,13 @@ CREATE TABLE `alamat` (
   `koordinat` varchar(200) NOT NULL,
   `type` int(2) NOT NULL COMMENT '0 ho, 1 ori, 2 termi',
   `kontak` varchar(200) NOT NULL,
-  `no telp` varchar(20) NOT NULL,
-  `create on` date NOT NULL,
-  `create by` int(10) NOT NULL,
-  `update on` date NOT NULL,
-  `update by` int(10) NOT NULL,
-  `delete on` date NOT NULL,
-  `delete by` int(10) NOT NULL,
+  `no_telp` varchar(20) NOT NULL,
+  `create_on` date NOT NULL,
+  `create_by` int(10) NOT NULL,
+  `update_on` date NOT NULL,
+  `update_by` int(10) NOT NULL,
+  `delete_on` date NOT NULL,
+  `delete_by` int(10) NOT NULL,
   `status` int(1) NOT NULL,
   `customer_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -56,18 +56,39 @@ CREATE TABLE `alamat` (
 
 CREATE TABLE `customer` (
   `customer_id` int(10) NOT NULL,
-  `nama customer` varchar(200) NOT NULL,
+  `nama_customer` varchar(200) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `fax` varchar(20) NOT NULL,
   `alamat` varchar(500) NOT NULL,
   `email` varchar(200) NOT NULL,
   `npwp` int(20) NOT NULL,
-  `create on` date NOT NULL,
-  `create by` int(10) NOT NULL,
-  `update on` date NOT NULL,
-  `update by` int(10) NOT NULL,
-  `delete on` date NOT NULL,
-  `delete by` int(10) NOT NULL,
+  `create_on` date NOT NULL,
+  `create_by` int(10) NOT NULL,
+  `update_on` date NOT NULL,
+  `update_by` int(10) NOT NULL,
+  `delete_on` date NOT NULL,
+  `delete_by` int(10) NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `material`
+--
+
+CREATE TABLE `material` (
+  `material_id` int(10) NOT NULL,
+  `nama_material` varchar(200) NOT NULL,
+  `brand` varchar(200) NOT NULL,
+  `stok` int(20) NOT NULL,
+  `storage_bin` varchar(200) NOT NULL,
+  `create_by` int(10) NOT NULL,
+  `create_on` date NOT NULL,
+  `update_by` int(10) NOT NULL,
+  `update_on` date NOT NULL,
+  `delete_by` int(10) NOT NULL,
+  `delete_on` date NOT NULL,
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -79,19 +100,20 @@ CREATE TABLE `customer` (
 
 CREATE TABLE `mitra` (
   `mitra_id` int(10) NOT NULL,
-  `nama mitra` varchar(200) NOT NULL,
+  `nama_mitra` varchar(200) NOT NULL,
   `alamat` varchar(200) NOT NULL,
   `kota` varchar(200) NOT NULL,
-  `no telp` varchar(20) NOT NULL,
+  `no_telp` varchar(20) NOT NULL,
   `fax` varchar(20) NOT NULL,
   `email` varchar(200) NOT NULL,
+  `password` varchar(20) NOT NULL,
   `npwp` varchar(20) NOT NULL,
-  `create by` int(10) NOT NULL,
-  `create on` date NOT NULL,
-  `update by` int(10) NOT NULL,
-  `update on` date NOT NULL,
-  `delete by` int(10) NOT NULL,
-  `delete on` date NOT NULL,
+  `create_by` int(10) NOT NULL,
+  `create_on` date NOT NULL,
+  `update_by` int(10) NOT NULL,
+  `update_on` date NOT NULL,
+  `delete_by` int(10) NOT NULL,
+  `delete_on` date NOT NULL,
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -102,19 +124,39 @@ CREATE TABLE `mitra` (
 --
 
 CREATE TABLE `pegawai` (
-  `Pegawai_ID` int(10) NOT NULL,
-  `Nama_Pegawai` varchar(200) NOT NULL,
-  `No_Telp` varchar(12) NOT NULL,
-  `Email` varchar(200) NOT NULL,
-  `Password` varchar(200) NOT NULL,
-  `Jabatan` int(2) NOT NULL COMMENT '0 spv administrator, 1 pm, 2 admin, 3 gudang',
-  `Create By` int(10) NOT NULL,
-  `Create On` date NOT NULL,
-  `Update By` int(10) NOT NULL,
-  `Update On` date NOT NULL,
-  `Delete By` int(10) NOT NULL,
-  `Delete On` date NOT NULL,
-  `Status` int(1) NOT NULL
+  `pegawai_id` int(10) NOT NULL,
+  `nama_pegawai` varchar(200) NOT NULL,
+  `no_relp` varchar(12) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `jabatan` int(2) NOT NULL COMMENT '0 spv administrator, 1 pm, 2 admin, 3 gudang, 4 QC',
+  `create_by` int(10) NOT NULL,
+  `create_on` date NOT NULL,
+  `update_by` int(10) NOT NULL,
+  `update_on` date NOT NULL,
+  `delete_by` int(10) NOT NULL,
+  `delete_on` date NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pekerjaan`
+--
+
+CREATE TABLE `pekerjaan` (
+  `pekerjaan_id` int(10) NOT NULL,
+  `nama_pekerjaan` varchar(200) NOT NULL,
+  `satuan` varchar(200) NOT NULL,
+  `price` int(50) NOT NULL,
+  `create_on` date NOT NULL,
+  `create_by` int(10) NOT NULL,
+  `update_on` date NOT NULL,
+  `update_by` int(10) NOT NULL,
+  `delete_on` date NOT NULL,
+  `delete_by` int(10) NOT NULL,
+  `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -125,15 +167,15 @@ CREATE TABLE `pegawai` (
 
 CREATE TABLE `product` (
   `product_id` int(10) NOT NULL,
-  `nama product` varchar(200) NOT NULL,
+  `nama_product` varchar(200) NOT NULL,
   `bandwith` int(200) NOT NULL,
   `status` int(1) NOT NULL,
-  `create on` date NOT NULL,
-  `create by` int(10) NOT NULL,
-  `update on` date NOT NULL,
-  `update by` int(10) NOT NULL,
-  `delete on` date NOT NULL,
-  `delete by` int(10) NOT NULL
+  `create_on` date NOT NULL,
+  `create_by` int(10) NOT NULL,
+  `update_on` date NOT NULL,
+  `update_by` int(10) NOT NULL,
+  `delete_on` date NOT NULL,
+  `delete_by` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -153,6 +195,12 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`customer_id`);
 
 --
+-- Indexes for table `material`
+--
+ALTER TABLE `material`
+  ADD PRIMARY KEY (`material_id`);
+
+--
 -- Indexes for table `mitra`
 --
 ALTER TABLE `mitra`
@@ -162,7 +210,13 @@ ALTER TABLE `mitra`
 -- Indexes for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  ADD PRIMARY KEY (`Pegawai_ID`);
+  ADD PRIMARY KEY (`pegawai_id`);
+
+--
+-- Indexes for table `pekerjaan`
+--
+ALTER TABLE `pekerjaan`
+  ADD PRIMARY KEY (`pekerjaan_id`);
 
 --
 -- Indexes for table `product`
@@ -187,6 +241,12 @@ ALTER TABLE `customer`
   MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `material`
+--
+ALTER TABLE `material`
+  MODIFY `material_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `mitra`
 --
 ALTER TABLE `mitra`
@@ -196,7 +256,13 @@ ALTER TABLE `mitra`
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `Pegawai_ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `pegawai_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pekerjaan`
+--
+ALTER TABLE `pekerjaan`
+  MODIFY `pekerjaan_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`

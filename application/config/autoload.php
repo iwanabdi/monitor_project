@@ -58,7 +58,11 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
+<<<<<<< Updated upstream
 $autoload['libraries'] = array('template','database','session','pagination','upload', 'fungsi');
+=======
+$autoload['libraries'] = array('table','form_validation','session','pagination','upload');
+>>>>>>> Stashed changes
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +93,11 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
+<<<<<<< Updated upstream
 $autoload['helper'] = array('url','form','cookie','fungsi');
+=======
+$autoload['helper'] = array('url','form','cookie');
+>>>>>>> Stashed changes
 
 /*
 | -------------------------------------------------------------------

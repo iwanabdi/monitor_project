@@ -5,7 +5,8 @@ class Mitra extends CI_Controller {
 
 	public function index()
 	{
-		$this->template->load('template_mitra', 'Mitra/dashboard');
+		// cekblm_login_mitra();
+		$this->template->load('template_mitra', 'mitra/dashboard');
 	}
 
 }

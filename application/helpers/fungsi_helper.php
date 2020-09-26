@@ -26,7 +26,7 @@
 		$user_session = $CI->session->userdata('mitra_id');
 		if ($user_session) {
 			echo "<script>alert('Sudah Login, Logout Dulu Bosss')</script>";
-			redirect('Mitra','refresh');
+			redirect('mitra','refresh');
 		}
 	}
 
@@ -34,9 +34,9 @@
 	{
 		$CI =& get_instance();
 		$user_session = $CI->session->userdata('mitra_id');
-		if ($user_session) {
+		if (!$user_session) {
 			echo "<script>alert('Login Dulu Bosss')</script>";
-			redirect('Auth/login_mitra','refresh');
+			redirect('auth/login_mitra','refresh');
 		}
 	}
 

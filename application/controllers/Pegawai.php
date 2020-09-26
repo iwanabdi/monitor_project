@@ -12,7 +12,7 @@ class Pegawai extends CI_Controller {
 
 	public function profile()
 	{
-		// cekblm_login_pegawai();
+		cekblm_login_pegawai();
 		$this->template->load('template_pegawai', 'Pegawai/profile');
 	}
 

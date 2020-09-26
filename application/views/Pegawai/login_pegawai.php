@@ -44,7 +44,7 @@
                     }
                   ?>
 
-                  <form class="user" action="<?php echo base_url('auth/process_pegawai');?>" method="post">
+                  <form class="user" action="<?php echo base_url('Auth/process_pegawai');?>" method="post">
                     <!-- <?php echo $this->session->flashdata('msg');?> -->
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" name="email" 

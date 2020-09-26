@@ -67,18 +67,18 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <?php if ($this->session->userdata('jabatan') == 0) {?>
-            <a class="collapse-item" href="utilities-color.html">
+            <a class="collapse-item" href="<?= site_url('master_pegawai')?>">
               <i class="fas fa-fw fa-user-tie mr-2"></i>Pegawai</a>
             <?php } ?>
-            <a class="collapse-item" href="utilities-border.html">
+            <a class="collapse-item" href="#">
               <i class="fas fa-fw fa-users mr-2"></i>Pelanggan</a>
-            <a class="collapse-item" href="utilities-animation.html">
+            <a class="collapse-item" href="#">
               <i class="fas fa-fw fa-address-book mr-2"></i>Alamat</a>
-            <a class="collapse-item" href="utilities-animation.html">
+            <a class="collapse-item" href="#">
               <i class="fas fa-fw fa-dolly mr-2"></i>Product</a>
-            <a class="collapse-item" href="utilities-animation.html">
+            <a class="collapse-item" href="<?= site_url('mitra/list_data')?>">
               <i class="fas fa-fw fa-handshake mr-2"></i>Mitra</a>
-            <a class="collapse-item" href="utilities-animation.html">
+            <a class="collapse-item" href="#">
               <i class="fas fa-fw fa-business-time mr-2"></i>Pekerjaan
             </a>
           </div>

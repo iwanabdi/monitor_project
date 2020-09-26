@@ -23,7 +23,7 @@ class Auth extends CI_Controller {
 			if ($query->num_rows() > 0) {
 				$row = $query->row();
 				$param = array(
-					'pegawai_id' 	=> $row->Pegawai_id,
+					'pegawai_id' 	=> $row->Pegawai_ID,
 					'nama_pegawai' 	=> $row->Nama_Pegawai,
 					'email'			=> $row->Email,
 					'no_telp'		=> $row->No_Telp,

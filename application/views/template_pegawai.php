@@ -68,18 +68,18 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <?php if ($this->session->userdata('jabatan') == 0) {?>
             <a class="collapse-item" href="utilities-color.html">
-              <i class="fas fa-fw fa-user-tie"></i>Pegawai</a>
+              <i class="fas fa-fw fa-user-tie mr-2"></i>Pegawai</a>
             <?php } ?>
             <a class="collapse-item" href="utilities-border.html">
-              <i class="fas fa-fw fa-users"></i>Pelanggan</a>
+              <i class="fas fa-fw fa-users mr-2"></i>Pelanggan</a>
             <a class="collapse-item" href="utilities-animation.html">
-              <i class="fas fa-fw fa-address-book"></i>Alamat</a>
+              <i class="fas fa-fw fa-address-book mr-2"></i>Alamat</a>
             <a class="collapse-item" href="utilities-animation.html">
-              <i class="fas fa-fw fa-dolly"></i>Product</a>
+              <i class="fas fa-fw fa-dolly mr-2"></i>Product</a>
             <a class="collapse-item" href="utilities-animation.html">
-              <i class="fas fa-fw fa-handshake"></i>Mitra</a>
+              <i class="fas fa-fw fa-handshake mr-2"></i>Mitra</a>
             <a class="collapse-item" href="utilities-animation.html">
-              <i class="fas fa-fw fa-business-time"></i>Pekerjaan
+              <i class="fas fa-fw fa-business-time mr-2"></i>Pekerjaan
             </a>
           </div>
         </div>

@@ -23,11 +23,11 @@ class Auth extends CI_Controller {
 			if ($query->num_rows() > 0) {
 				$row = $query->row();
 				$param = array(
-					'pegawai_id' 	=> $row->pegawai_id,
-					'nama_pegawai' 	=> $row->nama_pegawai,
-					'email'			=> $row->email,
-					'no_telp'		=> $row->no_telp,
-					'jabatan'		=> $row->jabatan
+					'pegawai_id' 	=> $row->Pegawai_id,
+					'nama_pegawai' 	=> $row->Nama_Pegawai,
+					'email'			=> $row->Email,
+					'no_telp'		=> $row->No_Telp,
+					'jabatan'		=> $row->Jabatan
 				);
 				$this->session->set_userdata($param);
 				echo 

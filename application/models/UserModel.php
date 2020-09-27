@@ -63,6 +63,16 @@ class UserModel extends CI_Model {
         }
         $query = $this->db->get();
         return $query;
+	}
+	public function get_alamat($id = null)
+    {
+        $this->db->select('*');
+        $this->db->from('alamat');
+        if ($id != null) {
+            $this->db->where('alamat_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
     }
 
 }

@@ -72,7 +72,7 @@
             <?php } ?>
             <a class="collapse-item" href="master_customer">
               <i class="fas fa-fw fa-users mr-2"></i>Pelanggan</a>
-            <a class="collapse-item" href="#">
+            <a class="collapse-item" href="<?= site_url('master_alamat')?>">
               <i class="fas fa-fw fa-address-book mr-2"></i>Alamat</a>
             <a class="collapse-item" href="#">
               <i class="fas fa-fw fa-dolly mr-2"></i>Product</a>

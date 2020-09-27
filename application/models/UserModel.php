@@ -73,6 +73,16 @@ class UserModel extends CI_Model {
         }
         $query = $this->db->get();
         return $query;
+	}
+	public function get_product($id = null)
+    {
+        $this->db->select('*');
+        $this->db->from('product');
+        if ($id != null) {
+            $this->db->where('product_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
     }
 
 }

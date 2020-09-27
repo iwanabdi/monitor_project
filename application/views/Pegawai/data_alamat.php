@@ -11,7 +11,7 @@
         <h5 class="m-0 font-weight-bold text-primary">Data Alamat</h5>
       </div>
       <div class="col-2 p-0">
-        <button type="button" class="btn btn-success btn-block" id="btn" data-toggle="modal" data-target="#modal_material">
+        <button type="button" class="btn btn-success btn-block" id="btn" data-toggle="modal" data-target="#modal_alamat">
         <i class="fas fa-user-plus"></i> Add Alamat
         </button>
       </div>
@@ -99,30 +99,30 @@
         </div>
         <div class="form-group">
           <label>Kota</label>
-          <input type="text" name="brand" class="form-control">
+          <input type="text" name="kota" class="form-control">
         </div>
         <div class="form-group">
           <label>Provinsi</label>
-          <input type="text" name="brand" class="form-control">
+          <input type="text" name="provinsi" class="form-control">
         </div>
         <div class="form-group">
           <label>Negara</label>
-          <input type="text" name="storage" class="form-control">
+          <input type="text" name="negara" class="form-control">
         </div><div class="form-group">
           <label>Koordinat</label>
-          <input type="text" name="storage" class="form-control">
+          <input type="text" name="koordinat" class="form-control">
         </div><div class="form-group">
           <label>Type</label>
-          <input type="text" name="storage" class="form-control">
+          <input type="text" name="type" class="form-control">
         </div><div class="form-group">
           <label>Kontak</label>
-          <input type="text" name="storage" class="form-control">
+          <input type="text" name="kontak" class="form-control">
         </div>
         
         
         <div class="form-group">
           <label>Create By</label>
-          <input type="number" name="create_by" class="form-control" id="material_id" value="<?= $this->session->userdata('pegawai_id');?>" disabled></input>
+          <input type="number" name="create_by" class="form-control" id="alamat_id" value="<?= $this->session->userdata('pegawai_id');?>" disabled></input>
         </div>
         <!-- <div class="form-group">
           <label>Create On</label>

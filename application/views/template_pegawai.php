@@ -86,7 +86,7 @@
       </li>
       <?php } ?>
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="<?= site_url('master_material')?>">
           <i class="fas fa-fw fa-box-open"></i>
           <span>Material</span></a>
       </li>

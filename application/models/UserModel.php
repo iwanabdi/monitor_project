@@ -43,6 +43,16 @@ class UserModel extends CI_Model {
         $query = $this->db->get();
         return $query;
     }
+    public function get_material($id = null)
+    {
+        $this->db->select('*');
+        $this->db->from('material');
+        if ($id != null) {
+            $this->db->where('material_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
 
     public function get_mitra($id = null)
     {
@@ -50,6 +60,26 @@ class UserModel extends CI_Model {
         $this->db->from('mitra');
         if ($id != null) {
             $this->db->where('mitra_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+	}
+	public function get_alamat($id = null)
+    {
+        $this->db->select('*');
+        $this->db->from('alamat');
+        if ($id != null) {
+            $this->db->where('alamat_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+	}
+	public function get_product($id = null)
+    {
+        $this->db->select('*');
+        $this->db->from('product');
+        if ($id != null) {
+            $this->db->where('product_id', $id);
         }
         $query = $this->db->get();
         return $query;

@@ -82,8 +82,8 @@
 
 
 <!-- Modal Untuk Tambah Data -->
-<!-- Modal material -->
-<div class="modal fade" id="modal_material" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!-- Modal alamat -->
+<div class="modal fade" id="modal_alamat" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -95,7 +95,7 @@
       <div class="modal-body">
         <div class="form-group">
           <label>Jalan</label>
-          <input type="text" name="nama_material" class="form-control">
+          <input type="text" name="nama_alamat" class="form-control">
         </div>
         <div class="form-group">
           <label>Kota</label>

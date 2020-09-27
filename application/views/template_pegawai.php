@@ -14,6 +14,8 @@
   <!-- Custom fonts for this template-->
   <link href="<?=base_url();?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- Custom styles for this page -->
+  <link href="<?= base_url();?>assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="<?=base_url();?>assets/css/sb-admin-2.min.css" rel="stylesheet">
@@ -30,7 +32,7 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" 
-      href="<?= site_url()?>pegawai">
+      href="<?= site_url('pegawai')?>">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-project-diagram"></i>
         </div>
@@ -42,7 +44,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?= site_url()?>pegawai">
+        <a class="nav-link" href="<?= site_url('pegawai')?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -65,18 +67,18 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <?php if ($this->session->userdata('jabatan') == 0) {?>
-            <a class="collapse-item" href="utilities-color.html">
+            <a class="collapse-item" href="<?= site_url('master_pegawai')?>">
               <i class="fas fa-fw fa-user-tie mr-2"></i>Pegawai</a>
             <?php } ?>
-            <a class="collapse-item" href="utilities-border.html">
+            <a class="collapse-item" href="#">
               <i class="fas fa-fw fa-users mr-2"></i>Pelanggan</a>
-            <a class="collapse-item" href="utilities-animation.html">
+            <a class="collapse-item" href="#">
               <i class="fas fa-fw fa-address-book mr-2"></i>Alamat</a>
-            <a class="collapse-item" href="utilities-animation.html">
+            <a class="collapse-item" href="#">
               <i class="fas fa-fw fa-dolly mr-2"></i>Product</a>
-            <a class="collapse-item" href="utilities-animation.html">
+            <a class="collapse-item" href="<?= site_url('mitra/list_data')?>">
               <i class="fas fa-fw fa-handshake mr-2"></i>Mitra</a>
-            <a class="collapse-item" href="utilities-animation.html">
+            <a class="collapse-item" href="#">
               <i class="fas fa-fw fa-business-time mr-2"></i>Pekerjaan
             </a>
           </div>
@@ -98,6 +100,12 @@
           <span>Project</span></a>
       </li>
       <?php } ?>
+
+      <li class="nav-item">
+        <a class="nav-link" href="<?= site_url('user')?>">
+          <i class="fas fa-users-cog"></i>
+          <span>Users</span></a>
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -190,7 +198,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                  <?php echo $this->session->userdata('nama_pegawai'); ?>    
+                  <?= $this->fungsi->user_login()->nama_pegawai; ?>    
                 </span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
@@ -273,6 +281,14 @@
   <!-- Page level custom scripts -->
   <!-- <script src="<?=base_url();?>assets/js/demo/chart-area-demo.js"></script> -->
   <!-- <script src="<?=base_url();?>assets/js/demo/chart-pie-demo.js"></script> -->
+
+
+  <!-- Page level plugins -->
+  <script src="<?= base_url();?>assets/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url();?>assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="<?= base_url();?>assets/js/demo/datatables-demo.js"></script>
 
 </body>
 

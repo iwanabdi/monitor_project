@@ -18,22 +18,22 @@
           <div class="card-body">
               <form class="user">
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-user" name="nama" id="nama" placeholder="<?php echo $this->session->userdata('nama_pegawai')?>">
+                  <input type="text" class="form-control form-control-user" name="nama" id="nama" placeholder="<?= $this->fungsi->user_login()->nama_pegawai;?>">
                 </div>
                 <div class="form-group">
                   <input type="email" class="form-control form-control-user" name="email" id="email"
-                  placeholder="<?php echo $this->session->userdata('email')?>">
+                  placeholder="<?= $this->fungsi->user_login()->email;?>">
                 </div>
                 <div class="form-group">
                   <input type="number" class="form-control form-control-user" name="no_telp" id="no_telp"
-                  placeholder="<?php echo $this->session->userdata('no_telp')?>">
+                  placeholder="<?= $this->fungsi->user_login()->no_telp;?>">
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="********">
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="********">
                   </div>
                 </div>
                 <hr>
@@ -58,12 +58,10 @@
               <!-- <canvas id="myPieChart"></canvas> -->
             </div>
             <hr>
-              <a href="#" class="btn btn-primary btn-icon-split">
-                <span class="icon text-white-50">
-                  <i class="fas fa-flag"></i>
-                </span>
-                <span class="text">Pilih Gambar</span>
-              </a>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+              </div>
           </div>
         </div>
       </div>

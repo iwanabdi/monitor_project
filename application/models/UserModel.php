@@ -23,12 +23,23 @@ class UserModel extends CI_Model {
     	return $result;
     }
 
-    public function get($id = null)
+    public function get_pegawai($id = null)
     {
         $this->db->select('*');
         $this->db->from('pegawai');
         if ($id != null) {
             $this->db->where('pegawai_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function get_mitra($id = null)
+    {
+        $this->db->select('*');
+        $this->db->from('mitra');
+        if ($id != null) {
+            $this->db->where('mitra_id', $id);
         }
         $query = $this->db->get();
         return $query;

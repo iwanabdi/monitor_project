@@ -23,11 +23,8 @@ class Auth extends CI_Controller {
 			if ($query->num_rows() > 0) {
 				$row = $query->row();
 				$param = array(
-					'pegawai_id' 	=> $row->Pegawai_ID,
-					'nama_pegawai' 	=> $row->Nama_Pegawai,
-					'email'			=> $row->Email,
-					'no_telp'		=> $row->No_Telp,
-					'jabatan'		=> $row->Jabatan
+					'pegawai_id' 	=> $row->pegawai_id,
+					'jabatan'		=> $row->jabatan
 				);
 				$this->session->set_userdata($param);
 				echo 
@@ -53,6 +50,7 @@ class Auth extends CI_Controller {
 
 	public function login_mitra()
 	{
+		ceksdh_login_mitra();
 		$this->load->view('mitra/login_mitra');
 	}
 
@@ -63,11 +61,11 @@ class Auth extends CI_Controller {
 			$query = $this->UserModel->login_mitra($post);
 			if ($query->num_rows() > 0) {
 				$row = $query->row();
-				$param = array(
+				$params = array(
 					'mitra_id' 		=> $row->mitra_id,
 					'nama_mitra'	=> $row->nama_mitra
 				);
-				$this->session->set_userdata($param);
+				$this->session->set_userdata($params);
 				echo 
 				"<script>
 					alert('Login Berhasil');

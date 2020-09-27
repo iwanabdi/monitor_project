@@ -70,7 +70,7 @@
             <a class="collapse-item" href="<?= site_url('master_pegawai')?>">
               <i class="fas fa-fw fa-user-tie mr-2"></i>Pegawai</a>
             <?php } ?>
-            <a class="collapse-item" href="#">
+            <a class="collapse-item" href="master_customer">
               <i class="fas fa-fw fa-users mr-2"></i>Pelanggan</a>
             <a class="collapse-item" href="#">
               <i class="fas fa-fw fa-address-book mr-2"></i>Alamat</a>

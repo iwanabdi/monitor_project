@@ -24,6 +24,7 @@ class Auth extends CI_Controller {
 				$row = $query->row();
 				$param = array(
 					'pegawai_id' 	=> $row->pegawai_id,
+					'nama_pegawai'	=> $row->nama_pegawai,
 					'jabatan'		=> $row->jabatan
 				);
 				$this->session->set_userdata($param);
@@ -33,11 +34,11 @@ class Auth extends CI_Controller {
 					window.location='".site_url('pegawai')."';
 				</script>";
 			}else{
-				echo 
-				"<script>
-					alert('Login Gagal');
-					window.location='".redirect('auth/login_pegawai','refresh')."';
-				</script>";
+				$this->session->set_flashdata('pesan', 
+					'<div class="alert alert-danger" role="alert">
+						Login Gagal! Email atau Password Anda Salah.
+					</div>');
+				redirect('auth/login_pegawai','refresh');
 			}
 		}
 	}

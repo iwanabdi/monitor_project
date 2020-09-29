@@ -39,8 +39,8 @@
                     <h1 class="h4 text-gray-900 mb-4">Silahkan Login Pegawai</h1>
                   </div>
 
-                  <form class="user" action="<?php echo base_url('auth/process_pegawai');?>" method="post">
-                    <?php echo $this->session->flashdata('pesan');?>
+                  <form class="user" action="<?php echo base_url('Auth/process_pegawai');?>" method="post">
+                    <!-- <?php echo $this->session->flashdata('msg');?> -->
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" name="email" 
                       id="Email" aria-describedby="emailHelp" placeholder="Enter Email Address..." required autofocus="">

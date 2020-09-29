@@ -246,7 +246,6 @@ foreach ($row->result() as $key => $data) : $no++; ?>
       <div class="modal-body">
         <?php echo form_open_multipart('master_customer/hapus_data');?>
           <input type="hidden" id="id" name="id" value="<?=$data->customer_id?>">
-          <input type="text" name="makan" id="makan">
           <p>Anda akan menghapus data "<?=$data->nama_customer ?>"</p>
         </div>
         <div class="modal-footer">

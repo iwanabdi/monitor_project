@@ -126,7 +126,7 @@ CREATE TABLE `mitra` (
 CREATE TABLE `pegawai` (
   `pegawai_id` int(10) NOT NULL,
   `nama_pegawai` varchar(200) NOT NULL,
-  `no_relp` varchar(12) NOT NULL,
+  `no_telp` varchar(12) NOT NULL,
   `email` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   `jabatan` int(2) NOT NULL COMMENT '0 spv administrator, 1 pm, 2 admin, 3 gudang, 4 QC',

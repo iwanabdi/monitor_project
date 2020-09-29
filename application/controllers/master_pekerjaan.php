@@ -27,26 +27,25 @@ class master_pekerjaan extends CI_Controller {
 		redirect('master_pekerjaan','refresh');
 	}
 
-	// function proses_edit_data()
-	// {
-	// 	$this->M_pegawai->proses_edit_data();
-	// 	$this->session->set_flashdata('pesan', 
-	// 		'<div class="alert alert-info" role="alert">
-	// 			Data Berhasil Diubah!
-	// 		</div>');
-	// 	redirect('master_pegawai','refresh');
+	function proses_edit_data()
+	{
+		$this->M_pekerjaan->proses_edit_data();
+		$this->session->set_flashdata('pesan', 
+			'<div class="alert alert-info" role="alert">
+				Data Berhasil Diubah!
+			</div>');
+		redirect('master_pekerjaan','refresh');
+	}
 
-	// }
-
-	// function hapus_data()
-	// {
-	// 	$this->M_pegawai->hapus_data();
-	// 	$this->session->set_flashdata('pesan', 
-	// 		'<div class="alert alert-danger" role="alert">
-	// 			Data Berhasil Dihapus!
-	// 		</div>');
-	// 	redirect('master_pegawai','refresh');
-	// }
+	function hapus_data()
+	{
+		$this->M_pekerjaan->hapus_data();
+		$this->session->set_flashdata('pesan', 
+			'<div class="alert alert-danger" role="alert">
+				Data Berhasil Dihapus!
+			</div>');
+		redirect('master_pekerjaan','refresh');
+	}
 
 }
 

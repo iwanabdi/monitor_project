@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_pegawai extends CI_Model {
 
-	public function get_pegawai($id = null)
+	function get_pegawai($id = null)
     {
         $this->db->select('*');
         $this->db->from('pegawai');

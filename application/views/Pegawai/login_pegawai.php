@@ -38,11 +38,6 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Silahkan Login Pegawai</h1>
                   </div>
-                  <?php 
-                    if ($this->session->flashdata('msg')) { // cek session msg
-                      echo '<div class="alert alert-danger">'.$this->session->flashdata('msg').'</div>';
-                    }
-                  ?>
 
                   <form class="user" action="<?php echo base_url('Auth/process_pegawai');?>" method="post">
                     <!-- <?php echo $this->session->flashdata('msg');?> -->

@@ -53,7 +53,7 @@
       <hr class="sidebar-divider">
 
       <!-- Heading -->
-      <?php if ($this->session->userdata('jabatan') == 0 ||
+      <?php if ($this->session->userdata('jabatan') <= 0 ||
                 $this->session->userdata('jabatan') == 1 ||
                 $this->session->userdata('jabatan') == 2) {?>
       <div class="sidebar-heading">
@@ -66,19 +66,19 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <?php if ($this->session->userdata('jabatan') == 0) {?>
+            <?php if ($this->session->userdata('jabatan') <= 0) {?>
             <a class="collapse-item" href="<?= site_url('master_pegawai')?>">
               <i class="fas fa-fw fa-user-tie mr-2"></i>Pegawai</a>
             <?php } ?>
-            <a class="collapse-item" href="master_customer">
+            <a class="collapse-item" href="<?= site_url('master_customer')?>">
               <i class="fas fa-fw fa-users mr-2"></i>Pelanggan</a>
             <a class="collapse-item" href="<?= site_url('master_alamat')?>">
               <i class="fas fa-fw fa-address-book mr-2"></i>Alamat</a>
             <a class="collapse-item" href="<?= site_url('master_product')?>">
               <i class="fas fa-fw fa-dolly mr-2"></i>Product</a>
-            <a class="collapse-item" href="<?= site_url('mitra/list_data')?>">
+            <a class="collapse-item" href="<?= site_url('master_mitra')?>">
               <i class="fas fa-fw fa-handshake mr-2"></i>Mitra</a>
-            <a class="collapse-item" href="#">
+            <a class="collapse-item" href="<?= site_url('master_pekerjaan')?>">
               <i class="fas fa-fw fa-business-time mr-2"></i>Pekerjaan
             </a>
           </div>
@@ -86,16 +86,16 @@
       </li>
       <?php } ?>
       <li class="nav-item">
-        <a class="nav-link" href="<?= site_url('master_product')?>">
+        <a class="nav-link" href="<?= site_url('master_material')?>">
           <i class="fas fa-fw fa-box-open"></i>
           <span>Material</span></a>
       </li>
       
-      <?php if ($this->session->userdata('jabatan') == 0 || 
+      <?php if ($this->session->userdata('jabatan') <= 0 || 
                 $this->session->userdata('jabatan') == 1 ||
                 $this->session->userdata('jabatan') == 2) {?>
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="<?= site_url('master_project')?>">
           <i class="fas fa-fw fa-business-time"></i>
           <span>Project</span></a>
       </li>
@@ -159,8 +159,10 @@
                         echo 'Admin';
                       }else if($jabatan == 3){
                         echo 'Gudang';
-                      }else{
+                      }else if($jabatan == 4){
                         echo 'QC';
+                      }else if($jabatan == -1){
+                        echo "Developer";
                       }
                     // echo ucwords($this->session->userdata('Jabatan')) ?></h6>
           </li>
@@ -293,3 +295,4 @@
 </body>
 
 </html>
+>>>>>>> Stashed changes

@@ -6,6 +6,7 @@ class Master_product extends CI_Controller {
 	public function index()
 	{
 		cekblm_login_pegawai();
+		cek_akses();
 		$this->load->model('UserModel');
 		$data['row'] = $this->UserModel->get_product();
 		$this->template->load('template_pegawai', 'pegawai/data_product', $data);

@@ -7,6 +7,7 @@ class Master_material extends CI_Controller {
 	{
 		parent::__construct();
 		cekblm_login_pegawai();
+		cek_akses();
 		$this->load->model('UserModel');
 		$this->load->model('M_material');
 	}

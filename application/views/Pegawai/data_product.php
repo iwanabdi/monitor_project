@@ -99,12 +99,6 @@
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Opsi</label>
-          <div class="col-sm-9">
-            <input type="number" class="form-control" name="opsi" id="opsi">
-          </div>
-        </div>
-        <div class="form-group row">
           <label class="col-sm-3 col-form-label">Create By</label>
           <div class="col-sm-9">
             <input type="text" name="create_by" class="form-control" id="product_id" value="<?= $this->session->userdata('nama_pegawai');?>" disabled></input>

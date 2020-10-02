@@ -38,14 +38,12 @@ class M_product extends CI_Model {
     		$data = [
 	    		"nama_product" 		=> $this->input->post('nama_product'),
 	    		"bandwith"			=> $this->input->post('bandwith'),
-	    		"opsi"				=> $this->input->post('opsi'),
 	    		"update_by"			=> $this->session->userdata('pegawai_id'),
     		];
     	}else{
     		$data = [
 	    		"nama_product" 		=> $this->input->post('nama_product'),
 	    		"bandwith"			=> $this->input->post('bandwith'),
-	    		"opsi"				=> $this->input->post('opsi'),
 	    		"update_by" 		=> $this->session->userdata('pegawai_id')
 	    	];
     	}

@@ -26,11 +26,10 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <!-- <?php print_r($row->result()) ?> -->
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr class="text-center">
-						<th>No</th>
+						  <th>No</th>
               <th>ID</th>
               <th>Jalan</th>
               <th>Kota</th>
@@ -45,9 +44,9 @@
           </thead>
           <tfoot>
             <tr class="text-center">
-						<th>No</th>
+						  <th>No</th>
               <th>ID</th>
-						<th>Jalan</th>
+						  <th>Jalan</th>
               <th>Kota</th>
               <th>Provinsi</th>
               <th>Negara</th>
@@ -153,12 +152,6 @@
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Opsi</label>
-          <div class="col-sm-9">
-            <input type="number" class="form-control" name="opsi" id="opsi">
-          </div>
-        </div>
-        <div class="form-group row">
           <label class="col-sm-3 col-form-label">Create By</label>
           <div class="col-sm-9">
             <input type="text" name="create_by" class="form-control" id="alamat_id" value="<?= $this->session->userdata('nama_pegawai');?>" disabled></input>
@@ -239,6 +232,11 @@ foreach ($row->result() as $key => $data) : $no++; ?>
             <input type="number" class="form-control" name="no_telp" id="no_telp" value="<?= $data->no_telp;?>">
           </div>
         </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">No_Telp</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" name="no_telp" id="no_telp" value="<?=$data->no_telp?>">
+          </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Update By</label>

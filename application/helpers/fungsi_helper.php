@@ -40,4 +40,14 @@
 		}
 	}
 
+	function cek_akses()
+	{
+		$CI =& get_instance();
+		$CI->load->library('fungsi');
+		if ($CI->fungsi->user_login()->jabatan > 2) {
+			echo "<script>alert('Anda itu siapa? Sadari diri Anda dahulu!')</script>";
+			redirect('pegawai','refresh');
+		}
+	}
+
  ?>

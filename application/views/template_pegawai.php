@@ -43,7 +43,7 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
+      <li class="nav-item <?= $this->uri->segment(1) == 'pegawai'?'active' : ""?>">
         <a class="nav-link" href="<?= site_url('pegawai')?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
@@ -59,33 +59,54 @@
       <div class="sidebar-heading">
         Menu Master
       </div>
-      <li class="nav-item">
+      <li class="nav-item
+        <?= 
+        $this->uri->segment(1) == 'master_pegawai' || 
+        $this->uri->segment(1) == 'master_customer' || 
+        $this->uri->segment(1) == 'master_alamat' || 
+        $this->uri->segment(1) == 'master_product' || 
+        $this->uri->segment(1) == 'master_mitra' || 
+        $this->uri->segment(1) == 'master_pekerjaan' ? 'active' : "" ?> ">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
           <span>Master</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseUtilities" class="collapse
+          <?= 
+          $this->uri->segment(1) == 'master_pegawai' || 
+          $this->uri->segment(1) == 'master_customer' || 
+          $this->uri->segment(1) == 'master_alamat' || 
+          $this->uri->segment(1) == 'master_product' || 
+          $this->uri->segment(1) == 'master_mitra' || 
+          $this->uri->segment(1) == 'master_pekerjaan' ? 'show' : "" ?>" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <?php if ($this->session->userdata('jabatan') <= 0) {?>
-            <a class="collapse-item" href="<?= site_url('master_pegawai')?>">
+            <a class="collapse-item 
+            <?=$this->uri->segment(1) == 'master_pegawai' ? 'active' : ""?>" 
+            href="<?= site_url('master_pegawai')?>">
               <i class="fas fa-fw fa-user-tie mr-2"></i>Pegawai</a>
             <?php } ?>
-            <a class="collapse-item" href="<?= site_url('master_customer')?>">
-              <i class="fas fa-fw fa-users mr-2"></i>Pelanggan</a>
-            <a class="collapse-item" href="<?= site_url('master_alamat')?>">
+            <a class="collapse-item 
+            <?=$this->uri->segment(1) == 'master_customer' ? 'active' : ""?>" href="<?= site_url('master_customer')?>">
+              <i class="fas fa-fw fa-users mr-2"></i>Customer</a>
+            <a class="collapse-item 
+            <?=$this->uri->segment(1) == 'master_alamat' ? 'active' : ""?>" href="<?= site_url('master_alamat')?>">
               <i class="fas fa-fw fa-address-book mr-2"></i>Alamat</a>
-            <a class="collapse-item" href="<?= site_url('master_product')?>">
+            <a class="collapse-item 
+            <?=$this->uri->segment(1) == 'master_product' ? 'active' : ""?>" href="<?= site_url('master_product')?>">
               <i class="fas fa-fw fa-dolly mr-2"></i>Product</a>
-            <a class="collapse-item" href="<?= site_url('master_mitra')?>">
+            <a class="collapse-item 
+            <?=$this->uri->segment(1) == 'master_mitra' ? 'active' : ""?>" href="<?= site_url('master_mitra')?>">
               <i class="fas fa-fw fa-handshake mr-2"></i>Mitra</a>
-            <a class="collapse-item" href="<?= site_url('master_pekerjaan')?>">
+            <a class="collapse-item 
+            <?=$this->uri->segment(1) == 'master_pekerjaan' ? 'active' : ""?>" href="<?= site_url('master_pekerjaan')?>">
               <i class="fas fa-fw fa-business-time mr-2"></i>Pekerjaan
             </a>
           </div>
         </div>
       </li>
       <?php } ?>
-      <li class="nav-item">
+      <li <?=$this->uri->segment(1) == 'master_material'?'class="nav-item active"' : "" ?> class="nav-item">
         <a class="nav-link" href="<?= site_url('master_material')?>">
           <i class="fas fa-fw fa-box-open"></i>
           <span>Material</span></a>
@@ -295,4 +316,3 @@
 </body>
 
 </html>
->>>>>>> Stashed changes

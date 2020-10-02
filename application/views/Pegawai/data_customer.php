@@ -4,8 +4,8 @@
   <!-- Page Heading -->
   <div class="row">
     <div class="col-8">
-      <h1 class="h3 mb-2 text-gray-800">Master Customer</h1>
-      <p class="mb-4">Edit atau tambah data untuk Customer disini</p>
+      <h1 class="h3 mb-2 text-gray-800">Master Customerr</h1>
+      <p class="mb-4">Edit atau tambah data untuk Customerrr disinitri</p>
     </div>
     <div class="col-4">
       <?= $this->session->flashdata('pesan'); ?>

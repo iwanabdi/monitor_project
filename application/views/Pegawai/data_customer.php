@@ -19,13 +19,13 @@
       <div class="col-10 p-0 p-2">
         <h5 class="m-0 font-weight-bold text-primary">Data Customer</h5>
       </div>
-      <div class="col-2 p-0">
-        <button type="button" class="btn btn-success btn-block" id="btn" data-toggle="modal" data-target="#add_data" 
-        <?php if($this->session->userdata('jabatan')!= 0)echo "disabled";?>>
-        
+      <?php if ($this->session->userdata('jabatan')<= 0) {?>
+				<div class="col-2 p-0">
+        <button type="button" class="btn btn-success btn-block" id="btn" data-toggle="modal" data-target="#add_data">
         <i class="fas fa-user-plus"></i> Add Customer
         </button>
       </div>
+			<?php }?>
       
     </div>
     <div class="card-body">
@@ -42,7 +42,10 @@
               <th>Alamat</th>
               <th>Email</th>
               <th>NPWP</th>
-              <th>Opsi</th>
+              <?php if ($this->session->userdata('jabatan')<= 0) {?>
+                <th>Opsi</th>
+              <?php }?>
+
             </tr>
           </thead>
           <tfoot>
@@ -55,7 +58,9 @@
               <th>Alamat</th>
               <th>Email</th>
               <th>NPWP</th>
-              <th>Opsi</th>
+              <?php if ($this->session->userdata('jabatan')<= 0) {?>
+                <th>Opsi</th>
+              <?php }?>
             </tr>
           </tfoot>
           <tbody>
@@ -70,18 +75,16 @@
               <td><?=$data->alamat?></td>
               <td><?=$data->email?></td>
               <td><?=$data->npwp?></td>
-              <td class="text-center" colspan="2">
-                <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->customer_id; ?>"
-                <?php if($this->session->userdata('jabatan')!= 0)echo "disabled";?>
-                >
-                    <i class="fas fa-user-edit"></i>
-                  </button>
-                <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->customer_id;?>"
-                <?php if($this->session->userdata('jabatan')!= 0)echo "disabled";?>
-                >
-                    <i class="fas fa-user-times"></i>
-                  </button>
-              </td>
+              <?php if ($this->session->userdata('jabatan')<= 0) {?>
+								<td class="text-center" colspan="2">
+									<button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->customer_id; ?>">
+											<i class="fas fa-user-edit"></i>
+										</button>
+									<button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->customer_id;?>">
+											<i class="fas fa-user-times"></i>
+										</button>
+								</td>
+							<?php }?>
             </tr>
           <?php } ?>
           </tbody>

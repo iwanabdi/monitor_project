@@ -6,11 +6,12 @@ class M_alamat extends CI_Model {
 	function get_alamat($id = null)
 	{
 		$this->db->select('*');
-		$this->db->from('alamat');
+		$this->db->from('alamat as a');
+		$this->db->join('customer as c','a.customer_id=c.customer_id');
 		if ($id != null) {
-			$this->db->where('alamat_id', $id);
+			$this->db->where('a.alamat_id', $id);
 		}
-		$this->db->where('status', 1);
+		$this->db->where('a.status', 1);
 		$query = $this->db->get();
 		return $query;
 	}

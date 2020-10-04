@@ -17,12 +17,15 @@
     <div class="row card-header col-12 mx-auto">
       <div class="col-10 p-0 p-2">
         <h5 class="m-0 font-weight-bold text-primary">DataTables Pekerjaan</h5>
-      </div>
-      <div class="col-2 p-0">
+			</div>
+			<?php if ($this->session->userdata('jabatan')<= 0) {?>
+				<div class="col-2 p-0">
         <button type="button" class="btn btn-success btn-block" id="btn" data-toggle="modal" data-target="#add_data">
         <i class="fas fa-user-plus"></i> Add Pekerjaan
         </button>
       </div>
+			<?php }?>
+     
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -34,18 +37,18 @@
               <th>Pekerjaan ID</th>
               <th>Nama Pekerjaan</th>
               <th>Satuan</th>
-			  <th>Price</th>
-			  <th>Opsi</th>
+			  			<th>Price</th>
+			  			<?php if($this->session->userdata('jabatan')<= 0) { echo "<th>Opsi</th>"; }?>
             </tr>
           </thead>
           <tfoot>
             <tr class="text-center">
-				<th>No</th>
+								<th>No</th>
               	<th>Pekerjaan ID</th>
               	<th>Nama Pekerjaan</th>
               	<th>Satuan</th>
-				<th>Price</th>
-				<th></th>	
+								<th>Price</th>
+								<?php if($this->session->userdata('jabatan')<= 0) { echo "<th>Opsi</th>"; }?>
             </tr>
           </tfoot>
           <tbody>
@@ -57,15 +60,17 @@
               <td><?=$data->nama_pekerjaan?></td>
               <td><?=$data->satuan?></td>
               <td><?=$data->price?></td>
-              </td>
-              <td class="text-center" colspan="2">
-                <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->pekerjaan_id; ?>">
-                    <i class="fas fa-user-edit"></i>
-                  </button>
-                <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->pekerjaan_id;?>">
-                    <i class="fas fa-user-times"></i>
-                  </button>
-              </td>
+							</td>
+							<?php if ($this->session->userdata('jabatan')<= 0) {?>
+								<td class="text-center" colspan="2">
+									<button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->pekerjaan_id; ?>">
+											<i class="fas fa-user-edit"></i>
+										</button>
+									<button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->pekerjaan_id;?>">
+											<i class="fas fa-user-times"></i>
+										</button>
+								</td>
+							<?php }?>
             </tr>
           <?php } ?>
           </tbody>

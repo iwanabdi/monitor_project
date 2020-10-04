@@ -50,4 +50,14 @@
 		}
 	}
 
+	function cek_akses_gudang()
+	{
+		$CI =& get_instance();
+		$CI->load->library('fungsi');
+		if ($CI->fungsi->user_login()->jabatan > 3) {
+			echo "<script>alert('Anda itu siapa? mau lihat-lihat material')</script>";
+			redirect('pegawai','refresh');
+		}
+	}
+
  ?>

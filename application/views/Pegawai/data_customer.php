@@ -100,7 +100,7 @@
       <div class="modal-body">
         <?php echo form_open_multipart('master_customer/proses_add_data'); ?>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Nama Lengkap</label>
+          <label class="col-sm-3 col-form-label">Nama Perusahaan</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" autofocus="" id="nama_customer" name="nama_customer" required="" autofocus="">
           </div>

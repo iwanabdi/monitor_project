@@ -41,7 +41,7 @@ class M_customer extends CI_Model {
     	if ($this->input->post('alamat') == null) {
     		$data = [
 	    		"nama_customer" 		=> $this->input->post('nama_customer'),
-    			"phone"			=> $this->input->post('no_telp'),
+    			"phone"			=> $this->input->post('phone'),
     			"fax"				=> $this->input->post('fax'),
     			"alamat"			=> $this->input->post('alamat'),
     			"email"			=> $this->input->post('email'),
@@ -51,7 +51,7 @@ class M_customer extends CI_Model {
     	}else{
     		$data = [
 	    		"nama_customer" 		=> $this->input->post('nama_customer'),
-    			"phone"			=> $this->input->post('no_telp'),
+    			"phone"			=> $this->input->post('phone'),
     			"fax"				=> $this->input->post('fax'),
     			"alamat"			=> $this->input->post('alamat'),
     			"email"			=> $this->input->post('email'),

@@ -10,11 +10,13 @@ class Master_alamat extends CI_Controller {
 		cek_akses();
 		$this->load->model('UserModel');
 		$this->load->model('M_alamat');
+		$this->load->model('M_customer');
 	}
 
 	public function index()
 	{
 		$data['row'] = $this->M_alamat->get_alamat();
+		$data['rowcustomer'] = $this->M_customer->get_customer();
 		$this->template->load('template_pegawai', 'pegawai/data_alamat', $data);
 	}
 

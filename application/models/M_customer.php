@@ -24,39 +24,39 @@ class M_customer extends CI_Model {
     		"alamat"				=> $this->input->post('alamat'),
     		"email"					=> $this->input->post('email'),
     		"npwp"					=> $this->input->post('npwp'),
-    		"create_by"				=> $this->session->userdata('pegawai_id'),
+			"create_by"				=> $this->session->userdata('pegawai_id'),
+			"create_on"		=> date('Y-m-d'),
     		"status"				=> 1
     	];
-    	$this->db->insert('customer', $data);
+		$this->db->insert('customer', $data);
+		
     }
 
-   //  function ambil_id_customer($id)
-   //  {
-   //  	return $this->db->get_where('customer', ['id' => $id))
-			// ->row_array();
-   //  }
+ 
 
     function proses_edit_data()
     {
     	if ($this->input->post('alamat') == null) {
     		$data = [
 	    		"nama_customer" 		=> $this->input->post('nama_customer'),
-    			"phone"			=> $this->input->post('no_telp'),
+    			"phone"			=> $this->input->post('phone'),
     			"fax"				=> $this->input->post('fax'),
     			"alamat"			=> $this->input->post('alamat'),
     			"email"			=> $this->input->post('email'),
     			"npwp"			=> $this->input->post('npwp'),
-	    		"update_by" 		=> $this->session->userdata('customer_id')
+				"update_by" 		=> $this->session->userdata('customer_id'),
+				"update_on"		=> date('Y-m-d')
     		];
     	}else{
     		$data = [
 	    		"nama_customer" 		=> $this->input->post('nama_customer'),
-    			"phone"			=> $this->input->post('no_telp'),
-    			"fax"				=> $this->input->post('fax'),
-    			"alamat"			=> $this->input->post('alamat'),
-    			"email"			=> $this->input->post('email'),
-    			"npwp"			=> $this->input->post('npwp'),
-	    		"update_by" 		=> $this->session->userdata('customer_id')
+    			"phone"					=> $this->input->post('phone'),
+    			"fax"					=> $this->input->post('fax'),
+    			"alamat"				=> $this->input->post('alamat'),
+    			"email"					=> $this->input->post('email'),
+    			"npwp"					=> $this->input->post('npwp'),
+				"update_by" 			=> $this->session->userdata('customer_id'),
+				"update_on"				=> date('Y-m-d')
 	    	];
     	}
     	$id = $this->input->post('id', true);

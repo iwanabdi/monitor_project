@@ -19,11 +19,14 @@
       <div class="col-10 p-0 p-2">
         <h5 class="m-0 font-weight-bold text-primary">Data Customer</h5>
       </div>
-      <div class="col-2 p-0">
+      <?php if ($this->session->userdata('jabatan')<= 0) {?>
+				<div class="col-2 p-0">
         <button type="button" class="btn btn-success btn-block" id="btn" data-toggle="modal" data-target="#add_data">
         <i class="fas fa-user-plus"></i> Add Customer
         </button>
       </div>
+			<?php }?>
+      
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -39,7 +42,10 @@
               <th>Alamat</th>
               <th>Email</th>
               <th>NPWP</th>
-              <th>Opsi</th>
+              <?php if ($this->session->userdata('jabatan')<= 0) {?>
+                <th>Opsi</th>
+              <?php }?>
+
             </tr>
           </thead>
           <tfoot>
@@ -52,7 +58,9 @@
               <th>Alamat</th>
               <th>Email</th>
               <th>NPWP</th>
-              <th>Opsi</th>
+              <?php if ($this->session->userdata('jabatan')<= 0) {?>
+                <th>Opsi</th>
+              <?php }?>
             </tr>
           </tfoot>
           <tbody>
@@ -67,14 +75,16 @@
               <td><?=$data->alamat?></td>
               <td><?=$data->email?></td>
               <td><?=$data->npwp?></td>
-              <td class="text-center" colspan="2">
-                <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->customer_id; ?>">
-                    <i class="fas fa-user-edit"></i>
-                  </button>
-                <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->customer_id;?>">
-                    <i class="fas fa-user-times"></i>
-                  </button>
-              </td>
+              <?php if ($this->session->userdata('jabatan')<= 0) {?>
+								<td class="text-center" colspan="2">
+									<button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->customer_id; ?>">
+											<i class="fas fa-user-edit"></i>
+										</button>
+									<button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->customer_id;?>">
+											<i class="fas fa-user-times"></i>
+										</button>
+								</td>
+							<?php }?>
             </tr>
           <?php } ?>
           </tbody>
@@ -100,7 +110,7 @@
       <div class="modal-body">
         <?php echo form_open_multipart('master_customer/proses_add_data'); ?>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Nama Lengkap</label>
+          <label class="col-sm-3 col-form-label">Nama Perusahaan</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" autofocus="" id="nama_customer" name="nama_customer" required="" autofocus="">
           </div>

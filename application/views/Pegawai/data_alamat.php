@@ -30,7 +30,8 @@
           <thead>
             <tr class="text-center">
 						  <th>No</th>
-              <th>ID</th>
+							<th>ID</th>
+							<th>Customer</th>
               <th>Jalan</th>
               <th>Kota</th>
               <th>Provinsi</th>
@@ -45,7 +46,8 @@
           <tfoot>
             <tr class="text-center">
 						  <th>No</th>
-              <th>ID</th>
+							<th>ID</th>
+							<th>Customer</th>
 						  <th>Jalan</th>
               <th>Kota</th>
               <th>Provinsi</th>
@@ -62,7 +64,8 @@
             foreach ($row->result() as $key => $data)  {?>
             <tr>
               <td><?=$no++;?></td>
-              <td><?=$data->alamat_id?></td>
+							<td><?=$data->alamat_id?></td>
+							<td><?=$data->nama_customer?></td>
               <td><?=$data->jalan?></td>
               <td><?=$data->kota?></td>
               <td><?=$data->provinsi?></td>
@@ -130,25 +133,35 @@
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Koordinat</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="koordinat" id="koordinat">
+            <input type="text" class="form-control" name="koordinat" id="koordinat">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Type</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="type" id="type">
+						<select name="type" id="type" class="form-control">
+              <option value="0">HO</option>
+              <option value="1">Originating</option>
+              <option value="2">Terminating</option>
+            </select>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Kontak</label>
+          <label class="col-sm-3 col-form-label">PIC</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="kontak" id="kontak">
+            <input type="text" class="form-control" name="kontak" id="kontak">
           </div>
 				</div>
 				<div class="form-group row">
-          <label class="col-sm-3 col-form-label">No_Telp</label>
+          <label class="col-sm-3 col-form-label">No Telpon</label>
           <div class="col-sm-9">
             <input type="number" class="form-control" name="no_telp" id="no_telp">
+          </div>
+				</div>
+				<div class="form-group row">
+          <label class="col-sm-3 col-form-label">Customer</label>
+          <div class="col-sm-9">
+						<input type="text" name="create_by" class="form-control"  name="customer_id" id="customer_id" value="" disabled></input>
           </div>
         </div>
         <div class="form-group row">
@@ -159,6 +172,7 @@
         </div>
       </div>
       <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#pilihcustomer">Pilih Customer</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Simpan</button>
         <?php echo form_close(); ?>
@@ -257,7 +271,6 @@ foreach ($row->result() as $key => $data) : $no++; ?>
 <!-- Akhir Modal Edit-->
 
 <!-- Modal Hapus Data-->
-
 <?php $no = 1;
 foreach ($row->result() as $key => $data) : $no++; ?>
 <div class="modal fade" id="hapus_modal<?=$data->alamat_id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -284,3 +297,45 @@ foreach ($row->result() as $key => $data) : $no++; ?>
 </div>
 <?php endforeach; ?>
 <!-- Akhir Modal Hapus Data -->
+
+<!-- Modal customer-->
+<div class="modal fade" id="pilihcustomer" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Pilih Customer Yang Akan Di isi Alamatnya</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+				<?php echo form_open_multipart("#add_data"); ?>
+			<div class="card-body">
+        <div class="table-responsive">
+        <!-- <?php print_r($rowcustomer->result()) ?> -->
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>ID</th>
+							<th>Nama Customer</th>
+							<th>Pilih</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php $no = 1;
+            foreach ($rowcustomer->result() as $key => $data)  {?>
+            <tr>
+              <td><?=$data->customer_id?></td>
+              <td><?=$data->nama_customer?></td>
+              <td class="text-center" colspan="2">
+							<button class="btn btn-danger" type="submit">Pilih</button>
+              </td>
+            </tr>
+          <?php } ?>
+          </tbody>
+        </table>
+    		</div>
+  		</div>
+		</div>
+	</div>
+</div>
+<!-- Akhir Modal customer Data -->

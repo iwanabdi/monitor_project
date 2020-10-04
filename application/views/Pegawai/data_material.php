@@ -19,11 +19,13 @@
       <div class="col-10 p-0 p-2">
         <h5 class="m-0 font-weight-bold text-primary">Data material</h5>
       </div>
-      <div class="col-2 p-0">
+      <?php if ($this->session->userdata('jabatan')== -1 || $this->session->userdata('jabatan')== 3) {?>
+				<div class="col-2 p-0">
         <button type="button" class="btn btn-success btn-block" id="btn" data-toggle="modal" data-target="#add_data">
-        <i class="fas fa-user-plus"></i> Add material
+        <i class="fas fa-user-plus"></i> Add Material
         </button>
       </div>
+			<?php }?>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -37,7 +39,9 @@
               <th>Brand</th>
               <th>Stok</th>
               <th>Storage</th>
-              <th>Opsi</th>
+              <?php if ($this->session->userdata('jabatan')== -1 || $this->session->userdata('jabatan')== 3) {?>
+                <th>Opsi</th>
+              <?php }?>
             </tr>
           </thead>
           <tfoot>
@@ -48,7 +52,9 @@
               <th>Brand</th>
               <th>Stok</th>
               <th>Storage</th>
-              <th>Opsi</th>
+              <?php if ($this->session->userdata('jabatan')== -1 || $this->session->userdata('jabatan')== 3) {?>
+                <th>Opsi</th>
+              <?php }?>
             </tr>
           </tfoot>
           <tbody>
@@ -61,14 +67,16 @@
               <td><?=$data->brand?></td>
               <td><?=$data->stok?></td>
               <td><?=$data->storage_bin?></td>
-              <td class="text-center" colspan="2">
-                <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->material_id; ?>">
-                    <i class="fas fa-user-edit"></i>
-                  </button>
-                <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->material_id;?>">
-                    <i class="fas fa-user-times"></i>
-                  </button>
-              </td>
+              <?php if ($this->session->userdata('jabatan')== -1 || $this->session->userdata('jabatan')== 3) {?>
+								<td class="text-center" colspan="2">
+									<button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->material_id; ?>">
+											<i class="fas fa-user-edit"></i>
+										</button>
+									<button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->material_id;?>">
+											<i class="fas fa-user-times"></i>
+										</button>
+								</td>
+							<?php }?>
             </tr>
           <?php } ?>
           </tbody>

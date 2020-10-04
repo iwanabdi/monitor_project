@@ -39,7 +39,7 @@ class M_material extends CI_Model {
     	if ($this->input->post('alamat') == null) {
     		$data = [
 	    		"nama_material" 		=> $this->input->post('nama_material'),
-    			"brand"			=> $this->input->post('no_telp'),
+    			"brand"			=> $this->input->post('brand'),
     			"stok"				=> $this->input->post('stok'),
     			"storage_bin"			=> $this->input->post('storage_bin'),
 	    		"update_by" 		=> $this->session->userdata('pegawai_id')
@@ -47,7 +47,7 @@ class M_material extends CI_Model {
     	}else{
     		$data = [
 	    		"nama_material" 		=> $this->input->post('nama_material'),
-    			"brand"			=> $this->input->post('no_telp'),
+    			"brand"			=> $this->input->post('brand'),
     			"stok"				=> $this->input->post('stok'),
     			"storage_bin"			=> $this->input->post('storage_bin'),
 	    		"update_by" 		=> $this->session->userdata('pegawai_id')

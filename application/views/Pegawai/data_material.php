@@ -19,7 +19,7 @@
       <div class="col-10 p-0 p-2">
         <h5 class="m-0 font-weight-bold text-primary">Data material</h5>
       </div>
-      <?php if ($this->session->userdata('jabatan')<= 0) {?>
+      <?php if ($this->session->userdata('jabatan')== -1 || $this->session->userdata('jabatan')== 3) {?>
 				<div class="col-2 p-0">
         <button type="button" class="btn btn-success btn-block" id="btn" data-toggle="modal" data-target="#add_data">
         <i class="fas fa-user-plus"></i> Add Material
@@ -39,7 +39,7 @@
               <th>Brand</th>
               <th>Stok</th>
               <th>Storage</th>
-              <?php if ($this->session->userdata('jabatan')<= 0) {?>
+              <?php if ($this->session->userdata('jabatan')== -1 || $this->session->userdata('jabatan')== 3) {?>
                 <th>Opsi</th>
               <?php }?>
             </tr>
@@ -52,7 +52,7 @@
               <th>Brand</th>
               <th>Stok</th>
               <th>Storage</th>
-              <?php if ($this->session->userdata('jabatan')<= 0) {?>
+              <?php if ($this->session->userdata('jabatan')== -1 || $this->session->userdata('jabatan')== 3) {?>
                 <th>Opsi</th>
               <?php }?>
             </tr>
@@ -67,7 +67,7 @@
               <td><?=$data->brand?></td>
               <td><?=$data->stok?></td>
               <td><?=$data->storage_bin?></td>
-              <?php if ($this->session->userdata('jabatan')<= 0) {?>
+              <?php if ($this->session->userdata('jabatan')== -1 || $this->session->userdata('jabatan')== 3) {?>
 								<td class="text-center" colspan="2">
 									<button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->material_id; ?>">
 											<i class="fas fa-user-edit"></i>

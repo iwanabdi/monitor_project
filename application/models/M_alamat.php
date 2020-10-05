@@ -21,14 +21,15 @@ class M_alamat extends CI_Model {
     	$data = [
     		"jalan" 		=> $this->input->post('jalan'),
     		"kota"			=> $this->input->post('kota'),
-    		"provinsi"				=> $this->input->post('provinsi'),
-    		"negara"			=> $this->input->post('negara'),
-    		"koordinat"				=> $this->input->post('koordinat'),
-    		"type"				=> $this->input->post('type'),
-    		"kontak"			=> $this->input->post('kontak'),
-    		"no_telp"				=> $this->input->post('no_telp'),
-    		"create_by"			=> $this->session->userdata('pegawai_id'),
-    		"status"			=> 1
+    		"provinsi"		=> $this->input->post('provinsi'),
+    		"negara"		=> $this->input->post('negara'),
+    		"koordinat"		=> $this->input->post('koordinat'),
+    		"type"			=> $this->input->post('type'),
+    		"kontak"		=> $this->input->post('kontak'),
+    		"no_telp"		=> $this->input->post('no_telp'),
+    		"create_by"		=> $this->session->userdata('pegawai_id'),
+    		"status"		=> 1,
+            "customer_id"   => $this->input->post('customer_id')
     	];
     	$this->db->insert('alamat', $data);
     }

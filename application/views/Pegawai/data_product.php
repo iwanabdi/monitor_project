@@ -101,12 +101,6 @@
             <input type="text" class="form-control" autofocus="" id="bandwith" name="bandwith" required="">
           </div>
         </div>
-				<div class="form-group row">
-          <label class="col-sm-3 col-form-label">Status</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" autofocus="" id="status" name="status" required="">
-          </div>
-        </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Create By</label>
           <div class="col-sm-9">
@@ -153,11 +147,6 @@ foreach ($row->result() as $key => $data) : $no++; ?>
           </div>
         </div>
 				<div class="form-group row">
-          <label class="col-sm-3 col-form-label">Status</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="status" name="status" value="<?= $data->status;?>" required="">
-          </div>
-        </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Update By</label>
           <div class="col-sm-9">

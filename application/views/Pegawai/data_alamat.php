@@ -38,8 +38,8 @@
               <th>Negara</th>
               <th>Koordinat</th>
               <th>Type</th>
-							<th>Kontak</th>
-							<th>No_Telp</th>
+							<th>PIC</th>
+							<th>No Telp</th>
               <th>Opsi</th>
             </tr>
           </thead>
@@ -54,8 +54,8 @@
               <th>Negara</th>
               <th>Koordinat</th>
               <th>Type</th>
-							<th>Kontak</th>
-							<th>No_Telp</th>
+							<th>PIC</th>
+							<th>No Telp</th>
               <th>Opsi</th>
             </tr>
           </tfoot>
@@ -71,7 +71,16 @@
               <td><?=$data->provinsi?></td>
 							<td><?=$data->negara?></td> 
 							<td><?=$data->koordinat?></td>
-							<td><?=$data->type?></td>                             
+							<td>
+								<?php if ($data->type == 0) {
+                  echo "HO";
+                } else if($data->type == 1) {
+                  echo "Originating";
+                } else if($data->type == 2) {
+									echo "Terminating";
+								}
+								?>
+							</td>                             
               <td><?=$data->kontak?></td>              
               <td><?=$data->no_telp?></td>              
               <td class="text-center" colspan="2">
@@ -166,7 +175,7 @@
           </div>
 				</div>
 				<div class="form-group row">
-          <label class="col-sm-3 col-form-label">No Telp</label>
+          <label class="col-sm-3 col-form-label">No Telpon</label>
           <div class="col-sm-9">
             <input type="number" class="form-control" name="no_telp" id="no_telp" required>
           </div>
@@ -250,21 +259,21 @@ foreach ($row->result() as $key => $data) : $no++; ?>
           <label class="col-sm-3 col-form-label">Type</label>
           <div class="col-sm-9">
 						<select name="type" id="type" class="form-control custom-select" required="">
-              <option selected disabled value="">Pilih Type</option>
-              <option value="0">HO</option>
-              <option value="1">Originating</option>
-							<option value="2">Terminating</option>
+              <option disabled value="">Pilih Type</option>
+              <option value="0" <?php if($data->type == 0): ?> selected <?php endif?>>HO</option>
+              <option value="1" <?php if($data->type == 1): ?> selected <?php endif?>>Originating</option>
+							<option value="2" <?php if($data->type == 2): ?> selected <?php endif?>>Terminating</option>
             </select>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Kontak</label>
+          <label class="col-sm-3 col-form-label">PIC</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" name="kontak" id="kontak" required value="<?= $data->kontak;?>">
           </div>
 				</div>
 				<div class="form-group row">
-          <label class="col-sm-3 col-form-label">No_Telp</label>
+          <label class="col-sm-3 col-form-label">No Telpon</label>
           <div class="col-sm-9">
             <input type="number" class="form-control" name="no_telp" id="no_telp" value="<?= $data->no_telp;?>">
           </div>
@@ -303,7 +312,7 @@ foreach ($row->result() as $key => $data) : $no++; ?>
         <?php echo form_open_multipart('master_alamat/hapus_data'); ?>
         <input type="hidden" id="id" name="id" value="<?=$data->alamat_id?>">
         <p>Anda akan menghapus data "<?=$data->jalan ?>"</p>
-      </div>
+      </div>	
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
         <button class="btn btn-danger" type="submit">Hapus</button>

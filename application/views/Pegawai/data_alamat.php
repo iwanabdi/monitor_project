@@ -155,7 +155,7 @@
               <option selected disabled value="">Pilih Type</option>
               <option value="0">HO</option>
               <option value="1">Originating</option>
-              <option value="2">Terminating</option>
+							<option value="2">Terminating</option>
             </select>
           </div>
         </div>
@@ -166,7 +166,7 @@
           </div>
 				</div>
 				<div class="form-group row">
-          <label class="col-sm-3 col-form-label">No Telpon</label>
+          <label class="col-sm-3 col-form-label">No Telp</label>
           <div class="col-sm-9">
             <input type="number" class="form-control" name="no_telp" id="no_telp" required>
           </div>
@@ -203,7 +203,18 @@ foreach ($row->result() as $key => $data) : $no++; ?>
       <div class="modal-body was-validated">
         <?php echo form_open_multipart('master_alamat/proses_edit_data'); ?>
         <input type="hidden" id="id" name="id" value="<?= $data->alamat_id?>">
-
+				<div class="form-group row">
+          <input type="hidden" name="customer_id" id="customer_id" value="<?=$data->customer_id?>">
+          <label class="col-sm-3 col-form-label">Pilih Customer</label>
+          <div class="col-sm-9">
+            <div class="input-group">
+              <input type="text" class="form-control" name="nama_customer" id="nama_customer" disabled=""  required="" value="<?=$data->nama_customer?>">
+              <div class="input-group-append">
+                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihcustomer"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Jalan</label>
           <div class="col-sm-9">
@@ -232,31 +243,30 @@ foreach ($row->result() as $key => $data) : $no++; ?>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Koordinat</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="koordinat" id="koordinat" required value="<?= $data->koordinat;?>">
+            <input type="text" class="form-control" name="koordinat" id="koordinat" required value="<?= $data->koordinat;?>">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Type</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="type" id="type" required value="<?= $data->type;?>">
+						<select name="type" id="type" class="form-control custom-select" required="">
+              <option selected disabled value="">Pilih Type</option>
+              <option value="0">HO</option>
+              <option value="1">Originating</option>
+							<option value="2">Terminating</option>
+            </select>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Kontak</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="kontak" id="kontak" required value="<?= $data->kontak;?>">
+            <input type="text" class="form-control" name="kontak" id="kontak" required value="<?= $data->kontak;?>">
           </div>
 				</div>
 				<div class="form-group row">
           <label class="col-sm-3 col-form-label">No_Telp</label>
           <div class="col-sm-9">
             <input type="number" class="form-control" name="no_telp" id="no_telp" value="<?= $data->no_telp;?>">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">No_Telp</label>
-          <div class="col-sm-9">
-            <input type="number" class="form-control" name="no_telp" id="no_telp" required value="<?=$data->no_telp?>">
           </div>
         </div>
         <div class="form-group row">

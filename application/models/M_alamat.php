@@ -29,7 +29,8 @@ class M_alamat extends CI_Model {
     		"no_telp"		=> $this->input->post('no_telp'),
     		"create_by"		=> $this->session->userdata('pegawai_id'),
     		"status"		=> 1,
-            "customer_id"   => $this->input->post('customer_id')
+			"customer_id"   => $this->input->post('customer_id'),
+			"create_on"   		=> date("Y-m-d")
     	];
     	$this->db->insert('alamat', $data);
     }
@@ -42,20 +43,7 @@ class M_alamat extends CI_Model {
 
     function proses_edit_data()
     {
-    	if ($this->input->post('password') == null) {
-    		$data = [
-	    		"jalan" 		=> $this->input->post('jalan'),
-	    		"kota"			=> $this->input->post('kota'),
-	    		"provinsi"				=> $this->input->post('provinsi'),
-	    		"negara"			=> $this->input->post('negara'),
-	    		"koordinat"				=> $this->input->post('koordinat'),
-	    		"type"				=> $this->input->post('type'),
-				"kontak"				=> $this->input->post('kontak'),
-	    		"no_telp"			=> $this->input->post('no_telp'),
-	    		"opsi"				=> $this->input->post('opsi'),
-	    		"update_by"			=> $this->session->userdata('pegawai_id'),
-    		];
-    	}else{
+    	
     		$data = [
 	    		"jalan" 		=> $this->input->post('jalan'),
 	    		"kota"			=> $this->input->post('kota'),
@@ -65,10 +53,11 @@ class M_alamat extends CI_Model {
 	    		"type"				=> $this->input->post('type'),
 	    		"kontak"			=> $this->input->post('kontak'),
 	    		"no_telp"			=> $this->input->post('no_telp'),
-	    		"opsi"				=> $this->input->post('opsi'),
-	    		"update_by" 		=> $this->session->userdata('pegawai_id')
+				"update_by" 		=> $this->session->userdata('pegawai_id'),
+				"customer_id"   	=> $this->input->post('customer_id'),
+				"update_on"   		=> date("Y-m-d")
 	    	];
-    	}
+    	
     	$id = $this->input->post('id', true);
 		$this->db->where('alamat_id', $id);
 		$this->db->update('alamat', $data);

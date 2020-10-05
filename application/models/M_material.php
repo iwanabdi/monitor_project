@@ -22,12 +22,9 @@ class M_material extends CI_Model {
     		"brand"					=> $this->input->post('brand'),
     		"stok"					=> $this->input->post('stok'),
     		"storage_bin"			=> $this->input->post('storage_bin'),
-<<<<<<< Updated upstream
 			"create_by"				=> $this->session->userdata('pegawai_id'),
 			"create_on"				=> date('Y-m-d'),
-=======
     		"create_by"				=> $this->session->userdata('pegawai_id'),
->>>>>>> Stashed changes
     		"status"				=> 1
     	];
     	$this->db->insert('material', $data);

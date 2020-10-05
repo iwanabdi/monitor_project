@@ -34,6 +34,7 @@
               <th>ID</th>
               <th>Nama_Product</th>
               <th>Bandwith</th>
+              <th>Status</th>
               <th>Opsi</th>
             </tr>
           </thead>
@@ -43,6 +44,7 @@
               <th>ID</th>
 						<th>Nama_Product</th>
               <th>Bandwith</th>
+              <th>Status</th>
               <th>Opsi</th>
             </tr>
           </tfoot>
@@ -54,6 +56,7 @@
               <td><?=$data->product_id?></td>
               <td><?=$data->nama_product?></td>
               <td><?=$data->bandwith?></td>            
+              <td><?=$data->status?></td>            
               <td class="text-center" colspan="2">
                 <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->product_id; ?>">
                     <i class="fas fa-user-edit"></i>
@@ -96,6 +99,12 @@
           <label class="col-sm-3 col-form-label">Bandwith</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" autofocus="" id="bandwith" name="bandwith" required="">
+          </div>
+        </div>
+				<div class="form-group row">
+          <label class="col-sm-3 col-form-label">Status</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" autofocus="" id="status" name="status" required="">
           </div>
         </div>
         <div class="form-group row">
@@ -141,6 +150,12 @@ foreach ($row->result() as $key => $data) : $no++; ?>
           <label class="col-sm-3 col-form-label">Bandwith</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" id="bandwith" name="bandwith" value="<?= $data->bandwith;?>" required="">
+          </div>
+        </div>
+				<div class="form-group row">
+          <label class="col-sm-3 col-form-label">Status</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="status" name="status" value="<?= $data->status;?>" required="">
           </div>
         </div>
         <div class="form-group row">

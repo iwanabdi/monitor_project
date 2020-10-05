@@ -27,6 +27,7 @@ class M_mitra extends CI_Model {
     		"password"			=> MD5($this->input->post('password')),
     		"npwp"				=> $this->input->post('npwp'),
     		"create_by"			=> $this->session->userdata('pegawai_id'),
+            "create_on"         => date('Y-m-d'),
     		"status"			=> 1
     	];
     	$this->db->insert('mitra', $data);

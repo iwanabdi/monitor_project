@@ -15,8 +15,13 @@ class Master_alamat extends CI_Controller {
 
 	public function index()
 	{
-		$data['row'] = $this->M_alamat->get_alamat();
-		$data['rowcustomer'] = $this->M_customer->get_customer();
+		$alamat 	= $this->M_alamat->get_alamat();
+		$customer 	= $this->M_customer->get_customer();
+		$data = [
+			'row' 			=> $alamat,
+			'rowcustomer'	=> $customer
+		];
+		// $data['rowcustomer'] = $this->M_customer->get_customer();
 		$this->template->load('template_pegawai', 'pegawai/data_alamat', $data);
 	}
 

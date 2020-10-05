@@ -90,12 +90,12 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body was-validated">
         <?php echo form_open_multipart('master_mitra/proses_add_data'); ?>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Nama Lengkap</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" autofocus="" id="nama_mitra" name="nama_mitra" required="" autofocus="">
+            <input type="text" class="form-control" id="nama_mitra" name="nama_mitra" required="">
           </div>
         </div>
         <div class="form-group row">
@@ -113,31 +113,31 @@
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">No Telepon</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="no_telp" id="no_telp">
+            <input type="number" class="form-control" name="no_telp" id="no_telp" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Fax</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="fax" id="fax">
+            <input type="number" class="form-control" name="fax" id="fax" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">NPWP</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="npwp" id="npwp">
+            <input type="number" class="form-control" name="npwp" id="npwp" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Email</label>
           <div class="col-sm-9">
-            <input type="email" class="form-control" name="email" id="email">
+            <input type="email" class="form-control" name="email" id="email" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Password</label>
           <div class="col-sm-9">
-            <input type="password" class="form-control" name="password" id="password">
+            <input type="password" class="form-control" name="password" id="password" required>
           </div>
         </div>
         <div class="form-group row">
@@ -169,14 +169,14 @@ foreach ($row->result() as $key => $data) : $no++; ?>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body was-validated">
         <?php echo form_open_multipart('master_mitra/proses_edit_data'); ?>
         <input type="hidden" id="id" name="id" value="<?= $data->mitra_id?>">
 
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Nama Lengkap</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" autofocus="" id="nama_mitra" name="nama_mitra" required="" autofocus="" value="<?= $data->nama_mitra;?>">
+            <input type="text" class="form-control" id="nama_mitra" name="nama_mitra" required="" value="<?= $data->nama_mitra;?>">
           </div>
         </div>
         <div class="form-group row">
@@ -188,7 +188,7 @@ foreach ($row->result() as $key => $data) : $no++; ?>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Kota</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" autofocus="" id="kota" name="kota" required="" value="<?=$data->kota;?>">
+            <input type="text" class="form-control" id="kota" name="kota" required="" value="<?=$data->kota;?>">
           </div>
         </div>
         <div class="form-group row">
@@ -200,19 +200,19 @@ foreach ($row->result() as $key => $data) : $no++; ?>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Fax</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="fax" id="fax" value="<?= $data->fax;?>">
+            <input type="number" class="form-control" name="fax" id="fax" value="<?= $data->fax;?>" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">NPWP</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="npwp" id="npwp" value="<?= $data->npwp;?>">
+            <input type="number" class="form-control" name="npwp" id="npwp" value="<?= $data->npwp;?>" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Email</label>
           <div class="col-sm-9">
-            <input type="email" class="form-control" name="email" id="email" value="<?= $data->email;?>">
+            <input type="email" class="form-control" name="email" id="email" value="<?= $data->email;?>" required>
           </div>
         </div>
         <div class="form-group row">

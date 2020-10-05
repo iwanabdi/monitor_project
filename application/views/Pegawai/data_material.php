@@ -99,34 +99,35 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body was-validated">
         <?php echo form_open_multipart('master_material/proses_add_data'); ?>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Nama Material</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" autofocus="" id="nama_material" name="nama_material" required="" autofocus="">
+            <input type="text" class="form-control" id="nama_material" name="nama_material" 
+            required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Brand</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" name="brand" id="brand">
+            <input type="text" class="form-control" name="brand" id="brand" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Stok</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="stok" id="stok">
+            <input type="number" class="form-control" name="stok" id="stok" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Storage</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" name="storage_bin">
+            <input type="text" class="form-control" name="storage_bin" id="storage_bin" required>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Create By</label>
+          <label class="col-sm-3 col-form-label">Create By</label required>
           <div class="col-sm-9">
             <input type="text" name="create_by" class="form-control" id="pegawai_id" value="<?= $this->session->userdata('nama_pegawai');?>" disabled></input>
           </div>
@@ -152,7 +153,7 @@ foreach ($row->result() as $key => $data) : $no++; ?>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body was-validated">
         <?php echo form_open_multipart('master_material/proses_edit_data'); ?>
 
         <input type="hidden" id="id" name="id" value="<?= $data->material_id?>">
@@ -160,25 +161,25 @@ foreach ($row->result() as $key => $data) : $no++; ?>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Nama Material</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" autofocus="" id="nama_material" name="nama_material" required="" autofocus="" value="<?= $data->nama_material;?>">
+            <input type="text" class="form-control" id="nama_material" name="nama_material" required="" value="<?= $data->nama_material;?>">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Brand</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" name="brand" id="brand" value="<?= $data->brand;?>">
+            <input type="text" class="form-control" name="brand" id="brand" value="<?= $data->brand;?>" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Stok</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="stok" id="stok" value="<?= $data->stok;?>">
+            <input type="number" class="form-control" name="stok" id="stok" value="<?= $data->stok;?>" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Storage</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" autofocus="" id="storage_bin" name="storage_bin" value="<?= $data->storage_bin;?>">
+            <input type="text" class="form-control" id="storage_bin" name="storage_bin" value="<?= $data->storage_bin;?>" required>
           </div>
         </div>
         

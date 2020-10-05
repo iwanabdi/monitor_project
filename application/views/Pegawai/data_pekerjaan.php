@@ -93,24 +93,24 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body was-validated">
         <?php echo form_open_multipart('master_pekerjaan/proses_add_data'); ?>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Nama Pekerjaan</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" autofocus="" id="nama_pekerjaan" name="nama_pekerjaan" required="" autofocus="">
+            <input type="text" class="form-control" id="nama_pekerjaan" name="nama_pekerjaan" required="">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Satuan</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" name="satuan" id="satuan">
+            <input type="text" class="form-control" name="satuan" id="satuan" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Price</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="price" id="price">
+            <input type="number" class="form-control" name="price" id="price" required>
           </div>
         </div>
         <div class="form-group row">
@@ -142,25 +142,25 @@ foreach ($row->result() as $key => $data) : $no++; ?>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body was-validated">
         <?php echo form_open_multipart('master_pekerjaan/proses_edit_data'); ?>
         <input type="hidden" id="id" name="id" value="<?= $data->pekerjaan_id?>">
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Nama Pekerjaan</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" autofocus="" id="nama_pekerjaan" name="nama_pekerjaan" required="" autofocus="" value="<?= $data->nama_pekerjaan;?>">
+            <input type="text" class="form-control" id="nama_pekerjaan" name="nama_pekerjaan" required="" value="<?= $data->nama_pekerjaan;?>">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Satuan</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" name="satuan" id="satuan" value="<?= $data->satuan;?>">
+            <input type="text" class="form-control" name="satuan" id="satuan" value="<?= $data->satuan;?>" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Price</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="price" id="price" value="<?= $data->price;?>">
+            <input type="number" class="form-control" name="price" id="price" value="<?= $data->price;?>" required>
           </div>
         </div>
         <div class="form-group row">

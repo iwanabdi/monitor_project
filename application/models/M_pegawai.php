@@ -11,6 +11,10 @@ class M_pegawai extends CI_Model {
             $this->db->where('pegawai_id', $id);
         }
         $this->db->where('status', 1);
+        if ($this->session->userdata('jabatan') != -1) {
+            $this->db->where('jabatan !=' , -1);
+        }
+        // $this->db->where('jabatan !=', -1);
         $query = $this->db->get();
         return $query;
     }
@@ -70,6 +74,37 @@ class M_pegawai extends CI_Model {
     	$id = $this->input->post('id', true);
     	$this->db->where('pegawai_id', $id);
     	$this->db->update('pegawai', $data);
+    }
+
+
+    function get_profile($email)
+    {
+        $this->db->select('*');
+        $this->db->from('pegawai');
+        $this->db->where('email', $email);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+    function proses_edit_profile()
+    {
+        $nama_pegawai      = $this->input->post('nama_pegawai');
+        $no_telp           = $this->input->post('no_telp');
+        $email             = $this->input->post('email');
+        if ($this->input->post('password') != null) {
+            $password      = MD5($this->input->post('password'));
+            $this->db->set('password',$password);
+        }
+        $id = $this->session->userdata('email');
+        $this->db->set('nama_pegawai',$nama_pegawai);
+        $this->db->set('no_telp',$no_telp);
+        $this->db->set('email',$email);
+        $this->db->where('email', $id);
+        $this->db->update('pegawai');
+        // var_dump($nama_pegawai);
+        // var_dump($no_telp);
+        // var_dump($email);
+        // var_dump($password);
     }
 
 }

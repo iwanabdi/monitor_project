@@ -107,42 +107,42 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body was-validated">
         <?php echo form_open_multipart('master_customer/proses_add_data'); ?>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Nama Perusahaan</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" autofocus="" id="nama_customer" name="nama_customer" required="" autofocus="">
+            <input type="text" class="form-control" id="nama_customer" name="nama_customer" required="">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Phone</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="phone" id="phone">
+            <input type="number" class="form-control" name="phone" id="phone" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Fax</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="fax" id="fax">
+            <input type="number" class="form-control" name="fax" id="fax" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Alamat</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" name="alamat">
+            <input type="text" class="form-control" name="alamat" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Email</label>
           <div class="col-sm-9">
-            <input type="email" class="form-control" name="email" id="email">
+            <input type="email" class="form-control" name="email" id="email" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">NPWP</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="npwp" id="npwp">
+            <input type="number" class="form-control" name="npwp" id="npwp" required>
           </div>  
         </div>
         <div class="form-group row">
@@ -151,10 +151,6 @@
             <input type="text" name="create_by" class="form-control" id="pegawai_id" value="<?= $this->session->userdata('nama_pegawai');?>" disabled></input>
           </div>
         </div>
-        <!-- <div class="form-group">
-          <label>Create On</label>
-          <input type="date" name="nama" class="form-control">
-        </div> -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -176,7 +172,7 @@ foreach ($row->result() as $key => $data) : $no++; ?>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body was-validated">
         <?php echo form_open_multipart('master_customer/proses_edit_data'); ?>
 
         <input type="hidden" id="id" name="id" value="<?= $data->customer_id?>">
@@ -184,37 +180,37 @@ foreach ($row->result() as $key => $data) : $no++; ?>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Nama Lengkap</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" autofocus="" id="nama_customer" name="nama_customer" required="" autofocus="" value="<?= $data->nama_customer;?>">
+            <input type="text" class="form-control" id="nama_customer" name="nama_customer" required="" value="<?= $data->nama_customer;?>">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Phone</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="phone" id="phone" value="<?= $data->phone;?>">
+            <input type="number" class="form-control" name="phone" id="phone" value="<?= $data->phone;?>"required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Fax</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="fax" id="fax" value="<?= $data->fax;?>">
+            <input type="number" class="form-control" name="fax" id="fax" value="<?= $data->fax;?>" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Alamat</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" autofocus="" id="alamat" name="alamat" value="<?= $data->alamat;?>">
+            <input type="text" class="form-control" autofocus="" id="alamat" name="alamat" value="<?= $data->alamat;?>" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Email</label>
           <div class="col-sm-9">
-            <input type="email" class="form-control" name="email" id="email" value="<?= $data->email;?>">
+            <input type="email" class="form-control" name="email" id="email" value="<?= $data->email;?>" required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">NPWP</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="npwp" id="npwp" value="<?= $data->npwp;?>">
+            <input type="number" class="form-control" name="npwp" id="npwp" value="<?= $data->npwp;?>" required>
           </div>
         </div>
         

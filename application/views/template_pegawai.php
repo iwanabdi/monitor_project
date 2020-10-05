@@ -112,7 +112,7 @@
           <span>Material</span></a>
       </li>
       
-      <?php if ($this->session->userdata('jabatan') <= 0 || 
+      <?php if ($this->session->userdata('jabatan') <= 2 || 
                 $this->session->userdata('jabatan') == 1 ||
                 $this->session->userdata('jabatan') == 2) {?>
       <li class="nav-item">
@@ -227,7 +227,7 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="<?= site_url()?>pegawai/profile">
+                <a class="dropdown-item" href="<?= site_url('profile_pegawai')?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>

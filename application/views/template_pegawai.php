@@ -105,22 +105,21 @@
           </div>
         </div>
       </li>
-      <?php } ?>
+			<?php } ?>
+
+			<?php if ($this->session->userdata('jabatan') <= 3) {?>
       <li <?=$this->uri->segment(1) == 'master_material'?'class="nav-item active"' : "" ?> class="nav-item">
         <a class="nav-link" href="<?= site_url('master_material')?>">
           <i class="fas fa-fw fa-box-open"></i>
           <span>Material</span></a>
-      </li>
-      
-      <?php if ($this->session->userdata('jabatan') <= 2 || 
-                $this->session->userdata('jabatan') == 1 ||
-                $this->session->userdata('jabatan') == 2) {?>
+			</li>
+			<?php } ?>
+			
       <li class="nav-item">
-        <a class="nav-link" href="<?= site_url('master_project')?>">
+        <a class="nav-link" href="#">
           <i class="fas fa-fw fa-business-time"></i>
           <span>Project</span></a>
       </li>
-      <?php } ?>
 
       <!-- <li class="nav-item">
         <a class="nav-link" href="<?= site_url('user')?>">

@@ -9,7 +9,7 @@ class UserModel extends CI_Model {
         $this->db->from('pegawai');
         $this->db->where('email', $post['email']);
         $this->db->where('password', MD5($post['password']));
-        $result = $this->db->get();
+		$result = $this->db->get();
 		return $result;
     }
 
@@ -19,7 +19,7 @@ class UserModel extends CI_Model {
     	$this->db->from('mitra');
     	$this->db->where('email', $post['email']);
     	$this->db->where('password', MD5($post['password']));
-    	$result = $this->db->get();
+		$result = $this->db->get();
     	return $result;
     }
 

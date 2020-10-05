@@ -59,11 +59,13 @@ class Auth extends CI_Controller {
 	public function process_mitra()
 	{
 		$post = $this->input->POST(NULL, TRUE);
+		var_dump($post);
+		exit();
 		if (isset($post['login_mitra'])) {
 			$query = $this->UserModel->login_mitra($post);
 			if ($query->num_rows() > 0) {
 				$row = $query->row();
-				$params = array(
+				$params	 = array(
 					'mitra_id' 		=> $row->mitra_id,
 					'nama_mitra'	=> $row->nama_mitra
 				);

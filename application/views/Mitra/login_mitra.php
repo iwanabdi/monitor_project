@@ -39,11 +39,11 @@
                     <h1 class="h4 text-gray-900 mb-4">Silahkan Login Mitra</h1>
                   </div>
 
-                  <form class="user" action="<?php echo base_url('auth/process_mitra');?>" method="post">
+                  <form class="user" action="<?php echo site_url('Auth/process_mitra');?>" method="post">
                     <?php echo $this->session->flashdata('pesan');?>
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" name="email" 
-                      id="Email" aria-describedby="emailHelp" placeholder="Enter Email Address..." required autofocus="">
+                      id="email" aria-describedby="emailHelp" placeholder="Enter Email Address..." required autofocus="">
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" name="password" 

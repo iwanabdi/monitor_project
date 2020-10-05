@@ -68,17 +68,17 @@ class Auth extends CI_Controller {
 					'nama_mitra'	=> $row->nama_mitra
 				);
 				$this->session->set_userdata($params);
-				echo 
+				echo
 				"<script>
 					alert('Login Berhasil');
 					window.location='".site_url('mitra')."';
 				</script>";
 			}else{
-				echo 
-				"<script>
-					alert('Login Gagal');
-					window.location='".redirect('auth/login_mitra','refresh')."';
-				</script>";
+				$this->session->set_flashdata('pesan', 
+					'<div class="alert alert-danger" role="alert">
+						Login Gagal! Email atau Password Anda Salah.
+					</div>');
+				redirect('auth/login_mitra','refresh');
 			}
 		}
 	}

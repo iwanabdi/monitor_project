@@ -38,14 +38,9 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Silahkan Login Mitra</h1>
                   </div>
-                  <?php 
-                    if ($this->session->flashdata('msg')) { // cek session msg
-                      echo '<div class="alert alert-danger">'.$this->session->flashdata('msg').'</div>';
-                    }
-                  ?>
 
                   <form class="user" action="<?php echo base_url('auth/process_mitra');?>" method="post">
-                    <!-- <?php echo $this->session->flashdata('msg');?> -->
+                    <?php echo $this->session->flashdata('pesan');?>
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" name="email" 
                       id="Email" aria-describedby="emailHelp" placeholder="Enter Email Address..." required autofocus="">

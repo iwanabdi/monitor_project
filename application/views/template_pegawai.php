@@ -122,12 +122,12 @@
       </li>
       <?php } ?>
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="<?= site_url('user')?>">
           <i class="fas fa-users-cog"></i>
           <span>Users</span></a>
       </li>
-
+ -->
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -138,7 +138,7 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="#">
           <i class="fas fa-fw fa-table"></i>
           <span>Tables</span></a>
       </li>

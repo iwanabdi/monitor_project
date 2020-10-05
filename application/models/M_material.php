@@ -21,7 +21,9 @@ class M_material extends CI_Model {
     		"nama_material" 		=> $this->input->post('nama_material'),
     		"brand"					=> $this->input->post('brand'),
     		"stok"					=> $this->input->post('stok'),
-    		"storage_bin"					=> $this->input->post('storage_bin'),
+    		"storage_bin"			=> $this->input->post('storage_bin'),
+			"create_by"				=> $this->session->userdata('pegawai_id'),
+			"create_on"				=> date('Y-m-d'),
     		"create_by"				=> $this->session->userdata('pegawai_id'),
     		"status"				=> 1
     	];
@@ -42,7 +44,8 @@ class M_material extends CI_Model {
     			"brand"			=> $this->input->post('brand'),
     			"stok"				=> $this->input->post('stok'),
     			"storage_bin"			=> $this->input->post('storage_bin'),
-	    		"update_by" 		=> $this->session->userdata('pegawai_id')
+				"update_by" 		=> $this->session->userdata('pegawai_id'),
+				"update_on"		=> date('Y-m-d'),
     		];
     	}else{
     		$data = [
@@ -50,7 +53,8 @@ class M_material extends CI_Model {
     			"brand"			=> $this->input->post('brand'),
     			"stok"				=> $this->input->post('stok'),
     			"storage_bin"			=> $this->input->post('storage_bin'),
-	    		"update_by" 		=> $this->session->userdata('pegawai_id')
+				"update_by" 		=> $this->session->userdata('pegawai_id'),
+				"update_on"		=> date('Y-m-d'),
 	    	];
     	}
     	$id = $this->input->post('id', true);

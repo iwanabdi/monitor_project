@@ -25,7 +25,7 @@ class M_customer extends CI_Model {
     		"email"					=> $this->input->post('email'),
     		"npwp"					=> $this->input->post('npwp'),
 			"create_by"				=> $this->session->userdata('pegawai_id'),
-			"create_on"		=> date('Y-m-d'),
+			"create_on"		        => date('Y-m-d'),
     		"status"				=> 1
     	];
 		$this->db->insert('customer', $data);

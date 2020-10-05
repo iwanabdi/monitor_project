@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2020 at 03:24 PM
+-- Generation Time: Oct 05, 2020 at 03:46 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -84,7 +84,7 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`customer_id`, `nama_customer`, `phone`, `fax`, `alamat`, `email`, `npwp`, `create_on`, `create_by`, `update_on`, `update_by`, `delete_on`, `delete_by`, `status`) VALUES
 (1, 'aaaaaa', '', '1111111', 'surabayaaaa', 'intiland@gmail.comaa', 2147483647, '0000-00-00', 1, '0000-00-00', 0, '2020-10-03', 0, 0),
-(2, 'rene', '', '09888', 'mana yo', 'mana@gmail.com', 9878, '0000-00-00', 1, '0000-00-00', 0, '0000-00-00', 0, 1);
+(2, 'rene', '678', '09888', 'mana yo', 'mana@gmail.com', 9878, '0000-00-00', 1, '2020-10-05', 0, '0000-00-00', 0, 1);
 
 -- --------------------------------------------------------
 

@@ -28,6 +28,7 @@ class M_pegawai extends CI_Model {
     		"password"			=> MD5($this->input->post('password')),
     		"jabatan"			=> $this->input->post('jabatan'),
     		"create_by"			=> $this->session->userdata('pegawai_id'),
+            "create_on"         => date('Y-m-d'),
     		"status"			=> 1
     	];
     	$this->db->insert('pegawai', $data);

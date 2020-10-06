@@ -120,7 +120,7 @@
           <label class="col-sm-3 col-form-label">Pilih Customer</label>
           <div class="col-sm-9">
             <div class="input-group">
-              <input type="text" class="form-control" name="nama_customer" id="nama_customer" disabled="" 	required="">
+              <input type="text" class="form-control" name="nama_customer" id="nama_customer" disabled=""	required="">
               <div class="input-group-append">
                 <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihcustomer"><i class="fas fa-search"></i></button>
               </div>
@@ -213,13 +213,13 @@ foreach ($row->result() as $key => $data) : $no++; ?>
         <?php echo form_open_multipart('master_alamat/proses_edit_data'); ?>
         <input type="hidden" id="id" name="id" value="<?= $data->alamat_id?>">
 				<div class="form-group row">
-          <input type="hidden" name="customer_id2" id="customer_id2" value="<?=$data->customer_id?>">
+          <input type="hidden" name="customer_id2" id="id<?=$no?>" value="<?=$data->customer_id?>">
           <label class="col-sm-3 col-form-label">Pilih Customer</label>
           <div class="col-sm-9">
             <div class="input-group">
-              <input type="text" class="form-control" name="nama_customer2" id="nama_customer2" required="" disabled="" value="<?=$data->nama_customer?>">
+              <input type="text" class="form-control" name="nama_customer2" id="nama<?=$no?>" required="" disabled="" value="<?=$data->nama_customer?>">
               <div class="input-group-append">
-                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihcustomer"><i class="fas fa-search"></i></button>
+                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#editcustomer<?=$no?>"><i class="fas fa-search"></i></button>
               </div>
             </div>
           </div>
@@ -293,6 +293,64 @@ foreach ($row->result() as $key => $data) : $no++; ?>
     </div>
   </div>
 </div>
+
+<!-- Modal Edit customer-->
+<div class="modal fade" id="editcustomer<?=$no?>" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="table-responsive">
+            <table class="table table-bordered" width="100%" id="dataTable2" cellspacing="0">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nama Customer</th>
+                <th>Pilih</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              foreach($rowcustomer->result() as $i => $data)  {?>
+              <tr>
+                <td><?=$data->customer_id?></td>
+                <td><?=$data->nama_customer?></td>
+                <td class="text-center">
+                <button class="btn btn-info" id="edit"
+                data-id_edit="<?= $data->customer_id?>" 
+                data-nama_edit="<?= $data->nama_customer?>">Pilih
+                </button>
+                </td>
+              </tr>
+            <?php } ?>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on('click', '#edit', function() {
+      var customer_id1 = $(this).data('id_edit');
+      var nama_customer1 = $(this).data('nama_edit');
+      $('#id<?=$no?>').val(customer_id1);
+      $('#nama<?=$no?>').val(nama_customer1);
+      $('#editcustomer<?=$no?>').modal('hide');
+    })
+  })
+</script>
+
 <?php endforeach; ?>
 <!-- Akhir Modal Edit-->
 
@@ -354,7 +412,8 @@ foreach ($row->result() as $key => $data) : $no++; ?>
                 <td class="text-center">
                 <button class="btn btn-info" id="select"
                 data-id="<?= $data->customer_id?>" 
-                data-nama="<?= $data->nama_customer?>">Pilih
+                data-nama="<?= $data->nama_customer?>"
+                data-pilih="<?= $data->nama_customer?>">Pilih
                 </button>
                 </td>
               </tr>
@@ -367,6 +426,7 @@ foreach ($row->result() as $key => $data) : $no++; ?>
     </div>
   </div>
 </div>
+
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script type="text/javascript">
@@ -381,3 +441,4 @@ foreach ($row->result() as $key => $data) : $no++; ?>
   })
 </script>
 <!-- Akhir Modal customer Data -->
+

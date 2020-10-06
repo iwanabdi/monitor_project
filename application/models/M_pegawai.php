@@ -78,11 +78,11 @@ class M_pegawai extends CI_Model {
     }
 
 
-    function get_profile($email)
+    function get_profile($id)
     {
         $this->db->select('*');
         $this->db->from('pegawai');
-        $this->db->where('email', $email);
+        $this->db->where('pegawai_id', $id);
         $query = $this->db->get();
         return $query->row_array();
     }
@@ -96,11 +96,11 @@ class M_pegawai extends CI_Model {
             $password      = MD5($this->input->post('password'));
             $this->db->set('password',$password);
         }
-        $id = $this->session->userdata('email');
+        $id = $this->session->userdata('pegawai_id');
         $this->db->set('nama_pegawai',$nama_pegawai);
         $this->db->set('no_telp',$no_telp);
         $this->db->set('email',$email);
-        $this->db->where('email', $id);
+        $this->db->where('pegawai_id', $id);
         $this->db->update('pegawai');
         // var_dump($nama_pegawai);
         // var_dump($no_telp);

@@ -38,8 +38,8 @@
               <th>Negara</th>
               <th>Koordinat</th>
               <th>Type</th>
-							<th>Kontak</th>
-							<th>No_Telp</th>
+							<th>PIC</th>
+							<th>No Telp</th>
               <th>Opsi</th>
             </tr>
           </thead>
@@ -54,8 +54,8 @@
               <th>Negara</th>
               <th>Koordinat</th>
               <th>Type</th>
-							<th>Kontak</th>
-							<th>No_Telp</th>
+							<th>PIC</th>
+							<th>No Telp</th>
               <th>Opsi</th>
             </tr>
           </tfoot>
@@ -71,7 +71,16 @@
               <td><?=$data->provinsi?></td>
 							<td><?=$data->negara?></td> 
 							<td><?=$data->koordinat?></td>
-							<td><?=$data->type?></td>                             
+							<td>
+								<?php if ($data->type == 0) {
+                  echo "HO";
+                } else if($data->type == 1) {
+                  echo "Originating";
+                } else if($data->type == 2) {
+									echo "Terminating";
+								}
+								?>
+							</td>                             
               <td><?=$data->kontak?></td>              
               <td><?=$data->no_telp?></td>              
               <td class="text-center" colspan="2">
@@ -111,7 +120,7 @@
           <label class="col-sm-3 col-form-label">Pilih Customer</label>
           <div class="col-sm-9">
             <div class="input-group">
-              <input type="text" class="form-control" name="nama_customer" id="nama_customer" disabled="" required="">
+              <input type="text" class="form-control" name="nama_customer" id="nama_customer" disabled=""	required="">
               <div class="input-group-append">
                 <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihcustomer"><i class="fas fa-search"></i></button>
               </div>
@@ -155,7 +164,7 @@
               <option selected disabled value="">Pilih Type</option>
               <option value="0">HO</option>
               <option value="1">Originating</option>
-              <option value="2">Terminating</option>
+							<option value="2">Terminating</option>
             </select>
           </div>
         </div>
@@ -203,7 +212,18 @@ foreach ($row->result() as $key => $data) : $no++; ?>
       <div class="modal-body was-validated">
         <?php echo form_open_multipart('master_alamat/proses_edit_data'); ?>
         <input type="hidden" id="id" name="id" value="<?= $data->alamat_id?>">
-
+				<div class="form-group row">
+          <input type="hidden" name="customer_id2" id="id<?=$no?>" value="<?=$data->customer_id?>">
+          <label class="col-sm-3 col-form-label">Pilih Customer</label>
+          <div class="col-sm-9">
+            <div class="input-group">
+              <input type="text" class="form-control" name="nama_customer2" id="nama<?=$no?>" required="" disabled="" value="<?=$data->nama_customer?>">
+              <div class="input-group-append">
+                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#editcustomer<?=$no?>"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Jalan</label>
           <div class="col-sm-9">
@@ -232,31 +252,30 @@ foreach ($row->result() as $key => $data) : $no++; ?>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Koordinat</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="koordinat" id="koordinat" required value="<?= $data->koordinat;?>">
+            <input type="text" class="form-control" name="koordinat" id="koordinat" required value="<?= $data->koordinat;?>">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Type</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="type" id="type" required value="<?= $data->type;?>">
+						<select name="type" id="type" class="form-control custom-select" required="">
+              <option disabled value="">Pilih Type</option>
+              <option value="0" <?php if($data->type == 0): ?> selected <?php endif?>>HO</option>
+              <option value="1" <?php if($data->type == 1): ?> selected <?php endif?>>Originating</option>
+							<option value="2" <?php if($data->type == 2): ?> selected <?php endif?>>Terminating</option>
+            </select>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Kontak</label>
+          <label class="col-sm-3 col-form-label">PIC</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="kontak" id="kontak" required value="<?= $data->kontak;?>">
+            <input type="text" class="form-control" name="kontak" id="kontak" required value="<?= $data->kontak;?>">
           </div>
 				</div>
 				<div class="form-group row">
-          <label class="col-sm-3 col-form-label">No_Telp</label>
+          <label class="col-sm-3 col-form-label">No Telpon</label>
           <div class="col-sm-9">
             <input type="number" class="form-control" name="no_telp" id="no_telp" value="<?= $data->no_telp;?>">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">No_Telp</label>
-          <div class="col-sm-9">
-            <input type="number" class="form-control" name="no_telp" id="no_telp" required value="<?=$data->no_telp?>">
           </div>
         </div>
         <div class="form-group row">
@@ -274,6 +293,64 @@ foreach ($row->result() as $key => $data) : $no++; ?>
     </div>
   </div>
 </div>
+
+<!-- Modal Edit customer-->
+<div class="modal fade" id="editcustomer<?=$no?>" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="table-responsive">
+            <table class="table table-bordered" width="100%" id="dataTable2" cellspacing="0">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nama Customer</th>
+                <th>Pilih</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              foreach($rowcustomer->result() as $i => $data)  {?>
+              <tr>
+                <td><?=$data->customer_id?></td>
+                <td><?=$data->nama_customer?></td>
+                <td class="text-center">
+                <button class="btn btn-info" id="edit"
+                data-id_edit="<?= $data->customer_id?>" 
+                data-nama_edit="<?= $data->nama_customer?>">Pilih
+                </button>
+                </td>
+              </tr>
+            <?php } ?>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on('click', '#edit', function() {
+      var customer_id1 = $(this).data('id_edit');
+      var nama_customer1 = $(this).data('nama_edit');
+      $('#id<?=$no?>').val(customer_id1);
+      $('#nama<?=$no?>').val(nama_customer1);
+      $('#editcustomer<?=$no?>').modal('hide');
+    })
+  })
+</script>
+
 <?php endforeach; ?>
 <!-- Akhir Modal Edit-->
 
@@ -293,7 +370,7 @@ foreach ($row->result() as $key => $data) : $no++; ?>
         <?php echo form_open_multipart('master_alamat/hapus_data'); ?>
         <input type="hidden" id="id" name="id" value="<?=$data->alamat_id?>">
         <p>Anda akan menghapus data "<?=$data->jalan ?>"</p>
-      </div>
+      </div>	
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
         <button class="btn btn-danger" type="submit">Hapus</button>
@@ -306,7 +383,6 @@ foreach ($row->result() as $key => $data) : $no++; ?>
 <!-- Akhir Modal Hapus Data -->
 
 <!-- Modal customer-->
-
 <div class="modal fade" id="pilihcustomer" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -336,7 +412,8 @@ foreach ($row->result() as $key => $data) : $no++; ?>
                 <td class="text-center">
                 <button class="btn btn-info" id="select"
                 data-id="<?= $data->customer_id?>" 
-                data-nama="<?= $data->nama_customer?>">Pilih
+                data-nama="<?= $data->nama_customer?>"
+                data-pilih="<?= $data->nama_customer?>">Pilih
                 </button>
                 </td>
               </tr>
@@ -349,6 +426,7 @@ foreach ($row->result() as $key => $data) : $no++; ?>
     </div>
   </div>
 </div>
+
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script type="text/javascript">
@@ -363,3 +441,4 @@ foreach ($row->result() as $key => $data) : $no++; ?>
   })
 </script>
 <!-- Akhir Modal customer Data -->
+

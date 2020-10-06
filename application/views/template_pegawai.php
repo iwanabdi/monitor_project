@@ -105,29 +105,28 @@
           </div>
         </div>
       </li>
-      <?php } ?>
+			<?php } ?>
+
+			<?php if ($this->session->userdata('jabatan') <= 3) {?>
       <li <?=$this->uri->segment(1) == 'master_material'?'class="nav-item active"' : "" ?> class="nav-item">
         <a class="nav-link" href="<?= site_url('master_material')?>">
           <i class="fas fa-fw fa-box-open"></i>
           <span>Material</span></a>
-      </li>
-      
-      <?php if ($this->session->userdata('jabatan') <= 2 || 
-                $this->session->userdata('jabatan') == 1 ||
-                $this->session->userdata('jabatan') == 2) {?>
+			</li>
+			<?php } ?>
+			
       <li class="nav-item">
-        <a class="nav-link" href="<?= site_url('master_project')?>">
+        <a class="nav-link" href="#">
           <i class="fas fa-fw fa-business-time"></i>
           <span>Project</span></a>
       </li>
-      <?php } ?>
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="<?= site_url('user')?>">
           <i class="fas fa-users-cog"></i>
           <span>Users</span></a>
       </li>
-
+ -->
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -138,7 +137,7 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="#">
           <i class="fas fa-fw fa-table"></i>
           <span>Tables</span></a>
       </li>
@@ -252,7 +251,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>&copy; Monitor Project 2020</span>
           </div>
         </div>
       </footer>

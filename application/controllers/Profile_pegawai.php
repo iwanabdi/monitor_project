@@ -14,8 +14,8 @@ class Profile_pegawai extends CI_Controller {
 
 	public function index()
 	{
-		$email = $this->session->userdata('email');
-		$data['row'] = $this->M_pegawai->get_profile($email);
+		$id = $this->session->userdata('pegawai_id');
+		$data['row'] = $this->M_pegawai->get_profile($id);
 		$this->template->load('template_pegawai', 'pegawai/profile', $data);
 		// var_dump($data['row']);
 	}

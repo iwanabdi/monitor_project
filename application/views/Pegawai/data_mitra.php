@@ -36,7 +36,9 @@
               <th>Email</th>
               <th>No Telp</th>
               <th>Alamat</th>
-              <th>Opsi</th>
+              <?php if ($this->session->userdata('jabatan')<= 0) {?>
+                <th>Opsi</th>
+              <?php }?>
             </tr>
           </thead>
           <tfoot>
@@ -47,7 +49,9 @@
               <th>Email</th>
               <th>No Telp</th>
               <th>Alamat</th>
-              <th>Opsi</th>
+              <?php if ($this->session->userdata('jabatan')<= 0) {?>
+                <th>Opsi</th>
+              <?php }?>
             </tr>
           </tfoot>
           <tbody>
@@ -59,7 +63,8 @@
               <td><?=$data->nama_mitra?></td>
               <td><?=$data->email?></td>
               <td><?=$data->no_telp?></td>
-              <td><?=$data->alamat?></td>              
+              <td><?=$data->alamat?></td>
+              <?php if ($this->session->userdata('jabatan')<= 0) {?>         
               <td class="text-center" colspan="2">
                 <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->mitra_id; ?>">
                     <i class="fas fa-user-edit"></i>
@@ -68,6 +73,7 @@
                     <i class="fas fa-user-times"></i>
                   </button>
               </td>
+              <?php } ?>
             </tr>
           <?php } ?>
           </tbody>

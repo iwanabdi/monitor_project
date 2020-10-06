@@ -32,9 +32,9 @@
             <tr class="text-center">
 						<th>No</th>
               <th>ID</th>
-              <th>Nama_Product</th>
+              <th>Nama Product</th>
               <th>Bandwith</th>
-              <th>Status</th>
+              <th>Satuan</th>
               <th>Opsi</th>
             </tr>
           </thead>
@@ -42,9 +42,9 @@
             <tr class="text-center">
 						<th>No</th>
               <th>ID</th>
-						<th>Nama_Product</th>
+						<th>Nama Product</th>
               <th>Bandwith</th>
-              <th>Status</th>
+              <th>Satuan</th>
               <th>Opsi</th>
             </tr>
           </tfoot>
@@ -56,7 +56,7 @@
               <td><?=$data->product_id?></td>
               <td><?=$data->nama_product?></td>
               <td><?=$data->bandwith?></td>            
-              <td><?=$data->status?></td>            
+              <td><?=$data->satuan?></td>            
               <td class="text-center" colspan="2">
                 <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->product_id; ?>">
                     <i class="fas fa-user-edit"></i>
@@ -90,7 +90,7 @@
       <div class="modal-body">
         <?php echo form_open_multipart('master_product/proses_add_data'); ?>
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Nama_Product</label>
+          <label class="col-sm-3 col-form-label">Nama Product</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" autofocus="" id="nama_product" name="nama_product" required="" autofocus="">
           </div>
@@ -98,7 +98,13 @@
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Bandwith</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" autofocus="" id="bandwith" name="bandwith" required="">
+            <input type="number" class="form-control" autofocus="" id="bandwith" name="bandwith" required="">
+          </div>
+        </div>
+				<div class="form-group row">
+          <label class="col-sm-3 col-form-label">Satuan</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" autofocus="" id="satuan" name="satuan" required="">
           </div>
         </div>
         <div class="form-group row">
@@ -135,7 +141,7 @@ foreach ($row->result() as $key => $data) : $no++; ?>
         <input type="hidden" id="id" name="id" value="<?= $data->product_id?>">
 
         <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Nama_Product</label>
+          <label class="col-sm-3 col-form-label">Nama Product</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" autofocus="" id="nama_product" name="nama_product" required="" autofocus="" value="<?= $data->nama_product;?>">
           </div>
@@ -143,10 +149,15 @@ foreach ($row->result() as $key => $data) : $no++; ?>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Bandwith</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="bandwith" name="bandwith" value="<?= $data->bandwith;?>" required="">
+            <input type="number" class="form-control" id="bandwith" name="bandwith" value="<?= $data->bandwith;?>" required="">
           </div>
         </div>
 				<div class="form-group row">
+          <label class="col-sm-3 col-form-label">Satuan</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" autofocus="" id="satuan" name="satuan" value="<?= $data->satuan;?>" required="">
+          </div>
+        </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Update By</label>
           <div class="col-sm-9">

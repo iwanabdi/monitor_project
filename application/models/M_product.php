@@ -20,7 +20,9 @@ class M_product extends CI_Model {
     	$data = [
     		"nama_product" 		=> $this->input->post('nama_product'),
     		"bandwith"			=> $this->input->post('bandwith'),
-    		"create_by"			=> $this->session->userdata('pegawai_id'),
+			"create_by"			=> $this->session->userdata('pegawai_id'),
+			"satuan"			=>  $this->input->post('satuan'),
+			"create_on"			=> date('Y-m-d'),
     		"status"			=> 1
     	];
     	$this->db->insert('product', $data);
@@ -34,19 +36,14 @@ class M_product extends CI_Model {
 
     function proses_edit_data()
     {
-    	if ($this->input->post('password') == null) {
-    		$data = [
+			$data = [
 	    		"nama_product" 		=> $this->input->post('nama_product'),
-	    		"bandwith"			=> $this->input->post('bandwith'),
-	    		"update_by"			=> $this->session->userdata('pegawai_id'),
-    		];
-    	}else{
-    		$data = [
-	    		"nama_product" 		=> $this->input->post('nama_product'),
-	    		"bandwith"			=> $this->input->post('bandwith'),
-	    		"update_by" 		=> $this->session->userdata('pegawai_id')
+				"bandwith"			=> $this->input->post('bandwith'),
+				"satuan"			=>  $this->input->post('satuan'),
+				"update_by" 		=> $this->session->userdata('pegawai_id'),
+				"update_on"			=> date('Y-m-d')
 	    	];
-    	}
+    	
     	$id = $this->input->post('id', true);
 		$this->db->where('product_id', $id);
 		$this->db->update('product', $data);

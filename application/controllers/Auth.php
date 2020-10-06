@@ -67,7 +67,8 @@ class Auth extends CI_Controller {
 				$row = $query->row();
 				$params	 = array(
 					'mitra_id' 		=> $row->mitra_id,
-					'nama_mitra'	=> $row->nama_mitra
+					'nama_mitra'	=> $row->nama_mitra,
+					'email'			=> $row->email
 				);
 				$this->session->set_userdata($params);
 				echo

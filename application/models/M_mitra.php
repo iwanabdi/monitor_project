@@ -82,6 +82,40 @@ class M_mitra extends CI_Model {
     	$this->db->update('mitra', $data);
     }
 
+    function get_profile($mitra_id)
+    {
+        $this->db->select('*');
+        $this->db->from('mitra');
+        $this->db->where('mitra_id', $mitra_id);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+    function proses_edit_profile()
+    {
+        $nama_mitra      = $this->input->post('nama_mitra');
+        $alamat           = $this->input->post('alamat');
+        $kota             = $this->input->post('kota');
+        $no_telp             = $this->input->post('no_telp');
+        $fax             = $this->input->post('fax');
+        $email             = $this->input->post('email');
+        $npwp             = $this->input->post('npwp');
+        if ($this->input->post('password') != null) {
+            $password      = MD5($this->input->post('password'));
+            $this->db->set('password',$password);
+        }
+        $id = $this->session->userdata('mitra_id');
+        $this->db->set('nama_mitra',$nama_mitra);
+        $this->db->set('alamat',$alamat);
+        $this->db->set('kota',$kota);
+        $this->db->set('no_telp',$no_telp);
+        $this->db->set('fax',$fax);
+        $this->db->set('email',$email);
+        $this->db->set('npwp',$npwp);
+        $this->db->where('mitra_id', $id);
+        $this->db->update('mitra');
+    }
+
 }
 
 /* End of file M_mitra.php */

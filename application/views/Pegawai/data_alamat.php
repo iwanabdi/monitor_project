@@ -120,7 +120,7 @@
           <label class="col-sm-3 col-form-label">Pilih Customer</label>
           <div class="col-sm-9">
             <div class="input-group">
-              <input type="text" class="form-control" name="nama_customer" id="nama_customer" disabled="" required="">
+              <input type="text" class="form-control" name="nama_customer" id="nama_customer" disabled="" 	required="">
               <div class="input-group-append">
                 <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihcustomer"><i class="fas fa-search"></i></button>
               </div>
@@ -213,11 +213,11 @@ foreach ($row->result() as $key => $data) : $no++; ?>
         <?php echo form_open_multipart('master_alamat/proses_edit_data'); ?>
         <input type="hidden" id="id" name="id" value="<?= $data->alamat_id?>">
 				<div class="form-group row">
-          <input type="hidden" name="customer_id" id="customer_id" value="<?=$data->customer_id?>">
+          <input type="hidden" name="customer_id2" id="customer_id2" value="<?=$data->customer_id?>">
           <label class="col-sm-3 col-form-label">Pilih Customer</label>
           <div class="col-sm-9">
             <div class="input-group">
-              <input type="text" class="form-control" name="nama_customer" id="nama_customer" disabled=""  required="" value="<?=$data->nama_customer?>">
+              <input type="text" class="form-control" name="nama_customer2" id="nama_customer2" required="" disabled="" value="<?=$data->nama_customer?>">
               <div class="input-group-append">
                 <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihcustomer"><i class="fas fa-search"></i></button>
               </div>
@@ -325,7 +325,6 @@ foreach ($row->result() as $key => $data) : $no++; ?>
 <!-- Akhir Modal Hapus Data -->
 
 <!-- Modal customer-->
-
 <div class="modal fade" id="pilihcustomer" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">

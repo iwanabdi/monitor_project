@@ -7,7 +7,7 @@ class M_alamat extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('alamat as a');
-		$this->db->join('customer as c','a.customer_id=c.customer_id');
+		$this->db->join('customer as c','a.customer_id=c.customer_id',"LEFT");
 		if ($id != null) {
 			$this->db->where('a.alamat_id', $id);
 		}
@@ -54,7 +54,7 @@ class M_alamat extends CI_Model {
 	    		"kontak"			=> $this->input->post('kontak'),
 	    		"no_telp"			=> $this->input->post('no_telp'),
 				"update_by" 		=> $this->session->userdata('pegawai_id'),
-				"customer_id"   	=> $this->input->post('customer_id'),
+				"customer_id"   	=> $this->input->post('customer_id2'),
 				"update_on"   		=> date("Y-m-d")
 	    	];
     	

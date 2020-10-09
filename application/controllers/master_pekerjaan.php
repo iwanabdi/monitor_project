@@ -15,7 +15,7 @@ class master_pekerjaan extends CI_Controller {
 	public function index()
 	{
 		$data['row'] = $this->M_pekerjaan->get_pekerjaan();
-		$this->template->load('template_pegawai', 'pegawai/data_pekerjaan', $data);
+		$this->template->load('template_pegawai', 'pekerjaan/data_pekerjaan', $data);
 	}
 
 	function proses_add_data()

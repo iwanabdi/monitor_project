@@ -15,7 +15,7 @@ class Master_mitra extends CI_Controller {
 	public function index()
 	{
 		$data['row'] = $this->M_mitra->get_mitra();
-		$this->template->load('template_pegawai', 'pegawai/data_mitra', $data);
+		$this->template->load('template_pegawai', 'mitra/data_mitra', $data);
 	}
 
 	function proses_add_data()

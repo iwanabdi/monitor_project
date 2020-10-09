@@ -15,7 +15,7 @@ class Master_material extends CI_Controller {
 	public function index()
 	{
 		$data['row'] = $this->M_material->get_material();
-		$this->template->load('template_pegawai', 'pegawai/data_material', $data);
+		$this->template->load('template_pegawai', 'material/data_material', $data);
 	}
 
 	function proses_add_data()

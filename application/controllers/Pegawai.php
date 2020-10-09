@@ -6,14 +6,18 @@ class Pegawai extends CI_Controller {
 	public function index()
 	{
 		cekblm_login_pegawai();
-		$this->template->load('template_pegawai', 'pegawai/dashboard');
+		if ($this->fungsi->user_login()->jabatan == 3) {
+			$this->template->load('template_pegawai', 'pegawai/dashboard_gudang');
+		}else{
+			$this->template->load('template_pegawai', 'pegawai/dashboard');
+		}
 		// $this->load->view('template');
 	}
 
 	public function profile()
 	{
 		cekblm_login_pegawai();
-		$this->template->load('template_pegawai', 'pegawai/profile');
+		$this->template->load('template_pegawai', 'profile');
 	}
 
 }

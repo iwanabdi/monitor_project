@@ -20,13 +20,18 @@ class Auth extends CI_Controller {
 		$post = $this->input->POST(NULL, TRUE);
 		if (isset($post['login_pegawai'])) {
 			$query = $this->UserModel->login_pegawai($post);
-			if ($query->num_rows() > 0) {
+			$status =  $query->row('status');
+			// var_dump($query->row('status'));
+			// exit;
+			if ($query->num_rows() > 0 && $status == 1) {
 				$row = $query->row();
 				$param = array(
 					'pegawai_id' 	=> $row->pegawai_id,
 					'nama_pegawai'	=> $row->nama_pegawai,
 					'email'			=> $row->email,
-					'jabatan'		=> $row->jabatan
+					'jabatan'		=> $row->jabatan,
+					'password'		=> $row->password,
+					'status'		=> $row->status
 				);
 				$this->session->set_userdata($param);
 				echo 
@@ -34,6 +39,12 @@ class Auth extends CI_Controller {
 					alert('Login Berhasil');
 					window.location='".site_url('pegawai')."';
 				</script>";
+			}else if($query->num_rows() > 0 && $status == 0){
+				$this->session->set_flashdata('pesan', 
+					'<div class="alert alert-danger" role="alert">
+						Login Gagal! Akun anda tidak aktif.
+					</div>');
+				redirect('auth/login_pegawai','refresh');
 			}else{
 				$this->session->set_flashdata('pesan', 
 					'<div class="alert alert-danger" role="alert">

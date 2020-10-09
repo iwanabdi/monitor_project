@@ -48,7 +48,8 @@ class M_pegawai extends CI_Model {
 	    		"no_telp" 			=> $this->input->post('no_telp'),
 	    		"email" 			=> $this->input->post('email'),
 	    		"jabatan" 			=> $this->input->post('jabatan'),
-	    		"update_by" 		=> $this->session->userdata('pegawai_id')
+	    		"update_by" 		=> $this->session->userdata('pegawai_id'),
+                "update_on"         => date('Y-m-d')
     		];
     	}else{
     		$data = [
@@ -57,7 +58,8 @@ class M_pegawai extends CI_Model {
 	    		"email" 			=> $this->input->post('email'),
 	    		"password" 			=> MD5($this->input->post('password')),
 	    		"jabatan" 			=> $this->input->post('jabatan'),
-	    		"update_by" 		=> $this->session->userdata('pegawai_id')
+                "update_by"         => $this->session->userdata('pegawai_id'),
+                "update_on"         => date('Y-m-d')
 	    	];
     	}
     	$id = $this->input->post('id', true);

@@ -18,6 +18,21 @@ class Master_pegawai extends CI_Controller {
 		$this->template->load('template_pegawai', 'pegawai/data_pegawai', $data);
 	}
 
+	public function add()
+	{
+		$this->template->load('template_pegawai', 'pegawai/add_pegawai');
+	}
+
+	public function edit($id)
+	{
+		
+		$data['row'] = $this->M_pegawai->get_pegawai($id)->row();
+		// $id = $this->input->post('pegawai_id');
+		// var_dump($id);
+		// exit;
+		$this->template->load('template_pegawai', 'pegawai/edit_pegawai', $data);
+	}
+
 	function proses_add_data()
 	{
 		$this->M_pegawai->proses_add_data();

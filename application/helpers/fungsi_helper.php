@@ -4,7 +4,9 @@
 	{
 		$CI =& get_instance();
 		$user_session = $CI->session->userdata('pegawai_id');
-		if ($user_session) {
+		// $email = $CI->session->userdata('email');
+		$user = $CI->fungsi->user_login()->status;
+		if ($user_session && $user != 0) {
 			echo "<script>alert('Sudah Login, Logout Dulu Bosss')</script>";
 			redirect('pegawai','refresh');
 		}
@@ -14,8 +16,12 @@
 	{
 		$CI =& get_instance();
 		$user_session = $CI->session->userdata('pegawai_id');
+		$user = $CI->fungsi->user_login()->status;
 		if (!$user_session) {
 			echo "<script>alert('Login Dulu Bosss')</script>";
+			redirect('auth/login_pegawai','refresh');
+		}else if($user == 0){
+			echo "<script>alert('Akun Anda Tidak Aktif')</script>";
 			redirect('auth/login_pegawai','refresh');
 		}
 	}

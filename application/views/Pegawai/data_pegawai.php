@@ -4,8 +4,8 @@
   <!-- Page Heading -->
   <div class="row">
     <div class="col-8">
-      <h1 class="h3 mb-2 text-gray-800">Master Pegawai</h1>
-      <p class="mb-4">Edit atau tambah data untuk pegawai disini</p>
+      <h1 class="h3 mb-2 text-gray-800">Pegawai</h1>
+      <p class="mb-4">Data semua pegawai yang aktif</p>
     </div>
     <div class="col-4">
       <?= $this->session->flashdata('pesan'); ?>
@@ -16,12 +16,12 @@
   <div class="card shadow mb-4">
     <div class="row card-header col-12 mx-auto">
       <div class="col-10 p-0 p-2">
-        <h5 class="m-0 font-weight-bold text-primary">DataTables Pegawai</h5>
+        <h5 class="m-0 font-weight-bold text-primary">Data Pegawai</h5>
       </div>
       <div class="col-2 p-0">
-        <button type="button" class="btn btn-success btn-block" id="btn" data-toggle="modal" data-target="#add_data">
+        <a href="<?= site_url('master_pegawai/add')?>" class="btn btn-success btn-block" id="btn">
         <i class="fas fa-user-plus"></i> Add Pegawai
-        </button>
+        </a>
       </div>
     </div>
     <div class="card-body">
@@ -76,9 +76,9 @@
                 ?>
               </td>
               <td class="text-center" colspan="2">
-                <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->pegawai_id; ?>">
+                <a href="<?= site_url('master_pegawai/edit/'.$data->pegawai_id)?>" class="btn btn-warning btn-circle">
                     <i class="fas fa-user-edit"></i>
-                  </button>
+                </a>
                 <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->pegawai_id;?>">
                     <i class="fas fa-user-times"></i>
                   </button>

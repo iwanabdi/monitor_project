@@ -7,7 +7,7 @@ class Profile_pegawai extends CI_Controller {
 	{
 		parent::__construct();
 		cekblm_login_pegawai();
-		cek_akses();
+		// cek_akses();
 		$this->load->model('UserModel');
 		$this->load->model('M_pegawai');
 	}
@@ -16,7 +16,7 @@ class Profile_pegawai extends CI_Controller {
 	{
 		$id = $this->session->userdata('pegawai_id');
 		$data['row'] = $this->M_pegawai->get_profile($id);
-		$this->template->load('template_pegawai', 'pegawai/profile', $data);
+		$this->template->load('template_pegawai', 'profile', $data);
 		// var_dump($data['row']);
 	}
 

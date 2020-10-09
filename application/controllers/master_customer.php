@@ -15,7 +15,7 @@ class Master_customer extends CI_Controller {
 	public function index()
 	{
 		$data['row'] = $this->M_customer->get_customer();
-		$this->template->load('template_pegawai', 'pegawai/data_customer', $data);
+		$this->template->load('template_pegawai', 'customer/data_customer', $data);
 	}
 
 	function proses_add_data()

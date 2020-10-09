@@ -15,7 +15,7 @@ class M_customer extends CI_Model {
         return $query;
     }
 
-    function proses_add_data()
+    public function proses_add_data()
     {
     	$data = [
     		"nama_customer" 		=> $this->input->post('nama_customer'),
@@ -32,20 +32,18 @@ class M_customer extends CI_Model {
 		
     }
 
- 
-
-    function proses_edit_data()
+    public function proses_edit_data()
     {
     	if ($this->input->post('alamat') == null) {
     		$data = [
-	    		"nama_customer" 		=> $this->input->post('nama_customer'),
-    			"phone"			=> $this->input->post('phone'),
-    			"fax"				=> $this->input->post('fax'),
-    			"alamat"			=> $this->input->post('alamat'),
-    			"email"			=> $this->input->post('email'),
-    			"npwp"			=> $this->input->post('npwp'),
-				"update_by" 		=> $this->session->userdata('customer_id'),
-				"update_on"		=> date('Y-m-d')
+	    		"nama_customer"     => $this->input->post('nama_customer'),
+    			"phone"             => $this->input->post('phone'),
+    			"fax"               => $this->input->post('fax'),
+    			"alamat"            => $this->input->post('alamat'),
+    			"email"             => $this->input->post('email'),
+    			"npwp"              => $this->input->post('npwp'),
+				"update_by"         => $this->session->userdata('customer_id'),
+				"update_on"         => date('Y-m-d')
     		];
     	}else{
     		$data = [
@@ -64,7 +62,7 @@ class M_customer extends CI_Model {
 		$this->db->update('customer', $data);
     }
 
-    function hapus_data()
+    public function hapus_data()
     {
     	$data = [
     		"delete_by"		=> $this->session->userdata('customer_id'),

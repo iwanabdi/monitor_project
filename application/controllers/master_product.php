@@ -15,7 +15,7 @@ class Master_product extends CI_Controller {
 	public function index()
 	{
 		$data['row'] = $this->M_product->get_product();
-		$this->template->load('template_pegawai', 'pegawai/data_product', $data);
+		$this->template->load('template_pegawai', 'product/data_product', $data);
 	}
 
 	function proses_add_data()

@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-8">
       <h1 class="h3 mb-2 text-gray-800">Master Customer</h1>
-      <p class="mb-4">Edit atau tambah data untuk Customer disini</p>
+      <p class="mb-4">Data Semua Customer yang aktif</p>
     </div>
     <div class="col-4">
       <?= $this->session->flashdata('pesan'); ?>
@@ -21,9 +21,9 @@
       </div>
       <?php if ($this->session->userdata('jabatan')<= 0) {?>
 				<div class="col-2 p-0">
-        <button type="button" class="btn btn-success btn-block" id="btn" data-toggle="modal" data-target="#add_data">
+        <a href="<?= site_url('master_customer/add')?>" class="btn btn-success btn-block" id="btn">
         <i class="fas fa-user-plus"></i> Add Customer
-        </button>
+        </a>
       </div>
 			<?php }?>
       
@@ -35,7 +35,7 @@
           <thead>
             <tr>
               <th>No</th>
-              <th>ID</th>
+              <!-- <th>ID</th> -->
               <th>Nama Customer</th>
               <th>Phone</th>
               <th>Fax</th>
@@ -51,7 +51,7 @@
           <tfoot>
             <tr>
               <th>No</th>
-              <th>ID</th>
+              <!-- <th>ID</th> -->
               <th>Nama Customer</th>
               <th>Phone</th>
               <th>Fax</th>
@@ -68,7 +68,7 @@
             foreach ($row->result() as $key => $data)  {?>
             <tr>
               <td><?=$no++;?></td>
-              <td><?=$data->customer_id?></td>
+              <!-- <td><?=$data->customer_id?></td> -->
               <td><?=$data->nama_customer?></td>
               <td><?=$data->phone?></td>
               <td><?=$data->fax?></td>
@@ -77,12 +77,12 @@
               <td><?=$data->npwp?></td>
               <?php if ($this->session->userdata('jabatan')<= 0) {?>
 								<td class="text-center" colspan="2">
-									<button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->customer_id; ?>">
-											<i class="fas fa-user-edit"></i>
-										</button>
+									<a href="<?= site_url('master_customer/edit/'.$data->customer_id)?>" class="btn btn-warning btn-circle">
+										<i class="fas fa-user-edit"></i>
+									</a>
 									<button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->customer_id;?>">
 											<i class="fas fa-user-times"></i>
-										</button>
+									</button>
 								</td>
 							<?php }?>
             </tr>
@@ -95,146 +95,6 @@
 
 </div>
 <!-- /.container-fluid -->
-
-
-<!-- Modal Untuk Tambah Data -->
-<div class="modal fade" id="add_data" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Form Tambah Data customer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body was-validated">
-        <?php echo form_open_multipart('master_customer/proses_add_data'); ?>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Nama Perusahaan</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="nama_customer" name="nama_customer" required="">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Phone</label>
-          <div class="col-sm-9">
-            <input type="number" class="form-control" name="phone" id="phone" required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Fax</label>
-          <div class="col-sm-9">
-            <input type="number" class="form-control" name="fax" id="fax" required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Alamat</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" name="alamat" required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Email</label>
-          <div class="col-sm-9">
-            <input type="email" class="form-control" name="email" id="email" required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">NPWP</label>
-          <div class="col-sm-9">
-            <input type="number" class="form-control" name="npwp" id="npwp" required>
-          </div>  
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Create By</label>
-          <div class="col-sm-9">
-            <input type="text" name="create_by" class="form-control" id="pegawai_id" value="<?= $this->session->userdata('nama_pegawai');?>" disabled></input>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Simpan</button>
-        <?php echo form_close(); ?>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Untuk Edit Data -->
-<?php $no = 1;
-foreach ($row->result() as $key => $data) : $no++; ?>
-<div class="modal fade" id="edit_modal<?=$data->customer_id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Form Edit Data customer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body was-validated">
-        <?php echo form_open_multipart('master_customer/proses_edit_data'); ?>
-
-        <input type="hidden" id="id" name="id" value="<?= $data->customer_id?>">
-
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Nama Lengkap</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="nama_customer" name="nama_customer" required="" value="<?= $data->nama_customer;?>">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Phone</label>
-          <div class="col-sm-9">
-            <input type="number" class="form-control" name="phone" id="phone" value="<?= $data->phone;?>"required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Fax</label>
-          <div class="col-sm-9">
-            <input type="number" class="form-control" name="fax" id="fax" value="<?= $data->fax;?>" required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Alamat</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" autofocus="" id="alamat" name="alamat" value="<?= $data->alamat;?>" required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Email</label>
-          <div class="col-sm-9">
-            <input type="email" class="form-control" name="email" id="email" value="<?= $data->email;?>" required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">NPWP</label>
-          <div class="col-sm-9">
-            <input type="number" class="form-control" name="npwp" id="npwp" value="<?= $data->npwp;?>" required>
-          </div>
-        </div>
-        
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label">Update By</label>
-          <div class="col-sm-9">
-            <input type="text" name="update_by" class="form-control" id="pegawai_id" value="<?= $this->session->userdata('nama_pegawai');?>" disabled></input>
-          </div>
-        </div>
-        <!-- <div class="form-group">
-          <label>Create On</label>
-          <input type="date" name="nama" class="form-control">
-        </div> -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Simpan</button>
-        <?php echo form_close(); ?>
-      </div>
-    </div>
-  </div>
-</div>
-<?php endforeach; ?>
-<!-- Akhir Modal Edit-->
 
 <!-- Modal Hapus Data-->
 

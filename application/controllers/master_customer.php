@@ -18,6 +18,17 @@ class Master_customer extends CI_Controller {
 		$this->template->load('template_pegawai', 'customer/data_customer', $data);
 	}
 
+	public function add()
+	{
+		$this->template->load('template_pegawai', 'customer/add_customer');
+	}
+
+	public function edit($id)
+	{
+		$data['row'] = $this->M_customer->get_customer($id)->row();
+		$this->template->load('template_pegawai', 'customer/edit_customer', $data);
+	}
+
 	function proses_add_data()
 	{
 		$this->M_customer->proses_add_data();

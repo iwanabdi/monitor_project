@@ -21,7 +21,7 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">No Telepon</label>
 		          <div class="col-sm-9">
-		            <input type="tel" min="0" maxlength="13" oninput="validAngka(this)" class="form-control" name="no_telp" id="no_telp" required>
+		            <input type="tel" min="0" maxlength="14" oninput="validAngka(this)" class="form-control" name="no_telp" id="no_telp" required>
 		          </div>
 		        </div>
 		        <div class="form-group row">

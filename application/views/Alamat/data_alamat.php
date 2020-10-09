@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-8">
       <h1 class="h3 mb-2 text-gray-800">Master alamat</h1>
-      <p class="mb-4">Edit atau tambah data untuk alamat disini</p>
+      <p class="mb-4">Data Semua Alamat yang aktif</p>
     </div>
     <div class="col-4">
       <?= $this->session->flashdata('pesan'); ?>
@@ -16,12 +16,12 @@
   <div class="card shadow mb-4">
     <div class="row card-header col-12 mx-auto">
       <div class="col-10 p-0 p-2">
-        <h5 class="m-0 font-weight-bold text-primary">DataTables alamat</h5>
+        <h5 class="m-0 font-weight-bold text-primary">Data alamat</h5>
       </div>
       <div class="col-2 p-0">
-        <button type="button" class="btn btn-success btn-block" id="btn" data-toggle="modal" data-target="#add_data">
+        <a href="<?= site_url('master_alamat/add')?>" class="btn btn-success btn-block" id="btn">
         <i class="fas fa-user-plus"></i> Add alamat
-        </button>
+        </a>
       </div>
     </div>
     <div class="card-body">
@@ -30,7 +30,7 @@
           <thead>
             <tr class="text-center">
 						  <th>No</th>
-							<th>ID</th>
+							<!-- <th>ID</th> -->
 							<th>Customer</th>
               <th>Jalan</th>
               <th>Kota</th>
@@ -46,7 +46,7 @@
           <tfoot>
             <tr class="text-center">
 						  <th>No</th>
-							<th>ID</th>
+							<!-- <th>ID</th> -->
 							<th>Customer</th>
 						  <th>Jalan</th>
               <th>Kota</th>
@@ -64,7 +64,7 @@
             foreach ($row->result() as $key => $data)  {?>
             <tr>
               <td><?=$no++;?></td>
-							<td><?=$data->alamat_id?></td>
+							<!-- <td><?=$data->alamat_id?></td> -->
 							<td><?=$data->nama_customer?></td>
               <td><?=$data->jalan?></td>
               <td><?=$data->kota?></td>
@@ -84,9 +84,9 @@
               <td><?=$data->kontak?></td>              
               <td><?=$data->no_telp?></td>              
               <td class="text-center" colspan="2">
-                <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#edit_modal<?=$data->alamat_id; ?>">
+                <a href="<?= site_url('master_alamat/edit/'.$data->alamat_id)?>" class="btn btn-warning btn-circle">
                     <i class="fas fa-user-edit"></i>
-                  </button>
+                </a>
                 <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->alamat_id;?>">
                     <i class="fas fa-user-times"></i>
                   </button>
@@ -358,7 +358,7 @@ foreach ($row->result() as $key => $data) : $no++; ?>
 <?php $no = 1;
 foreach ($row->result() as $key => $data) : $no++; ?>
 <div class="modal fade" id="hapus_modal<?=$data->alamat_id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Yakin ingin menghapus?</h5>

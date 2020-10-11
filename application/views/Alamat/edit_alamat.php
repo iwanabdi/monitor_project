@@ -79,7 +79,7 @@
 						<div class="form-group row">
 		          <label class="col-sm-3 col-form-label">No Telpon</label>
 		          <div class="col-sm-9">
-		            <input type="number" class="form-control" name="no_telp" id="no_telp" value="<?= $data->no_telp;?>">
+		            <input type="tel" minlength="9" maxlength="14" oninput="validAngka(this)" class="form-control" name="no_telp" id="no_telp" value="<?= $data->no_telp;?>">
 		          </div>
 		        </div>
 		        <div class="form-group row">

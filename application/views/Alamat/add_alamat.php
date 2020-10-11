@@ -17,7 +17,7 @@
 		          <label class="col-sm-3 col-form-label">Pilih Customer</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
-		              <input type="text" class="form-control" name="nama_customer" id="nama_customer" disabled=""	required="">
+		              <input type="text" class="form-control" name="nama_customer" id="nama_customer" disabled="" required="">
 		              <div class="input-group-append">
 		                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihcustomer"><i class="fas fa-search"></i></button>
 		              </div>
@@ -39,7 +39,7 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Provinsi</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" autofocus="" id="provinsi" name="provinsi" required="">
+		            <input type="text" class="form-control" id="provinsi" name="provinsi" required="">
 		          </div>
 		        </div>
 		        <div class="form-group row">
@@ -51,17 +51,31 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Koordinat</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" name="koordinat" id="koordinat" required>
+		            <a href="#collapseCardExample" class="d-block card-header py-2" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+				      <label class="m-0 font-weight-bold text-primary">Kordinat Alamat</label>
+				    </a>
+				    <!-- Card Content - Collapse -->
+				    <div class="collapse" id="collapseCardExample">
+				      <div class="card-body">
+				        <div class="form-group">
+				          <!-- <div class="col-sm-9"> -->
+				            <input type="text" class="form-control" name="koordinat" id="koordinat" value="-8.5830695,116.3202515">
+				          <!-- </div> -->
+				        </div>
+				        <div id="googleMap" style="width:100%;height:380px;"></div>
+				      </div>
+				    </div>
 		          </div>
 		        </div>
+
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Type</label>
 		          <div class="col-sm-9">
-								<select name="type" id="type" class="form-control custom-select" required="">
-		              <option selected disabled value="">Pilih Type</option>
-		              <option value="0">HO</option>
-		              <option value="1">Originating</option>
-									<option value="2">Terminating</option>
+					<select name="type" id="type" class="form-control custom-select" required="">
+	                	<option selected disabled value="">Pilih Type</option>
+		            	<option value="0">HO</option>
+		            	<option value="1">Originating</option>
+						<option value="2">Terminating</option>
 		            </select>
 		          </div>
 		        </div>
@@ -74,7 +88,7 @@
 						<div class="form-group row">
 		          <label class="col-sm-3 col-form-label">No Telpon</label>
 		          <div class="col-sm-9">
-		            <input type="number" class="form-control" name="no_telp" id="no_telp" required>
+		            <input type="tel" minlength="9" maxlength="14" oninput="validAngka(this)" class="form-control" name="no_telp" id="no_telp">
 		          </div>
 						</div>
 		        <div class="form-group row">
@@ -92,7 +106,10 @@
 			<!-- </div> -->
     	</form>
   </div>
+  <!-- End Card -->
+
 </div>
+<!-- End Container -->
 
 <!-- Modal customer-->
 <div class="modal fade" id="pilihcustomer" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -139,6 +156,21 @@
   </div>
 </div>
 
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript">
+	function initialize() {
+        var propertiPeta = {
+            center:new google.maps.LatLng(-8.5830695,116.3202515),
+            zoom:10,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+        
+    	var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+    }
+
+    // event jendela di-load  
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script type="text/javascript">

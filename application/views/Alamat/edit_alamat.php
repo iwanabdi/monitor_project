@@ -23,7 +23,9 @@
 		            <div class="input-group">
 		              <input type="text" class="form-control" name="nama_customer2" id="nama<?=$no?>" required="" disabled="" value="<?=$data->nama_customer?>">
 		              <div class="input-group-append">
-		                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#editcustomer<?=$no?>"><i class="fas fa-search"></i></button>
+		                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" 
+		                data-target="#editcustomer<?=$no?>" data-backdrop="static" data-keyboard="false"><i class="fas fa-search"></i>
+		                </button>
 		              </div>
 		            </div>
 		          </div>
@@ -31,7 +33,7 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Jalan</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" autofocus="" id="jalan" name="jalan" required="" value="<?= $data->jalan;?>">
+		            <input type="text" class="form-control" id="jalan" name="jalan" required="" value="<?= $data->jalan;?>">
 		          </div>
 		        </div>
 		        <div class="form-group row">
@@ -43,7 +45,7 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Provinsi</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" autofocus="" id="provinsi" name="provinsi" required="" value="<?=$data->provinsi;?>">
+		            <input type="text" class="form-control" id="provinsi" name="provinsi" required="" value="<?=$data->provinsi;?>">
 		          </div>
 		        </div>
 		        <div class="form-group row">
@@ -106,7 +108,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Silahkan Pilih Customer</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -116,7 +118,7 @@
           <div class="table-responsive">
             <table class="table table-bordered" width="100%" id="dataTable2" cellspacing="0">
               <thead>
-              <tr>
+              <tr class="text-center">
                 <th>ID</th>
                 <th>Nama Customer</th>
                 <th>Pilih</th>

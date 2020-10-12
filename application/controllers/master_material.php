@@ -18,6 +18,17 @@ class Master_material extends CI_Controller {
 		$this->template->load('template_pegawai', 'material/data_material', $data);
 	}
 
+	public function add()
+	{
+		$this->template->load('template_pegawai', 'material/add_material');
+	}
+
+	public function edit($id)
+	{
+		$data['row'] = $this->M_material->get_material($id)->row();
+		$this->template->load('template_pegawai', 'material/edit_material', $data);
+	}
+
 	function proses_add_data()
 	{
 		$this->M_material->proses_add_data();
@@ -30,10 +41,10 @@ class Master_material extends CI_Controller {
 
 	function proses_edit_data()
 	{
-		$this->M_material->proses_edit_data();
+		$this->M_material->tambah_stok();
 		$this->session->set_flashdata('pesan', 
 			'<div class="alert alert-info" role="alert">
-				Data Berhasil Diubah!
+				Stok Berhasil Ditambah!
 			</div>');
 		redirect('master_material','refresh');
 

@@ -15,6 +15,23 @@ class M_material extends CI_Model {
         return $query;
     }
 
+    public function tambah_stok()
+    {
+        $id = $this->input->post('id', true);
+        $this->db->select("(select stok from material where material_id = '$id') as stok", false);
+        $query = $this->db->get('material')->row();
+        $tambah_stok = $this->input->post('tambah_stok');
+        $hasil = intval($query->stok) + intval($tambah_stok);
+        $data = [
+            "stok"              => $hasil,
+            "update_by"         => $this->session->userdata('pegawai_id'),
+            "update_on"         => date('Y-m-d')
+        ];
+        $id = $this->input->post('id', true);
+        $this->db->where('material_id', $id);
+        $this->db->update('material', $data);
+    }
+
     function proses_add_data()
     {
     	$data = [

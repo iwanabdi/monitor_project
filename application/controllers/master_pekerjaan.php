@@ -18,6 +18,18 @@ class master_pekerjaan extends CI_Controller {
 		$this->template->load('template_pegawai', 'pekerjaan/data_pekerjaan', $data);
 	}
 
+	public function add()
+	{
+		$this->template->load('template_pegawai', 'pekerjaan/add_pekerjaan');
+	}
+
+	public function edit($id)
+	{
+		
+		$data['row'] = $this->M_pekerjaan->get_pekerjaan($id)->row();
+		$this->template->load('template_pegawai', 'pekerjaan/edit_pekerjaan', $data);
+	}
+
 	function proses_add_data()
 	{
 		$this->M_pekerjaan->proses_add_data();
@@ -50,5 +62,5 @@ class master_pekerjaan extends CI_Controller {
 
 }
 
-/* End of file master_pegawai.php */
+/* End of file master_pekerjaan.php */
 /* Location: ./application/controllers/master_pegawai.php */

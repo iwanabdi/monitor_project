@@ -12,7 +12,7 @@ class Auth extends CI_Controller {
 	public function login_pegawai()
 	{
 		ceksdh_login_pegawai();
-		$this->load->view('pegawai/login_pegawai');
+		$this->load->view('home1');
 	}
 
 	public function process_pegawai()
@@ -44,13 +44,13 @@ class Auth extends CI_Controller {
 					'<div class="alert alert-danger" role="alert">
 						Login Gagal! Akun anda tidak aktif.
 					</div>');
-				redirect('auth/login_pegawai','refresh');
+				redirect('');
 			}else{
 				$this->session->set_flashdata('pesan', 
 					'<div class="alert alert-danger" role="alert">
 						Login Gagal! Email atau Password Anda Salah.
 					</div>');
-				redirect('auth/login_pegawai','refresh');
+				redirect('');
 			}
 		}
 	}
@@ -64,7 +64,7 @@ class Auth extends CI_Controller {
 	public function login_mitra()
 	{
 		ceksdh_login_mitra();
-		$this->load->view('mitra/login_mitra');
+		$this->load->view('home1');
 	}
 
 	public function process_mitra()
@@ -90,7 +90,7 @@ class Auth extends CI_Controller {
 					'<div class="alert alert-danger" role="alert">
 						Login Gagal! Email atau Password Anda Salah.
 					</div>');
-				redirect('auth/login_mitra','refresh');
+				redirect('');
 			}
 		}
 	}

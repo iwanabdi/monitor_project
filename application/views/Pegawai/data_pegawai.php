@@ -79,7 +79,7 @@
                 <a href="<?= site_url('master_pegawai/edit/'.$data->pegawai_id)?>" class="btn btn-warning btn-circle">
                     <i class="fas fa-user-edit"></i>
                 </a>
-                <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->pegawai_id;?>">
+                <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->pegawai_id;?>" data-backdrop="static" data-keyboard="false">
                     <i class="fas fa-user-times"></i>
                   </button>
               </td>

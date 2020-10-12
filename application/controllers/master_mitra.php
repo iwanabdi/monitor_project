@@ -18,6 +18,18 @@ class Master_mitra extends CI_Controller {
 		$this->template->load('template_pegawai', 'mitra/data_mitra', $data);
 	}
 
+	public function add()
+	{
+		$this->template->load('template_pegawai', 'mitra/add_mitra');
+	}
+
+	public function edit($id)
+	{
+		
+		$data['row'] = $this->M_mitra->get_mitra($id)->row();
+		$this->template->load('template_pegawai', 'mitra/edit_mitra', $data);
+	}
+
 	function proses_add_data()
 	{
 		$this->M_mitra->proses_add_data();

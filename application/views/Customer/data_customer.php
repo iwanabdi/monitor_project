@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-8">
       <h1 class="h3 mb-2 text-gray-800">Master Customer</h1>
-      <p class="mb-4">Data Semua Customer yang aktif</p>
+      <p class="mb-4">Data Semua Customer Yang Aktif</p>
     </div>
     <div class="col-4">
       <?= $this->session->flashdata('pesan'); ?>
@@ -21,9 +21,9 @@
       </div>
       <?php if ($this->session->userdata('jabatan')<= 0) {?>
 				<div class="col-2 p-0">
-        <a href="<?= site_url('master_customer/add')?>" class="btn btn-success btn-block" id="btn">
-        <i class="fas fa-user-plus"></i> Add Customer
-        </a>
+          <a href="<?= site_url('master_customer/add')?>" class="btn btn-success btn-block" id="btn">
+          <i class="fas fa-user-plus"></i> Add Customer
+          </a>
       </div>
 			<?php }?>
       
@@ -33,7 +33,7 @@
         <!-- <?php print_r($row->result()) ?> -->
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
-            <tr>
+            <tr class="text-center">
               <th>No</th>
               <!-- <th>ID</th> -->
               <th>Nama Customer</th>
@@ -49,7 +49,7 @@
             </tr>
           </thead>
           <tfoot>
-            <tr>
+            <tr class="text-center">
               <th>No</th>
               <!-- <th>ID</th> -->
               <th>Nama Customer</th>
@@ -80,7 +80,7 @@
 									<a href="<?= site_url('master_customer/edit/'.$data->customer_id)?>" class="btn btn-warning btn-circle">
 										<i class="fas fa-user-edit"></i>
 									</a>
-									<button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->customer_id;?>">
+									<button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->customer_id;?>" data-backdrop="static" data-keyboard="false">
 											<i class="fas fa-user-times"></i>
 									</button>
 								</td>
@@ -100,7 +100,7 @@
 
 <?php $no = 1;
 foreach ($row->result() as $key => $data) : $no++; ?>
-<div class="modal fade" id="hapus_modal<?=$data->customer_id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="hapus_modal<?=$data->customer_id?>" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

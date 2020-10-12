@@ -18,6 +18,17 @@ class Master_product extends CI_Controller {
 		$this->template->load('template_pegawai', 'product/data_product', $data);
 	}
 
+	public function add()
+	{
+		$this->template->load('template_pegawai', 'product/add_product');
+	}
+
+	public function edit($id)
+	{
+		$data['row'] = $this->M_product->get_product($id)->row();
+		$this->template->load('template_pegawai', 'product/edit_product', $data);
+	}
+
 	function proses_add_data()
 	{
 		$this->M_product->proses_add_data();

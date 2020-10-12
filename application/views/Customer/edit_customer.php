@@ -35,7 +35,7 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Alamat</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" autofocus="" id="alamat" name="alamat" value="<?= $row->alamat;?>" required>
+		            <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $row->alamat;?>" required>
 		          </div>
 		        </div>
 		        <div class="form-group row">

@@ -19,7 +19,8 @@
 		            <div class="input-group">
 		              <input type="text" class="form-control" name="nama_customer" id="nama_customer" disabled="" required="">
 		              <div class="input-group-append">
-		                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihcustomer"><i class="fas fa-search"></i></button>
+		                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihcustomer" data-backdrop="static" data-keyboard="false"><i class="fas fa-search"></i>
+		                </button>
 		              </div>
 		            </div>
 		          </div>
@@ -27,13 +28,13 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Jalan</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" autofocus="" id="jalan" name="jalan" required="">
+		            <input type="text" class="form-control" id="jalan" name="jalan" required="">
 		          </div>
 		        </div>
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Kota</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" autofocus="" id="kota" name="kota" required="">
+		            <input type="text" class="form-control" id="kota" name="kota" required="">
 		          </div>
 		        </div>
 		        <div class="form-group row">
@@ -116,7 +117,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Silahkan Pilih Customer</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -126,7 +127,7 @@
           <div class="table-responsive">
             <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
               <thead>
-              <tr>
+              <tr class="text-center">
                 <th>ID</th>
                 <th>Nama Customer</th>
                 <th>Pilih</th>

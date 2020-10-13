@@ -22,7 +22,7 @@ class M_alamat extends CI_Model {
     		"jalan" 		=> $this->input->post('jalan'),
     		"kota"			=> $this->input->post('kota'),
     		"provinsi"		=> $this->input->post('provinsi'),
-    		"negara"		=> $this->input->post('negara'),
+    		"negara"		=> 'Indonesia',
     		"koordinat"		=> $this->input->post('koordinat'),
     		"type"			=> $this->input->post('type'),
     		"kontak"		=> $this->input->post('kontak'),
@@ -35,27 +35,20 @@ class M_alamat extends CI_Model {
     	$this->db->insert('alamat', $data);
     }
 
-   //  function ambil_id_pegawai($id)
-   //  {
-   //  	return $this->db->get_where('pegawai', ['id' => $id))
-			// ->row_array();
-   //  }
-
     function proses_edit_data()
     {
     	
     		$data = [
 	    		"jalan" 		=> $this->input->post('jalan'),
 	    		"kota"			=> $this->input->post('kota'),
-	    		"provinsi"				=> $this->input->post('provinsi'),
-	    		"negara"			=> $this->input->post('negara'),
-	    		"koordinat"				=> $this->input->post('koordinat'),
-	    		"type"				=> $this->input->post('type'),
-	    		"kontak"			=> $this->input->post('kontak'),
-	    		"no_telp"			=> $this->input->post('no_telp'),
-				"update_by" 		=> $this->session->userdata('pegawai_id'),
-				"customer_id"   	=> $this->input->post('customer_id2'),
-				"update_on"   		=> date("Y-m-d")
+	    		"provinsi"		=> $this->input->post('provinsi'),
+	    		"koordinat"		=> $this->input->post('koordinat'),
+	    		"type"			=> $this->input->post('type'),
+	    		"kontak"		=> $this->input->post('kontak'),
+	    		"no_telp"		=> $this->input->post('no_telp'),
+				"update_by" 	=> $this->session->userdata('pegawai_id'),
+				"customer_id"   => $this->input->post('customer_id2'),
+				"update_on"   	=> date("Y-m-d")
 	    	];
     	
     	$id = $this->input->post('id', true);

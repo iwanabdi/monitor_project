@@ -26,29 +26,33 @@
 		          </div>
 		        </div>
 		        <div class="form-group row">
-		          <label class="col-sm-3 col-form-label">Jalan</label>
+		          <label class="col-sm-3 col-form-label">Provinsi</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" id="jalan" name="jalan" required="">
+		            <select name="provinsi" id="provinsi" class="form-control custom-select" data-live-search="true" required>
+		            	
+		            </select>
 		          </div>
 		        </div>
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Kota</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" id="kota" name="kota" required="">
+		            <select name="kota" id="kota" class="form-control custom-select" data-live-search="true" required>
+		            	
+		            </select>
 		          </div>
 		        </div>
 		        <div class="form-group row">
+		          <label class="col-sm-3 col-form-label">Jalan</label>
+		          <div class="col-sm-9">
+		            <input type="text" class="form-control" id="jalan" name="jalan" required="">
+		          </div>
+		        </div>
+		        <!-- <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Provinsi</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" id="provinsi" name="provinsi" required="">
+		            <input type="text" class="form-control" id="provinsi" name="provinsi" required="" >
 		          </div>
-		        </div>
-		        <div class="form-group row">
-		          <label class="col-sm-3 col-form-label">Negara</label>
-		          <div class="col-sm-9">
-		            <input type="text" class="form-control" name="negara" id="negara" required>
-		          </div>
-		        </div>
+		        </div> -->
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Koordinat</label>
 		          <div class="col-sm-9">
@@ -173,7 +177,6 @@
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     $(document).on('click', '#select', function() {
@@ -187,8 +190,6 @@
 </script>
 <!-- Akhir Modal customer Data -->
 
-
-
 <script language='javascript'>
 function validAngka(a)
 {
@@ -197,4 +198,33 @@ function validAngka(a)
     a.value = a.value.substring(0,a.value.length-1000);
     }
 }
+</script>
+
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			type:'post',
+			url:'<?= site_url('assets/api/Provinsi.php')?>',
+			success:function(hasil_provinsi)
+			{
+				$("select[name=provinsi]").html(hasil_provinsi);
+				// console.log(hasil_provinsi);
+			}
+		});
+
+		$("select[name=provinsi]").on("change",function(){
+			var id_provinsi = $("option:selected",this).attr("id_provinsi");
+			$.ajax({
+				type:'post',
+				url:'<?= site_url('assets/api/Kota.php')?>',
+				data:'id_provinsi='+id_provinsi,
+				success:function(hasil_kota)
+				{
+					$("select[name=kota]").html(hasil_kota);
+					// console.log(hasil_kota);
+				}
+			})
+		})
+
+	});
 </script>

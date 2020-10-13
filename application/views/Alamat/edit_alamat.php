@@ -31,21 +31,29 @@
 		          </div>
 		        </div>
 		        <div class="form-group row">
-		          <label class="col-sm-3 col-form-label">Jalan</label>
+		          <label class="col-sm-3 col-form-label">Provinsi</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" id="jalan" name="jalan" required="" value="<?= $data->jalan;?>">
+		            <select name="provinsi" id="provinsi" class="form-control custom-select" data-live-search="true" required>
+		            	<option selected value="<?= $data->provinsi?>" nama_provinsi="<?=$data->provinsi?>"><?=$data->provinsi?>
+		            		
+		            	</option>
+		            </select>
 		          </div>
 		        </div>
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Kota</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" id="kota" name="kota" value="<?= $data->kota;?>" required="">
+		            <select name="kota" id="kota" class="form-control custom-select" data-live-search="true" required>
+		            	<option selected value="<?= $data->kota?>" nama_kota="<?=$data->kota?>"><?=$data->kota?>
+		            		
+		            	</option>
+		            </select>
 		          </div>
 		        </div>
 		        <div class="form-group row">
-		          <label class="col-sm-3 col-form-label">Provinsi</label>
+		          <label class="col-sm-3 col-form-label">Jalan</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" id="provinsi" name="provinsi" required="" value="<?=$data->provinsi;?>">
+		            <input type="text" class="form-control" id="jalan" name="jalan" required="" value="<?= $data->jalan;?>">
 		          </div>
 		        </div>
 		        <div class="form-group row">
@@ -147,7 +155,6 @@
   </div>
 </div>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     $(document).on('click', '#edit', function() {
@@ -170,4 +177,35 @@ function validAngka(a)
     a.value = a.value.substring(0,a.value.length-1000);
     }
 }
+</script>
+
+<script>
+	$(document).ready(function(){
+		var nama_provinsi = $("option:selected",this).attr('nama_provinsi');
+		$.ajax({
+			type:'post',
+			url:'<?= site_url('assets/api/Provinsi.php')?>',
+			data:'nama_provinsi='+nama_provinsi,
+			success:function(hasil_provinsi)
+			{
+				$("select[name=provinsi]").html(hasil_provinsi);
+				console.log(nama_provinsi);
+			}
+		})
+
+		$("select[name=provinsi]").on("change",function(){
+			var id_provinsi = $("option:selected",this).attr("id_provinsi");
+			$.ajax({
+				type:'post',
+				url:'<?= site_url('assets/api/Kota.php')?>',
+				data:'id_provinsi='+id_provinsi,
+				success:function(hasil_kota)
+				{
+					$("select[name=kota]").html(hasil_kota);
+					console.log(id_provinsi);
+				}
+			})
+		})
+
+	})
 </script>

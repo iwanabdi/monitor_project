@@ -27,7 +27,7 @@ class Master_alamat extends CI_Controller {
 
 	public function add()
 	{
-		$data['rowcustomer'] = $this->M_customer->get_customer();
+		$data['rowcustomer'] 	= $this->M_customer->get_customer();
 		$this->template->load('template_pegawai', 'alamat/add_alamat', $data);
 	}
 

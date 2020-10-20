@@ -20,7 +20,7 @@
       </div>
       <div class="col-2 p-0">
         <a href="<?= site_url('project/add')?>" class="btn btn-success btn-block" id="btn">
-        <i class="fas fa-user-plus"></i> Add Project
+        <i class="fas fa-plus"></i> Add Project
         </a>
       </div>
     </div>

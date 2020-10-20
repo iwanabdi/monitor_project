@@ -29,6 +29,12 @@ class Master_material extends CI_Controller {
 		$this->template->load('template_pegawai', 'material/edit_material', $data);
 	}
 
+	public function item($id)
+	{
+		$data['row'] = $this->M_material->get_material($id)->row();
+		$this->template->load('template_pegawai', 'material/add_sn', $data);
+	}
+
 	function proses_add_data()
 	{
 		$this->M_material->proses_add_data();

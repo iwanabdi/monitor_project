@@ -20,7 +20,7 @@
       </div>
       <div class="col-2 p-0">
         <a href="<?= site_url('master_product/add')?>" class="btn btn-success btn-block" id="btn">
-        <i class="fas fa-user-plus"></i> Add Product
+        <i class="fas fa-plus"></i> Add Product
         </a>
       </div>
     </div>
@@ -59,10 +59,10 @@
               <td><?=$data->satuan?></td>
               <td class="text-center" colspan="2">
                 <a href="<?= site_url('master_product/edit/'.$data->product_id)?>" class="btn btn-warning btn-circle">
-                    <i class="fas fa-user-edit"></i>
+                    <i class="fas fa-edit"></i>
                   </a>
                 <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->product_id;?>" data-backdrop="static" data-keyboard="false">
-                    <i class="fas fa-user-times"></i>
+                    <i class="fas fa-trash-alt"></i>
                   </button>
               </td>
             </tr>

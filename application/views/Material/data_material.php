@@ -22,7 +22,7 @@
       <?php if ($this->session->userdata('jabatan')== -1 || $this->session->userdata('jabatan')== 3) {?>
 				<div class="col-2 p-0">
           <a href="<?= site_url('master_material/add')?>" class="btn btn-success btn-block" id="btn">
-          <i class="fas fa-user-plus"></i> Add Material
+          <i class="fas fa-plus"></i> Add Material
           </a>
         </div>
 			<?php }?>
@@ -68,12 +68,15 @@
               <td><?=$data->stok?></td>
               <td><?=$data->storage_bin?></td>
               <?php if ($this->session->userdata('jabatan')== -1 || $this->session->userdata('jabatan')== 3) {?>
-								<td class="text-center" colspan="2">
+								<td class="text-center" colspan="3">
 									<a href="<?= site_url('master_material/edit/'.$data->material_id)?>" class="btn btn-warning btn-circle">
-                    <i class="fas fa-user-edit"></i>
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a href="<?= site_url('master_material/item/'.$data->material_id)?>" class="btn btn-primary btn-circle">
+                    <i class="fas fa-plus-square"></i>
                   </a>
 									<button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->material_id;?>" data-backdrop="static" data-keyboard="false">
-											<i class="fas fa-user-times"></i>
+											<i class="fas fa-trash-alt"></i>
 										</button>
 								</td>
 							<?php }?>

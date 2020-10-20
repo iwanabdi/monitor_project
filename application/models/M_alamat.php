@@ -9,7 +9,7 @@ class M_alamat extends CI_Model {
 		$this->db->from('alamat as a');
 		$this->db->join('customer as c','a.customer_id=c.customer_id',"LEFT");
 		if ($id != null) {
-			$this->db->where('a.customer', $id);
+			$this->db->where('a.alamat_id', $id);
 		}
 		$this->db->where('a.status', 1);
 		$query = $this->db->get();

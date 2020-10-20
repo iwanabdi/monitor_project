@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2020 at 03:46 PM
+-- Generation Time: Oct 20, 2020 at 09:30 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -53,7 +53,11 @@ CREATE TABLE `alamat` (
 --
 
 INSERT INTO `alamat` (`alamat_id`, `jalan`, `kota`, `provinsi`, `negara`, `koordinat`, `type`, `kontak`, `no_telp`, `create_on`, `create_by`, `update_on`, `update_by`, `delete_on`, `delete_by`, `status`, `customer_id`) VALUES
-(1, 'ketintang', 'surabaya', 'jawa timur', 'indonesia', '12312131313', 2, '123123', '12313', '0000-00-00', 1, '0000-00-00', 0, '0000-00-00', 0, 1, 2);
+(1, 'ketintang', 'surabaya', 'jawa timur', 'indonesia', '12312131313', 0, 'roni', '12313', '0000-00-00', 1, '2020-10-05', 7, '0000-00-00', 0, 1, 2),
+(2, 'maospati', 'sidoarjo', 'jawa timur', 'indonesia', '-7.123, 114.3543', 2, 'alex', '123', '2020-10-05', 7, '2020-10-05', 7, '0000-00-00', 0, 1, 3),
+(4, 'mall', 'malang', 'jawa timur', 'indonesia', '-7', 2, 'bambang', '123', '2020-10-05', 7, '2020-10-06', 7, '0000-00-00', 0, 1, 3),
+(5, 'blitar', 'blitar', 'jawa timur', 'indonesia', '-8,413', 2, 'marvel', '8987', '2020-10-06', 7, '0000-00-00', 0, '2020-10-06', 7, 0, 3),
+(6, 'mall', 'malang', 'jawa timur', 'indonesia', '-7.12313142,112.1231345', 0, 'ara', '09898', '2020-10-06', 7, '2020-10-06', 7, '2020-10-06', 7, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -84,7 +88,159 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`customer_id`, `nama_customer`, `phone`, `fax`, `alamat`, `email`, `npwp`, `create_on`, `create_by`, `update_on`, `update_by`, `delete_on`, `delete_by`, `status`) VALUES
 (1, 'aaaaaa', '', '1111111', 'surabayaaaa', 'intiland@gmail.comaa', 2147483647, '0000-00-00', 1, '0000-00-00', 0, '2020-10-03', 0, 0),
-(2, 'rene', '678', '09888', 'mana yo', 'mana@gmail.com', 9878, '0000-00-00', 1, '2020-10-05', 0, '0000-00-00', 0, 1);
+(2, 'rene', '678', '09888', 'mana yo', 'mana@gmail.com', 9878, '0000-00-00', 1, '2020-10-05', 0, '0000-00-00', 0, 1),
+(3, 'dispenda', '031', '031', 'manyar', 'dispenda@dispenda.com', 12314, '2020-10-05', 7, '0000-00-00', 0, '0000-00-00', 0, 1),
+(4, 'holand', '123476', '2346', 'malang malang lmang blitar malang lmang blitar', 'holan@holan.com', 2147483647, '2020-10-06', 7, '2020-10-06', 0, '0000-00-00', 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dgi`
+--
+
+CREATE TABLE `dgi` (
+  `gi_no` int(11) NOT NULL,
+  `material_id` int(11) NOT NULL,
+  `batch` int(11) NOT NULL,
+  `serial_number` int(11) NOT NULL,
+  `storage_bin` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `create_on` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_on` int(11) NOT NULL,
+  `update_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dpo`
+--
+
+CREATE TABLE `dpo` (
+  `po_no` int(11) NOT NULL,
+  `pekerjaan_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `delivery_date` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `create_on` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dreservasi`
+--
+
+CREATE TABLE `dreservasi` (
+  `reservasi_no` int(11) NOT NULL,
+  `material_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `create_on` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_on` int(11) NOT NULL,
+  `update_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dstg`
+--
+
+CREATE TABLE `dstg` (
+  `project_id` int(11) NOT NULL,
+  `no_stg` int(11) NOT NULL,
+  `target_date` int(11) NOT NULL,
+  `create_on` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_on` int(11) NOT NULL,
+  `update_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hgi`
+--
+
+CREATE TABLE `hgi` (
+  `gi_no` int(11) NOT NULL,
+  `reservasi_no` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `create_on` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hpo`
+--
+
+CREATE TABLE `hpo` (
+  `po_no` int(11) NOT NULL,
+  `mitra_id` int(11) NOT NULL,
+  `io_number` int(11) NOT NULL,
+  `pegawai_id` int(11) NOT NULL,
+  `project_name` int(11) NOT NULL,
+  `sub_total` int(11) NOT NULL,
+  `net_price` int(11) NOT NULL,
+  `create_on` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hreservasi`
+--
+
+CREATE TABLE `hreservasi` (
+  `reservasi_no` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `no_wo` int(11) NOT NULL,
+  `lokasi` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `create_on` int(11) NOT NULL,
+  `update_by` int(11) NOT NULL,
+  `update_on` int(11) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hstg`
+--
+
+CREATE TABLE `hstg` (
+  `nomer_stg` int(11) NOT NULL,
+  `pegawai_id` int(11) NOT NULL,
+  `mitra_id` int(11) NOT NULL,
+  `create_on` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_on` int(11) NOT NULL,
+  `update_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `laporan`
+--
+
+CREATE TABLE `laporan` (
+  `laporan_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `mitra_id` int(11) NOT NULL,
+  `file_pdf` int(11) NOT NULL,
+  `file_gdb` int(11) NOT NULL,
+  `file_bom` int(11) NOT NULL,
+  `create_on` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_on` int(11) NOT NULL,
+  `update_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -107,6 +263,15 @@ CREATE TABLE `material` (
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `material`
+--
+
+INSERT INTO `material` (`material_id`, `nama_material`, `brand`, `stok`, `storage_bin`, `create_by`, `create_on`, `update_by`, `update_on`, `delete_by`, `delete_on`, `status`) VALUES
+(1, 'mikrotik rb2011', 'mikrotik', 10, '9-1', 7, '2020-10-05', 7, '2020-10-05', 0, '0000-00-00', 1),
+(2, 'drop wire', 'fiberhome', 1000, '9-4', 5, '2020-10-05', 0, '0000-00-00', 0, '0000-00-00', 1),
+(3, 'access point ', 'unifi', 20, '5-6', 7, '2020-10-06', 0, '0000-00-00', 0, '0000-00-00', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -121,7 +286,7 @@ CREATE TABLE `mitra` (
   `no_telp` varchar(20) NOT NULL,
   `fax` varchar(20) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(200) NOT NULL,
   `npwp` varchar(20) NOT NULL,
   `create_by` int(10) NOT NULL,
   `create_on` date NOT NULL,
@@ -137,7 +302,8 @@ CREATE TABLE `mitra` (
 --
 
 INSERT INTO `mitra` (`mitra_id`, `nama_mitra`, `alamat`, `kota`, `no_telp`, `fax`, `email`, `password`, `npwp`, `create_by`, `create_on`, `update_by`, `update_on`, `delete_by`, `delete_on`, `status`) VALUES
-(1, 'mitra', 'mitra', 'surabaya', '1231', '1231', 'mitra@test.com', '92706ba4fd3022cede6d', '345345', 4, '0000-00-00', 1, '0000-00-00', 0, '0000-00-00', 1);
+(1, 'mitra', 'mitra', 'surabaya', '1231', '1231', 'mitra@test.com', '92706ba4fd3022cede6d1610b17a0d2d', '345345', 4, '0000-00-00', 1, '0000-00-00', 0, '0000-00-00', 1),
+(2, 'java', 'kebonsari', 'surabaya', '2345', '12313', 'java@java.com', '93f725a07423fe1c889f448b33d21f46', '123213', 4, '2020-10-06', 4, '0000-00-00', 4, '2020-10-06', 0);
 
 -- --------------------------------------------------------
 
@@ -171,8 +337,9 @@ INSERT INTO `pegawai` (`pegawai_id`, `nama_pegawai`, `no_telp`, `email`, `passwo
 (3, 'admin', '456', 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 2, 1, '0000-00-00', 1, '0000-00-00', 0, '0000-00-00', 1),
 (4, 'spv', '789', 'spv@gmail.com', 'f4984324c6673ce07aafac15600af26e', 0, 1, '0000-00-00', 0, '0000-00-00', 0, '0000-00-00', 1),
 (5, 'gudang', '87', 'gudang@gmail.com', '202446dd1d6028084426867365b0c7a1', 3, 4, '0000-00-00', 0, '0000-00-00', 0, '0000-00-00', 1),
-(6, 'qc', '123', 'qc@gmai.com', '9300c96aaec324987ea5ca6e13a02eda', 4, 1, '0000-00-00', 0, '0000-00-00', 0, '0000-00-00', 1),
-(7, 'dev', '123', 'dev@test.com', 'e77989ed21758e78331b20e477fc5582', -1, 1, '0000-00-00', 0, '0000-00-00', 0, '0000-00-00', 1);
+(6, 'qc', '123', 'qc@gmail.com', '9300c96aaec324987ea5ca6e13a02eda', 4, 1, '0000-00-00', 7, '0000-00-00', 0, '0000-00-00', 1),
+(7, 'dev', '123', 'dev@test.com', 'e77989ed21758e78331b20e477fc5582', -1, 1, '0000-00-00', 0, '0000-00-00', 7, '2020-10-06', 0),
+(8, 'hansen', '353', 'rolan@email.com', 'ee21d5f27a8401788147f6f6184ddb11', 0, 7, '2020-10-06', 7, '0000-00-00', 7, '2020-10-06', 0);
 
 -- --------------------------------------------------------
 
@@ -212,7 +379,7 @@ CREATE TABLE `product` (
   `product_id` int(10) NOT NULL,
   `nama_product` varchar(200) NOT NULL,
   `bandwith` int(200) NOT NULL,
-  `satuan` int(11) NOT NULL,
+  `satuan` varchar(100) NOT NULL,
   `status` int(1) NOT NULL,
   `create_on` date NOT NULL,
   `create_by` int(10) NOT NULL,
@@ -227,7 +394,72 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `nama_product`, `bandwith`, `satuan`, `status`, `create_on`, `create_by`, `update_on`, `update_by`, `delete_on`, `delete_by`) VALUES
-(1, 'as', 1231, 0, 1, '0000-00-00', 1, '0000-00-00', 0, '0000-00-00', 0);
+(1, 'internet', 100, 'mbps', 1, '0000-00-00', 1, '2020-10-06', 7, '0000-00-00', 0),
+(2, 'metronet', 20, 'mbps', 0, '2020-10-06', 7, '0000-00-00', 0, '2020-10-06', 7),
+(3, 'internet', 10, 'mbps', 1, '2020-10-06', 7, '0000-00-00', 0, '0000-00-00', 0),
+(4, 'metronet', 2, 'mbps', 1, '2020-10-06', 7, '0000-00-00', 0, '0000-00-00', 0),
+(5, 'collocation', 1, 'rack', 1, '2020-10-06', 7, '0000-00-00', 0, '0000-00-00', 0),
+(6, 'internet', -5, 'mbps', 1, '2020-10-06', 7, '0000-00-00', 0, '0000-00-00', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project`
+--
+
+CREATE TABLE `project` (
+  `project_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `pegawai_id` int(11) NOT NULL,
+  `survey_id` int(11) NOT NULL,
+  `testcom_id` int(11) NOT NULL,
+  `alamat_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `laporan_id` int(11) NOT NULL,
+  `IO` int(11) NOT NULL,
+  `SID` int(11) NOT NULL,
+  `status_project` int(11) NOT NULL,
+  `create_on` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_on` int(11) NOT NULL,
+  `update_by` int(11) NOT NULL,
+  `delete_by` int(11) NOT NULL,
+  `delete_on` int(11) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `survey`
+--
+
+CREATE TABLE `survey` (
+  `survey_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `file_survey` int(11) NOT NULL,
+  `create_on` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_on` int(11) NOT NULL,
+  `update_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testcom`
+--
+
+CREATE TABLE `testcom` (
+  `testcom_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `file_bai` int(11) NOT NULL,
+  `file_testcom` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `create_on` int(11) NOT NULL,
+  `delete_by` int(11) NOT NULL,
+  `delete_on` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -283,31 +515,31 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `alamat`
 --
 ALTER TABLE `alamat`
-  MODIFY `alamat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `alamat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `material`
 --
 ALTER TABLE `material`
-  MODIFY `material_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `material_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `mitra`
 --
 ALTER TABLE `mitra`
-  MODIFY `mitra_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `mitra_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `pegawai_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `pegawai_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `pekerjaan`
@@ -319,7 +551,7 @@ ALTER TABLE `pekerjaan`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

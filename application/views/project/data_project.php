@@ -33,8 +33,8 @@
 				<th>Project ID</th>
 				<th>Customer Name</th>
 				<th>Status</th>
-              	<th>Aging</th>
-              	<th>Product</th>
+      	<th>Aging</th>
+      	<th>Product</th>
 				<th>IO</th>
 				<th>SID</th>
 				<th>Project Manager</th>
@@ -47,7 +47,7 @@
             <?php
             foreach ($row->result() as $key => $data)  {?>
             <tr>
-              <td><?=$data->project_id?></td>
+              <td><a href="<?= site_url('project/test/'.$data->project_id)?>"><?=$data->project_id?></a></td>
               <td><?=$data->nama_customer?></td>
               <td>#nanti</td>
               <td>#nanti</td>

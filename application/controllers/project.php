@@ -21,6 +21,12 @@ class project extends CI_Controller {
 		$this->template->load('template_pegawai', 'project/data_project', $data);
 	}
 
+	public function test($id)
+	{
+		$data['row'] = $this->M_project->get_project($id)->row();
+		$this->template->load('template_pegawai', 'project/detail_project', $data);
+	}
+
 	public function add()
 	{
 		$data['customer'] = $this->M_customer->get_customer();

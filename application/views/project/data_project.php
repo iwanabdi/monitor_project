@@ -73,7 +73,7 @@
 </div>
 <!-- /.container-fluid -->
 
-<!-- Modal Hapus Data-->
+<!-- Modal Dispos-->
 
 <?php $no = 1;
 foreach ($row->result() as $key => $data) : $no++; ?>
@@ -89,7 +89,7 @@ foreach ($row->result() as $key => $data) : $no++; ?>
       <div class="modal-body">
         <?php echo form_open_multipart('master_product/hapus_data'); ?>
         <input type="hidden" id="id" name="id" value="<?=$data->product_id?>">
-        <p>Anda akan menghapus data "<?=$data->nama_product ?>"</p>
+        <p>Anda akan dispose PA ini "<?=$data->nama_product ?>"</p>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
@@ -100,4 +100,4 @@ foreach ($row->result() as $key => $data) : $no++; ?>
   </div>
 </div>
 <?php endforeach; ?>
-<!-- Akhir Modal Hapus Data -->
+<!-- Akhir Modal dispos Data -->

@@ -149,8 +149,8 @@
                 <th>Nama Customer</th>
                 <th>Jalan</th>
                 <th>Kota</th>
-				<th>Provinsi</th>	
-				<th>Koordinat</th>
+								<th>Provinsi</th>	
+								<th>Koordinat</th>
                 <th>Pilih</th>
               </tr>
             </thead>

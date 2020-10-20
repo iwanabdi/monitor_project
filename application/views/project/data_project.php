@@ -51,12 +51,12 @@
               <td><?=$data->nama_customer?></td>
               <td>#nanti</td>
               <td>#nanti</td>
-              <td><?=$data->nama_product?></td>
-			  <td>#generate</td>
+              <td><?=$data->nama_product,' ',$data->bandwith,$data->satuan?></td>
+			 			 	<td>#generate</td>
               <td>#generate</td>
-			  <td><?=$data->nama_pegawai?></td>
-			  <td><?=$data->jalan?> <?=$data->kota?> ,<?=$data->provinsi?></td>
-			  <td><?=$data->create_on?></td>
+			  			<td><?=$data->nama_pegawai?></td>
+			  			<td><?=$data->jalan,', ',$data->kota,', ',$data->provinsi?></td>
+			  			<td><?=$data->create_on?></td>
               <td class="text-center">
                 <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->product_id;?>" data-backdrop="static" data-keyboard="false">
                     <i class="fas fa-user-times"></i>

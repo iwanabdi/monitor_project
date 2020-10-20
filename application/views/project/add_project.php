@@ -167,7 +167,7 @@
                 <td class="text-center">
                 <button class="btn btn-info" id="selectalamat"
                 data-id="<?= $data->alamat_id?>" 
-                data-alamat="<?= $data->jalan,' ',$data->kota,' ',$data->provinsi?>"
+                data-alamat="<?= $data->jalan,', ',$data->kota,', ',$data->provinsi?>"
                 data-pilih="<?= $data->nama_customer?>">Pilih
                 </button>
                 </td>

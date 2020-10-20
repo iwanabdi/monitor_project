@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2020 at 09:30 AM
+-- Generation Time: Oct 20, 2020 at 01:08 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -105,6 +105,22 @@ CREATE TABLE `dgi` (
   `serial_number` int(11) NOT NULL,
   `storage_bin` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
+  `create_on` int(11) NOT NULL,
+  `create_by` int(11) NOT NULL,
+  `update_on` int(11) NOT NULL,
+  `update_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dmaterial`
+--
+
+CREATE TABLE `dmaterial` (
+  `material_id` int(11) NOT NULL,
+  `SN` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
   `create_on` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
   `update_on` int(11) NOT NULL,
@@ -410,23 +426,30 @@ INSERT INTO `product` (`product_id`, `nama_product`, `bandwith`, `satuan`, `stat
 CREATE TABLE `project` (
   `project_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `pegawai_id` int(11) NOT NULL,
-  `survey_id` int(11) NOT NULL,
-  `testcom_id` int(11) NOT NULL,
+  `pegawai_id` int(11) DEFAULT NULL,
+  `survey_id` int(11) DEFAULT NULL,
+  `testcom_id` int(11) DEFAULT NULL,
   `alamat_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `laporan_id` int(11) NOT NULL,
-  `IO` int(11) NOT NULL,
-  `SID` int(11) NOT NULL,
-  `status_project` int(11) NOT NULL,
-  `create_on` int(11) NOT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_on` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
-  `delete_by` int(11) NOT NULL,
-  `delete_on` int(11) NOT NULL,
-  `status` int(11) NOT NULL
+  `laporan_id` int(11) DEFAULT NULL,
+  `IO` int(11) DEFAULT NULL,
+  `SID` int(11) DEFAULT NULL,
+  `status_project` int(11) DEFAULT NULL,
+  `create_on` date DEFAULT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_on` date DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `delete_by` int(11) DEFAULT NULL,
+  `delete_on` date DEFAULT NULL,
+  `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `project`
+--
+
+INSERT INTO `project` (`project_id`, `customer_id`, `pegawai_id`, `survey_id`, `testcom_id`, `alamat_id`, `product_id`, `laporan_id`, `IO`, `SID`, `status_project`, `create_on`, `create_by`, `update_on`, `update_by`, `delete_by`, `delete_on`, `status`) VALUES
+(1, 3, NULL, NULL, NULL, 2, 1, NULL, NULL, NULL, NULL, '2020-10-18', 4, NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -508,6 +531,12 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`);
 
 --
+-- Indexes for table `project`
+--
+ALTER TABLE `project`
+  ADD PRIMARY KEY (`project_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -552,6 +581,12 @@ ALTER TABLE `pekerjaan`
 --
 ALTER TABLE `product`
   MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `project`
+--
+ALTER TABLE `project`
+  MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

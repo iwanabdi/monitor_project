@@ -121,7 +121,7 @@
 			<?php } ?>
 			
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?= site_url('project')?>">
           <i class="fas fa-fw fa-business-time"></i>
           <span>Project</span></a>
       </li>

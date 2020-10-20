@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2020 at 01:08 PM
+-- Generation Time: Oct 20, 2020 at 01:18 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -72,7 +72,7 @@ CREATE TABLE `customer` (
   `fax` varchar(20) NOT NULL,
   `alamat` varchar(500) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `npwp` int(20) NOT NULL,
+  `npwp` varchar(20) NOT NULL,
   `create_on` date NOT NULL,
   `create_by` int(10) NOT NULL,
   `update_on` date NOT NULL,
@@ -87,10 +87,10 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`customer_id`, `nama_customer`, `phone`, `fax`, `alamat`, `email`, `npwp`, `create_on`, `create_by`, `update_on`, `update_by`, `delete_on`, `delete_by`, `status`) VALUES
-(1, 'aaaaaa', '', '1111111', 'surabayaaaa', 'intiland@gmail.comaa', 2147483647, '0000-00-00', 1, '0000-00-00', 0, '2020-10-03', 0, 0),
-(2, 'rene', '678', '09888', 'mana yo', 'mana@gmail.com', 9878, '0000-00-00', 1, '2020-10-05', 0, '0000-00-00', 0, 1),
-(3, 'dispenda', '031', '031', 'manyar', 'dispenda@dispenda.com', 12314, '2020-10-05', 7, '0000-00-00', 0, '0000-00-00', 0, 1),
-(4, 'holand', '123476', '2346', 'malang malang lmang blitar malang lmang blitar', 'holan@holan.com', 2147483647, '2020-10-06', 7, '2020-10-06', 0, '0000-00-00', 0, 1);
+(1, 'aaaaaa', '', '1111111', 'surabayaaaa', 'intiland@gmail.comaa', '2147483647', '0000-00-00', 1, '0000-00-00', 0, '2020-10-03', 0, 0),
+(2, 'rene', '678', '09888', 'mana yo', 'mana@gmail.com', '9878', '0000-00-00', 1, '2020-10-05', 0, '0000-00-00', 0, 1),
+(3, 'dispenda', '031', '031', 'manyar', 'dispenda@dispenda.com', '12314', '2020-10-05', 7, '0000-00-00', 0, '0000-00-00', 0, 1),
+(4, 'holand', '123476', '2346', 'malang malang lmang blitar malang lmang blitar', 'holan@holan.com', '2147483647', '2020-10-06', 7, '2020-10-06', 0, '0000-00-00', 0, 1);
 
 -- --------------------------------------------------------
 

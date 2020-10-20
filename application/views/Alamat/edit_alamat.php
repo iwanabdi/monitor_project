@@ -72,11 +72,11 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Type</label>
 		          <div class="col-sm-9">
-								<select name="type" id="type" class="form-control custom-select" required="">
+					<select name="type" id="type" class="form-control custom-select" required="">
 		              <option disabled value="">Pilih Type</option>
 		              <option value="0" <?php if($data->type == 0): ?> selected <?php endif?>>HO</option>
 		              <option value="1" <?php if($data->type == 1): ?> selected <?php endif?>>Originating</option>
-									<option value="2" <?php if($data->type == 2): ?> selected <?php endif?>>Terminating</option>
+					  <option value="2" <?php if($data->type == 2): ?> selected <?php endif?>>Terminating</option>
 		            </select>
 		          </div>
 		        </div>

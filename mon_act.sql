@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2020 at 01:18 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Generation Time: Oct 24, 2020 at 12:46 PM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -415,7 +415,7 @@ INSERT INTO `product` (`product_id`, `nama_product`, `bandwith`, `satuan`, `stat
 (3, 'internet', 10, 'mbps', 1, '2020-10-06', 7, '0000-00-00', 0, '0000-00-00', 0),
 (4, 'metronet', 2, 'mbps', 1, '2020-10-06', 7, '0000-00-00', 0, '0000-00-00', 0),
 (5, 'collocation', 1, 'rack', 1, '2020-10-06', 7, '0000-00-00', 0, '0000-00-00', 0),
-(6, 'internet', -5, 'mbps', 1, '2020-10-06', 7, '0000-00-00', 0, '0000-00-00', 0);
+(6, 'internet', 5, 'Mbps', 1, '2020-10-06', 7, '2020-10-24', 1, '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -424,7 +424,7 @@ INSERT INTO `product` (`product_id`, `nama_product`, `bandwith`, `satuan`, `stat
 --
 
 CREATE TABLE `project` (
-  `project_id` int(11) NOT NULL,
+  `project_id` varchar(16) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `pegawai_id` int(11) DEFAULT NULL,
   `survey_id` int(11) DEFAULT NULL,
@@ -432,8 +432,8 @@ CREATE TABLE `project` (
   `alamat_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `laporan_id` int(11) DEFAULT NULL,
-  `IO` int(11) DEFAULT NULL,
-  `SID` int(11) DEFAULT NULL,
+  `IO` varchar(11) DEFAULT NULL,
+  `SID` varchar(11) DEFAULT NULL,
   `status_project` int(11) DEFAULT NULL,
   `create_on` date DEFAULT NULL,
   `create_by` int(11) DEFAULT NULL,
@@ -449,7 +449,9 @@ CREATE TABLE `project` (
 --
 
 INSERT INTO `project` (`project_id`, `customer_id`, `pegawai_id`, `survey_id`, `testcom_id`, `alamat_id`, `product_id`, `laporan_id`, `IO`, `SID`, `status_project`, `create_on`, `create_by`, `update_on`, `update_by`, `delete_by`, `delete_on`, `status`) VALUES
-(1, 3, NULL, NULL, NULL, 2, 1, NULL, NULL, NULL, NULL, '2020-10-18', 4, NULL, NULL, NULL, NULL, 1);
+('20', 2, NULL, NULL, NULL, 1, 1, NULL, NULL, '1000000001', NULL, '2020-09-01', 1, NULL, NULL, NULL, NULL, 1),
+('21', 2, NULL, NULL, NULL, 1, 1, NULL, NULL, '1000000002', NULL, '2020-10-24', 1, NULL, NULL, NULL, NULL, 1),
+('22', 2, NULL, NULL, NULL, 2, 1, NULL, NULL, '1000000004', NULL, '2020-10-24', 1, NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -461,6 +463,7 @@ CREATE TABLE `survey` (
   `survey_id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
   `file_survey` int(11) NOT NULL,
+  `mitra_id` int(11) NOT NULL,
   `create_on` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
   `update_on` int(11) NOT NULL,
@@ -478,6 +481,7 @@ CREATE TABLE `testcom` (
   `project_id` int(11) NOT NULL,
   `file_bai` int(11) NOT NULL,
   `file_testcom` int(11) NOT NULL,
+  `tgl_testcom` date NOT NULL,
   `create_by` int(11) NOT NULL,
   `create_on` int(11) NOT NULL,
   `delete_by` int(11) NOT NULL,
@@ -581,12 +585,6 @@ ALTER TABLE `pekerjaan`
 --
 ALTER TABLE `product`
   MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `project`
---
-ALTER TABLE `project`
-  MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

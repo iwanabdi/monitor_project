@@ -52,8 +52,8 @@
               <td>#nanti</td>
               <td>#nanti</td>
               <td><?=$data->nama_product,' ',$data->bandwith,$data->satuan?></td>
-			 			 	<td>#generate</td>
-              <td>#generate</td>
+			 			 	<td>#io</td>
+              <td><?=$data->SID?></td>
 			  			<td><?=$data->nama_pegawai?></td>
 			  			<td><?=$data->jalan,', ',$data->kota,', ',$data->provinsi?></td>
 			  			<td><?=$data->create_on?></td>
@@ -74,7 +74,6 @@
 <!-- /.container-fluid -->
 
 <!-- Modal Dispos-->
-
 <?php $no = 1;
 foreach ($row->result() as $key => $data) : $no++; ?>
 <div class="modal fade" id="hapus_modal<?=$data->product_id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

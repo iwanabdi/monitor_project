@@ -13,11 +13,11 @@
     	<form action="<?= site_url('project/proses_add_data')?>" method="POST">
 	    	<div class="card-body">
 		        <div class="form-group row">
-		          <input type="hidden" name="customer_id" id="customer_id">
+		          <input type="hidden" name="customer_id" id="customer_id" required>
 		          <label class="col-sm-3 col-form-label">Pilih Customer</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
-		              <input type="text" class="form-control" name="nama_customer" id="nama_customer" disabled="" required="">
+		              <input type="text" class="form-control" name="nama_customer" id="nama_customer" disabled="" required>
 		              <div class="input-group-append">
 		                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihcustomer" data-backdrop="static" data-keyboard="false"><i class="fas fa-search"></i>
 		                </button>
@@ -26,8 +26,21 @@
 		          </div>
 				</div>	
 				<div class="form-group row">
-		          <input type="hidden" name="alamat_id" id="alamat_id">
-		          <label class="col-sm-3 col-form-label">Pilih Alamat</label>
+		          <input type="hidden" name="alamat_id" id="alamat_id" required="">
+		          <label class="col-sm-3 col-form-label">Pilih Alamat HO/Originating</label>
+		          <div class="col-sm-9">
+		            <div class="input-group">
+		              <input type="text" class="form-control" name="nama_alamat" id="nama_alamat" disabled="" required="">
+		              <div class="input-group-append">
+		                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihalamat" data-backdrop="static" data-keyboard="false"><i class="fas fa-search"></i>
+		                </button>
+		              </div>
+		            </div>
+		          </div>
+				</div>
+        <div class="form-group row">
+		          <input type="hidden" name="alamat_id" id="alamat_id" required="">
+		          <label class="col-sm-3 col-form-label">Pilih Alamat Terminating</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
 		              <input type="text" class="form-control" name="nama_alamat" id="nama_alamat" disabled="" required="">
@@ -39,11 +52,11 @@
 		          </div>
 				</div>	
 				<div class="form-group row">
-		          <input type="hidden" name="product_id" id="product_id">
+		          <input type="hidden" name="product_id" id="product_id" required>
 		          <label class="col-sm-3 col-form-label">Pilih Product</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
-		              <input type="text" class="form-control" name="product_lengkap" id="product_lengkap" disabled="" required="">
+		              <input type="text" class="form-control" name="product_lengkap" id="product_lengkap" disabled="" required>
 		              <div class="input-group-append">
 		                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#piliproduct" data-backdrop="static" data-keyboard="false"><i class="fas fa-search"></i>
 		                </button>

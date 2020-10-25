@@ -36,13 +36,13 @@ class M_product extends CI_Model {
 
     function proses_edit_data()
     {
-			$data = [
-	    		"nama_product" 		=> $this->input->post('nama_product'),
-				"bandwith"			=> $this->input->post('bandwith'),
-				"satuan"			=>  $this->input->post('satuan'),
-				"update_by" 		=> $this->session->userdata('pegawai_id'),
-				"update_on"			=> date('Y-m-d')
-	    	];
+		$data = [
+	    	"nama_product" 		=> $this->input->post('nama_product'),
+			"bandwith"			=> $this->input->post('bandwith'),
+			"satuan"			=>  $this->input->post('satuan'),
+			"update_by" 		=> $this->session->userdata('pegawai_id'),
+			"update_on"			=> date('Y-m-d')
+	    ];
     	
     	$id = $this->input->post('id', true);
 		$this->db->where('product_id', $id);

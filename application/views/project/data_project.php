@@ -30,7 +30,7 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr class="text-center">
-				<th>Project ID</th>
+				<th width="131px">Project ID</th>
 				<th>Customer Name</th>
 				<th>Status</th>
       	<th>Aging</th>
@@ -38,27 +38,30 @@
 				<th>IO</th>
 				<th>SID</th>
 				<th>Project Manager</th>
-				<th>Alamat</th>
+        <th>Alamat HO/Originating</th>
+				<th>Alamat Terminating</th>
 				<th>Create On</th>
 				<th>Dispos</th>			  
             </tr>
           </thead>
           <tbody>
             <?php
-            foreach ($row->result() as $key => $data)  {?>
+            foreach ($row->result() as $key => $data)  {
+              $now = strtotime(date('Y-m-d'))-strtotime($data->create_on);
+              ?>
             <tr>
-              <td><a href="<?= site_url('project/test/'.$data->project_id)?>"><?=$data->project_id?></a></td>
+              <td><a href="<?= site_url('project/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
               <td><?=$data->nama_customer?></td>
-              <td>#nanti</td>
-              <td>#nanti</td>
+              <td>#nanti status</td>
+              <td><?=date('d',$now)?></td>
               <td><?=$data->nama_product,' ',$data->bandwith,$data->satuan?></td>
 			 			 	<td>#io</td>
               <td><?=$data->SID?></td>
 			  			<td><?=$data->nama_pegawai?></td>
-			  			<td><?=$data->jalan,', ',$data->kota,', ',$data->provinsi?></td>
+			  			<td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>
 			  			<td><?=$data->create_on?></td>
               <td class="text-center">
-                <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->product_id;?>" data-backdrop="static" data-keyboard="false">
+                <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#pilih_pm<?=$data->project_id?>" data-backdrop="static" data-keyboard="false">
                     <i class="fas fa-user-times"></i>
                 </button>
               </td>
@@ -75,28 +78,66 @@
 
 <!-- Modal Dispos-->
 <?php $no = 1;
-foreach ($row->result() as $key => $data) : $no++; ?>
-<div class="modal fade" id="hapus_modal<?=$data->product_id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+foreach ($row->result() as $key => $data) : $no++; 
+?>
+<div class="modal fade" id="pilih_pm<?=$data->project_id?>" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Yakin ingin menghapus?</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
+        <h5 class="modal-title" id="exampleModalLabel">Silahkan Pilih Project Manager</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <?php echo form_open_multipart('master_product/hapus_data'); ?>
-        <input type="hidden" id="id" name="id" value="<?=$data->product_id?>">
-        <p>Anda akan dispose PA ini "<?=$data->nama_product ?>"</p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-        <button class="btn btn-danger" type="submit">Hapus</button>
-        <?php echo form_close(); ?>
+        <div class="form-group row">
+          <div class="table-responsive">
+          <form action="<?= site_url('project/dispos_pm')?>" method="post" id="pilihpm">
+            <input type="hidden" name="project_id" id="project_id">
+            <input type="hidden" name="pegawai_id" id="pegawai_id">
+            <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
+              <thead>
+              <tr class="text-center">
+                <th>ID</th>
+                <th>Nama Project Manager</th>
+                <th>E-Mail</th>
+                <th>Pilih</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              foreach($pegawai->result() as $i => $data1)  {?>
+              <tr>
+                <td><?=$data1->pegawai_id?></td>
+                <td><?=$data1->nama_pegawai?></td>
+                <td><?=$data1->email?></td>
+                <td class="text-center">
+                <button class="btn btn-info" id="selectpm" type="button" data-id=<?=$data1->pegawai_id;?> data-project="<?= $data->project_id?>">Pilih
+                </button>
+                </td>
+              </tr>
+            <?php } ?>
+            </tbody>
+            </table>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <?php endforeach; ?>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on('click', '#selectpm', function() {
+      var pegawai_id = $(this).data('id');
+      $('#pegawai_id').val(pegawai_id);
+      var project_id = $(this).data('project');
+      $('#project_id').val(project_id);
+      document.getElementById("pilihpm").submit();
+    })
+  })
+</script>
 <!-- Akhir Modal dispos Data -->

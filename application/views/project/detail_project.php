@@ -6,21 +6,21 @@
     <div class="col-12 py-2 border-bottom-secondary">
       <div class="py-2 mx-2 row">
         <div class="mr-auto text-gray-800">
-          <p class="mb-1">Project Activation Node</p>
+          <p class="mb-1">Project Activation ID</p>
           <h3><?= $row->project_id?></h3>
         </div>
         <div class="ml-auto row">
           <div class="border-left-secondary text-gray-800" style="height: 42px;">
-            <h6 class="ml-2 mr-2">Project Activation Node</h6>
-            <h6 class="ml-2 mr-2"><i class="fas fa-lock"></i> PA/RLK/2020/0128/ORI</h6>
+            <h6 class="ml-2 mr-2">PProject Manager</h6>
+            <h6 class="ml-2 mr-2"><i class="fas fa-lock"></i> Nama PM</h6>
+          </div>
+          <div class="border-left-secondary text-gray-800" style="height: 42px;">
+            <h6 class="ml-2 mr-2">Mitra</h6>
+            <h6 class="ml-2 mr-2"><i class="fas fa-lock"></i> Nama Mitra</h6>
           </div>
           <div class="border-left-secondary text-gray-800" style="height: 42px;">
             <h6 class="ml-2 mr-2">Status</h6>
-            <h6 class="ml-2 mr-2"><i class="fas fa-lock"></i> Closed</h6>
-          </div>
-          <div class="border-left-secondary text-gray-800" style="height: 42px;">
-            <h6 class="ml-2 mr-2">PIC</h6>
-            <h6 class="ml-2 mr-2"><i class="fas fa-lock"></i> Rolan Oktafian</h6>
+            <h6 class="ml-2 mr-2"><i class="fas fa-lock"></i> status PA</h6>
           </div>
         </div>
       </div>
@@ -45,20 +45,11 @@
                   <td><i class="fas fa-lock"></i><span class="ml-2">Originating</span></td>
                 </tr>
                 <tr>
-                  <td>Activation Request ID</td>
-                  <td><i class="fas fa-lock"></i><span class="text-primary text-uppercase ml-2">AR/RLK/2009/1006</span></td>
-                </tr>
-                <tr>
-                  <td>Project Activation ID</td>
-                  <td><i class="fas fa-lock"></i><span class="text-primary text-uppercase ml-2">PA/RLK/2009/0056</span></td>
-                </tr>
-                <tr>
-                  <td>Project Survey Node ID</td>
-                  <td><i class="fas fa-lock"></i><span class="text-primary text-uppercase ml-2">PS/2009/0692/ORI</span></td>
-                </tr>            
+                  <td>IO Number</td>
+                  <td><i class="fas fa-lock"></i><span class="ml-2">isi ne io</span></td>
+                </tr>             
               </table>
             </div>
-
             <div class="col-lg-4">
               <table class="table m-auto text-gray-800">
                 <tr>
@@ -67,31 +58,15 @@
                 </tr>
                 <tr>
                   <td>Service ID</td>
-                  <td><i class="fas fa-lock"></i><span class="text-primary ml-2">0100013099</span></td>
-                </tr>
-                <tr>
-                  <td>SBU Owner</td>
-                  <td><i class="fas fa-lock"></i><span class="text-primary text-uppercase ml-2">electricity tel and infra sol</span></td>
-                </tr>
-                <tr>
-                  <td>SBU Region</td>
-                  <td><i class="fas fa-lock"></i><span class="text-primary text-uppercase ml-2">sbu reg jawa bagian timur</span></td>
-                </tr>            
+                  <td><i class="fas fa-lock"></i><span class="ml-2">0100013099</span></td>
+                </tr>          
               </table>
             </div>
 
             <div class="col-lg-4">
               <table class="table ml-auto text-gray-800">
                 <tr>
-                  <td>Disposition Date</td>
-                  <td><i class="fas fa-lock"></i><span class="ml-2">08/09/20  19:58</span></td>
-                </tr>
-                <tr>
                   <td>BAI Date</td>
-                  <td><i class="fas fa-lock"></i><span class="ml-2">--</span></td>
-                </tr>
-                <tr>
-                  <td>Total Duration Stop Clock</td>
                   <td><i class="fas fa-lock"></i><span class="ml-2">--</span></td>
                 </tr>
                 <tr>

@@ -5,10 +5,11 @@ class M_project extends CI_Model {
 
 	function get_project($id = null)
 	{
-		$this->db->select('p.*,c.nama_customer,pr.nama_product,pr.bandwith,pr.satuan,pg.nama_pegawai,a.jalan,a.kota,a.provinsi');
+		$this->db->select('p.*,c.nama_customer,pr.nama_product,pr.bandwith,pr.satuan,pg.nama_pegawai,a.jalan as jalan_ter,a.kota as kota_ter,a.provinsi as provinsi_ter');
 		$this->db->from('project as p');
 		$this->db->join('customer as c','p.customer_id=c.customer_id');
-		$this->db->join('alamat as a','p.alamat_id=a.alamat_id');
+		$this->db->join('alamat as a','p.alamat_ter=a.alamat_id',"LEFT");
+		$this->db->join('alamat as a2','p.alamat_ori=a.alamat_id',"LEFT");
 		$this->db->join('product as pr','p.product_id=pr.product_id');
 		$this->db->join('pegawai as pg','p.pegawai_id=pg.pegawai_id',"LEFT");
 		if ($id != null) {
@@ -22,7 +23,7 @@ class M_project extends CI_Model {
 	function proses_add_data()
     {
     	$data = [
-			// ""
+			"project_id"		=> $this->pa_id(),
     		"customer_id" 		=> $this->input->post('customer_id'),
     		"alamat_id"			=> $this->input->post('alamat_id'),
 			"create_by"			=> $this->session->userdata('pegawai_id'),
@@ -45,12 +46,24 @@ class M_project extends CI_Model {
 
 	function pa_id()
 	{
-		$query = $this->db->query("SELECT lpad(COUNT(project_id)+1,4,0) FROM `project`WHERE MONTH(create_on) = MONTH(CURRENT_DATE()) AND YEAR(create_on) = YEAR(CURRENT_DATE())");
+		$query = $this->db->query("SELECT lpad(COUNT(project_id)+1,4,0) as total FROM `project`WHERE MONTH(create_on) = MONTH(CURRENT_DATE()) AND YEAR(create_on) = YEAR(CURRENT_DATE())");
 		$row = $query->row();
 		$belakang = $row->total;
 		$awal=date('ym');
-		$pa = 'PA/ACT/'.$awal.'/'.$belakang;
+		$pa = 'PA-ACT-'.$awal.'-'.$belakang;
 		return $pa;
+	}
+
+	function proses_dispos_pm()
+    {
+    	$data = [
+			"pegawai_id"		=> $this->input->post('pegawai_id'),
+			"update_by"			=> $this->session->userdata('pegawai_id'),
+			"update_on"			=> date('Y-m-d')
+    	];
+    	$id = $this->input->post('project_id',true);
+		$this->db->where('project_id', $id);
+		$this->db->update('project', $data);
 	}
 
 }

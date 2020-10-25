@@ -110,6 +110,15 @@ class M_pegawai extends CI_Model {
         // var_dump($password);
     }
 
+    function get_pm()
+    {
+        $this->db->select('*');
+        $this->db->from('pegawai');
+        $this->db->where('jabatan =', 1);
+        $query = $this->db->get();
+        return $query;
+    }
+
 }
 
 /* End of file M_pegawai.php */

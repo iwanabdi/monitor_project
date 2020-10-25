@@ -13,15 +13,17 @@ class project extends CI_Controller {
 		$this->load->model('M_customer');
 		$this->load->model('M_alamat');
 		$this->load->model('M_product');
+		$this->load->model('M_pegawai');
 	}
 
 	public function index()
 	{
 		$data['row'] = $this->M_project->get_project();
+		$data['pegawai'] = $this->M_pegawai->get_pm();
 		$this->template->load('template_pegawai', 'project/data_project', $data);
 	}
 
-	public function test($id)
+	public function detail($id)
 	{
 		$data['row'] = $this->M_project->get_project($id)->row();
 		$this->template->load('template_pegawai', 'project/detail_project', $data);
@@ -35,13 +37,6 @@ class project extends CI_Controller {
 		$this->template->load('template_pegawai', 'project/add_project', $data);
 	}
 
-	// public function edit($id)
-	// {
-		
-	// 	$data['row'] = $this->M_pekerjaan->get_pekerjaan($id)->row();
-	// 	$this->template->load('template_pegawai', 'pekerjaan/edit_pekerjaan', $data);
-	// }
-
 	function proses_add_data()
 	{
 		$this->M_project->proses_add_data();
@@ -52,24 +47,15 @@ class project extends CI_Controller {
 		redirect('project','refresh');
 	}
 
-	// function proses_edit_data()
-	// {
-	// 	$this->M_pekerjaan->proses_edit_data();
-	// 	$this->session->set_flashdata('pesan', 
-	// 		'<div class="alert alert-info" role="alert">
-	// 			Data Berhasil Diubah!
-	// 		</div>');
-	// 	redirect('master_pekerjaan','refresh');
-	// }
-
-	// function hapus_data()
-	// {
-	// 	$this->M_pekerjaan->hapus_data();
-	// 	$this->session->set_flashdata('pesan', 
-	// 		'<div class="alert alert-danger" role="alert">
-	// 			Data Berhasil Dihapus!
-	// 		</div>');
-	// 	redirect('master_pekerjaan','refresh');
-	// }
+	function dispos_pm()
+	{
+		$this->M_project->proses_dispos_pm();
+		$this->session->set_flashdata('pesan', 
+			'<div class="alert alert-success" role="alert">
+				Berhasil Dispose!
+			</div>');
+		redirect('project','refresh');
+	}
 
 }
+

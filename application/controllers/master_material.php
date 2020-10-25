@@ -38,6 +38,19 @@ class Master_material extends CI_Controller {
 	function proses_add_data()
 	{
 		$this->M_material->proses_add_data();
+		// $param = array(
+		// 	"nama_material" 		=> $this->input->post('nama_material'),
+    	// 	"brand"					=> $this->input->post('brand'),
+    	// 	"stok"					=> $this->input->post('stok'),
+    	// 	"storage_bin"			=> $this->input->post('storage_bin'),
+		// 	"create_by"				=> $this->session->userdata('pegawai_id'),
+		// 	"create_on"				=> date('Y-m-d'),
+    	// 	"create_by"				=> $this->session->userdata('pegawai_id'),
+		// 	"status"				=> 1
+		// );
+		// $this->session->set_userdata($param);
+		// print_r($param);
+
 		$this->session->set_flashdata('pesan', 
 			'<div class="alert alert-success" role="alert">
 				Data Berhasil Ditambah!

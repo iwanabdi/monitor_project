@@ -15,24 +15,33 @@
 
 	    		<input type="hidden" id="id" name="id" value="<?= $row->material_id?>">
 		        <div class="form-group row">
-		          <label class="col-sm-3 col-form-label">Stok</label>
+		          <label class="col-sm-3 col-form-label">Nama Material</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" name="stok" id="stok" value="<?= $row->stok;?>" disabled>
+		            <input type="text" class="form-control" name="nama_material" id="nama_material" value="<?= $row->nama_material;?>" disabled>
+		          </div>
+		        </div>
+		        <div class="form-group row">
+		          <label class="col-sm-3 col-form-label">Keterangan</label>
+		          <div class="col-sm-9">
+		            <input type="text" class="form-control" name="keterangan" id="keterangan" required>
 		          </div>
 		        </div>
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Tambah Stok</label>
 		          <div class="col-sm-9">
-		            <input type="tel" maxlength="14" oninput="validAngka(this)" autofocus="" class="form-control" name="tambah_stok" id="tambah_stok">
+		            <input type="tel" maxlength="14" oninput="validAngka(this)" class="form-control" name="tambah_stok" id="tambah_stok">
 		          </div>
 		        </div>
-		        
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Update By</label>
 		          <div class="col-sm-9">
 		            <input type="text" name="update_by" class="form-control" id="pegawai_id" value="<?= $this->session->userdata('nama_pegawai');?>" disabled></input>
 		          </div>
-		        </div>
+				</div>
+				<hr>
+				<div id="cetak">
+
+				</div>
 
 	    	</div>
 
@@ -44,6 +53,7 @@
 
 	    </form>
 	</div>
+
 </div>
 
 <script language='javascript'>
@@ -53,7 +63,27 @@ function validAngka(a)
     {
     a.value = a.value.substring(0,a.value.length-1000);
     }
+	ketik();
 }
+
+function ketik()
+{
+	var x = document.getElementById("tambah_stok").value;
+
+	var text = "";
+	var head = "<div class='form-group row'>";
+	var label = "<label class='col-sm-3 col-form-label'>SN - ";
+	var input = "<div class='col-sm-9'>\
+		            <input type='text' class='form-control' id='sn' required='' ";
+	var tutup = ">\
+				</div>";
+	// var x;
+	for (let i = 1; i <= x; i++) {
+		text += head + label + i + "</label>" + input + "name='sn-" + i+"'" + tutup + "</div>";
+	}
+	document.getElementById("cetak").innerHTML = text;
+}
+
 </script>
 
 <script>

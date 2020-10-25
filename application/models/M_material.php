@@ -29,7 +29,16 @@ class M_material extends CI_Model {
         ];
         $id = $this->input->post('id', true);
         $this->db->where('material_id', $id);
-        $this->db->update('material', $data);
+		$this->db->update('material', $data);
+		
+		for ($i=1; $i <= $this->input->post('tambah_stok'); $i++) { 
+			$data2 = [
+				"material_id" 		=> $id,
+				"SN"				=> $this->input->post('sn-'.$i),
+				"keterangan"		=> $this->input->post('keterangan')
+			];
+		$this->db->insert('dmaterial', $data2);
+		}
     }
 
     function proses_add_data()
@@ -43,9 +52,22 @@ class M_material extends CI_Model {
 			"create_on"				=> date('Y-m-d'),
     		"create_by"				=> $this->session->userdata('pegawai_id'),
     		"status"				=> 1
-    	];
-    	$this->db->insert('material', $data);
-    }
+		];
+		$this->db->insert('material', $data);
+
+		$query = $this->db->query("select max(material_id) as total from material");
+		$row = $query->row();
+		$count = $row->total;
+		for ($i=1; $i <= $this->input->post('stok'); $i++) { 
+			$data2 = [
+				"material_id" 		=> $count,
+				"SN"				=> $this->input->post('sn-'.$i),
+				"keterangan"		=> $this->input->post('keterangan')
+			];
+		$this->db->insert('dmaterial', $data2);
+		}
+	}
+	
 
    //  function ambil_id_material($id)
    //  {
@@ -55,28 +77,40 @@ class M_material extends CI_Model {
 
     function proses_edit_data()
     {
-    	if ($this->input->post('alamat') == null) {
+    	if ($this->input->post('material') == null) {
     		$data = [
-	    		"nama_material" 		=> $this->input->post('nama_material'),
-    			"brand"			=> $this->input->post('brand'),
+	    		"nama_material"		=> $this->input->post('nama_material'),
+    			"brand"				=> $this->input->post('brand'),
     			"stok"				=> $this->input->post('stok'),
-    			"storage_bin"			=> $this->input->post('storage_bin'),
+    			"storage_bin"		=> $this->input->post('storage_bin'),
 				"update_by" 		=> $this->session->userdata('pegawai_id'),
-				"update_on"		=> date('Y-m-d'),
+				"update_on"			=> date('Y-m-d'),
     		];
     	}else{
     		$data = [
-	    		"nama_material" 		=> $this->input->post('nama_material'),
-    			"brand"			=> $this->input->post('brand'),
-    			"stok"				=> $this->input->post('stok'),
-    			"storage_bin"			=> $this->input->post('storage_bin'),
+	    		"nama_material" 	=> $this->input->post('nama_material'),
+    			"brand"				=> $this->input->post('brand'),
+    			"stok"				=> $this->input->post('tambah_stok'),
+    			"storage_bin"		=> $this->input->post('storage_bin'),
 				"update_by" 		=> $this->session->userdata('pegawai_id'),
-				"update_on"		=> date('Y-m-d'),
+				"update_on"			=> date('Y-m-d'),
 	    	];
     	}
     	$id = $this->input->post('id', true);
 		$this->db->where('material_id', $id);
 		$this->db->update('material', $data);
+		
+    	// $id = $this->input->post('id', true);
+		for ($i=1; $i <= $this->input->post('stok'); $i++) { 
+			$data2 = [
+				"material_id" 		=> $id,
+				"SN"				=> $this->input->post('sn-'.$i),
+				"keterangan"		=> $this->input->post('keterangan')
+			];
+			($data2);exit;
+		$this->db->insert('dmaterial', $data2);
+		}
+
     }
 
     function hapus_data()

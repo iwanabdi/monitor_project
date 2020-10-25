@@ -11,16 +11,39 @@
         </div>
         <div class="ml-auto row">
           <div class="border-left-secondary text-gray-800" style="height: 42px;">
-            <h6 class="ml-2 mr-2">PProject Manager</h6>
-            <h6 class="ml-2 mr-2"><i class="fas fa-lock"></i> Nama PM</h6>
-          </div>
-          <div class="border-left-secondary text-gray-800" style="height: 42px;">
-            <h6 class="ml-2 mr-2">Mitra</h6>
-            <h6 class="ml-2 mr-2"><i class="fas fa-lock"></i> Nama Mitra</h6>
+            <h6 class="ml-2 mr-2">Project Manager</h6>
+            <h6 class="ml-2 mr-2"><i class="fas fa-lock"><?= $row->nama_pegawai?></i></h6>
           </div>
           <div class="border-left-secondary text-gray-800" style="height: 42px;">
             <h6 class="ml-2 mr-2">Status</h6>
-            <h6 class="ml-2 mr-2"><i class="fas fa-lock"></i> status PA</h6>
+            <h6 class="ml-2 mr-2"><i class="fas fa-lock">
+              <?php
+                if ($row->status_project==1) {
+                 echo "Disposisi";
+                }
+                else if ($row->status_project==2) {
+                  echo "Survey";
+                }
+                else if ($row->status_project==3) {
+                  echo "Proges";
+                 }
+                else if ($row->status_project==4) {
+                  echo "Testcom";
+                }
+                else if ($row->status_project==5) {
+                  echo "Laporan Mitra";
+                }
+                else if ($row->status_project==6) {
+                  echo "QC OK";
+                }
+                else if ($row->status_project==7) {
+                  echo "BAPS";
+                }
+                else if ($row->status_project==8) {
+                  echo "Close";
+                }
+              ?></i>
+            </h6>
           </div>
         </div>
       </div>
@@ -41,12 +64,12 @@
             <div class="col-lg-4">
               <table class="table mr-auto text-gray-800">
                 <tr>
-                  <td>Node Type</td>
-                  <td><i class="fas fa-lock"></i><span class="ml-2">Originating</span></td>
+                  <td>Mitra</td>
+                  <td><i class="fas fa-lock"></i><span class="ml-2">ini nama mitra</span></td>
                 </tr>
                 <tr>
                   <td>IO Number</td>
-                  <td><i class="fas fa-lock"></i><span class="ml-2">isi ne io</span></td>
+                  <td><i class="fas fa-lock"></i><span class="ml-2"><?=$row->IO?></span></td>
                 </tr>             
               </table>
             </div>
@@ -54,11 +77,11 @@
               <table class="table m-auto text-gray-800">
                 <tr>
                   <td>Created Date</td>
-                  <td><i class="fas fa-lock"></i><span class="ml-2">08/09/20  19:45</span></td>
+                  <td><i class="fas fa-lock"></i><span class="ml-2"><?=$row->create_on?></span></td>
                 </tr>
                 <tr>
                   <td>Service ID</td>
-                  <td><i class="fas fa-lock"></i><span class="ml-2">0100013099</span></td>
+                  <td><i class="fas fa-lock"></i><span class="ml-2"><?=$row->SID?></span></td>
                 </tr>          
               </table>
             </div>
@@ -67,11 +90,11 @@
               <table class="table ml-auto text-gray-800">
                 <tr>
                   <td>BAI Date</td>
-                  <td><i class="fas fa-lock"></i><span class="ml-2">--</span></td>
+                  <td><i class="fas fa-lock"></i><span class="ml-2">isinya tanggal testcom</span></td>
                 </tr>
                 <tr>
                   <td>Aging (days)</td>
-                  <td><i class="fas fa-lock"></i><span class="ml-2">11</span></td>
+                  <td><i class="fas fa-lock"></i><span class="ml-2"><?=$row->aging?></span></td>
                 </tr>            
               </table>
             </div>

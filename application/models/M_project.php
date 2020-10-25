@@ -5,17 +5,12 @@ class M_project extends CI_Model {
 
 	function get_project($id = null)
 	{
-		$this->db->select('p.*,c.nama_customer,pr.nama_product,pr.bandwith,pr.satuan,pg.nama_pegawai,a.jalan as jalan_ter,a.kota as kota_ter,a.provinsi as provinsi_ter');
-		$this->db->from('project as p');
-		$this->db->join('customer as c','p.customer_id=c.customer_id');
-		$this->db->join('alamat as a','p.alamat_ter=a.alamat_id',"LEFT");
-		$this->db->join('alamat as a2','p.alamat_ori=a.alamat_id',"LEFT");
-		$this->db->join('product as pr','p.product_id=pr.product_id');
-		$this->db->join('pegawai as pg','p.pegawai_id=pg.pegawai_id',"LEFT");
+		$this->db->select('*');
+		$this->db->from('project_view');
 		if ($id != null) {
 			$this->db->where('project_id', $id);
 		}
-		$this->db->where('p.status', 1);
+		$this->db->where('status', 1);
 		$query = $this->db->get();
 		return $query;
 	}
@@ -30,6 +25,7 @@ class M_project extends CI_Model {
 			"product_id"		=> $this->input->post('product_id'),
 			"sid"				=> $this->gen_sid($this->input->post('product_id')),
 			"create_on"			=> date('Y-m-d'),
+			"status_project"	=> 1,
     		"status"			=> 1
     	];
     	$this->db->insert('project', $data);

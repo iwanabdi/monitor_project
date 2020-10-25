@@ -30,7 +30,7 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr class="text-center">
-				<th width="131px">Project ID</th>
+				<th>Project ID</th>
 				<th>Customer Name</th>
 				<th>Status</th>
       	<th>Aging</th>
@@ -46,19 +46,45 @@
           </thead>
           <tbody>
             <?php
-            foreach ($row->result() as $key => $data)  {
-              $now = strtotime(date('Y-m-d'))-strtotime($data->create_on);
-              ?>
+            foreach ($row->result() as $key => $data)  {?>
             <tr>
               <td><a href="<?= site_url('project/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
               <td><?=$data->nama_customer?></td>
-              <td>#nanti status</td>
-              <td><?=date('d',$now)?></td>
+              <td>
+                  <?php
+                    if ($data->status_project==1) {
+                      echo "Disposisi";
+                    }
+                    else if ($data->status_project==2) {
+                      echo "Survey";
+                    }
+                    else if ($data->status_project==3) {
+                      echo "Proges";
+                    }
+                    else if ($data->status_project==4) {
+                      echo "Testcom";
+                    }
+                    else if ($data->status_project==5) {
+                      echo "Laporan Mitra";
+                    }
+                    else if ($data->status_project==6) {
+                      echo "QC OK";
+                    }
+                    else if ($data->status_project==7) {
+                      echo "BAPS";
+                    }
+                    else if ($data->status_project==8) {
+                      echo "Close";
+                    }
+                  ?>
+              </td>
+              <td><?=$data->aging?></td>
               <td><?=$data->nama_product,' ',$data->bandwith,$data->satuan?></td>
 			 			 	<td>#io</td>
               <td><?=$data->SID?></td>
 			  			<td><?=$data->nama_pegawai?></td>
-			  			<td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>
+			  			<td><?=$data->jalan_ori,', ',$data->kota_ori,', ',$data->provinsi_ori?></td>
+              <td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>
 			  			<td><?=$data->create_on?></td>
               <td class="text-center">
                 <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#pilih_pm<?=$data->project_id?>" data-backdrop="static" data-keyboard="false">

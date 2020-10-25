@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2020 at 12:46 PM
+-- Generation Time: Oct 25, 2020 at 08:41 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -348,14 +348,15 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`pegawai_id`, `nama_pegawai`, `no_telp`, `email`, `password`, `jabatan`, `create_by`, `create_on`, `update_by`, `update_on`, `delete_by`, `delete_on`, `status`) VALUES
-(1, 'iwan', '082244355566', 'iwan@gmail.com', '01ccce480c60fcdb67b54f4509ffdb56', 0, 0, '0000-00-00', 0, '0000-00-00', 0, '0000-00-00', 1),
+(1, 'iwan', '082244355566', 'iwan@gmail.com', '01ccce480c60fcdb67b54f4509ffdb56', 0, 0, '0000-00-00', 0, '0000-00-00', 4, '2020-10-25', 0),
 (2, 'pm', '123', 'pm@gmail.com', '5109d85d95fece7816d9704e6e5b1279', 1, 1, '0000-00-00', 0, '0000-00-00', 0, '0000-00-00', 1),
 (3, 'admin', '456', 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 2, 1, '0000-00-00', 1, '0000-00-00', 0, '0000-00-00', 1),
 (4, 'spv', '789', 'spv@gmail.com', 'f4984324c6673ce07aafac15600af26e', 0, 1, '0000-00-00', 0, '0000-00-00', 0, '0000-00-00', 1),
 (5, 'gudang', '87', 'gudang@gmail.com', '202446dd1d6028084426867365b0c7a1', 3, 4, '0000-00-00', 0, '0000-00-00', 0, '0000-00-00', 1),
 (6, 'qc', '123', 'qc@gmail.com', '9300c96aaec324987ea5ca6e13a02eda', 4, 1, '0000-00-00', 7, '0000-00-00', 0, '0000-00-00', 1),
 (7, 'dev', '123', 'dev@test.com', 'e77989ed21758e78331b20e477fc5582', -1, 1, '0000-00-00', 0, '0000-00-00', 7, '2020-10-06', 0),
-(8, 'hansen', '353', 'rolan@email.com', 'ee21d5f27a8401788147f6f6184ddb11', 0, 7, '2020-10-06', 7, '0000-00-00', 7, '2020-10-06', 0);
+(8, 'hansen', '353', 'rolan@email.com', 'ee21d5f27a8401788147f6f6184ddb11', 0, 7, '2020-10-06', 7, '0000-00-00', 7, '2020-10-06', 0),
+(9, 'iwan abdillah', '123', 'iwan@gmail.com', '01ccce480c60fcdb67b54f4509ffdb56', 1, 4, '2020-10-25', 0, '0000-00-00', 0, '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -424,34 +425,83 @@ INSERT INTO `product` (`product_id`, `nama_product`, `bandwith`, `satuan`, `stat
 --
 
 CREATE TABLE `project` (
-  `project_id` varchar(16) NOT NULL,
+  `project_id` varchar(24) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `pegawai_id` int(11) DEFAULT NULL,
   `survey_id` int(11) DEFAULT NULL,
   `testcom_id` int(11) DEFAULT NULL,
-  `alamat_id` int(11) NOT NULL,
+  `alamat_ori` int(11) DEFAULT NULL,
+  `alamat_ter` int(11) DEFAULT NULL,
   `product_id` int(11) NOT NULL,
   `laporan_id` int(11) DEFAULT NULL,
-  `IO` varchar(11) DEFAULT NULL,
-  `SID` varchar(11) DEFAULT NULL,
-  `status_project` int(11) DEFAULT NULL,
+  `IO` varchar(20) DEFAULT NULL,
+  `SID` varchar(20) DEFAULT NULL,
+  `status_project` int(11) DEFAULT NULL COMMENT '1 diposisi, 2 survey, 3 progres, 4, testcom, 5 dokumen, 6 qc ok, 7 baps , 8 close',
   `create_on` date DEFAULT NULL,
   `create_by` int(11) DEFAULT NULL,
   `update_on` date DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
   `delete_by` int(11) DEFAULT NULL,
   `delete_on` date DEFAULT NULL,
-  `status` int(11) DEFAULT NULL
+  `status` int(11) DEFAULT NULL,
+  `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `project`
 --
 
-INSERT INTO `project` (`project_id`, `customer_id`, `pegawai_id`, `survey_id`, `testcom_id`, `alamat_id`, `product_id`, `laporan_id`, `IO`, `SID`, `status_project`, `create_on`, `create_by`, `update_on`, `update_by`, `delete_by`, `delete_on`, `status`) VALUES
-('20', 2, NULL, NULL, NULL, 1, 1, NULL, NULL, '1000000001', NULL, '2020-09-01', 1, NULL, NULL, NULL, NULL, 1),
-('21', 2, NULL, NULL, NULL, 1, 1, NULL, NULL, '1000000002', NULL, '2020-10-24', 1, NULL, NULL, NULL, NULL, 1),
-('22', 2, NULL, NULL, NULL, 2, 1, NULL, NULL, '1000000004', NULL, '2020-10-24', 1, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `project` (`project_id`, `customer_id`, `pegawai_id`, `survey_id`, `testcom_id`, `alamat_ori`, `alamat_ter`, `product_id`, `laporan_id`, `IO`, `SID`, `status_project`, `create_on`, `create_by`, `update_on`, `update_by`, `delete_by`, `delete_on`, `status`, `keterangan`) VALUES
+('20', 2, 2, NULL, NULL, 0, 1, 1, NULL, '102020B00006', '1000000001', 1, '2020-10-23', 1, '2020-10-25', 4, NULL, NULL, 1, ''),
+('21', 2, 2, NULL, NULL, 0, 1, 1, NULL, '102020B00005', '1000000002', 1, '2020-10-24', 1, '2020-10-25', 4, NULL, NULL, 1, ''),
+('22', 2, 2, NULL, NULL, 0, 2, 1, NULL, '102020B00003', '1000000004', 1, '2020-10-24', 1, '2020-10-25', 4, NULL, NULL, 1, ''),
+('PA-ACT-2010-', 3, 2, NULL, NULL, 0, 2, 1, NULL, '102020B00002', '1000000004', 1, '2020-10-24', 1, '2020-10-25', 4, NULL, NULL, 1, ''),
+('PA-ACT-2010-0004', 3, 9, NULL, NULL, 2, 5, 4, NULL, '102020B00001', '4000000005', 1, '2020-10-24', 1, '2020-10-25', 4, NULL, NULL, 1, 'aktivasi dispenda');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `project_view`
+-- (See below for the actual view)
+--
+CREATE TABLE `project_view` (
+`project_id` varchar(24)
+,`customer_id` int(11)
+,`pegawai_id` int(11)
+,`survey_id` int(11)
+,`testcom_id` int(11)
+,`alamat_ori` int(11)
+,`alamat_ter` int(11)
+,`product_id` int(11)
+,`laporan_id` int(11)
+,`IO` varchar(20)
+,`SID` varchar(20)
+,`status_project` int(11)
+,`create_on` date
+,`create_by` int(11)
+,`update_on` date
+,`update_by` int(11)
+,`delete_by` int(11)
+,`delete_on` date
+,`status` int(11)
+,`keterangan` text
+,`nama_customer` varchar(200)
+,`nama_product` varchar(200)
+,`bandwith` int(200)
+,`satuan` varchar(100)
+,`nama_pegawai` varchar(200)
+,`jalan_ter` varchar(200)
+,`kota_ter` varchar(200)
+,`provinsi_ter` varchar(200)
+,`pic_ter` varchar(200)
+,`no_telp_ter` varchar(20)
+,`jalan_ori` varchar(200)
+,`kota_ori` varchar(200)
+,`provinsi_ori` varchar(200)
+,`pic_ori` varchar(200)
+,`no_telp_ori` varchar(20)
+,`aging` bigint(10)
+);
 
 -- --------------------------------------------------------
 
@@ -487,6 +537,15 @@ CREATE TABLE `testcom` (
   `delete_by` int(11) NOT NULL,
   `delete_on` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `project_view`
+--
+DROP TABLE IF EXISTS `project_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `project_view`  AS  select `p`.`project_id` AS `project_id`,`p`.`customer_id` AS `customer_id`,`p`.`pegawai_id` AS `pegawai_id`,`p`.`survey_id` AS `survey_id`,`p`.`testcom_id` AS `testcom_id`,`p`.`alamat_ori` AS `alamat_ori`,`p`.`alamat_ter` AS `alamat_ter`,`p`.`product_id` AS `product_id`,`p`.`laporan_id` AS `laporan_id`,`p`.`IO` AS `IO`,`p`.`SID` AS `SID`,`p`.`status_project` AS `status_project`,`p`.`create_on` AS `create_on`,`p`.`create_by` AS `create_by`,`p`.`update_on` AS `update_on`,`p`.`update_by` AS `update_by`,`p`.`delete_by` AS `delete_by`,`p`.`delete_on` AS `delete_on`,`p`.`status` AS `status`,`p`.`keterangan` AS `keterangan`,`c`.`nama_customer` AS `nama_customer`,`pr`.`nama_product` AS `nama_product`,`pr`.`bandwith` AS `bandwith`,`pr`.`satuan` AS `satuan`,`pg`.`nama_pegawai` AS `nama_pegawai`,`a`.`jalan` AS `jalan_ter`,`a`.`kota` AS `kota_ter`,`a`.`provinsi` AS `provinsi_ter`,`a`.`kontak` AS `pic_ter`,`a`.`no_telp` AS `no_telp_ter`,`a2`.`jalan` AS `jalan_ori`,`a2`.`kota` AS `kota_ori`,`a2`.`provinsi` AS `provinsi_ori`,`a2`.`kontak` AS `pic_ori`,`a2`.`no_telp` AS `no_telp_ori`,curdate() - `p`.`create_on` AS `aging` from (((((`project` `p` join `customer` `c` on(`p`.`customer_id` = `c`.`customer_id`)) left join `alamat` `a` on(`p`.`alamat_ter` = `a`.`alamat_id`)) left join `alamat` `a2` on(`p`.`alamat_ori` = `a2`.`alamat_id`)) join `product` `pr` on(`p`.`product_id` = `pr`.`product_id`)) left join `pegawai` `pg` on(`p`.`pegawai_id` = `pg`.`pegawai_id`)) ;
 
 --
 -- Indexes for dumped tables
@@ -548,7 +607,7 @@ ALTER TABLE `project`
 -- AUTO_INCREMENT for table `alamat`
 --
 ALTER TABLE `alamat`
-  MODIFY `alamat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `alamat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -572,7 +631,7 @@ ALTER TABLE `mitra`
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `pegawai_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `pegawai_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `pekerjaan`

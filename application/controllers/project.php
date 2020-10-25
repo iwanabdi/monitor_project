@@ -57,5 +57,15 @@ class project extends CI_Controller {
 		redirect('project','refresh');
 	}
 
+	function genio($id)
+	{
+		$this->M_project->genreate_io($id);
+		$this->session->set_flashdata('pesan', 
+			'<div class="alert alert-success" role="alert">
+				Generate Sukses!
+			</div>');
+		redirect('project/detail/'.$id,'refresh');
+	}
+
 }
 

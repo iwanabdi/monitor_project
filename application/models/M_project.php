@@ -62,4 +62,20 @@ class M_project extends CI_Model {
 		$this->db->update('project', $data);
 	}
 
+	function genreate_io($pid)
+    {
+		$query = $this->db->query("SELECT lpad(COUNT(IO)+1,5,0) as total FROM `project` WHERE MONTH(create_on) = MONTH(CURRENT_DATE()) AND YEAR(create_on) = YEAR(CURRENT_DATE()) AND IO is not null");
+		$row = $query->row();
+		$belakang = $row->total;
+		$awal=date('mY');
+		
+		$data = [
+			"IO"				=> $awal."B".$belakang,
+			"update_by"			=> $this->session->userdata('pegawai_id'),
+			"update_on"			=> date('Y-m-d')
+    	];
+		$this->db->where('project_id', $pid);
+		$this->db->update('project', $data);
+	}
+
 }

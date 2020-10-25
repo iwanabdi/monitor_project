@@ -80,7 +80,7 @@
               </td>
               <td><?=$data->aging?></td>
               <td><?=$data->nama_product,' ',$data->bandwith,$data->satuan?></td>
-			 			 	<td>#io</td>
+			 			 	<td><?=$data->IO?></td>
               <td><?=$data->SID?></td>
 			  			<td><?=$data->nama_pegawai?></td>
 			  			<td><?=$data->jalan_ori,', ',$data->kota_ori,', ',$data->provinsi_ori?></td>

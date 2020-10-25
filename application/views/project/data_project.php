@@ -18,11 +18,13 @@
       <div class="col-10 p-0 p-2">
         <h5 class="m-0 font-weight-bold text-primary">Data product</h5>
       </div>
-      <div class="col-2 p-0">
-        <a href="<?= site_url('project/add')?>" class="btn btn-success btn-block" id="btn">
-        <i class="fas fa-plus"></i> Add Project
-        </a>
-      </div>
+      <?php if ($this->session->userdata('jabatan')==0){?>
+        <div class="col-2 p-0">
+          <a href="<?= site_url('project/add')?>" class="btn btn-success btn-block" id="btn">
+          <i class="fas fa-plus"></i> Add Project
+          </a>
+        </div>
+      <?php }?>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -30,18 +32,20 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr class="text-center">
-				<th>Project ID</th>
-				<th>Customer Name</th>
-				<th>Status</th>
-      	<th>Aging</th>
-      	<th>Product</th>
-				<th>IO</th>
-				<th>SID</th>
-				<th>Project Manager</th>
-        <th>Alamat HO/Originating</th>
-				<th>Alamat Terminating</th>
-				<th>Create On</th>
-				<th>Dispos</th>			  
+              <th>Project ID</th>
+              <th>Customer Name</th>
+              <th>Status</th>
+              <th>Aging</th>
+              <th>Product</th>
+              <th>IO</th>
+              <th>SID</th>
+              <th>Project Manager</th>
+              <th>Alamat HO/Originating</th>
+              <th>Alamat Terminating</th>
+              <th>Create On</th>
+              <?php if ($this->session->userdata('jabatan')==0) {
+                echo "<th>Dispos</th>";}
+              ?>
             </tr>
           </thead>
           <tbody>
@@ -86,11 +90,13 @@
 			  			<td><?=$data->jalan_ori,', ',$data->kota_ori,', ',$data->provinsi_ori?></td>
               <td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>
 			  			<td><?=$data->create_on?></td>
-              <td class="text-center">
-                <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#pilih_pm<?=$data->project_id?>" data-backdrop="static" data-keyboard="false">
-                    <i class="fas fa-user-times"></i>
-                </button>
-              </td>
+              <?php if ($this->session->userdata('jabatan')==0){?>
+                <td class="text-center">
+                  <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#pilih_pm<?=$data->project_id?>" data-backdrop="static" data-keyboard="false">
+                      <i class="fas fa-user-times"></i>
+                  </button>
+                </td>
+              <?php }?>
             </tr>
           <?php } ?>
           </tbody>

@@ -10,6 +10,9 @@ class M_project extends CI_Model {
 		if ($id != null) {
 			$this->db->where('project_id', $id);
 		}
+		if ($this->session->userdata('jabatan')==1) {
+			$this->db->where('pegawai_id', $this->session->userdata('pegawai_id'));
+		}
 		$this->db->where('status', 1);
 		$query = $this->db->get();
 		return $query;

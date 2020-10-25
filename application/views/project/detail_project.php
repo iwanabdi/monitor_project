@@ -146,7 +146,7 @@
                 </tr>            
                 <tr>
                   <td>Alamat Originating</td>
-                  <td><i class="fas fa-bars"></i><span class="ml-2"><?='jalan ',$row->jalan_ori,', ',$row->kota_ori,', ',$row->provinsi_ori?></span></td>
+                  <td><i class="fas fa-bars"></i><span class="ml-2"><?=$row->jalan_ori,', ',$row->kota_ori,', ',$row->provinsi_ori?></span></td>
                 </tr>
                 <tr>
                   <td>PIC Originating</td>
@@ -154,7 +154,7 @@
                 </tr>
                 <tr>
                   <td>Alamat Terminating</td>
-                  <td><i class="fas fa-bars"></i><span class="ml-2"><?='jalan ',$row->jalan_ter,', ',$row->kota_ter,', ',$row->provinsi_ter?></span></td>
+                  <td><i class="fas fa-bars"></i><span class="ml-2"><?=$row->jalan_ter,', ',$row->kota_ter,', ',$row->provinsi_ter?></span></td>
                 </tr>
                 <tr>
                   <td>PIC Terminating</td>

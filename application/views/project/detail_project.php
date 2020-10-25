@@ -176,9 +176,14 @@
         </a>
         <!-- Card Content - Collapse -->
         <div class="collapse" id="ProjectInitiation">
-          <div class="card-body">
-            This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand  fiahfuiawbdknasb fnbasihwgadhj   anskdbahfgawihdbaknbansfbasdgabh!
-          </div>
+          <div class="col-lg-0">
+              <table class="table ml-auto text-gray-800">
+                <tr>
+                  <td width=15%>Survey ID</td>
+                  <td><i class="fas fa-bars"></i><span class="ml-2"><?=$row->nama_customer?></span></td>
+                </tr>
+              </table>
+            </div>
         </div>
       </div>
     <!-- </div> -->

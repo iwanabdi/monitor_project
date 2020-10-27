@@ -62,7 +62,7 @@
 				<div class="card-footer">
 	      	<!-- <div class="form-group row"> -->
 				<button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Kirim</button>
-				<button type="button" class="btn btn-success" id="cetak"><i class="fas fa-paper-plane"></i> tes</button>
+				<a href="<?= site_url('C_stg/coba')?>"><button type="button" class="btn btn-success" id="cetakkk"><i class="fas fa-paper-plane"></i> tes</button></a>
 				
 			</div>
 			<!-- </div> -->
@@ -220,67 +220,44 @@
 </script>
 <!-- akhir modal mitra -->
 <!-- -------------------------------------------------------------------------------------------------------------------->
-<!-- modal project -->
+<!-- Modal Project -->
+
 <div class="modal fade" id="pilihproject" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Silahkan Pilih Project</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Silahkan Pilih project</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-		<?php
-			$template = [
-				"table_open"=>"<table class='table-responsive table-bordered'>"
-			];
-			// <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
-			$this->table->set_template($template);
-			$this->table->set_heading('ID Project','ACTION');
-			?>
-
+        <div class="form-group row">
+          <div class="table-responsive">
+            <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
+              <thead>
+              <tr class="text-center">
+                <th>ID Project</th>
+                <th>Pilih</th>
+              </tr>
+            </thead>
+            <tbody>
 			<?php
-              foreach($project->result() as $i => $data)  {
-				  
-				$sedangSuka = false;
-				// if(null!== $this->session->userdata('idpilih')){
-				// 	foreach ($this->session->userdata('idpilih') as $fav) {
-				// 		if($fav->project_id ==$data->project_id ){
-				// 			// KALAU MAKANAN YANG MAU SAYA CETAK ITU TERNYATA COCOK DENGAN DI SESSION SUKA MAKAN SUKA/ SEDANG FAV
-				// 			$sedangSuka = true;
-				// 		}
-				// 	}
-				// }
-			
-				if($sedangSuka == true){
-					$action = "DISUKAI /SEDANG DI FAVORITKAN";
-				}else{
-		
-					$action = anchor('C_stg/daftarPilih/'.$data->project_id ,'<button>FAVORITEKAN</button>');
-				}
-		
-				
-			
-              	$this->table->add_row($data->project_id , $action);
-              } ?>
-
-
-			<?php
-			
-			echo $this->table->generate();
-
-			
-		?>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary" id="saveProject">Save changes</button>
-    	</div>
+              foreach($project->result() as $i => $data)  {?>
+              <tr>
+                <td><?=$data->project_id?></td>
+                <td class="text-center">
+					<button class="btn btn-info" id="select"
+					data-id="<?= $data->project_id?>">Pilih
+					</button>
+                </td>
+              </tr>
+              <?php } ?>
+            </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
- <!-- akhir modal project -->

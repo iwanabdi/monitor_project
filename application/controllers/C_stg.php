@@ -25,22 +25,31 @@ class C_stg extends CI_Controller {
 	}
 	public function daftarPilih($project_id)
 	{
-	
-	
-		if(null === $this->session->userdata('idpilih')){
-			//belum pernah suka makanan apapun
-			$daftarPilih = [];
-			// $daftarPilih[$project_id] = $this->M_project->detail($project_id); ;
-			$this->session->set_userdata('idpilih',$daftarPilih);
-		}
-		else{
-			//seandainya sudah pernah sedang favorite/suka
-			$daftarSuka = $this->session->userdata('idpilih');
-			// $daftarSuka[$project_id] = $this->foodModel->detail($project_id);
-			$this->session->set_userdata('idpilih',$daftarSuka);
-		}
 		
+		
+		// if(null === $this->session->userdata('idpilih')){
+		// 	//belum pernah suka makanan apapun
+		// 	$daftarPilih = [];
+		// 	// $daftarPilih[$project_id] = $this->M_project->detail($project_id); ;
+		// 	$this->session->set_userdata('idpilih',$daftarPilih);
+		// }
+		// else{
+		// 	//seandainya sudah pernah sedang favorite/suka
+		// 	$daftarSuka = $this->session->userdata('idpilih');
+		// 	// $daftarSuka[$project_id] = $this->foodModel->detail($project_id);
+		// 	$this->session->set_userdata('idpilih',$daftarSuka);
+		// }
+		$daftarPilih = [];
+		$daftarPilih['id'] = $project_id;
+		$cek = $this->session->set_userdata('idpilih',$daftarPilih);
+		// var_dump($project_id);
+		var_dump($cek);
 		// return redirect('C_stg');
+	}
+	public function coba()
+	{
+		echo "sukses";
+	
 	}
 
 	

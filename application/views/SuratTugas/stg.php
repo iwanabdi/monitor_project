@@ -35,26 +35,22 @@
 				<!-- akhir row pilih mitra -->
 
 				<div class="form-group row">
-		          <input type="hidden" name="project_id" id="project_id" required="">
-		          <label class="col-sm-3 col-form-label">Pilih Project</label>
-		          <div class="col-sm-9">
-		            <div class="input-group">
-						<select class="select-move form-control custom-select" required multiple>
-							<!-- <optgroup label="Project"> -->
-								<?php foreach($project->result() as $key => $data){?>
-									<option data-description=""><?= $data->project_id?></option>
-								<?php } ?>
-						</select>
-						<div class="col-6 mx-auto" id="tail-move-container">
-							<span>Project Terpilih : </span>
-						</div>
-		            </div>
-		          </div>
+					<label class="col-sm-3 col-form-label">Project dan Tanggal</label>
+					<div class="col-sm-9">
+						<table class="table ml-auto text-gray-800" id="tableLoop">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Project</th>
+									<th>Target Date</th>
+									<th width="200px"><button type="button" class="btn btn-info btn-block" id="add_project"><i class="fas fa-plus-circle"></i> Add Project</button></th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
 				</div>
 
-				<div class="form-group row">
-		          <label class="col-sm-3 col-form-label">Tentukan Target Date</label>
-				</div>
 				<div id="cetak"></div>
 
 				<!-- <div class="form-group row">
@@ -273,16 +269,49 @@
 <script src="https://cdnjs.cloudflare.com/ajax//libs//popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="<?= base_url();?>assets/tail.select/js/tail.select-full.js"></script>
+
 <script type="text/javascript">
-	document.addEventListener("DOMContentLoaded", function(){
-		tail.select(".select-move", {
-		search: true,
-		descriptions: true,
-		hideSelected: true,
-		hideDisabled: true,
-		multiLimit: 10,
-		multiShowCount: false,
-		multiContainer: "#tail-move-container"
+
+	$(document).ready(function () {
+		for(i=1; i<=1; i++){
+			add_project();
+		}
+		$('#add_project').click(function (e) {
+			e.preventDefault();
+			add_project();
 		});
+
 	});
+
+	function add_project()
+	{
+		$(document).ready(function() {
+			$("[data-toggle='tooltip'").tooltip();
+		})
+		var No = $("#tableLoop tbody tr").length+1;
+		var Baris = '<tr>';
+				Baris += '<td>'+No+'</td>';
+				Baris += '<td>';
+					Baris += '<select name="project[]" id="project[]" class="select-move form-control custom-select" search="true" required>\
+									<option selected disabled value="">--Pilih Project--</option>\
+									<?php foreach ($project->result() as $key => $data) {?>\
+										<option value=<?= $data->project_id?>><?=$data->project_id?></option>\
+									<?php }?>\
+								</select>';
+				Baris += '</td>';
+				Baris += '<td class="text-center">';
+					Baris += '<input type="date" name="tgl_stg[]" id="tgl_stg[]" class="form-control" required>';
+				Baris += '</td>';
+				Baris += '<td class="text-center">';
+					Baris += '<button type="button" class="btn btn-md btn-danger" data-toggle="tooltip" title="Hapus Baris"><i class="fas fa-times-circle"></i></button>';
+				Baris += '</td>';
+			Baris += '</tr>';
+
+		$("#tableLoop tbody").append(Baris);
+		$("#tableLoop tbody tr").each(function(){
+			$(this).find('td:nth-child(2) input').focus();
+		});
+	}
+
+
 </script>

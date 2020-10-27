@@ -1,3 +1,4 @@
+<link type="text/css" rel="stylesheet" href="<?= base_url();?>assets/tail.select/css/bootstrap4/tail.select-default.css" />
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -38,11 +39,15 @@
 		          <label class="col-sm-3 col-form-label">Pilih Project</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
-		              <input type="text" class="form-control" name="nama_alamat" id="nama_alamat" disabled="" required="">
-		              <div class="input-group-append">
-		                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihproject" data-backdrop="static" data-keyboard="false"><i class="fas fa-search"></i>
-		                </button>
-		              </div>
+						<select class="select-move form-control custom-select" required multiple>
+							<!-- <optgroup label="Project"> -->
+								<?php foreach($project->result() as $key => $data){?>
+									<option data-description=""><?= $data->project_id?></option>
+								<?php } ?>
+						</select>
+						<div class="col-6 mx-auto" id="tail-move-container">
+							<span>Project Terpilih : </span>
+						</div>
 		            </div>
 		          </div>
 				</div>
@@ -58,7 +63,7 @@
 				  
 		         
 				</div> -->
-				
+	    	</div>
 				<div class="card-footer">
 	      	<!-- <div class="form-group row"> -->
 				<button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Kirim</button>
@@ -234,7 +239,7 @@
       <div class="modal-body">
         <div class="form-group row">
           <div class="table-responsive">
-            <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
+            <table class="table table-bordered" width="100%" id="dataTable2" cellspacing="0">
               <thead>
               <tr class="text-center">
                 <th>ID Project</th>
@@ -261,3 +266,23 @@
     </div>
   </div>
 </div>
+
+
+
+<!-- JAVASCRIPT TAIL SELECT -->
+<script src="https://cdnjs.cloudflare.com/ajax//libs//popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="<?= base_url();?>assets/tail.select/js/tail.select-full.js"></script>
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function(){
+		tail.select(".select-move", {
+		search: true,
+		descriptions: true,
+		hideSelected: true,
+		hideDisabled: true,
+		multiLimit: 10,
+		multiShowCount: false,
+		multiContainer: "#tail-move-container"
+		});
+	});
+</script>

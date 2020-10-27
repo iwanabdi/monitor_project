@@ -19,8 +19,10 @@ class C_stg extends CI_Controller {
 
 	public function index()
 	{
-		$data['mitra'] = $this->M_mitra->get_mitra();
-		$data['project'] = $this->M_project->get_project();
+		$data = [
+			'mitra'		=> $this->M_mitra->get_mitra(),
+			'project'	=> $this->M_project->get_project()
+		];
 		$this->template->load('template_pegawai', 'SuratTugas/stg' , $data);
 	}
 	public function daftarPilih($project_id)

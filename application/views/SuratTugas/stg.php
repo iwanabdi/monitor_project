@@ -1,4 +1,4 @@
-<link type="text/css" rel="stylesheet" href="<?= base_url();?>assets/tail.select/css/bootstrap4/tail.select-default.css" />
+<link type="text/css" rel="stylesheet" href="<?= base_url();?>assets/tail.select/css/bootstrap4/tail.select-funky.css" />
 <!-- Begin Page Content -->
 <div class="container-fluid">
 

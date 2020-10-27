@@ -201,7 +201,7 @@
             emptySearch: "No Options found",
             limit: "You can't select more Options",
             placeholder: "Select an Option...",
-            placeholderMulti: "Select up to :limit Options...",
+            placeholderMulti: "Cari dan Pilih Project Disini ...",
             search: "Type in to search...",
             disabled: "This Field is disabled"
         },

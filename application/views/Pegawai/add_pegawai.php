@@ -1,6 +1,5 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
   	<div class="card shadow mb-4">
 	    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 			<h5 class="m-0 font-weight-bold text-primary">Form Tambah Pegawai</h5>
@@ -27,11 +26,11 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Email</label>
 		          <div class="col-sm-9">
-		            <input type="email" class="form-control" name="email" id="email" required>
-		          </div>
+					<input type="email" class="form-control" name="email" id="email" required>
+				  </div>
 		        </div>
-		        <div class="form-group row">
-		          <label class="col-sm-3 col-form-label">Password</label>
+				<div class="form-group row">
+		          <label class="col-sm-3 col-form-label">No Telepon</label>	
 		          <div class="col-sm-9">
 		            <input type="password" class="form-control" name="password" id="password" required>
 		          </div>
@@ -68,6 +67,7 @@
 			<!-- </div> -->
     	</form>
   </div>
+	<?= $this->session->flashdata('msg_email');?>
 </div>
 
 <script language='javascript'>

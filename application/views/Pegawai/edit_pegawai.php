@@ -13,7 +13,6 @@
     	<form action="<?= site_url('master_pegawai/proses_edit_data')?>" method="POST">
 	    	<div class="card-body">
 	    		<input type="hidden" id="id" name="id" value="<?= $row->pegawai_id?>">
-
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Nama Lengkap</label>
 		          <div class="col-sm-9">
@@ -100,6 +99,7 @@
 
 	    </form>
 	</div>
+	<?= $this->session->flashdata('msg_email');?>
 </div>
 
 <script language='javascript'>

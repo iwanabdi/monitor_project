@@ -75,6 +75,7 @@
 			<!-- </div> -->
     	</form>
   </div>
+  <?= $this->session->flashdata('msg_email')?>
 </div>
 
 <script language='javascript'>

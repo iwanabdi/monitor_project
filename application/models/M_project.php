@@ -77,5 +77,13 @@ class M_project extends CI_Model {
 		$this->db->where('project_id', $pid);
 		$this->db->update('project', $data);
 	}
+	public function detail($project_id)
+	{
+		$query = $this->db
+					->from("project")
+					->where("project_id",$project_id)
+					->get();
+		return $query->row();
+	}
 
 }

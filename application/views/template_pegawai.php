@@ -127,7 +127,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?= site_url('stg')?>">
+        <a class="nav-link" href="<?= site_url('C_stg')?>">
           <i class="fas fa-fw fa-business-time"></i>
           <span>Surat Tugas</span></a>
       </li>

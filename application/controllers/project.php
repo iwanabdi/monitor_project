@@ -25,7 +25,7 @@ class project extends CI_Controller {
 
 	public function detail($id)
 	{
-		$data['row'] = $this->M_project->get_project($id)->row();
+		$data['row'] = $this->M_project->get_detail($id)->row();
 		$this->template->load('template_pegawai', 'project/detail_project', $data);
 	}
 
@@ -59,11 +59,20 @@ class project extends CI_Controller {
 
 	function genio($id)
 	{
-		$this->M_project->genreate_io($id);
-		$this->session->set_flashdata('pesan', 
-			'<div class="alert alert-success" role="alert">
-				Generate Sukses!
-			</div>');
+		$data = $this->M_project->get_project($id)->row();
+		if ($this->session->userdata('pegawai_id')==$data->pegawai_id){
+			$this->M_project->genreate_io($id);
+			$this->session->set_flashdata('pesan', 
+				'<div class="alert alert-success" role="alert">
+					Generate Sukses!
+				</div>');
+		}else {
+			$this->session->set_flashdata('pesan', 
+				'<div class="alert alert-success" role="alert">
+					Anda Bukan PM dari Poject ini, Gagal Generate IO
+				</div>');
+		}
+		
 		redirect('project/detail/'.$id,'refresh');
 	}
 

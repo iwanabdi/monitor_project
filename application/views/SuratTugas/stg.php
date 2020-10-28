@@ -5,8 +5,11 @@
   	<div class="card shadow mb-4">
 	    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 			<h5 class="m-0 font-weight-bold text-primary">Surat Tugas</h5>
+			<div class="right">
+				<div id="notif"></div>
+			</div>
 	    </div>
-    	<form action="<?= site_url('project/proses_add_data')?>" method="POST">
+    	<form action="<?= site_url('C_stg/add_stg')?>" method="POST" id="SimpanData">
 	    	<div class="card-body">
 				<!-- row pilih mitra -->
 				<div class="form-group row">
@@ -16,21 +19,17 @@
 		          </div>
 				</div>
 		        <div class="form-group row">
-				  <!-- input 1 -->
-				  <input type="hidden" name="mitra_id" id="mitra_id" required> 
-				  <!-- akhir input 1 -->
+				  <input type="hidden" name="mitra_id" id="mitra_id"> 
 				  <label class="col-sm-3 col-form-label">Pilih Mitra</label>
-				    <!-- input 2 -->
 		          <div class="col-sm-9">
 		            <div class="input-group">
-		              <input type="text" class="form-control" name="nama_mitra" id="nama_mitra" disabled="" required>
+		              <input type="text" class="form-control" name="nama_mitra" id="nama_mitra" readonly required>
 		              <div class="input-group-append">
 		                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihmitra" data-backdrop="static" data-keyboard="false"><i class="fas fa-search"></i>
 		                </button>
 		              </div>
 					</div>
 				  </div>
-				  <!-- akhir input 2 -->
 				</div>	
 				<!-- akhir row pilih mitra -->
 
@@ -40,9 +39,9 @@
 						<table class="table ml-auto text-gray-800" id="tableLoop">
 							<thead>
 								<tr>
-									<th>No</th>
-									<th>Project</th>
-									<th>Target Date</th>
+									<th class="text-center">No</th>
+									<th class="text-center">Project</th>
+									<th class="text-center">Target Date</th>
 									<th width="200px"><button type="button" class="btn btn-info btn-block" id="add_project"><i class="fas fa-plus-circle"></i> Add Project</button></th>
 								</tr>
 							</thead>
@@ -51,12 +50,9 @@
 					</div>
 				</div>
 	    	</div>
-				<div class="card-footer">
-	      	<!-- <div class="form-group row"> -->
-				<button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Kirim</button>
+			<div class="card-footer">
+			<button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Kirim</button>
 			</div>
-			<!-- </div> -->
-       
     	</form>
   </div>
   <!-- End Card -->
@@ -113,7 +109,6 @@
 </div>
 
 <script type="text/javascript">
-	// function mitra
   $(document).ready(function() {
     $(document).on('click', '#select', function() {
       let mitra_id = $(this).data('id');
@@ -123,14 +118,12 @@
       $('#pilihmitra').modal('hide');
     });
   });
-  //akhir function mitra
 </script>
 <!-- akhir modal mitra -->
 <!-- -------------------------------------------------------------------------------------------------------------------->
 
 <!-- JAVASCRIPT TAIL SELECT -->
 <script src="https://cdnjs.cloudflare.com/ajax//libs//popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="<?= base_url();?>assets/tail.select/js/tail.select-full.js"></script>
 
 <script type="text/javascript">
@@ -148,33 +141,74 @@
 
 	function add_project()
 	{
-		$(document).ready(function() {
-			$("[data-toggle='tooltip'").tooltip();
-		})
+		// $(document).ready(function() {
+		// 	$('[data-toggle="tooltip"]').tooltip();
+		// });
 		var No = $("#tableLoop tbody tr").length+1;
 		var Baris = '<tr>';
-				Baris += '<td>'+No+'</td>';
+				Baris += '<td  class="text-center">'+No+'</td>';
 				Baris += '<td>';
-					Baris += '<select name="project[]" id="project[]" class="select-move form-control custom-select" search="true" required>\
+					Baris += '<select name="project[]" id="project[]" class="form-control custom-select project" required>\
 									<option selected disabled value="">--Pilih Project--</option>\
 									<?php foreach ($project->result() as $key => $data) {?>\
-										<option value=<?= $data->project_id?>><?=$data->project_id?></option>\
+										<option value="<?= $data->project_id;?>""><?=$data->project_id;?></option>\
 									<?php }?>\
 								</select>';
 				Baris += '</td>';
 				Baris += '<td class="text-center">';
-					Baris += '<input type="date" name="tgl_stg[]" id="tgl_stg[]" class="form-control" required>';
+					Baris += '<input type="date" name="tgl_stg[]" id="tgl_stg[]" value="<?= date('Y-m-d');?>" class="form-control tgl_stg" required>';
 				Baris += '</td>';
 				Baris += '<td class="text-center">';
-					Baris += '<button type="button" class="btn btn-md btn-danger" data-toggle="tooltip" title="Hapus Baris"><i class="fas fa-times-circle"></i></button>';
+					Baris += '<button type="button" class="btn btn-sm btn-danger" id="HapusBaris" title="Hapus Baris"><i class="fas fa-times-circle"></i></button>';
 				Baris += '</td>';
 			Baris += '</tr>';
 
 		$("#tableLoop tbody").append(Baris);
 		$("#tableLoop tbody tr").each(function(){
-			$(this).find('td:nth-child(2) input').focus();
+			$(this).find('td:nth-child(2) select').focus();
 		});
 	}
 
+	$(document).on('click', '#HapusBaris', function(e) {
+		e.preventDefault();
+		var No = 1;
+		$(this).parent().parent().remove();
+		$('tableLoop tbody tr').each(function() {
+			$(this).find('td:nth-child(1)').html(No);
+			No++;
+		});
+	});
+
+	$(document).ready(function () {
+		$("#SimpanData").submit(function (e) {
+			e.preventDefault();
+			stg();
+		});
+	});
+
+	function stg() {
+		$.ajax({
+			url: $("#SimpanData").attr('action'),
+			type: 'POST',
+			cache: false,
+			dataType: "json",
+			data: $("#SimpanData").serialize(),
+			success:function(data){
+				if (data.success == true) {
+					$('.project').val('');
+					$('.tgl_stg').val('<?= date('Y-m-d')?>');
+					$('#notif').fadeIn(800, function () {
+						$('#notif').html(data.notif).fadeOut(5000).delay(800);
+					});
+				}
+				else{
+					$('#notif').html('<div class="alert alert-danger">Surat Tugas Gagal Dibuat</div>')
+				}
+			},
+			error:function(error) {
+				alert(error);
+			}
+		})
+	}
 
 </script>

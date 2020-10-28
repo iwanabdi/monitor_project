@@ -25,33 +25,44 @@ class C_stg extends CI_Controller {
 		];
 		$this->template->load('template_pegawai', 'SuratTugas/stg' , $data);
 	}
-	public function daftarPilih($project_id)
-	{
-		
-		
-		// if(null === $this->session->userdata('idpilih')){
-		// 	//belum pernah suka makanan apapun
-		// 	$daftarPilih = [];
-		// 	// $daftarPilih[$project_id] = $this->M_project->detail($project_id); ;
-		// 	$this->session->set_userdata('idpilih',$daftarPilih);
-		// }
-		// else{
-		// 	//seandainya sudah pernah sedang favorite/suka
-		// 	$daftarSuka = $this->session->userdata('idpilih');
-		// 	// $daftarSuka[$project_id] = $this->foodModel->detail($project_id);
-		// 	$this->session->set_userdata('idpilih',$daftarSuka);
-		// }
-		$daftarPilih = [];
-		$daftarPilih['id'] = $project_id;
-		$cek = $this->session->set_userdata('idpilih',$daftarPilih);
-		// var_dump($project_id);
-		var_dump($cek);
-		// return redirect('C_stg');
-	}
-	public function coba()
-	{
-		echo "sukses";
 	
+	public function add_stg()
+	{
+		// $data = [
+		// 	"nomer_stg" 		=> "opo iki?",
+		// 	"pegawai_id"		=> "opo iki?",
+    	// 	"mitra_id" 			=> $this->input->post('mitra_id'),
+		// 	"create_on"			=> date('Y-m-d'),
+		// 	"create_by"			=> $this->session->userdata('pegawai_id')
+    	// ];
+		// $this->db->insert('hstg', $data);
+		
+		$i = 0;
+		$a = $this->input->post('project');
+		$b = $this->input->post('tgl_stg');
+		if ($a[0] !== null) {
+			foreach ($a as $row) {
+				$data = [
+					// 'no_stg'		=> "ini apa hayoo",
+					'project_id'	=> $row,
+					'target_date'	=> $b[$i],
+					'create_on'		=> date('Y-m-d'),
+					'create_by'		=> $this->session->userdata('pegawai_id')
+				];
+				// print_r($row);exit;
+				$insert = $this->db->insert('dstg', $data);
+				if($insert){
+					$i++;
+				}
+			}
+		}
+
+		$arr['success'] = true;
+		$arr['notif']	= '<div class="alert alert-success">
+							<i class="fas fa-check"></i> Surat Tugas Berhasil Dibuat
+							</div>';
+		return $this->output->set_output(json_encode($arr));
+		
 	}
 
 	

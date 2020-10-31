@@ -29,14 +29,15 @@ class C_stg extends CI_Controller {
 	public function add_stg()
 	{
 		$data = [
-			// "nomer_stg" 		=> "opo iki? iki opo",
+			"no_stg" 			=> $this->M_project->no_stg(),
 			// "pegawai_id"		=> "opo iki? iki opo",
     		"mitra_id" 			=> $this->input->post('mitra_id'),
 			"create_on"			=> date('Y-m-d'),
 			"create_by"			=> $this->session->userdata('pegawai_id')
     	];
 		$this->db->insert('hstg', $data);
-		
+
+		$no_stg = $data['no_stg'];
 		$i = 0;
 		$a = $this->input->post('project');
 		$b = $this->input->post('tgl_stg');
@@ -45,6 +46,7 @@ class C_stg extends CI_Controller {
 				$data = [
 					// 'no_stg'		=> "ini apa hayoo? hayoo apa ini",
 					'project_id'	=> $row,
+					'no_stg'		=> $no_stg,
 					'target_date'	=> $b[$i],
 					'create_on'		=> date('Y-m-d'),
 					'create_by'		=> $this->session->userdata('pegawai_id')

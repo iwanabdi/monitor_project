@@ -86,4 +86,15 @@ class M_project extends CI_Model {
 		return $query->row();
 	}
 
+	public function no_stg()
+	{
+	   $this->db->select_max('no_stg', 'max');
+	   $query = $this->db->get('hstg');
+	   if ($query->num_rows() == 0) {
+	      return 1;
+	   }
+	   $max = $query->row()->max;
+	   return $max == 0 ? 1 : $max + 1;
+	}
+
 }

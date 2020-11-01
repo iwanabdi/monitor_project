@@ -32,22 +32,53 @@ class Master_mitra extends CI_Controller {
 
 	function proses_add_data()
 	{
+		$t_email = $this->input->post('email');
+		$this->db->select('*');
+        $this->db->from('mitra');
+		$this->db->where('email', $t_email);
+		$cek_email = $this->db->get()->result();
+		// print_r($cek_email);
+		if ($cek_email > 0) {
+			$this->session->set_flashdata('msg_email', 
+			'<div class="alert alert-warning" role="alert">
+				Gagal Tambah Data - Email Sudah Digunakan!
+			</div>');
+			redirect('master_mitra/add');
+			
+		}else{
 		$this->M_mitra->proses_add_data();
 		$this->session->set_flashdata('pesan', 
 			'<div class="alert alert-success" role="alert">
 				Data Berhasil Ditambah!
 			</div>');
 		redirect('master_mitra','refresh');
+		}
 	}
 
 	function proses_edit_data()
 	{
+		$id = $this->input->post('id');
+		$t_email = $this->input->post('email');
+		$this->db->select('*');
+        $this->db->from('mitra');
+		$this->db->where('email', $t_email);
+		$cek_email = $this->db->get()->result();
+		// print_r($cek_email);
+		if ($cek_email > 0) {
+			$this->session->set_flashdata('msg_email', 
+			'<div class="alert alert-warning" role="alert">
+				Gagal Edit Data - Email Sudah Digunakan!
+			</div>');
+			redirect('master_mitra/edit/'.$id);
+			
+		}else{
 		$this->M_mitra->proses_edit_data();
 		$this->session->set_flashdata('pesan', 
 			'<div class="alert alert-info" role="alert">
 				Data Berhasil Diubah!
 			</div>');
 		redirect('master_mitra','refresh');
+		}
 
 	}
 

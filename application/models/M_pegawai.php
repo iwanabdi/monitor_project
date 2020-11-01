@@ -30,8 +30,21 @@ class M_pegawai extends CI_Model {
     		"create_by"			=> $this->session->userdata('pegawai_id'),
             "create_on"         => date('Y-m-d'),
     		"status"			=> 1
-    	];
-    	$this->db->insert('pegawai', $data);
+		];
+		$this->db->insert('pegawai', $data);
+		// $this->db->select('*');
+        // $this->db->from('pegawai');
+		// $this->db->where('email', $data['email']);
+		// $cek_email = $this->db->get()->result();
+		// print_r($data['email']);
+		// if ($cek_email > 0) {
+		// 	$this->session->set_flashdata('msg_email', 
+		// 	'<div class="alert alert-warning" role="alert">
+		// 		Email Sudah Digunakan!
+		// 	</div>');
+		// }else{
+		// 	$this->db->insert('pegawai', $data);
+		// }
     }
 
    //  function ambil_id_pegawai($id)

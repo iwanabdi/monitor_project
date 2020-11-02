@@ -20,41 +20,51 @@
       </div>
     </div>
     <div class="card-body">
+		
       <div class="table-responsive">
         <!-- <?php print_r($row->result()) ?> -->
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr class="text-center">
-				<th>Project ID</th>
-				<th>Nama Customer</th>				
-				<th>Alamat Terminating</th>
-				<th>Create By</th>
-				<th>Upload File</th>			  
+							<th>Project ID</th>
+							<th>Nama Customer</th>				
+							<th>Alamat Terminating</th>
+							<th>Create By</th>
+							<th>Upload File</th>			  
             </tr>
           </thead>
           <tbody>
             <?php
-            foreach ($row->result() as $key => $data)  {?>
-            <tr>
-              <td><a href="<?= site_url('C_survey/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
-              <td><?=$data->nama_customer?></td>
-        
-              <td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>
-							<td><?=$data->create_by?></td>
-							<td class="text-center">
-								<button type="button" class="btn btn-warning btn-circle" data-toggle="modal" 
-								data-target="#selectpm" data-backdrop="static" data-keyboard="false" data-id="<?=$data->project_id?>">
-                    <i class="fas fa-user-times"></i>
-                </button>
+						foreach ($row->result() as $key => $data)  {?>
+					
+							<tr>
+								<td><a href="<?= site_url('C_survey/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
+								<td><?=$data->nama_customer?></td>
+					
+								<td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>
+								<td><?=$data->create_by?></td>
+								<td class="text-center">
+									
+									<!-- <input type="hidden" name="project_id" id="project_id" value="<?=$data->project_id?>">
+									<a href="<?= site_url()?>" type="submit" class="btn btn-warning btn-circle" name="submit" data-id="<?=$data->project_id?>">
+											<i class="fas fa-user-times"></i>
+									</a> -->
+
+									<button type="button" class="btn btn-warning btn-circle" data-toggle="modal" 
+									data-target="#selectpm" data-backdrop="static" data-keyboard="false" data-id="<?=$data->project_id?>">
+											<i class="fas fa-user-times"></i>
+									</button>
+								
+								</td>
 							
-							</td>
-             
-          
-            </tr>
+						
+							</tr>
+						
           <?php } ?>
           </tbody>
         </table>
-      </div>
+			</div>
+	
     </div>
   </div>
 
@@ -82,18 +92,20 @@
 									<div class="custom-file">
 										<input type="file" class="custom-file-input"name="berkas">
 										<label class="custom-file-label" for="inputGroupFile01">Masukan File</label>
-									</div>									
+									</div>		
+								>	
 								</div>
 
 
-								<!-- <label for="berkas">File Excel</label>
+								<label for="berkas">File Excel</label>
 								<div class="input-group mb-3">
 									<div class="custom-file">
-										<input type="file" class="custom-file-input" name="berkas[]" multiple>
+										<input type="file" class="custom-file-input" name="berkas">
 										<label class="custom-file-label" for="inputGroupFile01">Masukan File Excel</label>
 									</div>
+								
 									
-								</div> -->
+								</div>
 								<div class="card-footer">
 										<!-- <div class="form-group row"> -->
                     <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>

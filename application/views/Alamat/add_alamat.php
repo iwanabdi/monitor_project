@@ -161,6 +161,86 @@
   </div>
 </div>
 
+
+<!-- Form pencarian -->
+<form class="form-horizontal" id="formCariTempat" method="POST" autocomplete="off">
+  <div class="form-group">
+    <label class="control-label col-sm-3" >Cari Tempat:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="tempat" name="tempat">
+    </div>
+  </div>          
+  <div class="form-group"> 
+    <div class="col-sm-offset-3 col-sm-9">
+      <button type="submit" class="btn btn-default">Cari</button>
+    </div>
+  </div>
+</form>
+<!-- tempat meletakan keterangan alamat dan lat, lng -->
+<div id="panelContent"></div>
+
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCBXPGiFEO_V4Rw7piXjU1PWJY6VXisnxw" type="text/javascript"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() { 
+    $("#formCariTempat").submit(function(e) {
+        e.preventDefault();
+        //ambil value dari form
+        var namatempat=$("#tempat").val();
+
+        if (namatempat!="") {
+           //replace semua spasi menjadi tanda plus (+)
+            namatempat=namatempat.replace(/ /g, "+");
+           //api google maps
+            var url="https://maps.googleapis.com/maps/api/geocode/json?address="+namatempat+"&key=AIzaSyCBXPGiFEO_V4Rw7piXjU1PWJY6VXisnxw";
+
+            document.getElementById("panelContent").innerHTML="";
+
+            //ambil data dari json
+            $.getJSON(url, function(result){ 
+
+                //menampilkan peta
+                var map;          
+                var infowindow = new google.maps.InfoWindow({ });   
+                map = new google.maps.Map(document.getElementById('map'), {                
+                  zoom: 15,  
+                  center: {lat: result.results[0].geometry.location.lat, lng: result.results[0].geometry.location.lng},              
+                });
+
+                //looping data json
+                $.each(result.results, function(i){  
+                //menampilkan data keterangan alamat, lat, long                  
+                document.getElementById("panelContent").innerHTML +="<b>Alamat :</b>"+ result.results[i].formatted_address + "<br><b>Lat :</b>"+ result.results[i].geometry.location.lat + "<br><b>Long :</b>"+ result.results[i].geometry.location.lng + "<br><br>";
+
+                //set marker
+                var marker = new google.maps.Marker({
+                    position: {lat: result.results[i].geometry.location.lat, lng: result.results[i].geometry.location.lng},
+                    title:result.results[i].formatted_address
+                });
+
+                //menampilkan popup keterangan di saat marker di click
+                google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.setContent(result.results[i].formatted_address);
+                        infowindow.open(map, marker);
+                });
+                 // To add the marker to the map, call setMap();
+                marker.setMap(map);
+
+               });
+
+             });   
+
+
+        }else{
+          alert("Nama tempat tidak boleh kosong!");
+        } 
+       
+    });
+});
+
+</script>
+
+
 <script src="http://maps.googleapis.com/maps/api/js"></script>
 <script type="text/javascript">
 	function initialize() {

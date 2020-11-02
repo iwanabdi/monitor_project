@@ -64,7 +64,28 @@
         <a class="nav-link" href="#">
           <i class="fas fa-fw fa-business-time"></i>
           <span>Project</span></a>
-      </li>
+			</li>
+			<!-- Heading -->
+      <div class="sidebar-heading">
+        Menu Mitra
+			</div>
+			<li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-fw fa-business-time"></i>
+          <span>Dispose Project</span></a>
+			</li>
+		
+			<li class="nav-item">
+        <a class="nav-link" href="<?= site_url('C_survey')?>">
+          <i class="fas fa-fw fa-business-time"></i>
+          <span>Survey</span></a>
+			</li>
+			<li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-fw fa-business-time"></i>
+          <span>Tescom</span></a>
+			</li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -72,8 +93,11 @@
       <!-- Heading -->
       <div class="sidebar-heading">
         Menu Laporan
-      </div>
+			</div>
+			<!-- Divider -->
+      <hr class="sidebar-divider">
 
+      
       <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link" href="#">

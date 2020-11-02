@@ -123,6 +123,17 @@ class C_survey extends CI_Controller {
 
 		
 	}
+
+	public function coba($id)
+	{
+		$cek = $id;
+		if ($cek == "") {
+			echo "kosong";
+		}else {
+			echo $cek;
+		}
+		
+	}
 	
 	
 	

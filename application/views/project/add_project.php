@@ -39,13 +39,13 @@
 		          </div>
 				</div>
         <div class="form-group row">
-		          <input type="hidden" name="alamat_id" id="alamat_id" required="">
+		          <input type="hidden" name="alamat_id1" id="alamat_id1" required="">
 		          <label class="col-sm-3 col-form-label">Pilih Alamat Terminating</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
-		              <input type="text" class="form-control" name="nama_alamat" id="nama_alamat" disabled="" required="">
+		              <input type="text" class="form-control" name="nama_alamat1" id="nama_alamat1" disabled="" required="">
 		              <div class="input-group-append">
-		                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihalamat" data-backdrop="static" data-keyboard="false"><i class="fas fa-search"></i>
+		                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihalamat1" data-backdrop="static" data-keyboard="false"><i class="fas fa-search"></i>
 		                </button>
 		              </div>
 		            </div>
@@ -203,6 +203,72 @@
       $('#alamat_id').val(alamat_id);
       $('#nama_alamat').val(alamat_lengkap);
       $('#pilihalamat').modal('hide');
+    })
+  })
+</script>
+<!-- Akhir Modal alamat Data -->
+
+<!-- Modal alamat-->
+<div class="modal fade" id="pilihalamat1" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Silahkan Pilih Alamat</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="table-responsive">
+            <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
+              <thead>
+              <tr class="text-center">
+                <th>ID</th>
+                <th>Nama Customer</th>
+                <th>Jalan</th>
+                <th>Kota</th>
+								<th>Provinsi</th>	
+								<th>Koordinat</th>
+                <th>Pilih</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              foreach($alamat->result() as $i => $data)  {?>
+              <tr>
+                <td><?=$data->alamat_id?></td>
+                <td><?=$data->nama_customer?></td>
+				<td><?=$data->jalan?></td>
+				<td><?=$data->kota?></td>
+				<td><?=$data->provinsi?></td>
+                <td><?=$data->koordinat?></td>
+                <td class="text-center">
+                <button class="btn btn-info" id="selectalamat1"
+                data-id="<?= $data->alamat_id?>" 
+                data-alamat="<?= $data->jalan,', ',$data->kota,', ',$data->provinsi?>"
+                data-pilih="<?= $data->nama_customer?>">Pilih
+                </button>
+                </td>
+              </tr>
+            <?php } ?>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on('click', '#selectalamat1', function() {
+      var alamat_id = $(this).data('id');
+      var alamat_lengkap = $(this).data('alamat');
+      $('#alamat_id1').val(alamat_id);
+      $('#nama_alamat1').val(alamat_lengkap);
+      $('#pilihalamat1').modal('hide');
     })
   })
 </script>

@@ -56,23 +56,9 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Koordinat</label>
 		          <div class="col-sm-9">
-		            <a href="#collapseCardExample" class="d-block card-header py-2" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-				      <label class="m-0 font-weight-bold text-primary">Kordinat Alamat</label>
-				    </a>
-				    <!-- Card Content - Collapse -->
-				    <div class="collapse" id="collapseCardExample">
-				      <div class="card-body">
-				        <div class="form-group">
-				          <!-- <div class="col-sm-9"> -->
-				            <input type="text" class="form-control" name="koordinat" id="koordinat" value="-8.5830695,116.3202515">
-				          <!-- </div> -->
-				        </div>
-				        <div id="googleMap" style="width:100%;height:380px;"></div>
-				      </div>
-				    </div>
+		            <input type="text" class="form-control" name="koordinat" id="koordinat" value="">
 		          </div>
 		        </div>
-
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Type</label>
 		          <div class="col-sm-9">
@@ -162,7 +148,7 @@
 </div>
 
 
-<!-- Form pencarian -->
+<!-- Form pencarian
 <form class="form-horizontal" id="formCariTempat" method="POST" autocomplete="off">
   <div class="form-group">
     <label class="control-label col-sm-3" >Cari Tempat:</label>
@@ -175,7 +161,7 @@
       <button type="submit" class="btn btn-default">Cari</button>
     </div>
   </div>
-</form>
+</form> -->
 <!-- tempat meletakan keterangan alamat dan lat, lng -->
 <div id="panelContent"></div>
 

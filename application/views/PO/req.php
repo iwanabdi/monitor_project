@@ -101,9 +101,6 @@
 
 	function add_project()
 	{
-		// $(document).ready(function() {
-		// 	$('[data-toggle="tooltip"]').tooltip();
-		// });
 		var No = $("#tableLoop tbody tr").length+1;
 		var Baris = '<tr>';
 				Baris += '<td  class="text-center">'+No+'</td>';

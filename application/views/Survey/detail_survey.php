@@ -65,103 +65,7 @@
 
   <div class="row">
     <div class="col-12">
-    <!-- Collapsable Card File Upload -->
-      <div class="card shadow mb-2">
-        <!-- Card Header - Accordion -->
-        <a href="#file_upload" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="file_upload">
-          <h6 class="m-0 font-weight-bold text-primary">File Upload Map & Excel</h6>
-				</a>
-				
-        <!-- Card Content - Collapse -->
-        <div class="collapse show" id="file_upload">
-          <div class="card-body row">
-
-						<?php if(is_null($row_survey)){
-								echo '<div class="col-xl-12 col-md-12 mb-4">
-												<div class="card border-left-danger shadow h-100 py-2">
-													<div class="card-body">
-														<div class="row no-gutters align-items-center">
-															<div class="col mr-2">
-																<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">File Map & File Excel</div>
-																<div class="h5 mb-0 font-weight-bold text-gray-800">Belum ada satupun file yang di upload</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>';
-						}else{
-							if($row_survey->file_map){
-												echo '<div class="col-xl-6 col-md-6 mb-4">
-																<div class="card border-left-success shadow h-100 py-2">
-																	<div class="card-body">
-																		<div class="row no-gutters align-items-center">
-																			<div class="col mr-2">
-																				<div class="text-xs font-weight-bold text-success text-uppercase mb-1">File Map</div>
-																				<div class="h5 mb-0 font-weight-bold text-gray-800">'.$row_survey->file_map.'</div>
-																			</div>
-																			<div class="col-auto">
-																			<a href="../../assets/survey/'.$row_survey->file_map.'" download>
-																			<i class="fas fa-cloud-download-alt fa-2x text-gray-800"></i>
-																			</a>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>';
-											}else{
-												echo '<div class="col-xl-6 col-md-6 mb-4">
-																<div class="card border-left-danger shadow h-100 py-2">
-																	<div class="card-body">
-																		<div class="row no-gutters align-items-center">
-																			<div class="col mr-2">
-																				<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">File Map</div>
-																				<div class="h5 mb-0 font-weight-bold text-gray-800">File Belum Di Upload</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>';
-											}
-							if($row_survey->file_excel){
-								echo '<div class="col-xl-6 col-md-6 mb-4">
-												<div class="card border-left-success shadow h-100 py-2">
-													<div class="card-body">
-														<div class="row no-gutters align-items-center">
-															<div class="col mr-2">
-																<div class="text-xs font-weight-bold text-success text-uppercase mb-1">File Excel</div>
-																<div class="h5 mb-0 font-weight-bold text-gray-800">'.$row_survey->file_excel.'</div>
-															</div>
-															<div class="col-auto">
-															<a href="../../assets/survey/'.$row_survey->file_excel.'" download>
-															<i class="fas fa-cloud-download-alt fa-2x text-gray-800"></i>
-															</a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>';
-							}else{
-								echo '<div class="col-xl-6 col-md-6 mb-4">
-												<div class="card border-left-danger shadow h-100 py-2">
-													<div class="card-body">
-														<div class="row no-gutters align-items-center">
-															<div class="col mr-2">
-																<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">File Excel</div>
-																<div class="h5 mb-0 font-weight-bold text-gray-800">File Belum Di Upload</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>';
-							}
-
-							}?>
-						
-						
-          </div>
-        </div>
-      </div>
-		<!-- </div> -->
+    
 		
 		<!-- Collapsable Card General -->
 		<div class="card shadow mb-2">
@@ -266,25 +170,103 @@
     <!-- </div> -->
 
     <!-- Collapsable Card Survey -->
-    <!-- <div class="row"> -->
-      <div class="card shadow mb-2">
+    <!-- Collapsable Card File Upload -->
+		<div class="card shadow mb-2">
         <!-- Card Header - Accordion -->
-        <a href="#ProjectInitiation" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="ProjectInitiation">
+        <a href="#file_upload" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="file_upload">
           <h6 class="m-0 font-weight-bold text-primary">Survey</h6>
-        </a>
+				</a>
+				
         <!-- Card Content - Collapse -->
-        <div class="collapse" id="ProjectInitiation">
-          <div class="col-lg-0">
-              <table class="table ml-auto text-gray-800">
-                <tr>
-                  <td width=15%>Survey ID</td>
-                  <td><i class="fas fa-bars"></i><span class="ml-2"><?=$row->nama_customer?></span></td>
-                </tr>
-              </table>
-            </div>
+        <div class="collapse show" id="file_upload">
+          <div class="card-body row">
+
+						<?php if(is_null($row_survey)){
+								echo '<div class="col-xl-12 col-md-12 mb-4">
+												<div class="card border-left-danger shadow h-100 py-2">
+													<div class="card-body">
+														<div class="row no-gutters align-items-center">
+															<div class="col mr-2">
+																<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">File Map & File Excel</div>
+																<div class="h5 mb-0 font-weight-bold text-gray-800">Belum ada satupun file yang di upload</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>';
+						}else{
+							if($row_survey->file_map){
+												echo '<div class="col-xl-6 col-md-6 mb-4">
+																<div class="card border-left-success shadow h-100 py-2">
+																	<div class="card-body">
+																		<div class="row no-gutters align-items-center">
+																			<div class="col mr-2">
+																				<div class="text-xs font-weight-bold text-success text-uppercase mb-1">File Map</div>
+																				<div class="h5 mb-0 font-weight-bold text-gray-800">'.$row_survey->file_map.'</div>
+																			</div>
+																			<div class="col-auto">
+																			<a href="../../assets/survey/'.$row_survey->file_map.'" download>
+																			<i class="fas fa-cloud-download-alt fa-2x text-gray-800"></i>
+																			</a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>';
+											}else{
+												echo '<div class="col-xl-6 col-md-6 mb-4">
+																<div class="card border-left-danger shadow h-100 py-2">
+																	<div class="card-body">
+																		<div class="row no-gutters align-items-center">
+																			<div class="col mr-2">
+																				<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">File Map</div>
+																				<div class="h5 mb-0 font-weight-bold text-gray-800">File Belum Di Upload</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>';
+											}
+							if($row_survey->file_excel){
+								echo '<div class="col-xl-6 col-md-6 mb-4">
+												<div class="card border-left-success shadow h-100 py-2">
+													<div class="card-body">
+														<div class="row no-gutters align-items-center">
+															<div class="col mr-2">
+																<div class="text-xs font-weight-bold text-success text-uppercase mb-1">File Excel</div>
+																<div class="h5 mb-0 font-weight-bold text-gray-800">'.$row_survey->file_excel.'</div>
+															</div>
+															<div class="col-auto">
+															<a href="../../assets/survey/'.$row_survey->file_excel.'" download>
+															<i class="fas fa-cloud-download-alt fa-2x text-gray-800"></i>
+															</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>';
+							}else{
+								echo '<div class="col-xl-6 col-md-6 mb-4">
+												<div class="card border-left-danger shadow h-100 py-2">
+													<div class="card-body">
+														<div class="row no-gutters align-items-center">
+															<div class="col mr-2">
+																<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">File Excel</div>
+																<div class="h5 mb-0 font-weight-bold text-gray-800">File Belum Di Upload</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>';
+							}
+
+							}?>
+						
+						
+          </div>
         </div>
       </div>
-    <!-- </div> -->
+		<!-- </div> -->
 
     <!-- Collapsable Card Purchase Order (PO) -->
     <!-- <div class="row"> -->
@@ -309,23 +291,102 @@
 
     <!-- Collapsable Card Test & Commissioning -->
     <!-- <div class="row"> -->
-      <div class="card shadow mb-2">
+		<div class="card shadow mb-2">
         <!-- Card Header - Accordion -->
-        <a href="#TestCom" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="TestCom">
+        <a href="#file_upload_testcom" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="file_upload">
           <h6 class="m-0 font-weight-bold text-primary">Test & Commissioning</h6>
-        </a>
+				</a>
+				
         <!-- Card Content - Collapse -->
-        <div class="collapse" id="TestCom">
-          <div class="card-body">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div class="collapse show" id="file_upload_testcom">
+          
+
+						<?php if(is_null($row_testcom)){
+								echo '<div class="col-xl-12 col-md-12 mb-4">
+												<div class="card border-left-danger shadow h-100 py-2">
+													<div class="card-body">
+														<div class="row no-gutters align-items-center">
+															<div class="col mr-2">
+																<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">File BAI & File Testcom</div>
+																<div class="h5 mb-0 font-weight-bold text-gray-800">Belum ada satupun file yang di upload</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>';
+						}else{
+							if($row_testcom->file_bai){
+												echo '<div class="col-xl-6 col-md-6 mb-4">
+																<div class="card border-left-success shadow h-100 py-2">
+																	<div class="card-body">
+																		<div class="row no-gutters align-items-center">
+																			<div class="col mr-2">
+																				<div class="text-xs font-weight-bold text-success text-uppercase mb-1">File BAI</div>
+																				<div class="h5 mb-0 font-weight-bold text-gray-800">'.$row_testcom->file_bai.'</div>
+																			</div>
+																			<div class="col-auto">
+																			<a href="../../assets/survey/'.$row_testcom->file_bai.'" download>
+																			<i class="fas fa-cloud-download-alt fa-2x text-gray-800"></i>
+																			</a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>';
+											}else{
+												echo '<div class="col-xl-6 col-md-6 mb-4">
+																<div class="card border-left-danger shadow h-100 py-2">
+																	<div class="card-body">
+																		<div class="row no-gutters align-items-center">
+																			<div class="col mr-2">
+																				<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">File BAI</div>
+																				<div class="h5 mb-0 font-weight-bold text-gray-800">File Belum Di Upload</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>';
+											}
+							if($row_testcom->file_testcom){
+								echo '<div class="col-xl-6 col-md-6 mb-4">
+												<div class="card border-left-success shadow h-100 py-2">
+													<div class="card-body">
+														<div class="row no-gutters align-items-center">
+															<div class="col mr-2">
+																<div class="text-xs font-weight-bold text-success text-uppercase mb-1">File Testcom</div>
+																<div class="h5 mb-0 font-weight-bold text-gray-800">'.$row_testcom->file_testcom.'</div>
+															</div>
+															<div class="col-auto">
+															<a href="../../assets/survey/'.$row_testcom->file_testcom.'" download>
+															<i class="fas fa-cloud-download-alt fa-2x text-gray-800"></i>
+															</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>';
+							}else{
+								echo '<div class="col-xl-6 col-md-6 mb-4">
+												<div class="card border-left-danger shadow h-100 py-2">
+													<div class="card-body">
+														<div class="row no-gutters align-items-center">
+															<div class="col mr-2">
+																<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">File Testcom</div>
+																<div class="h5 mb-0 font-weight-bold text-gray-800">File Belum Di Upload</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>';
+							}
+
+							}?>
+						
+						
           </div>
         </div>
       </div>
+		<!-- </div> -->
     </div>
   </div>
 

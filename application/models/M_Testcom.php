@@ -25,6 +25,7 @@ class M_Testcom extends CI_Model {
     	if ($query == null) {
     		$data = [
 				"project_id" 		=> $this->input->post('id'),
+				"create_by"			=> $this->session->userdata('mitra_id'),
 				"file_bai"			=> $this->upload->data('file_name')
 			];
 			$this->db->insert('testcom', $data);
@@ -51,6 +52,7 @@ class M_Testcom extends CI_Model {
     	if ($query == null) {
     		$data = [
 				"project_id" 		=> $this->input->post('id'),
+				"create_by"			=> $this->session->userdata('mitra_id'),
 				"file_testcom"		=> $this->upload->data('file_name')
     		];
 			$this->db->insert('testcom', $data);

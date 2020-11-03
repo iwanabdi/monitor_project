@@ -132,7 +132,9 @@
 
           <!-- Topbar Search -->
           <li class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
-            <h6>Role : Mitra</h6>
+            <h6>Role : <?php echo $this->session->userdata('nama_mitra');?>
+							
+						</h6>
           </li>
 
           <!-- Topbar Navbar -->

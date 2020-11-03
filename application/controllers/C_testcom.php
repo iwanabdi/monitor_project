@@ -15,6 +15,7 @@ class C_testcom extends CI_Controller {
 		$this->load->model('M_pegawai');
 		$this->load->model('M_mitra'); 
 		$this->load->model('M_Testcom'); 
+		$this->load->model('M_Survey'); 
 		
 	}
 
@@ -28,7 +29,8 @@ class C_testcom extends CI_Controller {
 	{
 		$data = [
 			'row' 			=> $this->M_project->get_project($id)->row(),
-			'row_testcom'	=> $this->M_Testcom->get_testcom($id)->row()
+			'row_testcom'	=> $this->M_Testcom->get_testcom($id)->row(),
+			'row_survey'	=> $this->M_Survey->get_survey($id)->row()
 		]; 
 		$this->template->load('template_mitra', 'Testcom/detail_testcom', $data);
 	}

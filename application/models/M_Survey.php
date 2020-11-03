@@ -25,12 +25,14 @@ class M_survey extends CI_Model {
     	if ($query == null) {
     		$data = [
 				"project_id" 		=> $this->input->post('id'),
+				"create_by"			=> $this->session->userdata('mitra_id'),
 				"file_map"			=> $this->upload->data('file_name')
 			];
 			$this->db->insert('survey', $data);
 		}else{
 			// jika sudah dibuat maka akan melakukan update untuk file map
 			$data = [
+				
 				"file_map"			=> $this->upload->data('file_name')
 			];	
 			$id = $this->input->post('id');
@@ -51,6 +53,7 @@ class M_survey extends CI_Model {
     	if ($query == null) {
     		$data = [
 				"project_id" 		=> $this->input->post('id'),
+				"create_by"			=> $this->session->userdata('mitra_id'),
 				"file_excel"		=> $this->upload->data('file_name')
     		];
 			$this->db->insert('survey', $data);

@@ -22,6 +22,12 @@ class PO extends CI_Controller {
         $data['project'] 		= $this->M_project->get_detail($id)->row();
         $data['mitra_pilih'] 	= $this->M_stg->get_stg($id)->row();
 		$this->template->load('template_pegawai', 'PO/req', $data);
+	}
+	
+	public function index()
+	{
+        $data['project'] 		= $this->M_project->get_project();
+		$this->template->load('template_pegawai', 'PO/data', $data);
     }
 
     public function req_po()
@@ -34,7 +40,7 @@ class PO extends CI_Controller {
 			foreach ($a as $row) {
 				$data = [
 					// 'project_id'	=> $row,
-					'po_no'			=> $this->input->post('project_id'),
+					// 'po_no'			=> $this->input->post('project_id'),
 					'pekerjaan_id'	=> $row,
 					'qty'	        => $b[$i],
 					'delivery_date'	=> $this->input->post('devdate'),
@@ -50,7 +56,7 @@ class PO extends CI_Controller {
 
 		$arr['success'] = true;
 		$arr['notif']	= '<div class="alert alert-success">
-							<i class="fas fa-check"></i> Surat Tugas Berhasil Dibuat
+							<i class="fas fa-check"></i> Berhasil Request PO
 							</div>';
 		return $this->output->set_output(json_encode($arr));
     }

@@ -4,8 +4,8 @@
   <!-- Page Heading -->
   <div class="row">
     <div class="col-8">
-      <h1 class="h3 mb-2 text-gray-800">Surat Tugas</h1>
-      <p class="mb-4">Data STG Semua STG</p>
+      <h1 class="h3 mb-2 text-gray-800">Purchase Order</h1>
+      <p class="mb-4">Data Semua PO</p>
     </div>
     <div class="col-4">
       <?= $this->session->flashdata('pesan'); ?>
@@ -16,7 +16,7 @@
   <div class="card shadow mb-4">
     <div class="row card-header col-12 mx-auto">
       <div class="col-10 p-0 p-2">
-        <h5 class="m-0 font-weight-bold text-primary">Data STG</h5>
+        <h5 class="m-0 font-weight-bold text-primary">Data PO</h5>
       </div>
       <?php if ($this->session->userdata('jabatan')==2){?>
         <div class="col-2 p-0">
@@ -31,28 +31,17 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr class="text-center">
-              <th>Nomer STG</th>
+              <th>Nomer PO</th>
               <th>Project ID</th>
-              <th>Customer Name</th>
               <th>Project Manager</th>
               <th>Mitra</th>
+              <th>Nilai</th>
               <th>Tanggal Request</th>
-              <th>File STG</th>
+              <th>Create PO</th>
+              <th>Approve PO</th>
             </tr>
           </thead>
           <tbody>
-            <?php
-            foreach ($project->result() as $key => $data)  {?>
-            <tr>
-              <td><?=$data->no_stg?></td>
-              <td><?=$data->project_id?></td>
-              <td><?=$data->nama_customer?></td>
-              <td><?=$data->nama_pegawai?></td>
-              <td><?=$data->nama_mitra?></td>
-              <td><?=$data->create_on?></td>
-              <td>ISI PDF STG</td>
-            </tr>
-          <?php } ?>
           </tbody>
         </table>
       </div>

@@ -160,7 +160,7 @@
 						myWindow.location.reload();
 				}
 				else{
-					$('#notif').html('<div class="alert alert-danger">Surat Tugas Gagal Dibuat</div>')
+					$('#notif').html('<div class="alert alert-danger">Gagal Request PO</div>')
 				}
 			},
 			error:function(error) {

@@ -15,6 +15,7 @@ class C_stg extends CI_Controller {
 		$this->load->model('M_product');
 		$this->load->model('M_pegawai');
 		$this->load->model('M_mitra');
+		$this->load->model('M_stg');
 	}
 
 	public function index()
@@ -29,7 +30,7 @@ class C_stg extends CI_Controller {
 	public function add_stg()
 	{
 		$data = [
-			"no_stg" 			=> $this->M_project->no_stg(),
+			"no_stg" 			=> $this->M_stg->nomer_stg(),
 			// "pegawai_id"		=> "opo iki? iki opo",
     		"mitra_id" 			=> $this->input->post('mitra_id'),
 			"create_on"			=> date('Y-m-d'),

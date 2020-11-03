@@ -18,4 +18,15 @@ class M_stg extends CI_Model {
 		$query = $this->db->get();
 		return $query;
 	}
+
+	function nomer_stg()
+	{
+		$query = $this->db->query("SELECT lpad(COUNT(no_stg)+1,3,0) as total FROM `hstg`WHERE MONTH(create_on) = MONTH(CURRENT_DATE()) AND YEAR(create_on) = YEAR(CURRENT_DATE()) AND DATE(create_on) = DATE(CURRENT_DATE())");
+		$row = $query->row();
+		$belakang = $row->total;
+		$awal=date('md');
+		$tahun=date('yy');
+		$nostg = $awal.$belakang.'/STG/AKV/07/ICON+/'.$tahun;
+		return $nostg;
+	}
 }

@@ -72,8 +72,15 @@ class C_stg extends CI_Controller {
 		$arr['notif']	= '<div class="alert alert-success">
 							<i class="fas fa-check"></i> Surat Tugas Berhasil Dibuat
 							</div>';
+		// redirect('C_stg', 'refresh');
 		return $this->output->set_output(json_encode($arr));
 		
+	}
+
+	public function cetak_pdf()
+	{
+		$data['row'] = $this->M_stg->cetak();
+		$this->load->view('SuratTugas/dompdf', $data);
 	}
 
 	

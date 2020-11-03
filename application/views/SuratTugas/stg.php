@@ -265,6 +265,7 @@
 					$('.tgl_stg').val('<?= date('Y-m-d')?>');
 					$('#notif').fadeIn(800, function () {
 						$('#notif').html(data.notif).fadeOut(5000).delay(800);
+					window.open('<?= base_url('C_stg/cetak_pdf');?>');
 					});
 				}
 				else{

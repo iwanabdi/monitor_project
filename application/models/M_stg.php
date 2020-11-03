@@ -49,4 +49,15 @@ class M_stg extends CI_Model {
 		$nostg = $awal.$belakang.'/STG/AKV/07/ICON+/'.$tahun;
 		return $nostg;
 	}
+
+	function cetak()
+	{
+		$query = $this->db->query("SELECT hstg.no_stg, pegawai.nama_pegawai, pegawai.jabatan, mitra.nama_mitra FROM hstg 
+		INNER JOIN pegawai ON hstg.pegawai_id = pegawai.pegawai_id
+		INNER JOIN mitra ON hstg.mitra_id = mitra.mitra_id
+		WHERE no_stg IN (SELECT MAX(no_stg) FROM hstg)");
+		$row = $query->row();
+		$stg = $row;
+		return $stg;
+	}
 }

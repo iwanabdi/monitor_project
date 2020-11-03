@@ -35,7 +35,8 @@ class M_project extends CI_Model {
     	$data = [
 			"project_id"		=> $this->pa_id(),
     		"customer_id" 		=> $this->input->post('customer_id'),
-    		"alamat_id"			=> $this->input->post('alamat_id'),
+    		"alamat_ori"		=> $this->input->post('alamat_id'),
+    		"alamat_ter"		=> $this->input->post('alamat_id1'),
 			"create_by"			=> $this->session->userdata('pegawai_id'),
 			"product_id"		=> $this->input->post('product_id'),
 			"sid"				=> $this->gen_sid($this->input->post('product_id')),

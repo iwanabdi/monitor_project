@@ -133,6 +133,12 @@
           <span>Surat Tugas</span></a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="<?= site_url('PO')?>">
+          <i class="fas fa-fw fa-business-time"></i>
+          <span>Purchase Order</span></a>
+      </li>
+
       <!-- <li class="nav-item">
         <a class="nav-link" href="<?= site_url('user')?>">
           <i class="fas fa-users-cog"></i>

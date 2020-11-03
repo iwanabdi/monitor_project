@@ -62,11 +62,109 @@
     </div>
   </div>
   &nbsp;
-  <
+
   <div class="row">
     <div class="col-12">
-    <!-- Collapsable Card General -->
+    <!-- Collapsable Card File Upload -->
       <div class="card shadow mb-2">
+        <!-- Card Header - Accordion -->
+        <a href="#file_upload" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="file_upload">
+          <h6 class="m-0 font-weight-bold text-primary">File Upload Map & Excel</h6>
+				</a>
+				
+        <!-- Card Content - Collapse -->
+        <div class="collapse show" id="file_upload">
+          <div class="card-body row">
+
+						<?php if(is_null($row_survey)){
+								echo '<div class="col-xl-12 col-md-12 mb-4">
+												<div class="card border-left-danger shadow h-100 py-2">
+													<div class="card-body">
+														<div class="row no-gutters align-items-center">
+															<div class="col mr-2">
+																<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">File Map & File Excel</div>
+																<div class="h5 mb-0 font-weight-bold text-gray-800">Belum ada satupun file yang di upload</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>';
+						}else{
+							if($row_survey->file_map){
+												echo '<div class="col-xl-6 col-md-6 mb-4">
+																<div class="card border-left-success shadow h-100 py-2">
+																	<div class="card-body">
+																		<div class="row no-gutters align-items-center">
+																			<div class="col mr-2">
+																				<div class="text-xs font-weight-bold text-success text-uppercase mb-1">File Map</div>
+																				<div class="h5 mb-0 font-weight-bold text-gray-800">'.$row_survey->file_map.'</div>
+																			</div>
+																			<div class="col-auto">
+																			<a href="../../assets/survey/'.$row_survey->file_map.'" download>
+																			<i class="fas fa-cloud-download-alt fa-2x text-gray-800"></i>
+																			</a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>';
+											}else{
+												echo '<div class="col-xl-6 col-md-6 mb-4">
+																<div class="card border-left-danger shadow h-100 py-2">
+																	<div class="card-body">
+																		<div class="row no-gutters align-items-center">
+																			<div class="col mr-2">
+																				<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">File Map</div>
+																				<div class="h5 mb-0 font-weight-bold text-gray-800">File Belum Di Upload</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>';
+											}
+							if($row_survey->file_excel){
+								echo '<div class="col-xl-6 col-md-6 mb-4">
+												<div class="card border-left-success shadow h-100 py-2">
+													<div class="card-body">
+														<div class="row no-gutters align-items-center">
+															<div class="col mr-2">
+																<div class="text-xs font-weight-bold text-success text-uppercase mb-1">File Excel</div>
+																<div class="h5 mb-0 font-weight-bold text-gray-800">'.$row_survey->file_excel.'</div>
+															</div>
+															<div class="col-auto">
+															<a href="../../assets/survey/'.$row_survey->file_excel.'" download>
+															<i class="fas fa-cloud-download-alt fa-2x text-gray-800"></i>
+															</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>';
+							}else{
+								echo '<div class="col-xl-6 col-md-6 mb-4">
+												<div class="card border-left-danger shadow h-100 py-2">
+													<div class="card-body">
+														<div class="row no-gutters align-items-center">
+															<div class="col mr-2">
+																<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">File Excel</div>
+																<div class="h5 mb-0 font-weight-bold text-gray-800">File Belum Di Upload</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>';
+							}
+
+							}?>
+						
+						
+          </div>
+        </div>
+      </div>
+		<!-- </div> -->
+		
+		<!-- Collapsable Card General -->
+		<div class="card shadow mb-2">
         <!-- Card Header - Accordion -->
         <a href="#general" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="general">
           <h6 class="m-0 font-weight-bold text-primary">General Information</h6>

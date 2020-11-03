@@ -64,7 +64,13 @@
 		            </div>
 		          </div>
 				</div>	
-		        <div class="form-group row">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Keterangan</label>
+		        <div class="col-sm-9">
+		          <input type="text" name="keterangan" class="form-control" id="keterangan">
+		        </div>
+	    	</div>
+		    <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Create By</label>
 		          <div class="col-sm-9">
 		            <input type="text" name="create_by" class="form-control" id="alamat_id" value="<?= $this->session->userdata('nama_pegawai');?>" disabled>

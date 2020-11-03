@@ -78,7 +78,7 @@ class project extends CI_Controller {
 	function genio($id)
 	{
 		$data = $this->M_project->get_project($id)->row();
-		if ($this->session->userdata('pegawai_id')==$data->pegawai_id){
+		if ($this->session->userdata('pegawai_id')==$data->pegawai_id || $this->session->userdata('jabatan')==-1){
 			$this->M_project->genreate_io($id);
 			$this->session->set_flashdata('pesan', 
 				'<div class="alert alert-success" role="alert">

@@ -18,7 +18,7 @@
       <div class="col-10 p-0 p-2">
         <h5 class="m-0 font-weight-bold text-primary">Data STG</h5>
       </div>
-      <?php if ($this->session->userdata('jabatan')==2){?>
+      <?php if ($this->session->userdata('jabatan')==2 || $this->session->userdata('jabatan')==-1){?>
         <div class="col-2 p-0">
           <a href="<?= site_url('C_stg/buat')?>" class="btn btn-success btn-block" id="btn">
           <i class="fas fa-plus"></i> BUAT STG

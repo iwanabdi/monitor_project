@@ -58,7 +58,9 @@
 				</div>
 	    	</div>
 			<div class="card-footer">
-			<button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Kirim</button>
+			<button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Buat</button>
+			<button type="reset" class="btn btn-warning"><i class="fas fa-archive"></i> Clear</button>
+			<a href="<?=site_url('C_stg')?>"><button type="button" class="btn btn-info"><i class="fa fa-arrow-circle-left"></i> BACK</button></a>
 			</div>
     	</form>
   </div>
@@ -207,9 +209,6 @@
 
 	function add_project()
 	{
-		// $(document).ready(function() {
-		// 	$('[data-toggle="tooltip"]').tooltip();
-		// });
 		var No = $("#tableLoop tbody tr").length+1;
 		var Baris = '<tr>';
 				Baris += '<td  class="text-center">'+No+'</td>';

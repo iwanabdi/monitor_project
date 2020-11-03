@@ -18,7 +18,7 @@
       <div class="col-10 p-0 p-2">
         <h5 class="m-0 font-weight-bold text-primary">Data Project</h5>
       </div>
-      <?php if ($this->session->userdata('jabatan')==0){?>
+      <?php if ($this->session->userdata('jabatan')==0 || $this->session->userdata('jabatan')==-1 ){?>
         <div class="col-2 p-0">
           <a href="<?= site_url('project/add')?>" class="btn btn-success btn-block" id="btn">
           <i class="fas fa-plus"></i> Add Project
@@ -43,7 +43,7 @@
               <th>Alamat HO/Originating</th>
               <th>Alamat Terminating</th>
               <th>Create On</th>
-              <?php if ($this->session->userdata('jabatan')==0) {
+              <?php if ($this->session->userdata('jabatan')==0|| $this->session->userdata('jabatan')==-1) {
                 echo "<th>Dispos</th>";}
               ?>
             </tr>
@@ -90,13 +90,14 @@
 			  			<td><?=$data->jalan_ori,', ',$data->kota_ori,', ',$data->provinsi_ori?></td>
               <td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>
 			  			<td><?=$data->create_on?></td>
-              <?php if ($this->session->userdata('jabatan')==0){?>
+              <?php if ($this->session->userdata('jabatan')==0|| $this->session->userdata('jabatan')==-1){
+                if ($data->nama_pegawai == null) {?>
                 <td class="text-center">
                   <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#pilih_pm<?=$data->project_id?>" data-backdrop="static" data-keyboard="false">
                       <i class="fas fa-user-times"></i>
                   </button>
                 </td>
-              <?php }?>
+              <?php }}?>
             </tr>
           <?php } ?>
           </tbody>
@@ -125,8 +126,8 @@ foreach ($row->result() as $key => $data) : $no++;
         <div class="form-group row">
           <div class="table-responsive">
           <form action="<?= site_url('project/dispos_pm')?>" method="post" id="pilihpm">
-            <input type="hidden" name="project_id" id="project_id" value=<?=$row->project_id?>>
-            <input type="hidden" name="mitra_id" id="mitra_id">
+            <input type="hidden" name="project_id" id="project_id" required>
+            <input type="hidden" name="pegawai_id" id="pegawai_id" required>
             <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
               <thead>
               <tr class="text-center">
@@ -144,7 +145,7 @@ foreach ($row->result() as $key => $data) : $no++;
                 <td><?=$data1->nama_pegawai?></td>
                 <td><?=$data1->email?></td>
                 <td class="text-center">
-                <button class="btn btn-info" id="selectpm" type="button" data-id=<?=$data1->pegawai_id;?> data-project="<?= $data->project_id?>">Pilih
+                <button class="btn btn-info" id="selectpm" type="button" data-id=<?=$data1->pegawai_id?> data-project=<?=$data->project_id?>>Pilih
                 </button>
                 </td>
               </tr>
@@ -166,8 +167,8 @@ foreach ($row->result() as $key => $data) : $no++;
     $(document).on('click', '#selectpm', function() {
       var pegawai_id = $(this).data('id');
       $('#pegawai_id').val(pegawai_id);
-      var project_id = $(this).data('project');
-      $('#project_id').val(project_id);
+      var project = $(this).data('project');
+      $('#project_id').val(project);
       document.getElementById("pilihpm").submit();
     })
   })

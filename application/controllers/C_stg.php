@@ -53,15 +53,14 @@ class C_stg extends CI_Controller {
 		$b = $this->input->post('tgl_stg');
 		if ($a[0] !== null) {
 			foreach ($a as $row) {
-				$data = [
-					// 'project_id'	=> $row,
+				$data1 = [
 					'no_stg'		=> $no_stg,
 					'target_date'	=> $b[$i],
-					'create_on'		=> date('Y-m-d'),
-					'create_by'		=> $this->session->userdata('pegawai_id')
+					'update_on'		=> date('Y-m-d'),
+					'update_by'		=> $this->session->userdata('pegawai_id')
 				];
 				$this->db->where('id_dstg', $row);
-				$insert = $this->db->update('dstg', $data);
+				$insert = $this->db->update('dstg', $data1);
 				if($insert){
 					$i++;
 				}

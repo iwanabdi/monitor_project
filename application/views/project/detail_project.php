@@ -10,10 +10,12 @@
     </div>
     <div class="right">
         <?php 
-          if ($mitraterpilih == null ) {?>
-				<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#piliproduct" data-backdrop="static" data-keyboard="false">
+          if ($mitraterpilih == null ) {
+            if ($this->session->userdata('pegawai_id')==$row->pegawai_id || $this->session->userdata('jabatan')==-1) {
+           ?>
+				<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilimitra" data-backdrop="static" data-keyboard="false">
         <i class="fas fa-plus"> Dispos Mitra</i></button>
-          <?php }?>
+          <?php }}?>
     </div>
     <div class="col-0">
       <?= $this->session->flashdata('pesan'); ?>
@@ -398,8 +400,8 @@
 </div>
 <!-- Begin Page Content -->
 
-<!-- Modal product-->
-<div class="modal fade" id="piliproduct" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal mitra-->
+<div class="modal fade" id="pilimitra" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -411,7 +413,7 @@
       <div class="modal-body">
         <div class="form-group row">
           <div class="table-responsive">
-          <form action="<?= site_url('project/dispos_mitra')?>" method="post" id="pilihpm">
+          <form action="<?= site_url('project/dispos_mitra')?>" method="post" id="pilimitra">
             <input type="hidden" name="project_id" id="project_id" value=<?=$row->project_id?>>
             <input type="hidden" name="mitra_id" id="mitra_id">
             <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
@@ -448,7 +450,7 @@
     $(document).on('click', '#selectpm', function() {
       var mitra_id = $(this).data('id');
       $('#mitra_id').val(mitra_id);
-      document.getElementById("pilihpm").submit();
+      document.getElementById("pilimitra").submit();
     })
   })
 </script>

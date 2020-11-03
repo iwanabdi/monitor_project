@@ -142,6 +142,64 @@
 </script>
 <!-- Akhir Modal customer Data -->
 
+<!-- Modal customer-->
+<div class="modal fade" id="pilihcustomer" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Silahkan Pilih Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="table-responsive">
+            <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
+              <thead>
+              <tr class="text-center">
+                <th>ID</th>
+                <th>Nama Customer</th>
+                <th>Pilih</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              foreach($customer->result() as $i => $data)  {?>
+              <tr>
+                <td><?=$data->customer_id?></td>
+                <td><?=$data->nama_customer?></td>
+                <td class="text-center">
+                <button class="btn btn-info" id="select"
+                data-id="<?= $data->customer_id?>" 
+                data-nama="<?= $data->nama_customer?>"
+                data-pilih="<?= $data->nama_customer?>">Pilih
+                </button>
+                </td>
+              </tr>
+            <?php } ?>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on('click', '#select', function() {
+      var customer_id = $(this).data('id');
+      var nama_customer = $(this).data('nama');
+      $('#customer_id').val(customer_id);
+      $('#nama_customer').val(nama_customer);
+      $('#pilihcustomer').modal('hide');
+    })
+  })
+</script>
+<!-- Akhir Modal customer Data -->
+
 <!-- Modal alamat-->
 <div class="modal fade" id="pilihalamat" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">

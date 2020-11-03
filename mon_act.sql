@@ -442,7 +442,7 @@ insert  into `project`(`project_id`,`customer_id`,`pegawai_id`,`survey_id`,`test
 DROP TABLE IF EXISTS `survey`;
 
 CREATE TABLE `survey` (
-  `survey_id` int(11) NOT NULL,
+  `survey_id` int(11) NOT NULL AUTO_INCREMENT,
   `project_id` varchar(100) DEFAULT NULL,
   `file_map` varchar(100) DEFAULT NULL,
   `file_excel` varchar(100) DEFAULT NULL,
@@ -452,16 +452,19 @@ CREATE TABLE `survey` (
   `update_on` date NOT NULL,
   `update_by` int(11) NOT NULL,
   PRIMARY KEY (`survey_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `survey` */
+
+insert  into `survey`(`survey_id`,`project_id`,`file_map`,`file_excel`,`mitra_id`,`create_on`,`create_by`,`update_on`,`update_by`) values 
+(1,'20',NULL,'Master_Pegawai(imam).xlsx',NULL,'0000-00-00',0,'0000-00-00',0);
 
 /*Table structure for table `testcom` */
 
 DROP TABLE IF EXISTS `testcom`;
 
 CREATE TABLE `testcom` (
-  `testcom_id` int(11) DEFAULT NULL,
+  `testcom_id` int(11) NOT NULL AUTO_INCREMENT,
   `project_id` varchar(100) DEFAULT NULL,
   `file_bai` varchar(100) DEFAULT NULL,
   `file_testcom` varchar(100) DEFAULT NULL,
@@ -469,10 +472,15 @@ CREATE TABLE `testcom` (
   `create_by` int(11) NOT NULL,
   `create_on` date NOT NULL,
   `delete_by` int(11) NOT NULL,
-  `delete_on` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `delete_on` date NOT NULL,
+  PRIMARY KEY (`testcom_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `testcom` */
+
+insert  into `testcom`(`testcom_id`,`project_id`,`file_bai`,`file_testcom`,`tgl_testcom`,`create_by`,`create_on`,`delete_by`,`delete_on`) values 
+(1,'20','','',NULL,0,'0000-00-00',0,'0000-00-00'),
+(2,'21','Lamaran_Dinsos.pdf','Lamaran_Dinsos.pdf',NULL,0,'0000-00-00',0,'0000-00-00');
 
 /*Table structure for table `project_view` */
 

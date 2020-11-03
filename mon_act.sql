@@ -443,13 +443,15 @@ DROP TABLE IF EXISTS `survey`;
 
 CREATE TABLE `survey` (
   `survey_id` int(11) NOT NULL,
-  `project_id` int(11) NOT NULL,
-  `file_survey` int(11) NOT NULL,
-  `mitra_id` int(11) NOT NULL,
-  `create_on` int(11) NOT NULL,
+  `project_id` varchar(100) DEFAULT NULL,
+  `file_map` varchar(100) DEFAULT NULL,
+  `file_excel` varchar(100) DEFAULT NULL,
+  `mitra_id` int(11) DEFAULT NULL,
+  `create_on` date NOT NULL,
   `create_by` int(11) NOT NULL,
-  `update_on` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL
+  `update_on` date NOT NULL,
+  `update_by` int(11) NOT NULL,
+  PRIMARY KEY (`survey_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `survey` */
@@ -459,15 +461,15 @@ CREATE TABLE `survey` (
 DROP TABLE IF EXISTS `testcom`;
 
 CREATE TABLE `testcom` (
-  `testcom_id` int(11) NOT NULL,
-  `project_id` int(11) NOT NULL,
-  `file_bai` int(11) NOT NULL,
-  `file_testcom` int(11) NOT NULL,
-  `tgl_testcom` date NOT NULL,
+  `testcom_id` int(11) DEFAULT NULL,
+  `project_id` varchar(100) DEFAULT NULL,
+  `file_bai` varchar(100) DEFAULT NULL,
+  `file_testcom` varchar(100) DEFAULT NULL,
+  `tgl_testcom` date DEFAULT NULL,
   `create_by` int(11) NOT NULL,
-  `create_on` int(11) NOT NULL,
+  `create_on` date NOT NULL,
   `delete_by` int(11) NOT NULL,
-  `delete_on` int(11) NOT NULL
+  `delete_on` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `testcom` */

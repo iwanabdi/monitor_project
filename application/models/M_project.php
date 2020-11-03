@@ -10,6 +10,21 @@ class M_project extends CI_Model {
 		if ($id != null) {
 			$this->db->where('project_id', $id);
 		}
+		if ($this->session->userdata('jabatan')==1) {
+			$this->db->where('pegawai_id', $this->session->userdata('pegawai_id'));
+		}
+		$this->db->where('status', 1);
+		$query = $this->db->get();
+		return $query;
+	}
+
+	function get_detail($id = null)
+	{
+		$this->db->select('*');
+		$this->db->from('project_view');
+		if ($id != null) {
+			$this->db->where('project_id', $id);
+		}
 		$this->db->where('status', 1);
 		$query = $this->db->get();
 		return $query;
@@ -86,15 +101,15 @@ class M_project extends CI_Model {
 		return $query->row();
 	}
 
-	public function no_stg()
-	{
-	   $this->db->select_max('no_stg', 'max');
-	   $query = $this->db->get('hstg');
-	   if ($query->num_rows() == 0) {
-	      return 1;
-	   }
-	   $max = $query->row()->max;
-	   return $max == 0 ? 1 : $max + 1;
-	}
+	// public function no_stg()
+	// {
+	//    $this->db->select_max('no_stg', 'max');
+	//    $query = $this->db->get('hstg');
+	//    if ($query->num_rows() == 0) {
+	//       return 1;
+	//    }
+	//    $max = $query->row()->max;
+	//    return $max == 0 ? 1 : $max + 1;
+	// }
 
 }

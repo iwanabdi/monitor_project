@@ -60,4 +60,10 @@ class M_stg extends CI_Model {
 		$stg = $row;
 		return $stg;
 	}
+
+	// SELECT hstg.no_stg, dstg.no_stg, project.*, customer.nama_customer FROM hstg 
+	// INNER JOIN dstg ON hstg.no_stg = dstg.no_stg
+	// INNER JOIN project ON dstg.project_id = project.project_id
+	// INNER JOIN customer ON project.customer_id = customer.customer_id
+	// WHERE hstg.no_stg = dstg.no_stg;
 }

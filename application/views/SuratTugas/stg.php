@@ -217,7 +217,7 @@
 					Baris += '<select name="project[]" id="project[]" class="form-control custom-select project" required>\
 									<option selected disabled value="">--Pilih Project--</option>\
 									<?php foreach ($project->result() as $key => $data) {?>\
-										<option value="<?= $data->id_dstg;?>""><?=$data->project_id;?></option>\
+										<option value="<?= $data->id_dstg;?>"><?=$data->project_id;?></option>\
 									<?php }?>\
 								</select>';
 				Baris += '</td>';

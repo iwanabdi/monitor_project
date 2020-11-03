@@ -32,8 +32,8 @@
 				  <label class="col-sm-3 col-form-label">Mitra</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
-                        <input type="hidden" class="form-control" name="mitra_id" id="mitra_id" value="<?php if($mitraterpilih !=null){echo $mitraterpilih->mitra_id;} else {echo "";}?>" readonly required>    
-		                <input type="text" class="form-control" name="nama_mitra" id="nama_mitra" value="<?php if($mitraterpilih !=null){echo $mitraterpilih->nama_mitra;} else {echo "";}?>" readonly required>
+                        <!-- <input type="hidden" class="form-control" name="mitra_id" id="mitra_id" value="<?php if($mitra_pilih !=null){echo $mitra_pilih->mitra_id;} else {echo "";}?>" readonly required>     -->
+		                <input type="text" class="form-control" name="nama_mitra" id="nama_mitra" value="<?php if($mitra_pilih !=null){echo $mitra_pilih->nama_mitra;} else {echo "";}?>" readonly required>
 					</div>
 				  </div>
 				</div>	
@@ -111,7 +111,7 @@
 					Baris += '<select name="project[]" id="project[]" class="form-control custom-select project" required>\
 									<option selected disabled value="">--Pilih Project--</option>\
 									<?php foreach ($pekerjaan->result() as $key => $data) {?>\
-										<option value="<?= $data->pekerjaan_id;?>""><?=$data->nama_pekerjaan;?></option>\
+										<option value="<?= $data->pekerjaan_id;?>"><?=$data->nama_pekerjaan;?></option>\
 									<?php }?>\
 								</select>';
 				Baris += '</td>';
@@ -156,10 +156,11 @@
 			success:function(data){
 				if (data.success == true) {
 					$('.project').val('');
-					$('.qty').val('');
+					$('.qty').val();
 					$('#notif').fadeIn(800, function () {
 						$('#notif').html(data.notif).fadeOut(5000).delay(800);
 					});
+						myWindow.location.reload();
 				}
 				else{
 					$('#notif').html('<div class="alert alert-danger">Surat Tugas Gagal Dibuat</div>')

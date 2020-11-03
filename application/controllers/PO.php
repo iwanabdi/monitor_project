@@ -17,15 +17,16 @@ class PO extends CI_Controller {
     
     public function req($id)
 	{
-        $data['mitra']	= $this->M_mitra->get_mitra();
-        $data['pekerjaan']	= $this->M_pekerjaan->get_pekerjaan();
-        $data['project'] = $this->M_project->get_detail($id)->row();
-        $data['mitraterpilih'] = $this->M_stg->get_stg($id)->row();
+        $data['mitra']			= $this->M_mitra->get_mitra();
+        $data['pekerjaan']		= $this->M_pekerjaan->get_pekerjaan();
+        $data['project'] 		= $this->M_project->get_detail($id)->row();
+        $data['mitra_pilih'] 	= $this->M_stg->get_stg($id)->row();
 		$this->template->load('template_pegawai', 'PO/req', $data);
     }
 
     public function req_po()
 	{
+
 		$i = 0;
 		$a = $this->input->post('project');
 		$b = $this->input->post('qty');
@@ -33,13 +34,14 @@ class PO extends CI_Controller {
 			foreach ($a as $row) {
 				$data = [
 					// 'project_id'	=> $row,
+					'po_no'			=> $this->input->post('project_id'),
 					'pekerjaan_id'	=> $row,
 					'qty'	        => $b[$i],
-					'delivery_date'	=> $this->input->post('project'),
+					'delivery_date'	=> $this->input->post('devdate'),
                     'create_by'		=> $this->session->userdata('pegawai_id'),
                     'create_on'		=> date('Y-m-d')
 				];
-				$insert = $this->db->update('dpo', $data);
+				$insert = $this->db->insert('dpo', $data);
 				if($insert){
 					$i++;
 				}

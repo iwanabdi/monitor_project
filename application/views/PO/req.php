@@ -24,7 +24,7 @@
 				  <label class="col-sm-3 col-form-label">Customer</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
-		                <input type="text" class="form-control" name="curtomer_name" id="curtomer_name" value="<?=$project->nama_customer?>" readonly required>
+		                <input type="text" class="form-control" name="customer_name" id="customer_name" value="<?=$project->nama_customer?>" readonly required>
 					</div>
 				  </div>
 				</div>	
@@ -32,8 +32,8 @@
 				  <label class="col-sm-3 col-form-label">Mitra</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
-                        <input type="hidden" class="form-control" name="mitra_id" id="mitra_id" value="<?=$mitraterpilih->mitra_id?>" readonly required>    
-		                <input type="text" class="form-control" name="nama_mitra" id="nama_mitra" value="<?=$mitraterpilih->nama_mitra?>" readonly required>
+                        <input type="hidden" class="form-control" name="mitra_id" id="mitra_id" value="<?php if($mitraterpilih !=null){echo $mitraterpilih->mitra_id;} else {echo "";}?>" readonly required>    
+		                <input type="text" class="form-control" name="nama_mitra" id="nama_mitra" value="<?php if($mitraterpilih !=null){echo $mitraterpilih->nama_mitra;} else {echo "";}?>" readonly required>
 					</div>
 				  </div>
 				</div>	
@@ -81,70 +81,6 @@
 
 </div>
 
-
-
-<!-- -------------------------------------------------------------------------------------------------------------------->
-<!-- Modal Mitra -->
-
-<div class="modal fade" id="pilihmitra" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Silahkan Pilih Mitra</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group row">
-          <div class="table-responsive">
-            <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
-              <thead>
-              <tr class="text-center">
-                <th>ID</th>
-                <th>Nama Mitra</th>
-                <th>Pilih</th>
-              </tr>
-            </thead>
-            <tbody>
-			<?php
-              foreach($mitra->result() as $i => $data)  {?>
-              <tr>
-                <td><?=$data->mitra_id?></td>
-                <td><?=$data->nama_mitra?></td>
-                <td class="text-center">
-					<button class="btn btn-info" id="select"
-					data-id="<?= $data->mitra_id?>" 
-					data-nama="<?= $data->nama_mitra?>"
-					data-pilih="<?= $data->nama_mitra?>">Pilih
-					</button>
-                </td>
-              </tr>
-              <?php } ?>
-            </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $(document).on('click', '#select', function() {
-      let mitra_id = $(this).data('id');
-      let nama_mitra = $(this).data('nama');
-      $('#mitra_id').val(mitra_id);
-      $('#nama_mitra').val(nama_mitra);
-      $('#pilihmitra').modal('hide');
-    });
-  });
-</script>
-<!-- akhir modal mitra -->
-
-
-<!-- -------------------------------------------------------------------------------------------------------------------->
 
 <!-- JAVASCRIPT TAIL SELECT -->
 <script src="https://cdnjs.cloudflare.com/ajax//libs//popper.js/1.14.7/umd/popper.min.js"></script>
@@ -220,7 +156,7 @@
 			success:function(data){
 				if (data.success == true) {
 					$('.project').val('');
-					$('.tgl_stg').val('');
+					$('.qty').val('');
 					$('#notif').fadeIn(800, function () {
 						$('#notif').html(data.notif).fadeOut(5000).delay(800);
 					});

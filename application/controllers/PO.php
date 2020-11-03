@@ -26,30 +26,20 @@ class PO extends CI_Controller {
 
     public function req_po()
 	{
-        $data = [
-			"no_stg" 			=> $this->M_stg->nomer_stg(),
-			"pegawai_id"		=> $this->input->post('pm_id'),
-    		"mitra_id" 			=> $this->input->post('mitra_id'),
-			"create_on"			=> date('Y-m-d'),
-			"create_by"			=> $this->session->userdata('pegawai_id')
-    	];
-		$this->db->insert('hstg', $data);
-
-		$no_stg = $data['no_stg'];
 		$i = 0;
 		$a = $this->input->post('project');
-		$b = $this->input->post('tgl_stg');
+		$b = $this->input->post('qty');
 		if ($a[0] !== null) {
 			foreach ($a as $row) {
 				$data = [
 					// 'project_id'	=> $row,
-					'no_stg'		=> $no_stg,
-					'target_date'	=> $b[$i],
-					'create_on'		=> date('Y-m-d'),
-					'create_by'		=> $this->session->userdata('pegawai_id')
+					'pekerjaan_id'	=> $row,
+					'qty'	        => $b[$i],
+					'delivery_date'	=> $this->input->post('project'),
+                    'create_by'		=> $this->session->userdata('pegawai_id'),
+                    'create_on'		=> date('Y-m-d')
 				];
-				$this->db->where('id_dstg', $row);
-				$insert = $this->db->update('dstg', $data);
+				$insert = $this->db->update('dpo', $data);
 				if($insert){
 					$i++;
 				}

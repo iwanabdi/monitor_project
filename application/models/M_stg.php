@@ -28,10 +28,13 @@ class M_stg extends CI_Model {
 		return $query;
 	}
 
-	function get_stg()
+	function get_stg($id = null)
 	{
 		$this->db->select('*');
 		$this->db->from('stg_belum_view');
+		if ($id != null) {
+			$this->db->where('project_id', $id);
+		}
 		$query = $this->db->get();
 		return $query;
 	}

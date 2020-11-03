@@ -34,14 +34,12 @@ class C_survey extends CI_Controller {
 		]; 
 		$this->template->load('template_mitra', 'survey/detail_survey', $data);
 	}
-
-	
 	
 	public function upload_map()
 	{	
 		$idProject = $this->input->post('id');
 		$config['upload_path']          = './assets/survey';
-		$config['allowed_types']        = 'jpeg|png|jpg';
+		$config['allowed_types']        = 'jpeg|png|jpg|gdb|gpx|rar|zip';
 		$config['overwrite']        	=  true;
 		// $config['file_name']        	=  'imam';
 		$this->upload->initialize($config);

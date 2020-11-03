@@ -32,14 +32,13 @@ class PO extends CI_Controller {
 		if ($a[0] !== null) {
 			foreach ($a as $row) {
 				$data = [
-					// 'project_id'	=> $row,
 					'pekerjaan_id'	=> $row,
 					'qty'	        => $b[$i],
 					'delivery_date'	=> $this->input->post('project'),
                     'create_by'		=> $this->session->userdata('pegawai_id'),
                     'create_on'		=> date('Y-m-d')
 				];
-				$insert = $this->db->update('dpo', $data);
+				$insert = $this->db->insert('dpo', $data);
 				if($insert){
 					$i++;
 				}

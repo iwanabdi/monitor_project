@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_survey extends CI_Controller {
+class C_testcom extends CI_Controller {
 
 	public function __construct()
 	{
@@ -14,7 +14,7 @@ class C_survey extends CI_Controller {
 		$this->load->model('M_product');
 		$this->load->model('M_pegawai');
 		$this->load->model('M_mitra'); 
-		$this->load->model('M_Survey'); 
+		$this->load->model('M_Testcom'); 
 		
 	}
 
@@ -22,95 +22,84 @@ class C_survey extends CI_Controller {
 	{
 		$data['row'] = $this->M_project->get_project();
 		$data['pegawai'] = $this->M_pegawai->get_pm();
-		$this->template->load('template_mitra', 'Survey/data_survey',$data);
+		$this->template->load('template_mitra', 'Testcom/data_testcom',$data);
 	}
 	public function detail($id)
 	{
 		$data = [
 			'row' 			=> $this->M_project->get_project($id)->row(),
-			'row_survey'	=> $this->M_Survey->get_survey($id)->row()
+			'row_testcom'	=> $this->M_Testcom->get_testcom($id)->row()
 		]; 
-		$this->template->load('template_mitra', 'survey/detail_survey', $data);
+		$this->template->load('template_mitra', 'Testcom/detail_testcom', $data);
 	}
-
 	
-	
-	public function upload_map()
+	public function upload_bai()
 	{	
-		$idProject = $this->input->post('id');
-		$config['upload_path']          = './assets/survey';
-		$config['allowed_types']        = 'jpeg|png|jpg';
-		$config['overwrite']        	=  true;
-		// $config['file_name']        	=  'imam';
-		$this->upload->initialize($config);
-
-		if ( ! $this->upload->do_upload('map'))
-		{
-				
-				$error = array('error' => $this->upload->display_errors());
-				$this->session->set_flashdata('pesan', 
-					'<div class="alert alert-danger" role="alert">
-						Gagal Upload Map - File Map belum dipilih..
-					</div>');
-				redirect('C_survey');
-				
-		}
-		else
-		{
-			$this->M_Survey->add_map();
-			$this->session->set_flashdata('pesan', 
-			'<div class="alert alert-success" role="alert">
-				Data Berhasil Ditambah!
-			</div>');
-			// $this->template->load('template_mitra', 'Survey/detail_uploads');
-
-			redirect('C_survey');
-		}
-	}
-
-	public function upload_excel()
-	{	
-		$idProject = $this->input->post('id');
-		$config['upload_path']          = './assets/survey';
-		$config['allowed_types']        = 'xls|xlsx';
-		$config['overwrite']        	=  true;
-		// $config['file_name']        	=  'imam';
-		$this->upload->initialize($config);
-
-		if ( ! $this->upload->do_upload('excel'))
-		{
-				
-				$error = array('error' => $this->upload->display_errors());
-				$this->session->set_flashdata('pesan', 
-					'<div class="alert alert-danger" role="alert">
-						Gagal Upload Excel - File Excel belum dipilih..
-					</div>');
-				redirect('C_survey');
-				
-		}
-		else
-		{
-			$this->M_Survey->add_excel();
-			$this->session->set_flashdata('pesan', 
-			'<div class="alert alert-success" role="alert">
-				Data Berhasil Ditambah!
-			</div>');
-			// $this->template->load('template_mitra', 'Survey/detail_uploads');
-
-			redirect('C_survey');
-		}
-	}
-
-	public function coba($id)
-	{
-		$cek = $this->input->post('project_id');
-		if ($cek == "") {
-			echo "kosong";
-		}else {
-			echo $cek;
-		}
 		
+		$idProject = $this->input->post('id');
+		$config['upload_path']          = './assets/testcom';
+		$config['allowed_types']        = 'pdf';
+		$config['overwrite']        	=  true;
+		// $config['file_name']        	=  'imam';
+		$this->upload->initialize($config);
+
+		if ( ! $this->upload->do_upload('bai'))
+		{
+				
+				$error = array('error' => $this->upload->display_errors());
+				$this->session->set_flashdata('pesan', 
+					'<div class="alert alert-danger" role="alert">
+						Gagal Upload BAI - File BAI belum dipilih..
+					</div>');
+				redirect('C_testcom');
+				
+		}
+		else
+		{
+			$this->M_Testcom->add_bai();
+			$this->session->set_flashdata('pesan', 
+			'<div class="alert alert-success" role="alert">
+				Data Berhasil Ditambah!
+			</div>');
+			// $this->template->load('template_mitra', 'Survey/detail_uploads');
+
+			redirect('C_testcom');
+		}
 	}
+
+	public function upload_testcom()
+	{	
+		$idProject = $this->input->post('id');
+		$config['upload_path']          = './assets/testcom';
+		$config['allowed_types']        = 'pdf';
+		$config['overwrite']        	=  true;
+		// $config['file_name']        	=  'imam';
+		$this->upload->initialize($config);
+
+		if ( ! $this->upload->do_upload('testcom'))
+		{
+				
+				$error = array('error' => $this->upload->display_errors());
+				$this->session->set_flashdata('pesan', 
+					'<div class="alert alert-danger" role="alert">
+						Gagal Upload Tescom - File Tescom belum dipilih..
+					</div>');
+				redirect('C_testcom');
+				
+		}
+		else
+		{
+			$this->M_Testcom->add_testcom();
+			$this->session->set_flashdata('pesan', 
+			'<div class="alert alert-success" role="alert">
+				Data Berhasil Ditambah!
+			</div>');
+			// $this->template->load('template_mitra', 'Survey/detail_uploads');
+
+			redirect('C_testcom');
+		}
+	}
+
 	
 	
 	

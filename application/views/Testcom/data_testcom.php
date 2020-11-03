@@ -4,7 +4,7 @@
   <!-- Page Heading -->
   <div class="row">
     <div class="col-8">
-      <h1 class="h3 mb-2 text-gray-800">Menu Survey</h1>
+      <h1 class="h3 mb-2 text-gray-800">Menu Tescom</h1>
      
     </div>
     <div class="col-4">
@@ -16,7 +16,7 @@
   <div class="card shadow mb-4">
     <div class="row card-header col-12 mx-auto">
       <div class="col-10 p-0 p-2">
-        <h5 class="m-0 font-weight-bold text-primary">Survey</h5>
+        <h5 class="m-0 font-weight-bold text-primary">Tescom</h5>
       </div>
     </div>
     <div class="card-body">
@@ -38,26 +38,21 @@
 						foreach ($row->result() as $key => $data)  {?>
 					
 							<tr>
-								<td><a href="<?= site_url('C_survey/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
+								<td><a href="<?= site_url('C_testcom/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
 								<td><?=$data->nama_customer?></td>
 					
 								<td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>
 								<td><?=$data->create_by?></td>
 								<td class="text-center" colspan="2">
-									
-									<!-- <input type="hidden" name="project_id" id="project_id" value="<?=$data->project_id?>">
-									<a href="<?= site_url()?>" type="submit" class="btn btn-warning btn-circle" name="submit" data-id="<?=$data->project_id?>">
-											<i class="fas fa-user-times"></i>
-									</a> -->
 
 									<button type="button" class="btn btn-info btn-square" data-toggle="modal" title="File Map" 
-									data-target="#select_map<?= $data->project_id;?>" data-backdrop="static" data-keyboard="false" data-id="<?=$data->project_id?>">
-											<i class="fas fa-file-upload"></i> Map
-						</button>
+										data-target="#select_bai<?= $data->project_id;?>" data-backdrop="static" data-keyboard="false" data-id="<?=$data->project_id?>">
+												<i class="fas fa-file-pdf"></i> BAI
+									</button>
 									<button type="button" class="btn btn-info btn-square" data-toggle="modal" title="File Excel"
-									data-target="#select_excel<?= $data->project_id;?>" data-backdrop="static" data-keyboard="false" data-id="<?=$data->project_id?>">
-											<i class="fas fa-file-excel"></i> Excel
-						</button>
+										data-target="#select_testcom<?= $data->project_id;?>" data-backdrop="static" data-keyboard="false" data-id="<?=$data->project_id?>">
+												<i class="fas fa-file-pdf"></i> Tescom
+									</button>
 								
 								</td>
 							
@@ -75,9 +70,9 @@
 </div>
 <!-- /.container-fluid -->
 
-<!-- Modal survey-->
+<!-- Modal BAI-->
 <?php foreach ($row->result() as $key => $data)  {?>
-<div class="modal fade" id="select_map<?=$data->project_id?>" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="select_bai<?=$data->project_id?>" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -90,13 +85,13 @@
       <div class="modal-body">
         <div class="form-group row">
           <div class="table-responsive">
-						<?php echo form_open_multipart('C_survey/upload_map/')?>
+						<?php echo form_open_multipart('C_testcom/upload_bai/')?>
 						<input type="hidden" name="id" name = "id" value="<?=$data->project_id?>">
-						<label for="berkas">File Map</label>
+						<label for="berkas">File BAI</label>
 						<div class="input-group mb-3">
 							<div class="custom-file">
-								<input type="file" class="custom-file-input" name="map">
-								<label class="custom-file-label" for="inputGroupFile01">Masukan File</label>
+								<input type="file" class="custom-file-input" name="bai">
+								<label class="custom-file-label" for="inputGroupFile01">Masukan File PDF</label>
 							</div>		
 						</div>
 					</div>
@@ -114,14 +109,14 @@
 </div>
 <?php }?>
 
-<!-- Modal survey-->
+<!-- Modal testcom-->
 <?php foreach ($row->result() as $key => $data)  {?>
-<div class="modal fade" id="select_excel<?=$data->project_id?>" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="select_testcom<?=$data->project_id?>" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Silahkan Upload File ( <?=$data->project_id?>)</h5>
-				
+			
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -129,13 +124,13 @@
       <div class="modal-body">
         <div class="form-group row">
           <div class="table-responsive">
-						<?php echo form_open_multipart('C_survey/upload_excel/')?>
+						<?php echo form_open_multipart('C_testcom/upload_testcom/')?>
 								<input type="hidden" name="id" name = "id" value="<?=$data->project_id?>">
-								<label for="berkas">File Excel</label>
+								<label for="berkas">File Tescom</label>
 								<div class="input-group mb-3">
 									<div class="custom-file">
-										<input type="file" class="custom-file-input" name="excel">
-										<label class="custom-file-label" for="inputGroupFile01">Masukan File Excel</label>
+										<input type="file" class="custom-file-input" name="testcom">
+										<label class="custom-file-label" for="inputGroupFile01">Masukan File PDF</label>
 									</div>
 								</div>
 								<div class="card-footer">
@@ -161,7 +156,7 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    $(document).on('click', '#select_map', function() {
+    $(document).on('click', '#select_bai', function() {
       var pegawai_id = $(this).data('id');
       $('#pegawai_id').val(pegawai_id);
       var project_id = $(this).data('project_id');
@@ -173,7 +168,7 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    $(document).on('click', '#select_excel', function() {
+    $(document).on('click', '#select_tescom', function() {
       var pegawai_id = $(this).data('id');
       $('#pegawai_id').val(pegawai_id);
       var project_id = $(this).data('project_id');

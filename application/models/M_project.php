@@ -77,6 +77,17 @@ class M_project extends CI_Model {
 		$this->db->update('project', $data);
 	}
 
+	function proses_dispos_mitra()
+    {
+    	$data = [
+			"project_id"		=> $this->input->post('project_id'),
+			"mitra_id"			=> $this->input->post('mitra_id'),
+			"create_by"			=> $this->session->userdata('pegawai_id'),
+			"create_on"			=> date('Y-m-d')
+    	];
+		$this->db->insert('dstg', $data);
+	}
+
 	function genreate_io($pid)
     {
 		$query = $this->db->query("SELECT lpad(COUNT(IO)+1,5,0) as total FROM `project` WHERE MONTH(create_on) = MONTH(CURRENT_DATE()) AND YEAR(create_on) = YEAR(CURRENT_DATE()) AND IO is not null");
@@ -100,16 +111,5 @@ class M_project extends CI_Model {
 					->get();
 		return $query->row();
 	}
-
-	// public function no_stg()
-	// {
-	//    $this->db->select_max('no_stg', 'max');
-	//    $query = $this->db->get('hstg');
-	//    if ($query->num_rows() == 0) {
-	//       return 1;
-	//    }
-	//    $max = $query->row()->max;
-	//    return $max == 0 ? 1 : $max + 1;
-	// }
 
 }

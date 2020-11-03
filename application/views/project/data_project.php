@@ -16,7 +16,7 @@
   <div class="card shadow mb-4">
     <div class="row card-header col-12 mx-auto">
       <div class="col-10 p-0 p-2">
-        <h5 class="m-0 font-weight-bold text-primary">Data product</h5>
+        <h5 class="m-0 font-weight-bold text-primary">Data Project</h5>
       </div>
       <?php if ($this->session->userdata('jabatan')==0){?>
         <div class="col-2 p-0">
@@ -125,8 +125,8 @@ foreach ($row->result() as $key => $data) : $no++;
         <div class="form-group row">
           <div class="table-responsive">
           <form action="<?= site_url('project/dispos_pm')?>" method="post" id="pilihpm">
-            <input type="hidden" name="project_id" id="project_id">
-            <input type="hidden" name="pegawai_id" id="pegawai_id">
+            <input type="hidden" name="project_id" id="project_id" value=<?=$row->project_id?>>
+            <input type="hidden" name="mitra_id" id="mitra_id">
             <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
               <thead>
               <tr class="text-center">

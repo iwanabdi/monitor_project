@@ -14,6 +14,7 @@ class project extends CI_Controller {
 		$this->load->model('M_alamat');
 		$this->load->model('M_product');
 		$this->load->model('M_pegawai');
+		$this->load->model('M_mitra');
 	}
 
 	public function index()
@@ -26,6 +27,7 @@ class project extends CI_Controller {
 	public function detail($id)
 	{
 		$data['row'] = $this->M_project->get_detail($id)->row();
+		$data['mitra'] = $this->M_mitra->get_mitra();
 		$this->template->load('template_pegawai', 'project/detail_project', $data);
 	}
 
@@ -50,6 +52,16 @@ class project extends CI_Controller {
 	function dispos_pm()
 	{
 		$this->M_project->proses_dispos_pm();
+		$this->session->set_flashdata('pesan', 
+			'<div class="alert alert-success" role="alert">
+				Berhasil Dispose!
+			</div>');
+		redirect('project','refresh');
+	}
+
+	function dispos_mitra()
+	{
+		$this->M_project->proses_dispos_mitra();
 		$this->session->set_flashdata('pesan', 
 			'<div class="alert alert-success" role="alert">
 				Berhasil Dispose!

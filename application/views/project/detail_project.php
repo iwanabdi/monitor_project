@@ -8,6 +8,10 @@
 				<i class="fas fa-undo-alt"></i> Back
 				</a>
     </div>
+    <div class="right">
+				<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#piliproduct" data-backdrop="static" data-keyboard="false">
+        <i class="fas fa-plus">Dispos Mitra</i></button>
+    </div>
     <div class="col-0">
       <?= $this->session->flashdata('pesan'); ?>
     </div>
@@ -149,12 +153,20 @@
                   <td><i class="fas fa-bars"></i><span class="ml-2"><?=$row->jalan_ori,', ',$row->kota_ori,', ',$row->provinsi_ori?></span></td>
                 </tr>
                 <tr>
+                  <td>Koordinat Originating</td>
+                  <td><i class="fas fa-bars"></i><span class="ml-2"><?=$row->koordiant_ori?></span></td>
+                </tr>
+                <tr>
                   <td>PIC Originating</td>
                   <td><i class="fas fa-bars"></i><span class="ml-2"><?=$row->pic_ori,' - ',$row->no_telp_ori?></span></td>
                 </tr>
                 <tr>
                   <td>Alamat Terminating</td>
                   <td><i class="fas fa-bars"></i><span class="ml-2"><?=$row->jalan_ter,', ',$row->kota_ter,', ',$row->provinsi_ter?></span></td>
+                </tr>
+                <tr>
+                  <td>Koordinat Terminating</td>
+                  <td><i class="fas fa-bars"></i><span class="ml-2"><?=$row->koordiant_ter?></span></td>
                 </tr>
                 <tr>
                   <td>PIC Terminating</td>
@@ -233,3 +245,59 @@
 
 </div>
 <!-- Begin Page Content -->
+
+<!-- Modal product-->
+<div class="modal fade" id="piliproduct" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Silahkan Pilih Mitra</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="table-responsive">
+          <form action="<?= site_url('project/dispos_mitra')?>" method="post" id="pilihpm">
+            <input type="hidden" name="project_id" id="project_id" value=<?=$row->project_id?>>
+            <input type="hidden" name="mitra_id" id="mitra_id">
+            <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
+              <thead>
+              <tr class="text-center">
+                <th>ID</th>
+                <th>Nama Mitra</th>
+                <th>Pilih</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              foreach($mitra->result() as $i => $data)  {?>
+              <tr>
+                <td><?=$data->mitra_id?></td>
+                <td><?=$data->nama_mitra?></td>
+                <td class="text-center">
+                <button class="btn btn-info" id="selectpm" data-id=<?=$data->mitra_id;?>>Pilih</button>
+                </td>
+              </tr>
+            <?php } ?>
+            </tbody>
+            </table>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on('click', '#selectpm', function() {
+      var mitra_id = $(this).data('id');
+      $('#mitra_id').val(mitra_id);
+      document.getElementById("pilihpm").submit();
+    })
+  })
+</script>
+<!-- Akhir Modal product Data -->

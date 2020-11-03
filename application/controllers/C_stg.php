@@ -21,8 +21,17 @@ class C_stg extends CI_Controller {
 	public function index()
 	{
 		$data = [
+			'project'	=> $this->M_stg->get_stg()
+		];
+		$this->template->load('template_pegawai', 'SuratTugas/data' , $data);
+	}
+
+	public function buat()
+	{
+		$data = [
 			'mitra'		=> $this->M_mitra->get_mitra(),
-			'project'	=> $this->M_project->get_project()
+			'project'	=> $this->M_stg->get_stg_belum(),
+			'pegawai'	=> $this->M_pegawai->get_pm()
 		];
 		$this->template->load('template_pegawai', 'SuratTugas/stg' , $data);
 	}
@@ -31,7 +40,7 @@ class C_stg extends CI_Controller {
 	{
 		$data = [
 			"no_stg" 			=> $this->M_stg->nomer_stg(),
-			// "pegawai_id"		=> "opo iki? iki opo",
+			"pegawai_id"		=> $this->input->post('pm_id'),
     		"mitra_id" 			=> $this->input->post('mitra_id'),
 			"create_on"			=> date('Y-m-d'),
 			"create_by"			=> $this->session->userdata('pegawai_id')
@@ -45,15 +54,14 @@ class C_stg extends CI_Controller {
 		if ($a[0] !== null) {
 			foreach ($a as $row) {
 				$data = [
-					// 'no_stg'		=> "ini apa hayoo? hayoo apa ini",
-					'project_id'	=> $row,
+					// 'project_id'	=> $row,
 					'no_stg'		=> $no_stg,
 					'target_date'	=> $b[$i],
 					'create_on'		=> date('Y-m-d'),
 					'create_by'		=> $this->session->userdata('pegawai_id')
 				];
-				// print_r($row);exit;
-				$insert = $this->db->insert('dstg', $data);
+				$this->db->where('id_dstg', $row);
+				$insert = $this->db->update('dstg', $data);
 				if($insert){
 					$i++;
 				}

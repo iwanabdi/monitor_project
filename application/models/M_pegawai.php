@@ -132,6 +132,15 @@ class M_pegawai extends CI_Model {
         return $query;
     }
 
+    function get_spv()
+    {
+        $this->db->select('*');
+        $this->db->from('pegawai');
+        $this->db->where('jabatan =', 0);
+        $query = $this->db->get();
+        return $query;
+    }
+
 }
 
 /* End of file M_pegawai.php */

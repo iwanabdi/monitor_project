@@ -13,11 +13,18 @@
 	    	<div class="card-body">
 				<!-- row pilih mitra -->
 				<div class="form-group row">
-		          <label class="col-sm-3 col-form-label">Create By</label>
+				  <input type="hidden" name="pm_id" id="pm_id"> 
+				  <label class="col-sm-3 col-form-label">Pilih Team Leader</label>
 		          <div class="col-sm-9">
-		            <input type="text" name="create_by" class="form-control" id="alamat_id" value="<?= $this->session->userdata('nama_pegawai');?>" disabled>
-		          </div>
-				</div>
+		            <div class="input-group">
+		              <input type="text" class="form-control" name="nama_pm" id="nama_pm" readonly required>
+		              <div class="input-group-append">
+		                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihpm" data-backdrop="static" data-keyboard="false"><i class="fas fa-search"></i>
+		                </button>
+		              </div>
+					</div>
+				  </div>
+				</div>	
 		        <div class="form-group row">
 				  <input type="hidden" name="mitra_id" id="mitra_id"> 
 				  <label class="col-sm-3 col-form-label">Pilih Mitra</label>
@@ -120,6 +127,65 @@
   });
 </script>
 <!-- akhir modal mitra -->
+
+
+<!-- Modal PM -->
+<div class="modal fade" id="pilihpm" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Silahkan Pilih Project Manager</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="table-responsive">
+            <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
+              <thead>
+              <tr class="text-center">
+                <th>ID</th>
+                <th>Nama Project Manager</th>
+                <th>Pilih</th>
+              </tr>
+            </thead>
+            <tbody>
+			<?php
+              foreach($pegawai->result() as $i => $data)  {?>
+              <tr>
+                <td><?=$data->pegawai_id?></td>
+                <td><?=$data->nama_pegawai?></td>
+                <td class="text-center">
+					<button class="btn btn-info" id="selectpm"
+					data-id="<?= $data->pegawai_id?>" 
+					data-nama="<?= $data->nama_pegawai?>"
+					data-pilih="<?= $data->nama_pegawai?>">Pilih
+					</button>
+                </td>
+              </tr>
+              <?php } ?>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on('click', '#selectpm', function() {
+      let pm_id = $(this).data('id');
+      let nama_pm = $(this).data('nama');
+      $('#pm_id').val(pm_id);
+      $('#nama_pm').val(nama_pm);
+      $('#pilihpm').modal('hide');
+    });
+  });
+</script>
+<!-- akhir modal PM -->
 <!-- -------------------------------------------------------------------------------------------------------------------->
 
 <!-- JAVASCRIPT TAIL SELECT -->
@@ -151,7 +217,7 @@
 					Baris += '<select name="project[]" id="project[]" class="form-control custom-select project" required>\
 									<option selected disabled value="">--Pilih Project--</option>\
 									<?php foreach ($project->result() as $key => $data) {?>\
-										<option value="<?= $data->project_id;?>""><?=$data->project_id;?></option>\
+										<option value="<?= $data->id_dstg;?>""><?=$data->project_id;?></option>\
 									<?php }?>\
 								</select>';
 				Baris += '</td>';

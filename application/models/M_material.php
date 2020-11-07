@@ -35,7 +35,10 @@ class M_material extends CI_Model {
 			$data2 = [
 				"material_id" 		=> $id,
 				"SN"				=> $this->input->post('sn-'.$i),
-				"keterangan"		=> $this->input->post('keterangan')
+				"keterangan"		=> $this->input->post('keterangan'),
+				"create_on"				=> date('Y-m-d'),
+    			"create_by"				=> $this->session->userdata('pegawai_id'),
+				"status"				=> 1
 			];
 		$this->db->insert('dmaterial', $data2);
 		}
@@ -62,7 +65,10 @@ class M_material extends CI_Model {
 			$data2 = [
 				"material_id" 		=> $count,
 				"SN"				=> $this->input->post('sn-'.$i),
-				"keterangan"		=> $this->input->post('keterangan')
+				"keterangan"		=> $this->input->post('keterangan'),
+				"create_on"				=> date('Y-m-d'),
+    			"create_by"				=> $this->session->userdata('pegawai_id'),
+				"status"				=> 1
 			];
 		$this->db->insert('dmaterial', $data2);
 		}

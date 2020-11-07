@@ -133,11 +133,16 @@ h2.name {
 .table .no {
   color: #FFFFFF;
   font-size: 1.6em;
+  text-align:center;
   background: #57B223;
 }
 
 .table .desc {
   text-align: left;
+}
+
+.table. .tgl {
+  text-align:center;
 }
 
 .table .unit {
@@ -205,11 +210,11 @@ h2.name {
 footer {
   color: #777777;
   width: 100%;
-  height: 30px;
-  position: absolute;
+  height: 50px;
+  position: static;
   bottom: 0;
   border-top: 1px solid #AAAAAA;
   padding: 8px 0;
-  text-align: center;
+  text-align: left;
 }
 

@@ -78,8 +78,22 @@ class C_stg extends CI_Controller {
 
 	public function cetak_pdf()
 	{
-		$data['row'] = $this->M_stg->cetak();
+		$data = [
+			'row_spv'	=> $this->M_stg->spv()->row(),
+			'row'		=> $this->M_stg->cetak(),
+			'invoice' 	=> $this->M_stg->cetak_project()
+		];
 		$this->load->view('SuratTugas/dompdf', $data);
+	}
+
+	public function cetak_stg($no_stg)
+	{
+		$data = [
+			'row_spv'	=> $this->M_stg->spv()->row(),
+			'row'		=> $this->M_stg->cetak(),
+			'invoice' 	=> $this->M_stg->cetak_stg($no_stg)
+		];
+		$this->load->view('SuratTugas/cetak_stg', $data);
 	}
 
 	

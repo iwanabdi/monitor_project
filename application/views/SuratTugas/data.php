@@ -50,7 +50,15 @@
               <td><?=$data->nama_pegawai?></td>
               <td><?=$data->nama_mitra?></td>
               <td><?=$data->create_on?></td>
-              <td>ISI PDF STG</td>
+              <td style="text-align:center">
+                <?php if ($data->no_stg == ""): ?>
+                  <a href="#" onclick="not_cetak()" class="btn btn-danger btn-circle"><i class="fas fa-print"></i>
+                </a>
+                <?php else: ?>
+                  <a href="<?= site_url('C_stg/cetak_stg/'.$data->no_stg)?>" target="_blank" class="btn btn-warning btn-circle"><i class="fas fa-print"></i>
+                </a>
+                <?php endif ?>
+              </td>
             </tr>
           <?php } ?>
           </tbody>
@@ -61,3 +69,9 @@
 
 </div>
 <!-- /.container-fluid -->
+<script type="text/javascript">
+  function not_cetak()
+  {
+    alert("File STG Untuk Project Ini Belum Dibuat");
+  }
+</script>

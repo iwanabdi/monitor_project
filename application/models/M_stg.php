@@ -52,7 +52,7 @@ class M_stg extends CI_Model {
 
 	function cetak()
 	{
-		$query = $this->db->query("SELECT hstg.no_stg, pegawai.nama_pegawai, pegawai.jabatan, mitra.nama_mitra FROM hstg 
+		$query = $this->db->query("SELECT hstg.no_stg,hstg.create_on, pegawai.nama_pegawai, pegawai.jabatan, pegawai.no_telp, mitra.nama_mitra FROM hstg 
 		INNER JOIN pegawai ON hstg.pegawai_id = pegawai.pegawai_id
 		INNER JOIN mitra ON hstg.mitra_id = mitra.mitra_id
 		WHERE no_stg IN (SELECT MAX(no_stg) FROM hstg)");
@@ -61,9 +61,47 @@ class M_stg extends CI_Model {
 		return $stg;
 	}
 
-	// SELECT hstg.no_stg, dstg.no_stg, project.*, customer.nama_customer FROM hstg 
-	// INNER JOIN dstg ON hstg.no_stg = dstg.no_stg
-	// INNER JOIN project ON dstg.project_id = project.project_id
-	// INNER JOIN customer ON project.customer_id = customer.customer_id
-	// WHERE hstg.no_stg = dstg.no_stg;
+	function cetak_project()
+	{
+		$query = $this->db->query("SELECT dstg.no_stg, dstg.create_on, dstg.target_date, hstg.no_stg, 
+									project.project_id, project.IO, project.SID,
+									customer.nama_customer, customer.alamat FROM dstg
+									LEFT JOIN hstg ON hstg.no_stg = dstg.no_stg
+									LEFT JOIN project ON project.project_id = dstg.project_id
+									LEFT JOIN customer ON customer.customer_id = project.customer_id
+									WHERE hstg.no_stg IN (SELECT MAX(no_stg) FROM hstg)");
+		return $query;
+	}
+
+	function spv()
+	{
+		$this->db->select('*');
+		$this->db->from('pegawai');
+		$this->db->where('jabatan',0);
+		$query = $this->db->get();
+		return $query;
+	}
+
+	function cetak_stg($no_stg)
+	{
+		$query = $this->db->query("SELECT dstg.no_stg, dstg.create_on, dstg.target_date, hstg.no_stg, 
+									project.project_id, project.IO, project.SID,
+									customer.nama_customer, customer.alamat FROM dstg
+									LEFT JOIN hstg ON hstg.no_stg = dstg.no_stg
+									LEFT JOIN project ON project.project_id = dstg.project_id
+									LEFT JOIN customer ON customer.customer_id = project.customer_id
+									WHERE hstg.no_stg = $no_stg");
+		return $query;
+	}
+
+	// SELECT dstg.no_stg, dstg.create_on as tgl_dstg, dstg.target_date, hstg.create_on as tgl_hstg,
+	// 								project.project_id, project.IO, project.SID, 
+	// 								pegawai.nama_pegawai, pegawai.jabatan, pegawai.no_telp, mitra.nama_mitra,
+	// 								customer.nama_customer, customer.alamat FROM dstg
+	// 								LEFT JOIN hstg ON hstg.no_stg = dstg.no_stg
+	// 								INNER JOIN pegawai ON hstg.pegawai_id = pegawai.pegawai_id
+	// 								INNER JOIN mitra ON hstg.mitra_id = mitra.mitra_id
+	// 								LEFT JOIN project ON project.project_id = dstg.project_id
+	// 								LEFT JOIN customer ON customer.customer_id = project.customer_id
+	// 								WHERE hstg.no_stg IN (SELECT MAX(no_stg) FROM hstg)
 }

@@ -28,27 +28,12 @@
 						<tr>
 							<td width="20%">Nama</td>
 							<td width="10%">:</td>
-							<td style="text-align: left;" width="80%"><?= $row->nama_pegawai?></td>
+							<td style="text-align: left;" width="80%"><?= $row_spv->nama_pegawai?></td>
 						</tr>
 						<tr>
 							<td>Jabatan</td>
 							<td>:</td>
-							<td style="text-align: left;">
-								<?php if ($row->jabatan == 0) {
-										echo "SPV";
-									} else if($row->jabatan == 1) {
-										echo "PM";
-									} else if($row->jabatan == 2) {
-										echo "Admin";
-									} else if($row->jabatan == 3) {
-										echo "Gudang";
-									} else if($row->jabatan == 4) {
-										echo "QC";
-									} else{
-										echo "Developer";
-									}
-									?>
-							</td>
+							<td style="text-align: left;">SPV Bidang Aktivasi</td>
 						</tr>
 						<tr>
 							<td>Alamat</td>
@@ -80,43 +65,53 @@
           </tr>
         </thead>
         <tbody>
+          <?php foreach ($invoice->result() as $key => $data) {
+            $no = 1;
+            ?>
           <tr>
-            <td class="no">01</td>
-            <td class="desc"><h3>Nama Customer</h3>Alamat Customer</td>
-            <td class="desc">PA NODE ID</td>
-            <td class="desc">NO. IO</td>
-            <td class="desc">SERVICE ID</td>
-            <td class="desc">TANGGAL MULAI</td>
-            <td class="desc">TANGGAL SELESAI</td>
+            <td class="no"><?= $no++;?></td>
+            <td class="desc"><h3 style="text-transform: uppercase;"><?= $data->nama_customer;?></h3><?= $data->alamat;?></td>
+            <td class="desc"><?= $data->project_id;?></td>
+            <td class="desc"><?= $data->IO;?></td>
+            <td class="desc"><?= $data->SID;?></td>
+            <td class="tgl"><?= $data->create_on;?></td>
+            <td class="tgl"><?= $data->target_date;?></td>
           </tr>
-          <tr>
-            <td class="no">01</td>
-            <td class="desc"><h3>Nama Customer</h3>Alamat Customer</td>
-            <td class="desc">PA NODE ID</td>
-            <td class="desc">NO. IO</td>
-            <td class="desc">SERVICE ID</td>
-            <td class="desc">TANGGAL MULAI</td>
-            <td class="desc">TANGGAL SELESAI</td>
-          </tr>
-          <tr>
-            <td class="no">01</td>
-            <td class="desc"><h3>Nama Customer</h3>Alamat Customer</td>
-            <td class="desc">PA NODE ID</td>
-            <td class="desc">NO. IO</td>
-            <td class="desc">SERVICE ID</td>
-            <td class="desc">TANGGAL MULAI</td>
-            <td class="desc">TANGGAL SELESAI</td>
-          </tr>
+         <?php }?>
+          
         </tbody>
 			</table>
 			<h3><i>*Sebelum & Sesudah melakukan pekerjaan di JB & PoP, Harap menginformasikan ke SERPO Terkait / TIM Pemeliharaan. PIC FS Jatim HP (08113408687)</i></h3>
-			<h3>Petugas Lapangan :</h3>
+			<h3><u>Pengawas dari ICON+ :</u></h3>
+      <ul>
+        <li><b>
+          <?= $row->nama_pegawai;?>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          (HP. <?= $row->no_telp?>)
+        </b></li>
+      </ul>
+      <b>
+      <span>Kepada yang berwenang dimohon bantuannya agar dapat membantu kelancaran pekerjaan tersebut.</span><br>Note: Adapun ijin pelaksanaan pekerjaan di area ICON+ (Area PLN) adalah pada hari Senin sampai Jum'at Jam 08.00 s/d 16.00 jika melewati wakti tersebut, harus melaporakan kepada salah satu penanggung jawab di atas pada hari yang bersangkutan.
+      <br>
+      <br>
+      <span>Demikian Surat Tugas ini disampaikan agar dapat digunakan dengan semestinya.</span>
+      <br>
+      <br>
+      <span>Surabaya, <?= $row->create_on;?></span>
+      <span><br>SPV Bidang Aktivasi SBU Regional Jawa Bagian Timur
+      <br>
+      <span><br><img width="100px" src="<?=base_url();?>assets/invoice/logo_icon.png"></span>
+      <br>
+      <br>
+      <span><br><?= $row_spv->nama_pegawai;?></span>
 
+      <br>
+      <br>
+    </main>
+    <footer>
       <div id="notices">
         <div class="notice">Tidak Safety, Lebih Baik Pulang</div>
       </div>
-    </main>
-    <footer>
       <!-- Invoice was created on a computer and is valid without the signature and seal. -->
     </footer>
   </body>

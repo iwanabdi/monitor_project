@@ -53,6 +53,7 @@
 								<tr>
 									<!-- <th class="text-center">No</th> -->
 									<th class="text-center">Material</th>
+                                    <th class="text-center"></th>
 									<th class="text-center">Jumlah</th>
 									<th width="200px"><button type="button" class="btn btn-info btn-block" id="add_material"><i class="fas fa-plus-circle"></i> Add Material</button></th>
 								</tr>
@@ -82,9 +83,6 @@
 <script type="text/javascript">
 
 	$(document).ready(function () {
-		// for(i=1; i<=1; i++){
-		// 	add_project();
-		// }
 		$('#add_material').click(function (e) {
 			e.preventDefault();
 			add_project();
@@ -96,9 +94,10 @@
 	{
 		var Baris = '<tr>';
 				Baris += '<td>';
-					Baris += '<select name="project[]" id="project[]" class="form-control custom-select project" required>\
-									<option selected disabled value="">--Pilih Material--</option>\
-								</select>';
+					Baris += '<input type="text" class="form-control" name="IO" id="IO" disabled="" required>';
+				Baris += '</td>';
+                Baris += '<td>';
+					Baris += '<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihio" data-backdrop="static" data-keyboard="false"><i class="fas fa-search"></i></button>';
 				Baris += '</td>';
 				Baris += '<td class="text-center">';
 					Baris += '<input type="number" name="tgl_stg[]" id="tgl_stg[]" class="form-control tgl_stg" required>';

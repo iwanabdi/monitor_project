@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2020 at 05:55 AM
+-- Generation Time: Nov 17, 2020 at 12:14 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -106,15 +106,28 @@ DROP TABLE IF EXISTS `dgi`;
 CREATE TABLE `dgi` (
   `gi_no` int(11) NOT NULL,
   `material_id` int(11) NOT NULL,
-  `batch` int(11) NOT NULL,
-  `serial_number` int(11) NOT NULL,
-  `storage_bin` int(11) NOT NULL,
+  `serial_number` text NOT NULL,
   `qty` int(11) NOT NULL,
-  `create_on` int(11) NOT NULL,
+  `create_on` date NOT NULL,
   `create_by` int(11) NOT NULL,
-  `update_on` int(11) NOT NULL,
+  `update_on` date NOT NULL,
   `update_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `dgi`
+--
+
+INSERT INTO `dgi` (`gi_no`, `material_id`, `serial_number`, `qty`, `create_on`, `create_by`, `update_on`, `update_by`) VALUES
+(1, 1, '123', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, 3, '123', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, 3, '345', 1, '2020-11-17', 7, '0000-00-00', 0),
+(2, 1, '1234', 1, '2020-11-17', 7, '0000-00-00', 0),
+(3, 1, '1234', 1, '2020-11-17', 7, '0000-00-00', 0),
+(3, 3, '345', 1, '2020-11-17', 7, '0000-00-00', 0),
+(3, 3, '789', 1, '2020-11-17', 7, '0000-00-00', 0),
+(4, 1, '123', 1, '2020-11-17', 7, '0000-00-00', 0),
+(4, 3, '123', 1, '2020-11-17', 7, '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -125,13 +138,45 @@ CREATE TABLE `dgi` (
 DROP TABLE IF EXISTS `dmaterial`;
 CREATE TABLE `dmaterial` (
   `material_id` int(11) NOT NULL,
-  `SN` int(11) NOT NULL,
+  `SN` text NOT NULL,
+  `keterangan` text NOT NULL,
   `status` int(11) NOT NULL,
-  `create_on` int(11) NOT NULL,
+  `create_on` date NOT NULL,
   `create_by` int(11) NOT NULL,
-  `update_on` int(11) NOT NULL,
+  `update_on` date NOT NULL,
   `update_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `dmaterial`
+--
+
+INSERT INTO `dmaterial` (`material_id`, `SN`, `keterangan`, `status`, `create_on`, `create_by`, `update_on`, `update_by`) VALUES
+(1, '123', 'PO nomer 10', 0, '2020-11-17', 7, '2020-11-17', 7),
+(1, '1234', 'PO nomer 10', 0, '2020-11-17', 7, '2020-11-17', 7),
+(1, '12345', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, '123456', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, '12347', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, '12342', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, '143', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, '154', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, '125', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, '1654', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(3, '5657', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(3, '345', 'PO nomer 10', 0, '2020-11-17', 7, '2020-11-17', 7),
+(3, '789', 'PO nomer 10', 0, '2020-11-17', 7, '2020-11-17', 7),
+(3, '123', 'PO nomer 10', 0, '2020-11-17', 7, '2020-11-17', 7),
+(3, '78943', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(3, '1265', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(3, '678342', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(3, '123565678', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(3, '123455567', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(3, '785634534', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, '09876', 'PO nomer 11', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, '87654', 'PO nomer 11', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, '765432', 'PO nomer 11', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, '54321', 'PO nomer 11', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, '7673', 'PO nomer 11', 1, '2020-11-17', 7, '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -175,6 +220,22 @@ INSERT INTO `dpo` (`po_no`, `pekerjaan_id`, `qty`, `delivery_date`, `total`, `cr
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `dreser`
+-- (See below for the actual view)
+--
+DROP VIEW IF EXISTS `dreser`;
+CREATE TABLE `dreser` (
+`reservasi_no` int(11)
+,`material_id` int(11)
+,`qty` int(11)
+,`create_on` date
+,`create_by` int(11)
+,`nama_material` varchar(200)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `dreservasi`
 --
 
@@ -195,7 +256,9 @@ CREATE TABLE `dreservasi` (
 
 INSERT INTO `dreservasi` (`reservasi_no`, `material_id`, `qty`, `create_on`, `create_by`, `update_on`, `update_by`) VALUES
 (10, 1, 1, '2020-11-17', 7, '0000-00-00', 0),
-(10, 3, 2, '2020-11-17', 7, '0000-00-00', 0);
+(10, 3, 2, '2020-11-17', 7, '0000-00-00', 0),
+(11, 1, 1, '2020-11-17', 7, '0000-00-00', 0),
+(11, 3, 1, '2020-11-17', 7, '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -237,9 +300,20 @@ DROP TABLE IF EXISTS `hgi`;
 CREATE TABLE `hgi` (
   `gi_no` int(11) NOT NULL,
   `reservasi_no` int(11) NOT NULL,
+  `mitra_id` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
-  `create_on` int(11) NOT NULL
+  `create_on` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hgi`
+--
+
+INSERT INTO `hgi` (`gi_no`, `reservasi_no`, `mitra_id`, `create_by`, `create_on`) VALUES
+(1, 10, 2, 7, '2020-11-17'),
+(2, 10, 2, 7, '2020-11-17'),
+(3, 10, 2, 7, '2020-11-17'),
+(4, 11, 2, 7, '2020-11-17');
 
 -- --------------------------------------------------------
 
@@ -292,7 +366,8 @@ INSERT INTO `hreservasi` (`reservasi_no`, `IO`, `no_wo`, `lokasi`, `create_by`, 
 (7, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1),
 (8, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1),
 (9, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1),
-(10, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1);
+(10, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 7, '2020-11-17', 0),
+(11, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 7, '2020-11-17', 0);
 
 -- --------------------------------------------------------
 
@@ -368,9 +443,9 @@ CREATE TABLE `material` (
 --
 
 INSERT INTO `material` (`material_id`, `nama_material`, `brand`, `stok`, `storage_bin`, `create_by`, `create_on`, `update_by`, `update_on`, `delete_by`, `delete_on`, `status`) VALUES
-(1, 'mikrotik rb2011', 'mikrotik', 10, '9-1', 7, '2020-10-05', 7, '2020-10-05', 0, '0000-00-00', 1),
+(1, 'mikrotik rb2011', 'mikrotik', 4, '9-1', 7, '2020-10-05', 7, '2020-11-17', 0, '0000-00-00', 1),
 (2, 'drop wire', 'fiberhome', 1000, '9-4', 5, '2020-10-05', 0, '0000-00-00', 0, '0000-00-00', 1),
-(3, 'access point ', 'unifi', 20, '5-6', 7, '2020-10-06', 0, '0000-00-00', 0, '0000-00-00', 1);
+(3, 'access point ', 'unifi', 1, '5-6', 7, '2020-10-06', 7, '2020-11-17', 0, '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -688,6 +763,15 @@ INSERT INTO `testcom` (`testcom_id`, `project_id`, `file_bai`, `file_testcom`, `
 -- --------------------------------------------------------
 
 --
+-- Structure for view `dreser`
+--
+DROP TABLE IF EXISTS `dreser`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `dreser`  AS  select `d`.`reservasi_no` AS `reservasi_no`,`d`.`material_id` AS `material_id`,`d`.`qty` AS `qty`,`d`.`create_on` AS `create_on`,`d`.`create_by` AS `create_by`,`m`.`nama_material` AS `nama_material` from (`dreservasi` `d` join `material` `m` on(`d`.`material_id` = `m`.`material_id`)) where `d`.`create_on` - curdate() > -3 ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `project_view`
 --
 DROP TABLE IF EXISTS `project_view`;
@@ -733,6 +817,12 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `dstg`
   ADD PRIMARY KEY (`id_dstg`);
+
+--
+-- Indexes for table `hgi`
+--
+ALTER TABLE `hgi`
+  ADD PRIMARY KEY (`gi_no`);
 
 --
 -- Indexes for table `hreservasi`
@@ -817,10 +907,16 @@ ALTER TABLE `dstg`
   MODIFY `id_dstg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `hgi`
+--
+ALTER TABLE `hgi`
+  MODIFY `gi_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `hreservasi`
 --
 ALTER TABLE `hreservasi`
-  MODIFY `reservasi_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `reservasi_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `material`

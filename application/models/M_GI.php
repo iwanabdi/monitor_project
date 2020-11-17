@@ -43,7 +43,7 @@ class M_GI extends CI_Model {
 					$this->db->update('dmaterial', $dataupd);
 
 					//update stok material
-					$queryupd = $this->db->query("SELECT MAX(material_id)-1 as total FROM material WHERE material_id = $material_id");
+					$queryupd = $this->db->query("SELECT MAX(stok)-1 as total FROM material WHERE material_id = $material_id");
 					$hasil = $queryupd->row()->total;
 					$datamat = [
 						"stok"				=> $hasil,

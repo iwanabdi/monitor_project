@@ -6,13 +6,13 @@
 <!--Author      : @arboshiki-->
 <div id="invoice">
 
-    <div class="toolbar hidden-print">
+<!--     <div class="toolbar hidden-print">
         <div class="text-right">
             <button id="printInvoice" class="btn btn-info"><i class="fa fa-print"></i> Print</button>
             <button class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Export as PDF</button>
         </div>
         <hr>
-    </div>
+    </div> -->
     <div class="invoice overflow-auto">
         <div style="min-width: 600px">
             <header>

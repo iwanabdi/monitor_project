@@ -46,7 +46,7 @@
 		          </div>
 				</div>
                 <div class="form-group row">
-				<label class="col-sm-3 col-form-label">Material dan Tanggal</label>
+				<label class="col-sm-3 col-form-label">Material dan Jumlah</label>
 					<div class="col-sm-9">
 						<table class="table ml-auto text-gray-800" id="tableLoop">
 							<thead>

@@ -20,4 +20,10 @@ class GI extends CI_Controller {
 		$data['reservasi'] = $this->M_reservasi->get_reservasi();
 		$this->template->load('template_pegawai', 'GI/home', $data);
 	}
+
+	public function create()
+	{
+		$data['reservasi'] = $this->M_reservasi->get_reservasi();
+		$this->template->load('template_pegawai', 'GI/create', $data);
+	}
 }

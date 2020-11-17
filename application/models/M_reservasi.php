@@ -46,8 +46,8 @@ class M_reservasi extends CI_Model {
 		$b = $this->input->post('jumlah');
 		if ($a[0] !== null) {
 			for ($i=0;$i<sizeof($a);$i++) {
-				var_dump($a[$i]);
-				var_dump($no_reservasi);
+				// var_dump($a[$i]);
+				// var_dump($no_reservasi);
 				$data1 = [
 					'reservasi_no'	=> $no_reservasi,
 					'material_id'	=> $a[$i],

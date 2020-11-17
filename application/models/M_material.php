@@ -129,7 +129,9 @@ class M_material extends CI_Model {
     	$id = $this->input->post('id', true);
     	$this->db->where('material_id', $id);
     	$this->db->update('material', $data);
-    }
+	}
+	
+	
 
 }
 

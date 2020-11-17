@@ -14,6 +14,7 @@ class GI extends CI_Controller {
 		$this->load->model('M_material');
 		$this->load->model('M_reservasi');
 		$this->load->model('M_mitra');
+		$this->load->model('M_GI');
     }
     
     public function index()
@@ -37,5 +38,15 @@ class GI extends CI_Controller {
 		$data['mitra'] = $this->M_mitra->get_mitra($mitra_id)->row();
 		$data['dreservasi'] = $this->M_reservasi->get_dreservasi($reservasi_no);
 		return($this->template->load('template_pegawai','GI/lanjut', $data));
+	}
+
+	public function posting()
+	{
+		$this->M_GI->proses_gi();
+		$this->session->set_flashdata('pesan', 
+			'<div class="alert alert-success" role="alert">
+				Data Berhasil Ditambah!
+			</div>');
+		redirect('GI','refresh');
 	}
 }

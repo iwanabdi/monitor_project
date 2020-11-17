@@ -55,7 +55,7 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Email</label>
 		          <div class="col-sm-9">
-		            <input type="email" class="form-control" name="email" id="email" value="<?= $row->email;?>" required>
+		            <input type="email" class="form-control" name="email" id="email" value="<?= $row->email;?>" required readonly>
 		          </div>
 		        </div>
 		        <div class="form-group row">

@@ -34,7 +34,7 @@ class Master_mitra extends CI_Controller {
 	{
 		$t_email = $this->input->post('email');
 
-		$query = $this->db->query("SELECT COUNT(mitra_id) as total FROM mitra WHERE email = '$t_email'");
+		$query = $this->db->query("SELECT COUNT(mitra_id) as total FROM mitra WHERE email = '$t_email' AND status=1");
 		$row = $query->row();
 		$cek_email = $row->total;
 
@@ -71,26 +71,26 @@ class Master_mitra extends CI_Controller {
 		// $cek_email = $this->db->get()->result();
 
 		$t_email = $this->input->post('email');
-		$query = $this->db->query("SELECT COUNT(mitra_id) as total FROM mitra WHERE email = '$t_email'");
-		$row = $query->row();
-		$cek_email = $row->total;
+		// $query = $this->db->query("SELECT COUNT(mitra_id) as total FROM mitra WHERE email = '$t_email'");
+		// $row = $query->row();
+		// $cek_email = $row->total;
 
-		// print_r($cek_email);
-		if ($cek_email > 0) {
-			$this->session->set_flashdata('msg_email', 
-			'<div class="alert alert-warning" role="alert">
-				Gagal Edit Data - Email Sudah Digunakan!
-			</div>');
-			redirect('master_mitra/edit/'.$id);
+		// // print_r($cek_email);
+		// if ($cek_email > 0) {
+		// 	$this->session->set_flashdata('msg_email', 
+		// 	'<div class="alert alert-warning" role="alert">
+		// 		Gagal Edit Data - Email Sudah Digunakan!
+		// 	</div>');
+		// 	redirect('master_mitra/edit/'.$id);
 			
-		}else{
+		// }else{
 		$this->M_mitra->proses_edit_data();
 		$this->session->set_flashdata('pesan', 
 			'<div class="alert alert-info" role="alert">
 				Data Berhasil Diubah!
 			</div>');
 		redirect('master_mitra','refresh');
-		}
+		// }
 
 	}
 

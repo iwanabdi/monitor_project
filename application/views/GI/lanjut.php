@@ -11,7 +11,7 @@
 					</a>
 				</div>
 	    </div>
-    	<form action="<?= site_url('GI/lanjut')?>" method="POST">
+    	<form action="<?= site_url('GI/posting')?>" method="POST">
 	    	<div class="card-body">
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Nomer Reservasi</label>
@@ -38,6 +38,28 @@
 		            </div>
 		          </div>
 				</div>
+				
+				<table class="table table-bordered" width="100%" cellspacing="0">
+					<thead>
+						<tr class="text-center">
+							<th>Material ID</th>
+							<th>Nama Material</th>
+							<th>SN</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($dreservasi->result() as $key => $data)  {
+							for ($i=0; $i < $data->qty; $i++) {?>
+							<tr>
+							<td><input type="text" class="form-control" name="material_id[]" id="material_id[]" value="<?=$data->material_id?>" readonly required></td>
+							<td><input type="text" class="form-control" name="nama_material[]" id="nama_material[]" value="<?=$data->nama_material?>" readonly required></td>
+							<td><input type="text" class="form-control" name="sn[]" id="sn[]"></td>
+							</tr>
+						<?php }} ?>
+					</tbody>
+				</table>
+
+
             </div>
 	    	<div class="card-footer">
 	      	<!-- <div class="form-group row"> -->

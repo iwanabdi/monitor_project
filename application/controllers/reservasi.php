@@ -49,7 +49,7 @@ class reservasi extends CI_Controller {
 	
 	public function proses_reservasi()
 	{
-		var_dump($this->input->post());
+		// var_dump($this->input->post());
 		$this->M_reservasi->proses_add_reservasi();
 		$this->session->set_flashdata('pesan', 
 			'<div class="alert alert-success" role="alert">

@@ -29,7 +29,8 @@
 		          <label class="col-sm-3 col-form-label">Mitra</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
-					  <input type="text" class="form-control" name="mitra_id" id="mitra_id" readonly required>
+					  <input type="hidden" class="form-control" name="mitra_id" id="mitra_id" readonly required>
+					  <input type="text" class="form-control" name="mitra_nama" id="mitra_nama" readonly required>
 					  <div class="input-group-append">
 		                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihmitra" data-backdrop="static" data-keyboard="false"><i class="fas fa-search"></i>
 		                </button>
@@ -79,7 +80,7 @@
               <tr>
                 <td><?=$data->reservasi_no?></td>
                 <td><?=$data->IO?></td>
-				<td><?=$data->WO?></td>
+				<td><?=$data->no_wo?></td>
                 <td class="text-center">
                 <button class="btn btn-info" id="selectr"
 					data-id="<?= $data->reservasi_no?>">Pilih
@@ -123,22 +124,22 @@
             <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
               <thead>
               <tr class="text-center">
-                <th>Nomer Reservasi</th>
-                <th>IO</th>
-                <th>WO</th>
+                <th>Mitra ID</th>
+                <th>Nama Mitra</th>
                 <th>Pilih</th>
               </tr>
             </thead>
             <tbody>
               <?php
-              foreach($reservasi->result() as $i => $data)  {?>
+              foreach($mitra->result() as $i => $data)  {?>
               <tr>
-                <td><?=$data->reservasi_no?></td>
-                <td><?=$data->IO?></td>
-				<td><?=$data->WO?></td>
+                <td><?=$data->mitra_id?></td>
+                <td><?=$data->nama_mitra?></td>
                 <td class="text-center">
-                <button class="btn btn-info" id="selectr"
-					data-id="<?= $data->reservasi_no?>">Pilih
+                <button class="btn btn-info" id="selectm"
+					data-id="<?= $data->mitra_id?>"
+					data-nama="<?= $data->nama_mitra?>">
+					Pilih
                 </button>
                 </td>
               </tr>
@@ -154,9 +155,11 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    $(document).on('click', '#selectr', function() {
-      var reser = $(this).data('id');
-      $('#mitra_id').val(reser);
+    $(document).on('click', '#selectm', function() {
+      var mid = $(this).data('id');
+	  var nama = $(this).data('nama');
+      $('#mitra_id').val(mid);
+	  $('#mitra_nama').val(nama);
       $('#pilihmitra').modal('hide');
     })
   })

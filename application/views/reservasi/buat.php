@@ -76,6 +76,64 @@
 </div>
 <!-- End Container -->
 
+<!-- Modal PM -->
+<div class="modal fade" id="pilihpm" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Silahkan Pilih Material</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="table-responsive">
+            <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
+              <thead>
+              <tr class="text-center">
+                <th>ID</th>
+                <th>Nama Project Manager</th>
+                <th>Pilih</th>
+              </tr>
+            </thead>
+            <tbody>
+			<?php
+              foreach($material->result() as $i => $data)  {?>
+              <tr>
+                <td><?=$data->pegawai_id?></td>
+                <td><?=$data->nama_pegawai?></td>
+                <td class="text-center">
+					<button class="btn btn-info" id="selectpm"
+					data-id="<?= $data->pegawai_id?>" 
+					data-nama="<?= $data->nama_pegawai?>"
+					data-pilih="<?= $data->nama_pegawai?>">Pilih
+					</button>
+                </td>
+              </tr>
+              <?php } ?>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on('click', '#selectpm', function() {
+      let pm_id = $(this).data('id');
+      let nama_pm = $(this).data('nama');
+      $('#pm_id').val(pm_id);
+      $('#nama_pm').val(nama_pm);
+      $('#pilihpm').modal('hide');
+    });
+  });
+</script>
+<!-- akhir modal PM -->
+
 <!-- JAVASCRIPT TAIL SELECT -->
 <script src="https://cdnjs.cloudflare.com/ajax//libs//popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="<?= base_url();?>assets/tail.select/js/tail.select-full.js"></script>
@@ -86,21 +144,23 @@
 		$('#add_material').click(function (e) {
 			e.preventDefault();
 			add_project();
+			
 		});
 
 	});
 
 	function add_project()
 	{
+		var No = $("#tableLoop tbody tr").length+1;
 		var Baris = '<tr>';
 				Baris += '<td>';
-					Baris += '<input type="text" class="form-control" name="IO" id="IO" disabled="" required>';
+					Baris += '<input type="text" class="form-control" name="MID'+No+'" id="MID" disabled="" required>';
 				Baris += '</td>';
                 Baris += '<td>';
-					Baris += '<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilihio" data-backdrop="static" data-keyboard="false"><i class="fas fa-search"></i></button>';
+					Baris += '<button type="button" class="btn btn-info btn-flat" data-toggle="modal'+No+'" data-target="#pilihio" data-backdrop="static" data-keyboard="false"><i class="fas fa-search"></i></button>';
 				Baris += '</td>';
 				Baris += '<td class="text-center">';
-					Baris += '<input type="number" name="tgl_stg[]" id="tgl_stg[]" class="form-control tgl_stg" required>';
+					Baris += '<input type="number" name="jumlah'+No+'" id="jumlah'+No+'" class="form-control" required>';
 				Baris += '</td>';
 				Baris += '<td class="text-center">';
 					Baris += '<button type="button" class="btn btn-sm btn-danger" id="HapusBaris" title="Hapus Baris"><i class="fas fa-times-circle"></i></button>';

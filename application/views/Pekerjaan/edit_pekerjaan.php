@@ -23,20 +23,7 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Satuan</label>
 		          <div class="col-sm-9">
-		            <select name="satuan" id="satuan" class="form-control custom-select">
-		              <option value="CM" <?php if ($row->satuan == 0): ?>
-		                selected
-		              <?php endif ?>>CM              
-		              </option>
-		              <option value="M" <?php if ($row->satuan == 1): ?>
-		                selected
-		              <?php endif ?>>M              
-		              </option>
-		              <option value="KM" <?php if ($row->satuan == 2): ?>
-		                selected
-		              <?php endif ?>>KM              
-		              </option>
-		            </select>
+		            <input type="text" class="form-control" id="satuan" name="satuan" required="" autofocus="" value="<?= $row->satuan;?>">
 		          </div>
 		        </div>
 		        <div class="form-group row">

@@ -21,12 +21,7 @@
 				 <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Satuan</label>
 		          <div class="col-sm-9">
-		            <select name="satuan" id="satuan" class="form-control custom-select" required>
-		              <option selected disabled value="">--Pilih Satuan--</option>
-		              <option value="CM">CM</option>
-		              <option value="M">M</option>
-		              <option value="KM">KM</option>
-		            </select>
+				  	<input type="text" class="form-control" id="satuan" name="satuan" required="" autofocus="">
 		          </div>
 		        </div>
 		        <div class="form-group row">

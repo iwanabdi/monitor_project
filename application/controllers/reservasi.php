@@ -60,7 +60,8 @@ class reservasi extends CI_Controller {
 
 	public function cetak_reservasi($id)
 	{
-		$data['reservasi'] = $this->M_reservasi->hreservasi($id)->row();
-		$this->template->load('reservasi/cetak_reservasi', $data);
+		$data['row'] = $this->M_reservasi->hreservasi($id);
+		$data['rows'] = $this->M_reservasi->hreservasi($id)->row();
+		$this->load->view('reservasi/cetak_reservasi', $data);
 	}
 }

@@ -64,10 +64,11 @@ class M_reservasi extends CI_Model {
 	{
 		$query = $this->db->query("SELECT dreservasi.*, material.nama_material, dreservasi.qty, 
 									hreservasi.reservasi_no, hreservasi.no_wo, 
-									hreservasi.lokasi, hreservasi.io
+									hreservasi.lokasi, hreservasi.io, pegawai.nama_pegawai AS peminta
 									FROM dreservasi
 									JOIN hreservasi ON hreservasi.reservasi_no = dreservasi.reservasi_no
 									JOIN material ON material.material_id = dreservasi.material_id
+									JOIN pegawai ON hreservasi.create_by = pegawai.pegawai_id
 									WHERE hreservasi.reservasi_no = $id");
 		return $query;
 	}

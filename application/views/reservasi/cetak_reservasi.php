@@ -96,10 +96,45 @@
                     <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
                 </div> -->
             </main>
-            <footer>
-                Disclaimer 
-                <br>Reservation that has not been picked up more than 3 days from requirement date will be automatically deleted from the system
-            </footer>
+            <!-- <footer> -->
+              <hr>
+                <div text-center style="text-align:center;">Disclaimer</div>
+                <div text-center style="text-align:center;">Reservation that has not been picked up more than 3 days from requirement date will be automatically deleted from the system</div>
+            <!-- </footer> -->
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div>Tanggal : </div>
+            <br>
+              <div>
+                <span style="margin-left: 350px;text-align: : left;">Peminta</span>
+                <span style="margin-left: 350px;text-align: center;">Pemeriksa</span>
+              </div>
+            <br>
+              <div>Tanda Tangan : </div>
+            <br>
+            <br>
+            <br>
+              <div>Nama : 
+                <span style="margin-left: 250px;text-align:left;">(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span style="margin-left: 50px;"><?= $data->peminta?></span>
+                <span style="margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span>
+                <span style="margin-left: 250px;text-align:left;">(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span style="margin-left: 50px;"></span>
+                <span style="margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span>
+              </div>
         </div>
         <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
         <div></div>

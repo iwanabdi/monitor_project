@@ -29,13 +29,13 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr class="text-center">
-				<th>No GI</th>
-  				<th>IO</th>
-              	<th>WO</th>
-				<th>Create By</th>
-				<th>Create On</th>
-				<th>Print</th>
-				<th>Print Serah Terima</th>
+      				<th>No GI</th>
+      				<th>IO</th>
+            	<th>WO</th>
+      				<th>Create By</th>
+      				<th>Create On</th>
+      				<th>Print</th>
+      				<th>Print Serah Terima</th>
             </tr>
           </thead>
           <tbody>
@@ -45,10 +45,16 @@
               <td><?=$data->reservasi_no;?></td>
               <td><?=$data->IO?></td>
               <td><?=$data->no_wo?></td>
-			  <td><?=$data->nama_pembuat?></td>
-			  <td><?=$data->create_on?></td>
-			  <td>print olan</td>
-			  <td>print olan lagi</td>
+      			  <td><?=$data->nama_pembuat?></td>
+      			  <td><?=$data->create_on?></td>
+              <td class="text-center">
+                  <a href="#" target="_blank" class="btn btn-info btn-circle"><i class="fas fa-print"></i>
+                </a>
+              </td>
+              <td class="text-center">
+                  <a href="#" target="_blank" class="btn btn-info btn-circle"><i class="fas fa-print"></i>
+                </a>
+              </td>
             </tr>
           <?php } ?>
           </tbody>

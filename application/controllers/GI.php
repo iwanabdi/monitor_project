@@ -20,6 +20,7 @@ class GI extends CI_Controller {
     public function index()
 	{
 		$data['reservasi'] = $this->M_reservasi->get_reservasi();
+		$data['GI'] = $this->M_GI->get_gi();
 		$this->template->load('template_pegawai', 'GI/home', $data);
 	}
 

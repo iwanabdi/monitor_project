@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2020 at 12:14 PM
+-- Generation Time: Nov 17, 2020 at 03:52 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -60,7 +60,9 @@ INSERT INTO `alamat` (`alamat_id`, `jalan`, `kota`, `provinsi`, `negara`, `koord
 (2, 'maospati', 'sidoarjo', 'jawa timur', 'indonesia', '-7.123, 114.3543', 2, 'alex', '123', '2020-10-05', 7, '2020-10-05', 7, '0000-00-00', 0, 1, 3),
 (4, 'mall', 'malang', 'jawa timur', 'indonesia', '-7', 2, 'bambang', '123', '2020-10-05', 7, '2020-10-06', 7, '0000-00-00', 0, 1, 3),
 (5, 'blitar', 'blitar', 'jawa timur', 'indonesia', '-8,413', 2, 'marvel', '8987', '2020-10-06', 7, '0000-00-00', 0, '2020-10-06', 7, 0, 3),
-(6, 'mall', 'malang', 'jawa timur', 'indonesia', '-7.12313142,112.1231345', 0, 'ara', '09898', '2020-10-06', 7, '2020-10-06', 7, '2020-10-06', 7, 0, 2);
+(6, 'mall', 'malang', 'jawa timur', 'indonesia', '-7.12313142,112.1231345', 0, 'ara', '09898', '2020-10-06', 7, '2020-10-06', 7, '2020-10-06', 7, 0, 2),
+(8, 'Samsat Kediri Kota Jalan Anggrek', 'Kota Kediri', 'Jawa Timur', 'Indonesia', '-7.123, 114.3543', 2, 'adi', '7655998771', '2020-11-17', 7, '0000-00-00', 0, '0000-00-00', 0, 1, 3),
+(9, 'Samsat Jombang Jalan Arjomulyo', 'Kabupaten Jombang', 'Jawa Timur', 'Indonesia', '-7.12313142,112.1314', 2, 'doni', '88754331321', '2020-11-17', 7, '0000-00-00', 0, '0000-00-00', 0, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -127,7 +129,10 @@ INSERT INTO `dgi` (`gi_no`, `material_id`, `serial_number`, `qty`, `create_on`, 
 (3, 3, '345', 1, '2020-11-17', 7, '0000-00-00', 0),
 (3, 3, '789', 1, '2020-11-17', 7, '0000-00-00', 0),
 (4, 1, '123', 1, '2020-11-17', 7, '0000-00-00', 0),
-(4, 3, '123', 1, '2020-11-17', 7, '0000-00-00', 0);
+(4, 3, '123', 1, '2020-11-17', 7, '0000-00-00', 0),
+(6, 1, '12345', 1, '2020-11-17', 7, '0000-00-00', 0),
+(10, 1, '12347', 1, '2020-11-17', 7, '0000-00-00', 0),
+(10, 3, '78943', 1, '2020-11-17', 7, '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -154,9 +159,9 @@ CREATE TABLE `dmaterial` (
 INSERT INTO `dmaterial` (`material_id`, `SN`, `keterangan`, `status`, `create_on`, `create_by`, `update_on`, `update_by`) VALUES
 (1, '123', 'PO nomer 10', 0, '2020-11-17', 7, '2020-11-17', 7),
 (1, '1234', 'PO nomer 10', 0, '2020-11-17', 7, '2020-11-17', 7),
-(1, '12345', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, '12345', 'PO nomer 10', 0, '2020-11-17', 7, '2020-11-17', 7),
 (1, '123456', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
-(1, '12347', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(1, '12347', 'PO nomer 10', 0, '2020-11-17', 7, '2020-11-17', 7),
 (1, '12342', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
 (1, '143', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
 (1, '154', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
@@ -166,7 +171,7 @@ INSERT INTO `dmaterial` (`material_id`, `SN`, `keterangan`, `status`, `create_on
 (3, '345', 'PO nomer 10', 0, '2020-11-17', 7, '2020-11-17', 7),
 (3, '789', 'PO nomer 10', 0, '2020-11-17', 7, '2020-11-17', 7),
 (3, '123', 'PO nomer 10', 0, '2020-11-17', 7, '2020-11-17', 7),
-(3, '78943', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
+(3, '78943', 'PO nomer 10', 0, '2020-11-17', 7, '2020-11-17', 7),
 (3, '1265', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
 (3, '678342', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
 (3, '123565678', 'PO nomer 10', 1, '2020-11-17', 7, '0000-00-00', 0),
@@ -258,7 +263,11 @@ INSERT INTO `dreservasi` (`reservasi_no`, `material_id`, `qty`, `create_on`, `cr
 (10, 1, 1, '2020-11-17', 7, '0000-00-00', 0),
 (10, 3, 2, '2020-11-17', 7, '0000-00-00', 0),
 (11, 1, 1, '2020-11-17', 7, '0000-00-00', 0),
-(11, 3, 1, '2020-11-17', 7, '0000-00-00', 0);
+(11, 3, 1, '2020-11-17', 7, '0000-00-00', 0),
+(12, 1, 1, '2020-11-17', 7, '0000-00-00', 0),
+(12, 3, 1, '2020-11-17', 7, '0000-00-00', 0),
+(13, 1, 1, '2020-11-17', 7, '0000-00-00', 0),
+(13, 3, 1, '2020-11-17', 7, '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -288,7 +297,8 @@ INSERT INTO `dstg` (`id_dstg`, `project_id`, `no_stg`, `target_date`, `create_on
 (5, '21', '1103003/STG/AKV/07/ICON+/2020', '2020-11-03', '2020-11-03', 3, '0000-00-00', 0, 2),
 (6, 'PA-ACT-2010-', '1103004/STG/AKV/07/ICON+/2020', '2020-11-20', '2020-11-03', 3, '0000-00-00', 0, 1),
 (7, 'PA-ACT-2010-0004', '1103004/STG/AKV/07/ICON+/2020', '2020-11-20', '2020-11-03', 3, '0000-00-00', 0, 1),
-(8, 'PA-ACT-2011-0001', '1103005/STG/AKV/07/ICON+/2020', '2020-11-03', '2020-11-03', 3, '0000-00-00', 0, 1);
+(8, 'PA-ACT-2011-0001', '1103005/STG/AKV/07/ICON+/2020', '2020-11-03', '2020-11-03', 3, '0000-00-00', 0, 1),
+(9, 'PA-ACT-2011-0002', '', '0000-00-00', '2020-11-17', 7, '0000-00-00', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -313,7 +323,13 @@ INSERT INTO `hgi` (`gi_no`, `reservasi_no`, `mitra_id`, `create_by`, `create_on`
 (1, 10, 2, 7, '2020-11-17'),
 (2, 10, 2, 7, '2020-11-17'),
 (3, 10, 2, 7, '2020-11-17'),
-(4, 11, 2, 7, '2020-11-17');
+(4, 11, 2, 7, '2020-11-17'),
+(5, 13, 2, 7, '2020-11-17'),
+(6, 13, 2, 7, '2020-11-17'),
+(7, 12, 2, 7, '2020-11-17'),
+(8, 12, 2, 7, '2020-11-17'),
+(9, 12, 2, 7, '2020-11-17'),
+(10, 12, 2, 7, '2020-11-17');
 
 -- --------------------------------------------------------
 
@@ -367,7 +383,9 @@ INSERT INTO `hreservasi` (`reservasi_no`, `IO`, `no_wo`, `lokasi`, `create_by`, 
 (8, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1),
 (9, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1),
 (10, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 7, '2020-11-17', 0),
-(11, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 7, '2020-11-17', 0);
+(11, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 7, '2020-11-17', 0),
+(12, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 7, '2020-11-17', 0),
+(13, '112020B00002', 'PA-ACT-2011-0002 dispenda', 'Samsat Kediri Kota Jalan Anggrek Kota Kediri', 7, '2020-11-17', 7, '2020-11-17', 0);
 
 -- --------------------------------------------------------
 
@@ -443,9 +461,9 @@ CREATE TABLE `material` (
 --
 
 INSERT INTO `material` (`material_id`, `nama_material`, `brand`, `stok`, `storage_bin`, `create_by`, `create_on`, `update_by`, `update_on`, `delete_by`, `delete_on`, `status`) VALUES
-(1, 'mikrotik rb2011', 'mikrotik', 4, '9-1', 7, '2020-10-05', 7, '2020-11-17', 0, '0000-00-00', 1),
+(1, 'mikrotik rb2011', 'mikrotik', 11, '9-1', 7, '2020-10-05', 7, '2020-11-17', 0, '0000-00-00', 1),
 (2, 'drop wire', 'fiberhome', 1000, '9-4', 5, '2020-10-05', 0, '0000-00-00', 0, '0000-00-00', 1),
-(3, 'access point ', 'unifi', 1, '5-6', 7, '2020-10-06', 7, '2020-11-17', 0, '0000-00-00', 1);
+(3, 'access point ', 'unifi', 5, '5-6', 7, '2020-10-06', 7, '2020-11-17', 0, '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -479,7 +497,8 @@ CREATE TABLE `mitra` (
 
 INSERT INTO `mitra` (`mitra_id`, `nama_mitra`, `alamat`, `kota`, `no_telp`, `fax`, `email`, `password`, `npwp`, `create_by`, `create_on`, `update_by`, `update_on`, `delete_by`, `delete_on`, `status`) VALUES
 (1, 'mitra', 'mitra', 'surabaya', '1231', '1231', 'mitra@test.com', '92706ba4fd3022cede6d1610b17a0d2d', '345345', 4, '0000-00-00', 1, '0000-00-00', 0, '0000-00-00', 1),
-(2, 'java', 'kebonsari', 'surabaya', '2345', '12313', 'java@java.com', '93f725a07423fe1c889f448b33d21f46', '123213', 4, '2020-10-06', 4, '0000-00-00', 4, '2020-10-06', 1);
+(2, 'java', 'kebonsari', 'surabaya', '2345', '12313', 'java@java.com', '93f725a07423fe1c889f448b33d21f46', '123213', 4, '2020-10-06', 4, '0000-00-00', 4, '2020-10-06', 1),
+(3, 'cahaya alam', 'graha aparna', 'surabaya', '6797657998', '6797657997', 'admin@cahayaalam.co.id', 'c464ec5a50c46219854c3079a06b5e04', '092542943407000', 7, '2020-11-17', 7, '0000-00-00', 0, '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -608,7 +627,7 @@ CREATE TABLE `project` (
   `delete_by` int(11) DEFAULT NULL,
   `delete_on` date DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
-  `keterangan` text NOT NULL
+  `keterangan` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -621,7 +640,8 @@ INSERT INTO `project` (`project_id`, `customer_id`, `pegawai_id`, `survey_id`, `
 ('22', 2, 2, NULL, NULL, 0, 2, 1, NULL, '102020B00003', '1000000004', 1, '2020-10-24', 1, '2020-10-25', 4, NULL, NULL, 1, ''),
 ('PA-ACT-2010-', 3, 2, NULL, NULL, 0, 2, 1, NULL, '102020B00002', '1000000004', 1, '2020-10-24', 1, '2020-10-25', 4, NULL, NULL, 1, ''),
 ('PA-ACT-2010-0004', 3, 9, NULL, NULL, 2, 5, 4, NULL, '102020B00001', '4000000005', 1, '2020-10-24', 1, '2020-10-25', 4, NULL, NULL, 1, 'aktivasi dispenda'),
-('PA-ACT-2011-0001', 3, NULL, NULL, NULL, 2, 1, 4, NULL, NULL, '4000000006', 1, '2020-11-03', 4, NULL, NULL, NULL, NULL, 1, '');
+('PA-ACT-2011-0001', 3, 9, NULL, NULL, 2, 1, 4, NULL, '112020B00001', '4000000006', 1, '2020-11-03', 4, '2020-11-17', 7, NULL, NULL, 1, ''),
+('PA-ACT-2011-0002', 3, 9, NULL, NULL, 8, 8, 3, NULL, '112020B00002', '3000000007', 1, '2020-11-17', 7, '2020-11-17', 7, NULL, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -892,7 +912,7 @@ ALTER TABLE `testcom`
 -- AUTO_INCREMENT for table `alamat`
 --
 ALTER TABLE `alamat`
-  MODIFY `alamat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `alamat_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -904,19 +924,19 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `dstg`
 --
 ALTER TABLE `dstg`
-  MODIFY `id_dstg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_dstg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `hgi`
 --
 ALTER TABLE `hgi`
-  MODIFY `gi_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `gi_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `hreservasi`
 --
 ALTER TABLE `hreservasi`
-  MODIFY `reservasi_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `reservasi_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `material`
@@ -928,7 +948,7 @@ ALTER TABLE `material`
 -- AUTO_INCREMENT for table `mitra`
 --
 ALTER TABLE `mitra`
-  MODIFY `mitra_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `mitra_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pegawai`

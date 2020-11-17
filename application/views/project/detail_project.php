@@ -16,6 +16,11 @@
 				<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilimitra" data-backdrop="static" data-keyboard="false">
         <i class="fas fa-plus"> Dispos Mitra</i></button>
           <?php }}?>
+		</div>
+		<div class="right">
+				<a href="<?= site_url('reservasi/buat/'.$row->project_id)?>" class="btn btn-success">
+				<i class="fas fa-plus"></i> Create Reservasi
+				</a>
     </div>
     <div class="col-0">
       <?= $this->session->flashdata('pesan'); ?>

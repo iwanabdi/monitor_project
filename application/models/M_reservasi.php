@@ -61,4 +61,13 @@ class M_reservasi extends CI_Model {
 		}
 	}
 
+	function hreservasi($id)
+	{
+		$query = $this->db->query("SELECT dreservasi.reservasi_no, dreservasi.material_id, 
+									dreservasi.qty, hreservasi.* FROM dreservasi 
+									JOIN hreservasi ON hreservasi.reservasi_no = dreservasi.reservasi_no
+									WHERE hreservasi.reservasi_no = $id");
+		return $query;
+	}
+
 }

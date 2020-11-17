@@ -21,6 +21,17 @@ class M_GI extends CI_Model {
 		if ($a[0] !== null) {
 			for ($i=0;$i<sizeof($a);$i++) {
 				if ($this->cek_sn($b[$i],$a[$i])==1) {
+				}
+				else{
+					$this->session->set_flashdata('pesan', 
+						'<div class="alert alert-success" role="alert">
+							SN Tidak ada Atau Salah
+						</div>');
+					redirect('GI','refresh');
+				}
+			}
+			for ($i=0;$i<sizeof($a);$i++) {
+				if ($this->cek_sn($b[$i],$a[$i])==1) {
 					$material_id = $a[$i];
 					$data1 = [
 						'gi_no'			=> $gi_no,

@@ -53,7 +53,7 @@
 							<tr>
 							<td><input type="text" class="form-control" name="material_id[]" id="material_id[]" value="<?=$data->material_id?>" readonly required></td>
 							<td><input type="text" class="form-control" name="nama_material[]" id="nama_material[]" value="<?=$data->nama_material?>" readonly required></td>
-							<td><input type="text" class="form-control" name="sn[]" id="sn[]"></td>
+							<td><input type="text" class="form-control" name="sn[]" id="sn[]" required></td>
 							</tr>
 						<?php }} ?>
 					</tbody>

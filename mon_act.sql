@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2020 at 10:01 AM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
+-- Generation Time: Nov 17, 2020 at 05:55 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `mon_act`
 --
+CREATE DATABASE IF NOT EXISTS `mon_act` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `mon_act`;
 
 -- --------------------------------------------------------
 
@@ -28,6 +30,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `alamat`
 --
 
+DROP TABLE IF EXISTS `alamat`;
 CREATE TABLE `alamat` (
   `alamat_id` int(10) NOT NULL,
   `jalan` varchar(200) NOT NULL,
@@ -65,6 +68,7 @@ INSERT INTO `alamat` (`alamat_id`, `jalan`, `kota`, `provinsi`, `negara`, `koord
 -- Table structure for table `customer`
 --
 
+DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer` (
   `customer_id` int(10) NOT NULL,
   `nama_customer` varchar(200) NOT NULL,
@@ -98,6 +102,7 @@ INSERT INTO `customer` (`customer_id`, `nama_customer`, `phone`, `fax`, `alamat`
 -- Table structure for table `dgi`
 --
 
+DROP TABLE IF EXISTS `dgi`;
 CREATE TABLE `dgi` (
   `gi_no` int(11) NOT NULL,
   `material_id` int(11) NOT NULL,
@@ -117,6 +122,7 @@ CREATE TABLE `dgi` (
 -- Table structure for table `dmaterial`
 --
 
+DROP TABLE IF EXISTS `dmaterial`;
 CREATE TABLE `dmaterial` (
   `material_id` int(11) NOT NULL,
   `SN` int(11) NOT NULL,
@@ -133,15 +139,38 @@ CREATE TABLE `dmaterial` (
 -- Table structure for table `dpo`
 --
 
+DROP TABLE IF EXISTS `dpo`;
 CREATE TABLE `dpo` (
   `po_no` int(11) NOT NULL,
   `pekerjaan_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
-  `delivery_date` int(11) NOT NULL,
-  `total` int(11) NOT NULL,
-  `create_on` int(11) NOT NULL,
+  `delivery_date` date NOT NULL,
+  `total` int(11) DEFAULT NULL,
+  `create_on` date NOT NULL,
   `create_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `dpo`
+--
+
+INSERT INTO `dpo` (`po_no`, `pekerjaan_id`, `qty`, `delivery_date`, `total`, `create_on`, `create_by`) VALUES
+(20, 1, 2, '2020-11-20', 0, '2020-11-03', 3),
+(20, 1, 5, '2020-11-20', 0, '2020-11-03', 3),
+(20, 1, 1, '2020-11-20', NULL, '2020-11-03', 3),
+(20, 1, 2, '2020-11-20', NULL, '2020-11-03', 3),
+(20, 1, 4, '2020-11-20', NULL, '2020-11-03', 3),
+(20, 1, 10, '2020-11-20', NULL, '2020-11-03', 3),
+(20, 1, 1, '2020-11-20', NULL, '2020-11-03', 3),
+(20, 1, 1, '2020-11-20', NULL, '2020-11-03', 3),
+(20, 1, 2, '2020-11-20', NULL, '2020-11-03', 3),
+(20, 1, 2, '2020-11-20', NULL, '2020-11-03', 3),
+(20, 1, 2, '2020-11-20', NULL, '2020-11-03', 3),
+(20, 1, 2, '2020-11-20', NULL, '2020-11-03', 3),
+(20, 1, 2, '2020-11-20', NULL, '2020-11-03', 3),
+(20, 1, 2, '2020-11-20', NULL, '2020-11-03', 3),
+(20, 1, 10, '2020-11-30', NULL, '2020-11-03', 3),
+(20, 1, 50, '2020-11-30', NULL, '2020-11-03', 3);
 
 -- --------------------------------------------------------
 
@@ -149,15 +178,24 @@ CREATE TABLE `dpo` (
 -- Table structure for table `dreservasi`
 --
 
+DROP TABLE IF EXISTS `dreservasi`;
 CREATE TABLE `dreservasi` (
   `reservasi_no` int(11) NOT NULL,
   `material_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
-  `create_on` int(11) NOT NULL,
+  `create_on` date NOT NULL,
   `create_by` int(11) NOT NULL,
-  `update_on` int(11) NOT NULL,
+  `update_on` date NOT NULL,
   `update_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `dreservasi`
+--
+
+INSERT INTO `dreservasi` (`reservasi_no`, `material_id`, `qty`, `create_on`, `create_by`, `update_on`, `update_by`) VALUES
+(10, 1, 1, '2020-11-17', 7, '0000-00-00', 0),
+(10, 3, 2, '2020-11-17', 7, '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -165,6 +203,7 @@ CREATE TABLE `dreservasi` (
 -- Table structure for table `dstg`
 --
 
+DROP TABLE IF EXISTS `dstg`;
 CREATE TABLE `dstg` (
   `id_dstg` int(11) NOT NULL,
   `project_id` varchar(25) NOT NULL,
@@ -182,8 +221,11 @@ CREATE TABLE `dstg` (
 --
 
 INSERT INTO `dstg` (`id_dstg`, `project_id`, `no_stg`, `target_date`, `create_on`, `create_by`, `update_on`, `update_by`, `mitra_id`) VALUES
-(1, 'PA-ACT-2010-0004', '1103004/STG/AKV/07/ICON+/2020', '2020-11-07', '2020-11-03', 3, '0000-00-00', 0, 1),
-(2, '21', '', '2020-11-03', '2020-11-03', 2, '0000-00-00', 0, 2);
+(4, '20', '1103002/STG/AKV/07/ICON+/2020', '2020-11-03', '2020-11-03', 3, '0000-00-00', 0, 1),
+(5, '21', '1103003/STG/AKV/07/ICON+/2020', '2020-11-03', '2020-11-03', 3, '0000-00-00', 0, 2),
+(6, 'PA-ACT-2010-', '1103004/STG/AKV/07/ICON+/2020', '2020-11-20', '2020-11-03', 3, '0000-00-00', 0, 1),
+(7, 'PA-ACT-2010-0004', '1103004/STG/AKV/07/ICON+/2020', '2020-11-20', '2020-11-03', 3, '0000-00-00', 0, 1),
+(8, 'PA-ACT-2011-0001', '1103005/STG/AKV/07/ICON+/2020', '2020-11-03', '2020-11-03', 3, '0000-00-00', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -191,6 +233,7 @@ INSERT INTO `dstg` (`id_dstg`, `project_id`, `no_stg`, `target_date`, `create_on
 -- Table structure for table `hgi`
 --
 
+DROP TABLE IF EXISTS `hgi`;
 CREATE TABLE `hgi` (
   `gi_no` int(11) NOT NULL,
   `reservasi_no` int(11) NOT NULL,
@@ -204,6 +247,7 @@ CREATE TABLE `hgi` (
 -- Table structure for table `hpo`
 --
 
+DROP TABLE IF EXISTS `hpo`;
 CREATE TABLE `hpo` (
   `po_no` int(11) NOT NULL,
   `mitra_id` int(11) NOT NULL,
@@ -221,17 +265,34 @@ CREATE TABLE `hpo` (
 -- Table structure for table `hreservasi`
 --
 
+DROP TABLE IF EXISTS `hreservasi`;
 CREATE TABLE `hreservasi` (
   `reservasi_no` int(11) NOT NULL,
-  `project_id` int(11) NOT NULL,
-  `no_wo` int(11) NOT NULL,
-  `lokasi` int(11) NOT NULL,
+  `IO` varchar(20) NOT NULL,
+  `no_wo` text NOT NULL,
+  `lokasi` text NOT NULL,
   `create_by` int(11) NOT NULL,
-  `create_on` int(11) NOT NULL,
+  `create_on` date NOT NULL,
   `update_by` int(11) NOT NULL,
-  `update_on` int(11) NOT NULL,
+  `update_on` date NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hreservasi`
+--
+
+INSERT INTO `hreservasi` (`reservasi_no`, `IO`, `no_wo`, `lokasi`, `create_by`, `create_on`, `update_by`, `update_on`, `status`) VALUES
+(1, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-14', 0, '0000-00-00', 1),
+(2, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1),
+(3, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1),
+(4, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1),
+(5, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1),
+(6, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1),
+(7, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1),
+(8, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1),
+(9, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1),
+(10, '102020B00001', 'PA-ACT-2010-0004 dispenda', 'blitar blitar', 7, '2020-11-17', 0, '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -239,6 +300,7 @@ CREATE TABLE `hreservasi` (
 -- Table structure for table `hstg`
 --
 
+DROP TABLE IF EXISTS `hstg`;
 CREATE TABLE `hstg` (
   `no_stg` varchar(250) NOT NULL,
   `pegawai_id` int(11) NOT NULL,
@@ -254,9 +316,10 @@ CREATE TABLE `hstg` (
 --
 
 INSERT INTO `hstg` (`no_stg`, `pegawai_id`, `mitra_id`, `create_on`, `create_by`, `update_on`, `update_by`) VALUES
-('1103002/STG/AKV/07/ICON+/2020', 9, 1, '2020-11-03', 2, '0000-00-00', 0),
-('1103003/STG/AKV/07/ICON+/2020', 2, 1, '2020-11-03', 2, '0000-00-00', 0),
-('1103004/STG/AKV/07/ICON+/2020', 9, 2, '2020-11-03', 3, '0000-00-00', 0);
+('1103002/STG/AKV/07/ICON+/2020', 2, 2, '2020-11-03', 3, '0000-00-00', 0),
+('1103003/STG/AKV/07/ICON+/2020', 2, 2, '2020-11-03', 3, '0000-00-00', 0),
+('1103004/STG/AKV/07/ICON+/2020', 9, 1, '2020-11-03', 3, '0000-00-00', 0),
+('1103005/STG/AKV/07/ICON+/2020', 2, 2, '2020-11-03', 3, '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -264,6 +327,7 @@ INSERT INTO `hstg` (`no_stg`, `pegawai_id`, `mitra_id`, `create_on`, `create_by`
 -- Table structure for table `laporan`
 --
 
+DROP TABLE IF EXISTS `laporan`;
 CREATE TABLE `laporan` (
   `laporan_id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -283,6 +347,7 @@ CREATE TABLE `laporan` (
 -- Table structure for table `material`
 --
 
+DROP TABLE IF EXISTS `material`;
 CREATE TABLE `material` (
   `material_id` int(10) NOT NULL,
   `nama_material` varchar(200) NOT NULL,
@@ -313,6 +378,7 @@ INSERT INTO `material` (`material_id`, `nama_material`, `brand`, `stok`, `storag
 -- Table structure for table `mitra`
 --
 
+DROP TABLE IF EXISTS `mitra`;
 CREATE TABLE `mitra` (
   `mitra_id` int(10) NOT NULL,
   `nama_mitra` varchar(200) NOT NULL,
@@ -346,6 +412,7 @@ INSERT INTO `mitra` (`mitra_id`, `nama_mitra`, `alamat`, `kota`, `no_telp`, `fax
 -- Table structure for table `pegawai`
 --
 
+DROP TABLE IF EXISTS `pegawai`;
 CREATE TABLE `pegawai` (
   `pegawai_id` int(10) NOT NULL,
   `nama_pegawai` varchar(200) NOT NULL,
@@ -373,7 +440,7 @@ INSERT INTO `pegawai` (`pegawai_id`, `nama_pegawai`, `no_telp`, `email`, `passwo
 (4, 'spv', '789', 'spv@gmail.com', 'f4984324c6673ce07aafac15600af26e', 0, 1, '0000-00-00', 0, '0000-00-00', 0, '0000-00-00', 1),
 (5, 'gudang', '87', 'gudang@gmail.com', '202446dd1d6028084426867365b0c7a1', 3, 4, '0000-00-00', 0, '0000-00-00', 0, '0000-00-00', 1),
 (6, 'qc', '123', 'qc@gmail.com', '9300c96aaec324987ea5ca6e13a02eda', 4, 1, '0000-00-00', 7, '0000-00-00', 0, '0000-00-00', 1),
-(7, 'dev', '123', 'dev@test.com', 'e77989ed21758e78331b20e477fc5582', -1, 1, '0000-00-00', 0, '0000-00-00', 7, '2020-10-06', 0),
+(7, 'dev', '123', 'dev@test.com', 'e77989ed21758e78331b20e477fc5582', -1, 1, '0000-00-00', 0, '0000-00-00', 7, '2020-10-06', 1),
 (8, 'hansen', '353', 'rolan@email.com', 'ee21d5f27a8401788147f6f6184ddb11', 0, 7, '2020-10-06', 7, '0000-00-00', 7, '2020-10-06', 0),
 (9, 'iwan abdillah', '123', 'iwan@gmail.com', '01ccce480c60fcdb67b54f4509ffdb56', 1, 4, '2020-10-25', 0, '0000-00-00', 0, '0000-00-00', 1);
 
@@ -383,6 +450,7 @@ INSERT INTO `pegawai` (`pegawai_id`, `nama_pegawai`, `no_telp`, `email`, `passwo
 -- Table structure for table `pekerjaan`
 --
 
+DROP TABLE IF EXISTS `pekerjaan`;
 CREATE TABLE `pekerjaan` (
   `pekerjaan_id` int(10) NOT NULL,
   `nama_pekerjaan` varchar(200) NOT NULL,
@@ -411,6 +479,7 @@ INSERT INTO `pekerjaan` (`pekerjaan_id`, `nama_pekerjaan`, `satuan`, `price`, `c
 -- Table structure for table `product`
 --
 
+DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `product_id` int(10) NOT NULL,
   `nama_product` varchar(200) NOT NULL,
@@ -443,6 +512,7 @@ INSERT INTO `product` (`product_id`, `nama_product`, `bandwith`, `satuan`, `stat
 -- Table structure for table `project`
 --
 
+DROP TABLE IF EXISTS `project`;
 CREATE TABLE `project` (
   `project_id` varchar(24) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -475,7 +545,8 @@ INSERT INTO `project` (`project_id`, `customer_id`, `pegawai_id`, `survey_id`, `
 ('21', 2, 2, NULL, NULL, 0, 1, 1, NULL, '102020B00005', '1000000002', 1, '2020-10-24', 1, '2020-10-25', 4, NULL, NULL, 1, ''),
 ('22', 2, 2, NULL, NULL, 0, 2, 1, NULL, '102020B00003', '1000000004', 1, '2020-10-24', 1, '2020-10-25', 4, NULL, NULL, 1, ''),
 ('PA-ACT-2010-', 3, 2, NULL, NULL, 0, 2, 1, NULL, '102020B00002', '1000000004', 1, '2020-10-24', 1, '2020-10-25', 4, NULL, NULL, 1, ''),
-('PA-ACT-2010-0004', 3, 9, NULL, NULL, 2, 5, 4, NULL, '102020B00001', '4000000005', 1, '2020-10-24', 1, '2020-10-25', 4, NULL, NULL, 1, 'aktivasi dispenda');
+('PA-ACT-2010-0004', 3, 9, NULL, NULL, 2, 5, 4, NULL, '102020B00001', '4000000005', 1, '2020-10-24', 1, '2020-10-25', 4, NULL, NULL, 1, 'aktivasi dispenda'),
+('PA-ACT-2011-0001', 3, NULL, NULL, NULL, 2, 1, 4, NULL, NULL, '4000000006', 1, '2020-11-03', 4, NULL, NULL, NULL, NULL, 1, '');
 
 -- --------------------------------------------------------
 
@@ -483,6 +554,7 @@ INSERT INTO `project` (`project_id`, `customer_id`, `pegawai_id`, `survey_id`, `
 -- Stand-in structure for view `project_view`
 -- (See below for the actual view)
 --
+DROP VIEW IF EXISTS `project_view`;
 CREATE TABLE `project_view` (
 `project_id` varchar(24)
 ,`customer_id` int(11)
@@ -527,9 +599,27 @@ CREATE TABLE `project_view` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `reservasi_view`
+-- (See below for the actual view)
+--
+DROP VIEW IF EXISTS `reservasi_view`;
+CREATE TABLE `reservasi_view` (
+`reservasi_no` int(11)
+,`IO` varchar(20)
+,`no_wo` text
+,`create_on` date
+,`status` int(11)
+,`lokasi` text
+,`nama_pembuat` varchar(200)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `stg_belum_view`
 -- (See below for the actual view)
 --
+DROP VIEW IF EXISTS `stg_belum_view`;
 CREATE TABLE `stg_belum_view` (
 `id_dstg` int(11)
 ,`no_stg` varchar(250)
@@ -548,6 +638,7 @@ CREATE TABLE `stg_belum_view` (
 -- Table structure for table `survey`
 --
 
+DROP TABLE IF EXISTS `survey`;
 CREATE TABLE `survey` (
   `survey_id` int(11) NOT NULL,
   `project_id` varchar(100) DEFAULT NULL,
@@ -573,6 +664,7 @@ INSERT INTO `survey` (`survey_id`, `project_id`, `file_map`, `file_excel`, `mitr
 -- Table structure for table `testcom`
 --
 
+DROP TABLE IF EXISTS `testcom`;
 CREATE TABLE `testcom` (
   `testcom_id` int(11) NOT NULL,
   `project_id` varchar(100) DEFAULT NULL,
@@ -605,6 +697,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure for view `reservasi_view`
+--
+DROP TABLE IF EXISTS `reservasi_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `reservasi_view`  AS  select `h`.`reservasi_no` AS `reservasi_no`,`h`.`IO` AS `IO`,`h`.`no_wo` AS `no_wo`,`h`.`create_on` AS `create_on`,`h`.`status` AS `status`,`h`.`lokasi` AS `lokasi`,`p`.`nama_pegawai` AS `nama_pembuat` from (`hreservasi` `h` join `pegawai` `p` on(`h`.`create_by` = `p`.`pegawai_id`)) where `h`.`create_on` - curdate() > -3 ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `stg_belum_view`
 --
 DROP TABLE IF EXISTS `stg_belum_view`;
@@ -632,6 +733,12 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `dstg`
   ADD PRIMARY KEY (`id_dstg`);
+
+--
+-- Indexes for table `hreservasi`
+--
+ALTER TABLE `hreservasi`
+  ADD PRIMARY KEY (`reservasi_no`);
 
 --
 -- Indexes for table `hstg`
@@ -707,7 +814,13 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `dstg`
 --
 ALTER TABLE `dstg`
-  MODIFY `id_dstg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_dstg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `hreservasi`
+--
+ALTER TABLE `hreservasi`
+  MODIFY `reservasi_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `material`

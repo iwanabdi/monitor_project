@@ -72,5 +72,18 @@ class M_GI extends CI_Model {
 		$row = $query->row();
 		$belakang = $row->total;
 		return $belakang;
-    }
+	}
+	
+	public function get_gi($id = null)
+	{
+		$this->db->select('g.gi_no as gi_no,g.reservasi_no as reservasi_no,g.create_on as create_on,g.create_by as create_by,r.IO, r.no_wo,pg.nama_pegawai');
+		$this->db->from('hgi as g');
+		$this->db->join('hreservasi as r','g.reservasi_no=r.reservasi_no');
+		$this->db->join('pegawai as pg','g.create_by=pg.pegawai_id');
+		if ($id != null) {
+			$this->db->where('g.gi_no', $id);
+		}
+		$query = $this->db->get();
+		return $query;
+	}
 }

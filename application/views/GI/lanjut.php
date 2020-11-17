@@ -38,6 +38,29 @@
 		            </div>
 		          </div>
 				</div>
+				
+				<table class="table table-bordered" width="100%" cellspacing="0">
+					<thead>
+						<tr class="text-center">
+							<th>Material ID</th>
+							<th>Nama Material</th>
+							<th>SN</th>
+						</tr>
+						
+					</thead>
+					<tbody>
+						<?php foreach ($dreservasi->result() as $key => $data)  {
+							for ($i=0; $i < $data->qty; $i++) {?>
+							<tr>
+							<td><?=$data->material_id?></td>
+							<td><?=$data->nama_material?></td>
+							<td><input type="text" class="form-control" name="sn" id="sn"></td>
+							</tr>
+						<?php }} ?>
+					</tbody>
+				</table>
+
+
             </div>
 	    	<div class="card-footer">
 	      	<!-- <div class="form-group row"> -->

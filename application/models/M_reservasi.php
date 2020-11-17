@@ -19,11 +19,10 @@ class M_reservasi extends CI_Model {
 	function get_dreservasi($id = null)
 	{
 		$this->db->select('*');
-		$this->db->from('dreservasi');
+		$this->db->from('dreser');
 		if ($id != null) {
 			$this->db->where('reservasi_no', $id);
 		}
-		$this->db->where('status', 1);
 		$query = $this->db->get();
 		return $query;
 	}

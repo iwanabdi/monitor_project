@@ -19,8 +19,8 @@
         <h5 class="m-0 font-weight-bold text-primary">Data Good Issue Material</h5>
       </div>
       <div class="col-2 p-0">
-        <a href="<?= site_url('reservasi/create')?>" class="btn btn-success btn-block" id="btn">
-        <i class="fas fa-plus"></i> Buat Reservasi
+        <a href="<?= site_url('GI/create')?>" class="btn btn-success btn-block" id="btn">
+        <i class="fas fa-plus"></i> Buat GI
         </a>
       </div>
     </div>

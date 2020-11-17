@@ -33,11 +33,17 @@ class Master_mitra extends CI_Controller {
 	function proses_add_data()
 	{
 		$t_email = $this->input->post('email');
-		$this->db->select('*');
-        $this->db->from('mitra');
-		$this->db->where('email', $t_email);
-		$cek_email = $this->db->get()->result();
-		// print_r($cek_email);
+
+		$query = $this->db->query("SELECT COUNT(mitra_id) as total FROM mitra WHERE email = '$t_email'");
+		$row = $query->row();
+		$cek_email = $row->total;
+
+		// $this->db->select('*');
+        // $this->db->from('mitra');
+		// $this->db->where('email', $t_email);
+		// $cek_email = $this->db->get()->result();
+		// var_dump($cek_email);
+		// exit;
 		if ($cek_email > 0) {
 			$this->session->set_flashdata('msg_email', 
 			'<div class="alert alert-warning" role="alert">
@@ -58,11 +64,17 @@ class Master_mitra extends CI_Controller {
 	function proses_edit_data()
 	{
 		$id = $this->input->post('id');
+		// $t_email = $this->input->post('email');
+		// $this->db->select('*');
+        // $this->db->from('mitra');
+		// $this->db->where('email', $t_email);
+		// $cek_email = $this->db->get()->result();
+
 		$t_email = $this->input->post('email');
-		$this->db->select('*');
-        $this->db->from('mitra');
-		$this->db->where('email', $t_email);
-		$cek_email = $this->db->get()->result();
+		$query = $this->db->query("SELECT COUNT(mitra_id) as total FROM mitra WHERE email = '$t_email'");
+		$row = $query->row();
+		$cek_email = $row->total;
+
 		// print_r($cek_email);
 		if ($cek_email > 0) {
 			$this->session->set_flashdata('msg_email', 

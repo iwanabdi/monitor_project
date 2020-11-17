@@ -29,24 +29,24 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr class="text-center">
-				<th>No Rerservasi</th>
-  				<th>IO</th>
-              	<th>WO</th>
-				<th>Create By </th>
-				<th>Create On </th>
-				<th>Opsi</th>
-				<th>Print</th>
+    				  <th>No Rerservasi</th>
+      				<th>IO</th>
+            	<th>WO</th>
+      				<th>Create By </th>
+      				<th>Create On </th>
+      				<th>Opsi</th>
+      				<th>Print</th>
             </tr>
           </thead>
           <tfoot>
             <tr class="text-center">
-  				<th>No Rerservasi</th>
-  				<th>IO</th>
-              	<th>WO</th>
-				<th>Create By </th>
-				<th>Create On </th>
-				<th>Opsi</th>
-              	<th>Print</th>
+      				<th>No Rerservasi</th>
+      				<th>IO</th>
+            	<th>WO</th>
+      				<th>Create By </th>
+      				<th>Create On </th>
+      				<th>Opsi</th>
+            	<th>Print</th>
             </tr>
           </tfoot>
           <tbody>
@@ -56,14 +56,17 @@
               <td><?=$data->reservasi_no;?></td>
               <td><?=$data->IO?></td>
               <td><?=$data->no_wo?></td>
-			  <td><?=$data->nama_pembuat?></td>
-			  <td><?=$data->create_on?></td>
+      			  <td><?=$data->nama_pembuat?></td>
+      			  <td><?=$data->create_on?></td>
               <td class="text-center" >
                 <a href="<?= site_url('reservasi/edit/'.$data->reservasi_no)?>" class="btn btn-warning btn-circle">
                     <i class="fas fa-edit"></i>
                 </a>
-			  </td>
-			  <td>print olan</td>
+		          </td>
+              <td class="text-center">
+                  <a href="<?= site_url('reservasi/cetak_reservasi/'.$data->reservasi_no)?>" target="_blank" class="btn btn-info btn-circle"><i class="fas fa-print"></i>
+                </a>
+              </td>
             </tr>
           <?php } ?>
           </tbody>

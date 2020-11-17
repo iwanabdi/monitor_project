@@ -57,4 +57,10 @@ class reservasi extends CI_Controller {
 			</div>');
 		redirect('reservasi','refresh');
 	}
+
+	public function cetak_reservasi($id)
+	{
+		$data['reservasi'] = $this->M_reservasi->hreservasi($id)->row();
+		$this->template->load('reservasi/cetak_reservasi', $data);
+	}
 }

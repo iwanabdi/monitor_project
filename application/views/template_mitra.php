@@ -85,6 +85,11 @@
           <i class="fas fa-fw fa-business-time"></i>
           <span>Tescom</span></a>
 			</li>
+			<li class="nav-item">
+        <a class="nav-link" href="<?= site_url('C_LaporanMitra')?>">
+          <i class="fas fa-fw fa-business-time"></i>
+          <span>Upload Laporan</span></a>
+			</li>
 
 
       <!-- Divider -->

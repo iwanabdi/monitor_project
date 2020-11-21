@@ -41,17 +41,17 @@ class C_survey extends CI_Controller {
 		$config['upload_path']          = './assets/survey';
 		$config['allowed_types']        = 'jpeg|png|jpg|gdb|gpx|rar|zip';
 		$config['overwrite']        	=  true;
-		// $config['file_name']        	=  'imam';
+		$config['file_name']        	=  $idProject.'_survey_map';
 		$this->upload->initialize($config);
 
 		if ( ! $this->upload->do_upload('map'))
 		{
 				
-				$error = array('error' => $this->upload->display_errors());
-				$this->session->set_flashdata('pesan', 
-					'<div class="alert alert-danger" role="alert">
-						Gagal Upload Map - File Map belum dipilih..
-					</div>');
+			$error = array('error' => $this->upload->display_errors());
+			$this->session->set_flashdata('pesan', 
+				'<div class="alert alert-danger" role="alert">
+					'.implode($error).'
+				</div>');
 				redirect('C_survey');
 				
 		}
@@ -75,17 +75,17 @@ class C_survey extends CI_Controller {
 		$config['upload_path']          = './assets/survey';
 		$config['allowed_types']        = 'xls|xlsx';
 		$config['overwrite']        	=  true;
-		// $config['file_name']        	=  'imam';
+		$config['file_name']        	=   $idProject.'_survey_excel';
 		$this->upload->initialize($config);
 
 		if ( ! $this->upload->do_upload('excel'))
 		{
 				
-				$error = array('error' => $this->upload->display_errors());
-				$this->session->set_flashdata('pesan', 
-					'<div class="alert alert-danger" role="alert">
-						Gagal Upload Excel - File Excel belum dipilih..
-					</div>');
+			$error = array('error' => $this->upload->display_errors());
+			$this->session->set_flashdata('pesan', 
+				'<div class="alert alert-danger" role="alert">
+					'.implode($error).'
+				</div>');
 				redirect('C_survey');
 				
 		}
@@ -102,16 +102,7 @@ class C_survey extends CI_Controller {
 		}
 	}
 
-	public function coba($id)
-	{
-		$cek = $this->input->post('project_id');
-		if ($cek == "") {
-			echo "kosong";
-		}else {
-			echo $cek;
-		}
-		
-	}
+	
 	
 	
 	

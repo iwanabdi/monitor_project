@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_testcom extends CI_Controller {
+class C_LaporanMitra extends CI_Controller {
 
 	public function __construct()
 	{
@@ -16,6 +16,7 @@ class C_testcom extends CI_Controller {
 		$this->load->model('M_mitra'); 
 		$this->load->model('M_Testcom'); 
 		$this->load->model('M_Survey'); 
+		$this->load->model('M_LaporanMitra'); 
 		
 	}
 
@@ -23,7 +24,7 @@ class C_testcom extends CI_Controller {
 	{
 		$data['row'] = $this->M_project->get_project();
 		$data['pegawai'] = $this->M_pegawai->get_pm();
-		$this->template->load('template_mitra', 'Testcom/data_testcom',$data);
+		$this->template->load('template_mitra', 'UploadMitra/data_UploadLaporan',$data);
 	}
 	public function detail($id)
 	{
@@ -35,50 +36,50 @@ class C_testcom extends CI_Controller {
 		$this->template->load('template_mitra', 'Testcom/detail_testcom', $data);
 	}
 	
-	public function upload_bai()
+	public function upload_pdf()
 	{	
 		
 		$idProject = $this->input->post('id');
-		$config['upload_path']          = './assets/testcom';
-		$config['allowed_types']        = 'pdf';
+		$config['upload_path']          = './assets/LaporanMitra/pdf';
+		$config['allowed_types']        = 'jpg||jpeg';
 		$config['overwrite']        	=  true;
-		$config['file_name']        	=   $idProject.'_bai';
+		$config['file_name']        	=  $idProject.'_laporan_pdf';
 		$this->upload->initialize($config);
 
-		if ( ! $this->upload->do_upload('bai'))
+		if ( ! $this->upload->do_upload('berkas'))
 		{
 				
-			$error = array('error' => $this->upload->display_errors());
-			$this->session->set_flashdata('pesan', 
-				'<div class="alert alert-danger" role="alert">
-					'.implode($error).'
-				</div>');
-				redirect('C_testcom');
+				$error = array('error' => $this->upload->display_errors());
+				$this->session->set_flashdata('pesan', 
+					'<div class="alert alert-danger" role="alert">
+						'.implode($error).'
+					</div>');
+				redirect('C_LaporanMitra');
 				
 		}
 		else
 		{
-			$this->M_Testcom->add_bai();
+			$this->M_LaporanMitra->add_pdf();
 			$this->session->set_flashdata('pesan', 
 			'<div class="alert alert-success" role="alert">
-				Data Berhasil Ditambah!
+				File PDF berhasil di upload!
 			</div>');
 			// $this->template->load('template_mitra', 'Survey/detail_uploads');
 
-			redirect('C_testcom');
+			redirect('C_LaporanMitra');
 		}
 	}
 
-	public function upload_testcom()
+	public function upload_gdb()
 	{	
 		$idProject = $this->input->post('id');
-		$config['upload_path']          = './assets/testcom';
-		$config['allowed_types']        = 'pdf';
+		$config['upload_path']          = './assets/LaporanMitra/gdb';
+		$config['allowed_types']        = 'jpg';
 		$config['overwrite']        	=  true;
-		$config['file_name']        	=  $idProject.'_testcom';;
+		$config['file_name']        	=  $idProject.'_laporan_gdb';
 		$this->upload->initialize($config);
 
-		if ( ! $this->upload->do_upload('testcom'))
+		if ( ! $this->upload->do_upload('berkas'))
 		{
 				
 			$error = array('error' => $this->upload->display_errors());
@@ -86,21 +87,53 @@ class C_testcom extends CI_Controller {
 				'<div class="alert alert-danger" role="alert">
 					'.implode($error).'
 				</div>');
-				redirect('C_testcom');
+			redirect('C_LaporanMitra');
+		}
+		else
+		{
+			$this->M_LaporanMitra->add_gdb();
+			$this->session->set_flashdata('pesan', 
+			'<div class="alert alert-success" role="alert">
+				File GDP berhasil di upload!
+			</div>');
+			// $this->template->load('template_mitra', 'Survey/detail_uploads');
+
+			redirect('C_LaporanMitra');
+		}
+	}
+	public function upload_bom()
+	{	
+		$idProject = $this->input->post('id');
+		$config['upload_path']          = './assets/LaporanMitra/bom';
+		$config['allowed_types']        = 'jpg';
+		$config['overwrite']        	=  true;
+		$config['file_name']        	=  $idProject.'_laporan_bom';
+		$this->upload->initialize($config);
+
+		if ( ! $this->upload->do_upload('berkas'))
+		{
+				
+			$error = array('error' => $this->upload->display_errors());
+			$this->session->set_flashdata('pesan', 
+				'<div class="alert alert-danger" role="alert">
+					'.implode($error).'
+				</div>');
+			redirect('C_LaporanMitra');
 				
 		}
 		else
 		{
-			$this->M_Testcom->add_testcom();
+			$this->M_LaporanMitra->add_bom();
 			$this->session->set_flashdata('pesan', 
 			'<div class="alert alert-success" role="alert">
-				Data Berhasil Ditambah!
+				File BOM berhasil di upload!
 			</div>');
 			// $this->template->load('template_mitra', 'Survey/detail_uploads');
 
-			redirect('C_testcom');
+			redirect('C_LaporanMitra');
 		}
 	}
+	
 
 	
 	

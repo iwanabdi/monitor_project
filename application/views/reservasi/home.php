@@ -35,7 +35,6 @@
       				<th>Create By </th>
       				<th>Create On </th>
       				<th>Opsi</th>
-      				<th>Print</th>
             </tr>
           </thead>
           <tfoot>
@@ -46,7 +45,6 @@
       				<th>Create By </th>
       				<th>Create On </th>
       				<th>Opsi</th>
-            	<th>Print</th>
             </tr>
           </tfoot>
           <tbody>
@@ -58,15 +56,15 @@
               <td><?=$data->no_wo?></td>
       			  <td><?=$data->nama_pembuat?></td>
       			  <td><?=$data->create_on?></td>
-              <td class="text-center" >
-                <a href="<?= site_url('reservasi/edit/'.$data->reservasi_no)?>" class="btn btn-warning btn-circle">
-                    <i class="fas fa-edit"></i>
+              <td class="text-center" colspan="3">
+                <a href="<?= site_url('reservasi/edit/'.$data->reservasi_no)?>" class="btn btn-warning">
+                    <i class="fas fa-edit"></i> Edit
+                </a>
+                <a href="<?= site_url('reservasi/cetak_reservasi/'.$data->reservasi_no)?>" target="_blank" class="btn btn-info"><i class="fas fa-eye"></i> Detail
+                </a>
+                <a href="<?= site_url('reservasi/pdf/'.$data->reservasi_no)?>" target="_blank" class="btn btn-success"><i class="fas fa-download"></i> PDF
                 </a>
 		          </td>
-              <td class="text-center">
-                  <a href="<?= site_url('reservasi/cetak_reservasi/'.$data->reservasi_no)?>" target="_blank" class="btn btn-info btn-circle"><i class="fas fa-print"></i>
-                </a>
-              </td>
             </tr>
           <?php } ?>
           </tbody>

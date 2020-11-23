@@ -67,7 +67,7 @@
                 <table border="0" cellspacing="0" cellpadding="0">
                     <thead>
                       <tr>
-                          <th class="text-center">No Material</th>
+                          <th class="text-center" width="5%">No Material</th>
                           <th class="text-center">Nama Material</th>
                           <th class="text-center">Jumlah</th>
                           <th class="text-center">Tanggal</th>
@@ -79,10 +79,10 @@
                         $no = 1;?>
                       <tr>
                         <!-- <td class="no"><?= $no++;?></td> -->
-                        <td class="unit text-center"><?= $data->material_id;?></td>
-                        <td class="unit text-center"><?= $data->nama_material;?></td>
-                        <td class="unit text-center"><?= $data->qty;?></td>
-                        <td class="unit text-center"><?= $data->create_on;?></td>
+                        <td class="no"><?= $data->material_id;?></td>
+                        <td class="qty"><?= $data->nama_material;?></td>
+                        <td class="qty"><?= $data->qty;?></td>
+                        <td class="qty"><?= $data->create_on;?></td>
                         <td class="tgl"></td>
                       </tr>
                      <?php }?>
@@ -101,21 +101,8 @@
                 <div text-center style="text-align:center;">Disclaimer</div>
                 <div text-center style="text-align:center;">Reservation that has not been picked up more than 3 days from requirement date will be automatically deleted from the system</div>
             <!-- </footer> -->
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
+            
+            <div style="padding-top: 300px;"></div>
             <div>Tanggal : </div>
             <br>
               <div>

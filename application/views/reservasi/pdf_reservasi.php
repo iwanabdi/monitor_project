@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>PDF RESERVASI</title>
 	<style type="text/css">
 		table {
 		    width: 100%;

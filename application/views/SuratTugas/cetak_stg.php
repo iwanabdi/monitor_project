@@ -15,9 +15,7 @@
 			</div>
 			<div id="invoice">
 					<h1 class="invoice"><u>Surat Tugas Aktivasi</u></h1>
-          <h2 class="invoice"><?= $row->no_stg;?></h2>
-          <!-- <div class="date">Date of Invoice: 01/06/2014</div>
-          <div class="date">Due Date: 30/06/2014</div> -->
+          <h2 class="invoice" style="padding-left: 150px"><?= $row->no_stg;?></h2>
 			</div>
 		</header>
     <main>
@@ -44,13 +42,8 @@
 						</tr>
 					</table>
           <h2 class="to">Mengijinkan masuk lokasi ICON+ (POP, Server ICON+ Area PLN) untuk pekerjaan kabel Fiber Optik Outdoor &Indoor, instalasi perangkat dan Testcom untuk Aktivasi berikut :
-          
+          </h2>
         </div>
-        <!-- <div id="invoice">
-          <h1>INVOICE 3-2-1</h1>
-          <div class="date">Date of Invoice: 01/06/2014</div>
-          <div class="date">Due Date: 30/06/2014</div>
-        </div> -->
       </div>
       <table class="table" border="0" cellspacing="0" cellpadding="0">
         <thead>
@@ -65,9 +58,9 @@
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($invoice->result() as $key => $data) {
-            $no = 1;
-            ?>
+          <?php
+          $no  = 1; 
+          foreach ($invoice->result() as $key => $data) {?>
           <tr>
             <td class="no"><?= $no++;?></td>
             <td class="desc"><h3 style="text-transform: uppercase;"><?= $data->nama_customer;?></h3><?= $data->alamat;?></td>
@@ -78,7 +71,6 @@
             <td class="tgl"><?= $data->target_date;?></td>
           </tr>
          <?php }?>
-          
         </tbody>
 			</table>
 			<h3><i>*Sebelum & Sesudah melakukan pekerjaan di JB & PoP, Harap menginformasikan ke SERPO Terkait / TIM Pemeliharaan. PIC FS Jatim HP (08113408687)</i></h3>
@@ -116,7 +108,7 @@
     </footer>
   </body>
 </html>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	alert("Klik OK Untuk Simpan File / Print File !!!")
 	window.print();
-</script>
+</script> -->

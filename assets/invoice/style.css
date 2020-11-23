@@ -19,7 +19,7 @@ body {
   width: 25cm;  
   height: 29.7cm; 
   margin: 0 auto; 
-  color: #555555;
+  /*color: #555555;*/
   background: #FFFFFF; 
   font-family: Arial, sans-serif; 
   font-size: 14px; 
@@ -38,7 +38,7 @@ header {
 }
 
 #logo img {
-  height: 100px;
+  width: 150px;
 }
 
 
@@ -48,7 +48,7 @@ header {
 }
 
 #logo1 img {
-  height: 100px;
+  width: 150px;
 }
 
 #company {
@@ -58,7 +58,7 @@ header {
 
 
 #details {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 #client {
@@ -68,7 +68,7 @@ header {
 }
 
 #client .to {
-  color: #777777;
+  /*color: #777777;*/
 }
 
 h2.name {
@@ -124,7 +124,7 @@ h2.name {
 }
 
 .table td h3{
-  color: #57B223;
+  color: #3989c6;
   font-size: 1.2em;
   font-weight: normal;
   margin: 0 0 0.2em 0;
@@ -134,7 +134,7 @@ h2.name {
   color: #FFFFFF;
   font-size: 1.6em;
   text-align:center;
-  background: #57B223;
+  background: #3989c6;
 }
 
 .table .desc {
@@ -197,14 +197,14 @@ h2.name {
 }
 
 #notices{
-  padding-left: 6px;
+  padding-left: 3px;
   border-left: 6px solid #0087C3;  
 }
 
 #notices .notice {
 	color:red;
 	font-style: italic;
-  font-size: 3em;
+  font-size: 2em;
 }
 
 footer {

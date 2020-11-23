@@ -96,6 +96,27 @@ class C_stg extends CI_Controller {
 		$this->load->view('SuratTugas/cetak_stg', $data);
 	}
 
+	public function unduh_stg($no_stg)
+	{
+		$data = [
+			'row_spv'	=> $this->M_stg->spv()->row(),
+			'row'		=> $this->M_stg->cetak(),
+			'invoice' 	=> $this->M_stg->cetak_stg($no_stg)
+		];
+
+		// $this->load->view('SuratTugas/cetak_stg', $data);
+		
+		$html = $this->load->view('SuratTugas/pdf_stg', $data, true);
+		$mpdf = new \Mpdf\Mpdf();
+
+		// Write some HTML code:
+		$mpdf->WriteHTML($html);
+		$nama_file_pdf = url_title($no_stg,'dash','true').'-'.'stg'.'.pdf';
+		// Output a PDF file directly to the browser
+		// $mpdf->Output();
+		$mpdf->Output($nama_file_pdf,'I');
+	}
+
 	
 }
 

@@ -15,7 +15,7 @@
 			</div>
 			<div id="invoice">
 					<h1 class="invoice"><u>Surat Tugas Aktivasi</u></h1>
-          <h2 class="invoice" style="padding-left: 150px"><?= $row->no_stg;?></h2>
+          <h2 class="invoice" style="padding-left: 30px"><?= $row->no_stg;?></h2>
 			</div>
 		</header>
     <main>

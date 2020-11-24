@@ -97,4 +97,26 @@ class M_GI extends CI_Model {
 		$query = $this->db->get();
 		return $query;
 	}
+
+	public function gigi($gi_no)
+	{
+		$query = $this->db->query("SELECT hgi.*, hreservasi.create_by, a.nama_pegawai AS nama_reservasi, b.nama_pegawai AS nama_hgi FROM hgi 
+			JOIN hreservasi ON hreservasi.reservasi_no = hgi.reservasi_no
+			JOIN pegawai a ON hreservasi.create_by = a.pegawai_id
+			JOIN pegawai b ON hgi.create_by = b.pegawai_id
+			WHERE hgi.gi_no = $gi_no");
+		return $query;
+	}
+
+	public function data_gi($gi_no)
+	{
+		$query = $this->db->query("SELECT DISTINCT hgi.gi_no, hgi.reservasi_no, dgi.material_id, material.nama_material, hreservasi.lokasi, hreservasi.no_wo, dgi.serial_number, hreservasi.io, dreservasi.qty
+			FROM hgi
+			JOIN dgi ON dgi.gi_no = hgi.gi_no
+			JOIN hreservasi ON hreservasi.reservasi_no = hgi.reservasi_no
+			JOIN dreservasi ON dreservasi.reservasi_no = hreservasi.reservasi_no
+			JOIN material ON material.material_id = dgi.material_id
+			WHERE hgi.gi_no = $gi_no");
+		return $query;
+	}
 }

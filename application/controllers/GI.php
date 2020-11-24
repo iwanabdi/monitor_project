@@ -50,4 +50,36 @@ class GI extends CI_Controller {
 			</div>');
 		redirect('GI','refresh');
 	}
+
+	public function unduh_gi($gi_no)
+	{
+		$data['rows'] = $this->M_GI->gigi($gi_no)->row();
+		$data['row'] = $this->M_GI->data_gi($gi_no);
+		// $this->load->view('gi/pdf_gi', $data);
+		$html = $this->load->view('gi/pdf_gi', $data, true);
+		$mpdf = new \Mpdf\Mpdf();
+
+		// Write some HTML code:
+		$mpdf->WriteHTML($html);
+		$nama_file_pdf = url_title($gi_no,'dash','true').'-'.'GI'.'.pdf';
+		// Output a PDF file directly to the browser
+		// $mpdf->Output();
+		$mpdf->Output($nama_file_pdf,'I');
+	}
+
+	public function surat_jalan($gi_no)
+	{
+		$data['rows'] = $this->M_GI->gigi($gi_no)->row();
+		$data['row'] = $this->M_GI->data_gi($gi_no);
+		// $this->load->view('gi/pdf_suratjalan', $data);
+		$html = $this->load->view('gi/pdf_suratjalan', $data, true);
+		$mpdf = new \Mpdf\Mpdf();
+
+		// Write some HTML code:
+		$mpdf->WriteHTML($html);
+		$nama_file_pdf = url_title($gi_no,'dash','true').'-'.'suratjalan'.'.pdf';
+		// Output a PDF file directly to the browser
+		// $mpdf->Output();
+		$mpdf->Output($nama_file_pdf,'I');
+	}
 }

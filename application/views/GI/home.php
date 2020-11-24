@@ -47,8 +47,14 @@
               <td><?=$data->no_wo?></td>
 							<td><?=$data->nama_pegawai?></td>
 							<td><?=$data->create_on?></td>
-							<td>print olan</td>
-							<td>print olan lagi</td>
+							<td class="text-center">
+                <a href="<?= site_url('gi/unduh_gi/'.$data->gi_no)?>" target="_blank" class="btn btn-success"><i class="fas fa-download"></i> PDF
+                </a>
+              </td>
+							<td class="text-center">
+                <a href="<?= site_url('gi/surat_jalan/'.$data->gi_no)?>" target="_blank" class="btn btn-success"><i class="fas fa-download"></i> PDF
+                </a>
+              </td>
             </tr>
           <?php } ?>
           </tbody>

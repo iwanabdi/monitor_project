@@ -64,4 +64,19 @@ class reservasi extends CI_Controller {
 		$data['rows'] = $this->M_reservasi->hreservasi($id)->row();
 		$this->load->view('reservasi/cetak_reservasi', $data);
 	}
+
+	public function pdf($id)
+	{
+		$data['row'] = $this->M_reservasi->hreservasi($id);
+		$data['rows'] = $this->M_reservasi->hreservasi($id)->row();
+		// $this->load->view('reservasi/cetak_reservasi', $data, true);
+		$html = $this->load->view('reservasi/pdf_reservasi', $data, true);
+		$mpdf = new \Mpdf\Mpdf();
+
+		// Write some HTML code:
+		$mpdf->WriteHTML($html);
+		$nama_file_pdf = url_title($id,'dash','true').'-'.'reservasi'.'.pdf';
+		// Output a PDF file directly to the browser
+		$mpdf->Output($nama_file_pdf,'I');
+	}
 }

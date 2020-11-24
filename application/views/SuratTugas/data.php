@@ -52,10 +52,12 @@
               <td><?=$data->create_on?></td>
               <td class="text-center">
                 <?php if ($data->no_stg == ""): ?>
-                  <a href="#" onclick="not_cetak()" class="btn btn-danger btn-circle"><i class="fas fa-print"></i>
+                  <a href="#" onclick="not_cetak()" class="btn btn-danger"><i class="fas fa-times-circle"></i> No File
                 </a>
                 <?php else: ?>
-                  <a href="<?= site_url('C_stg/cetak_stg/'.$data->no_stg)?>" target="_blank" class="btn btn-info btn-circle"><i class="fas fa-print"></i>
+                  <a href="<?= site_url('C_stg/cetak_stg/'.$data->no_stg)?>" target="_blank" class="btn btn-info"><i class="fas fa-eye"></i> Detail
+                </a>
+                <a href="<?= site_url('C_stg/unduh_stg/'.$data->no_stg)?>" target="_blank" class="btn btn-success"><i class="fas fa-download"></i> PDF
                 </a>
                 <?php endif ?>
               </td>

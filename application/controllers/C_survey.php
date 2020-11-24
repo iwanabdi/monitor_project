@@ -21,7 +21,8 @@ class C_survey extends CI_Controller {
 
 	public function index()
 	{
-		$data['row'] = $this->M_project->get_project();
+		$id= $this->session->userdata('mitra_id');
+		$data['row'] = $this->M_Survey->get_survey($id);
 		$data['pegawai'] = $this->M_pegawai->get_pm();
 		$this->template->load('template_mitra', 'Survey/data_survey',$data);
 	}

@@ -61,7 +61,7 @@
         Menu Master
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?= site_url('C_ProjectMitra')?>">
           <i class="fas fa-fw fa-business-time"></i>
           <span>Project</span></a>
 			</li>
@@ -69,12 +69,7 @@
       <div class="sidebar-heading">
         Menu Mitra
 			</div>
-			<li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-business-time"></i>
-          <span>Dispose Project</span></a>
-			</li>
-		
+			
 			<li class="nav-item">
         <a class="nav-link" href="<?= site_url('C_survey')?>">
           <i class="fas fa-fw fa-business-time"></i>

@@ -29,7 +29,7 @@
 							<th>Project ID</th>
 							<th>Nama Customer</th>				
 							<th>Alamat Terminating</th>
-							<th>Create By</th>
+						
 							<th>Upload File</th>			  
             </tr>
           </thead>
@@ -42,7 +42,7 @@
 								<td><?=$data->nama_customer?></td>
 					
 								<td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>
-								<td><?=$data->create_by?></td>
+							
 								<td class="text-center" colspan="2">
 									
 									<!-- <input type="hidden" name="project_id" id="project_id" value="<?=$data->project_id?>">

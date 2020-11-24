@@ -5,12 +5,15 @@ class M_survey extends CI_Model {
 
 	function get_survey($id = null)
 	{
-		$this->db->select('*');
-		$this->db->from('survey');
+		$this->db->select('p.project_id , c.nama_customer, h.mitra_id , p.jalan_ter , p.kota_ter , p.provinsi_ter')
+						->from('project_view p')
+						->join('dstg d','p.project_id=d.project_id')
+						->join('hstg h','h.no_stg=d.no_stg')
+						->join('customer c','c.customer_id=p.customer_id');
 		if ($id != null) {
-			$this->db->where('project_id', $id);
+			$this->db->where('h.mitra_id',$id);
 		}
-		$query = $this->db->get();
+		$query= $this->db->get();
 		return $query;
 	}
 

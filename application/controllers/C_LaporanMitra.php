@@ -45,7 +45,7 @@ class C_LaporanMitra extends CI_Controller {
 		
 		$idProject = $this->input->post('id');
 		$config['upload_path']          = './assets/LaporanMitra/pdf';
-		$config['allowed_types']        = 'jpg||jpeg';
+		$config['allowed_types']        = 'pdf|rar|zip';
 		$config['overwrite']        	=  true;
 		$config['file_name']        	=  $idProject.'_laporan_pdf';
 		$this->upload->initialize($config);
@@ -78,7 +78,7 @@ class C_LaporanMitra extends CI_Controller {
 	{	
 		$idProject = $this->input->post('id');
 		$config['upload_path']          = './assets/LaporanMitra/gdb';
-		$config['allowed_types']        = 'jpg';
+		$config['allowed_types']        = 'rar|zip|gdb|gpx';
 		$config['overwrite']        	=  true;
 		$config['file_name']        	=  $idProject.'_laporan_gdb';
 		$this->upload->initialize($config);
@@ -109,7 +109,7 @@ class C_LaporanMitra extends CI_Controller {
 	{	
 		$idProject = $this->input->post('id');
 		$config['upload_path']          = './assets/LaporanMitra/bom';
-		$config['allowed_types']        = 'jpg';
+		$config['allowed_types']        = 'zip|rar|xls|xlsx';
 		$config['overwrite']        	=  true;
 		$config['file_name']        	=  $idProject.'_laporan_bom';
 		$this->upload->initialize($config);

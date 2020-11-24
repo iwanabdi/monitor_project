@@ -22,6 +22,9 @@ class C_LaporanMitra extends CI_Controller {
 
 	public function index()
 	{
+		$id= $this->session->userdata('mitra_id');
+		$data['view'] = $this->M_LaporanMitra->get_view($id);
+		
 		$data['row'] = $this->M_project->get_project();
 		$data['pegawai'] = $this->M_pegawai->get_pm();
 		$this->template->load('template_mitra', 'UploadMitra/data_UploadLaporan',$data);
@@ -31,9 +34,10 @@ class C_LaporanMitra extends CI_Controller {
 		$data = [
 			'row' 			=> $this->M_project->get_project($id)->row(),
 			'row_testcom'	=> $this->M_Testcom->get_testcom($id)->row(),
-			'row_survey'	=> $this->M_Survey->get_survey($id)->row()
+			'row_survey'	=> $this->M_Survey->get_survey($id)->row(),
+			'row_laporan' 		=> $this->M_LaporanMitra->get_laporan($id)->row()
 		]; 
-		$this->template->load('template_mitra', 'Testcom/detail_testcom', $data);
+		$this->template->load('template_mitra', 'UploadMitra/detail_laporan', $data);
 	}
 	
 	public function upload_pdf()

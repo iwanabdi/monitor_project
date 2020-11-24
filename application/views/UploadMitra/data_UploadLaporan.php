@@ -29,20 +29,20 @@
 							<th>Project ID</th>
 							<th>Nama Customer</th>				
 							<th>Alamat Terminating</th>
-							<th>Create By</th>
+							<!-- <th>Create By</th> -->
 							<th>Upload File</th>			  
             </tr>
           </thead>
           <tbody>
             <?php
-						foreach ($row->result() as $key => $data)  {?>
+						foreach ($view->result() as $key => $data)  {?>
 					
 							<tr>
-								<td><a href="<?= site_url('C_testcom/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
+								<td><a href="<?= site_url('C_LaporanMitra/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
 								<td><?=$data->nama_customer?></td>
 					
 								<td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>
-								<td><?=$data->create_by?></td>
+								<!-- <td><?=$data->create_by?></td> -->
 								<td class="text-center" colspan="2">
 
 									<button type="button" class="btn btn-info btn-square" data-toggle="modal" title="File PDF" 

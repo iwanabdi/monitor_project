@@ -3,15 +3,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_LaporanMitra extends CI_Model {
 
-	function get_testcom($id = null)
+	function get_laporan($id = null)
 	{
 		$this->db->select('*');
-		$this->db->from('testcom');
+		$this->db->from('laporan');
 		if ($id != null) {
 			$this->db->where('project_id', $id);
 		}
 		$query = $this->db->get();
 		return $query;
+	}
+	
+	public function get_view($id = null)
+	{
+		$this->db->select('p.project_id , c.nama_customer, h.mitra_id , p.jalan_ter , p.kota_ter , p.provinsi_ter')
+						->from('project_view p')
+						->join('dstg d','p.project_id=d.project_id')
+						->join('hstg h','h.no_stg=d.no_stg')
+						->join('customer c','c.customer_id=p.customer_id');
+		if ($id != null) {
+			$this->db->where('h.mitra_id',$id);
+		}
+		$query= $this->db->get();
+		return $query;
+
+
+		// SELECT p.project_id , c.nama_customer, h.mitra_id , p.jalan_ter , p.kota_ter , p.provinsi_ter
+		// FROM project_view p 
+		// JOIN dstg d ON p.project_id=d.project_id
+		// JOIN hstg h ON h.no_stg=d.no_stg
+		// JOIN customer c ON c.customer_id=p.customer_idWHERE h.mitra_id=2;
 	}
 
     public function add_pdf()

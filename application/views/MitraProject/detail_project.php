@@ -4,7 +4,7 @@
   <!-- Page Heading -->
   <div class="row">
     <div class="right">
-				<a href="<?= site_url('project')?>" class="btn btn-warning">
+				<a href="<?= site_url('C_MitraProject')?>" class="btn btn-warning">
 				<i class="fas fa-undo-alt"></i> Back
 				</a>
     </div>
@@ -17,11 +17,7 @@
         <i class="fas fa-plus"> Dispos Mitra</i></button>
           <?php }}?>
 		</div>
-		<div class="right">
-				<a href="<?= site_url('reservasi/buat/'.$row->project_id)?>" class="btn btn-success">
-				<i class="fas fa-plus"></i> Create Reservasi
-				</a>
-    </div>
+		
     <div class="col-0">
       <?= $this->session->flashdata('pesan'); ?>
     </div>

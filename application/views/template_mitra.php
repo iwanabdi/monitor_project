@@ -61,9 +61,19 @@
         Menu Mitra
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="<?= site_url('C_ProjectMitra')?>">
+        <a class="nav-link" href="<?= site_url('C_MitraProject')?>">
           <i class="fas fa-fw fa-business-time"></i>
           <span>Project</span></a>
+			</li>
+			<li class="nav-item">
+        <a class="nav-link" href="<?= site_url('C_MitraSTG')?>">
+          <i class="fas fa-fw fa-business-time"></i>
+          <span>Surat Tugas</span></a>
+			</li>
+			<li class="nav-item">
+        <a class="nav-link" href="<?= site_url('C_MitraReservasi')?>">
+          <i class="fas fa-fw fa-business-time"></i>
+          <span>Reservasi</span></a>
 			</li>
 			<li class="nav-item">
         <a class="nav-link" href="<?= site_url('C_survey')?>">

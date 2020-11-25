@@ -44,7 +44,7 @@
             <?php
             foreach ($view->result() as $key => $data)  {?>
             <tr>
-              <td><a href="<?= site_url('project/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
+              <td><a href="<?= site_url('C_MitraProject/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
               <td><?=$data->nama_customer?></td>
               <td>
                   <?php

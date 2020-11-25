@@ -40,6 +40,10 @@ class C_survey extends CI_Controller {
 	{	
 		$idProject = $this->input->post('id');
 		$config['upload_path']          = './assets/survey';
+		if(!is_dir($config['upload_path'])){
+		    //Directory does not exist, so lets create it.
+		    mkdir($config['upload_path'], 0755, true);
+		}
 		$config['allowed_types']        = 'jpeg|png|jpg|gdb|gpx|rar|zip';
 		$config['overwrite']        	=  true;
 		$config['file_name']        	=  $idProject.'_survey_map';
@@ -74,6 +78,10 @@ class C_survey extends CI_Controller {
 		
 		$idProject = $this->input->post('id');
 		$config['upload_path']          = './assets/survey';
+		if(!is_dir($config['upload_path'])){
+		    //Directory does not exist, so lets create it.
+		    mkdir($config['upload_path'], 0755, true);
+		}
 		$config['allowed_types']        = 'xls|xlsx';
 		$config['overwrite']        	=  true;
 		$config['file_name']        	=   $idProject.'_survey_excel';

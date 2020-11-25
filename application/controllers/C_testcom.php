@@ -41,6 +41,10 @@ class C_testcom extends CI_Controller {
 		
 		$idProject = $this->input->post('id');
 		$config['upload_path']          = './assets/testcom';
+		if(!is_dir($config['upload_path'])){
+		    //Directory does not exist, so lets create it.
+		    mkdir($config['upload_path'], 0755, true);
+		}
 		$config['allowed_types']        = 'pdf';
 		$config['overwrite']        	=  true;
 		$config['file_name']        	=   $idProject.'_bai';
@@ -74,6 +78,10 @@ class C_testcom extends CI_Controller {
 	{	
 		$idProject = $this->input->post('id');
 		$config['upload_path']          = './assets/testcom';
+		if(!is_dir($config['upload_path'])){
+		    //Directory does not exist, so lets create it.
+		    mkdir($config['upload_path'], 0755, true);
+		}
 		$config['allowed_types']        = 'pdf';
 		$config['overwrite']        	=  true;
 		$config['file_name']        	=  $idProject.'_testcom';;

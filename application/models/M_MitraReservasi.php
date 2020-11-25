@@ -5,14 +5,49 @@ class M_MitraReservasi extends CI_Model {
 
     function get_reservasi($id = null)
 	{
-		$this->db->select('*');
-		$this->db->from('reservasi_view');
-		if ($id != null) {
-			$this->db->where('reservasi_no', $id);
-		}
-		$this->db->where('status', 1);
+		$this->db->select('
+			h.reservasi_no AS reservasi_no,
+			h.IO AS IO,
+			h.no_wo AS no_wo,
+			h.create_on AS create_on,
+			h.status AS status,
+			h.lokasi AS lokasi,
+			p.nama_pegawai AS nama_pembuat		
+		
+		');
+		$this->db->from('hreservasi h')
+				->join('project pr','h.IO = pr.IO')
+				->join('dstg d','pr.project_id = d.project_id')
+				->join('pegawai p','h.create_by = p.pegawai_id')
+				->where('d.mitra_id',$id)
+				
+				;
+		// if ($id != null) {
+		// 	$this->db->where('reservasi_no', $id);
+		// }
+		$this->db->where('h.status', 1);
 		$query = $this->db->get();
 		return $query;
+		
+			// SELECT
+			// h.reservasi_no AS reservasi_no,
+			// h.IO AS IO,
+			// h.no_wo AS no_wo,
+			// h.create_on AS create_on,
+			// h.status AS status,
+			// h.lokasi AS lokasi,
+			// p.nama_pegawai AS nama_pembuat,
+			// // d.mitra_id
+			// FROM
+			// (
+			// hreservasi h
+			// JOIN project pr ON h.IO = pr.IO
+			// JOIN dstg d ON pr.project_id = d.project_id
+			// JOIN pegawai p ON (h.create_by = p.pegawai_id)
+			
+			// )
+			// WHERE h.create_on - CURDATE() > - 3 OR d.mitra_id=2
+
 	}
 
 
@@ -39,7 +74,7 @@ class M_MitraReservasi extends CI_Model {
     	];
 		$this->db->insert('hreservasi', $data);
 		
-		$query = $this->db->query("SELECT (MAX(reservasi_no)) as total FROM `hreservasi`");
+		$query = $this->db->query("SELECT (MAX(reservasi_no)) as total FROM hreservasi");
 		$row = $query->row();
 		$no_reservasi = $row->total;
 		$a = $this->input->post('material');

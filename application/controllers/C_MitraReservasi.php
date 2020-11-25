@@ -18,7 +18,8 @@ class C_MitraReservasi extends CI_Controller {
     
     public function index()
 	{
-		$data['reservasi'] = $this->M_MitraReservasi->get_reservasi();
+		$id = $this->session->userdata('mitra_id');
+		$data['reservasi'] = $this->M_MitraReservasi->get_reservasi($id);
 		$this->template->load('template_mitra', 'MitraReservasi/home', $data);
 	}
 

@@ -29,7 +29,8 @@
       				<th>IO</th>
             	<th>WO</th>
       				<th>Create By </th>
-      				<th>Create On </th>
+							<th>Create On </th>
+							<th>Opsi</th>
       				
             </tr>
           </thead>
@@ -39,7 +40,8 @@
       				<th>IO</th>
             	<th>WO</th>
       				<th>Create By </th>
-      				<th>Create On </th>
+							<th>Create On </th>
+							<th>Opsi</th>
       			
             </tr>
           </tfoot>
@@ -51,7 +53,12 @@
               <td><?=$data->IO?></td>
               <td><?=$data->no_wo?></td>
       			  <td><?=$data->nama_pembuat?></td>
-      			  <td><?=$data->create_on?></td>
+							<td><?=$data->create_on?></td>
+							<td class="text-center" colspan="3">
+                
+                <a href="<?= site_url('reservasi/pdf/'.$data->reservasi_no)?>" target="_blank" class="btn btn-success"><i class="fas fa-download"></i> PDF
+                </a>
+		          </td>
               
             </tr>
           <?php } ?>

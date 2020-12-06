@@ -69,7 +69,7 @@ class GI extends CI_Controller {
 
 	public function surat_jalan($gi_no)
 	{
-		$data['rows'] = $this->M_GI->gigi($gi_no)->row();
+		$data['rows'] = $this->M_GI->suratjalan($gi_no)->row();
 		$data['row'] = $this->M_GI->data_gi($gi_no);
 		// $this->load->view('gi/pdf_suratjalan', $data);
 		$html = $this->load->view('gi/pdf_suratjalan', $data, true);

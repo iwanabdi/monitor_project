@@ -110,13 +110,20 @@ class M_GI extends CI_Model {
 
 	public function data_gi($gi_no)
 	{
-		$query = $this->db->query("SELECT DISTINCT hgi.gi_no, hgi.reservasi_no, dgi.material_id, material.nama_material, hreservasi.lokasi, hreservasi.no_wo, dgi.serial_number, hreservasi.io, dreservasi.qty
+		$query = $this->db->query("SELECT DISTINCT hgi.gi_no, hgi.reservasi_no, dgi.material_id, material.nama_material, hreservasi.lokasi, hreservasi.no_wo, dgi.serial_number, hreservasi.io, dgi.qty
 			FROM hgi
 			JOIN dgi ON dgi.gi_no = hgi.gi_no
 			JOIN hreservasi ON hreservasi.reservasi_no = hgi.reservasi_no
-			JOIN dreservasi ON dreservasi.reservasi_no = hreservasi.reservasi_no
 			JOIN material ON material.material_id = dgi.material_id
 			WHERE hgi.gi_no = $gi_no");
+		return $query;
+	}
+
+	public function suratjalan($gi_no)
+	{
+		$query = $this->db->query("SELECT hgi.gi_no, hreservasi.no_wo, hreservasi.io FROM hreservasi
+									JOIN hgi ON hgi.reservasi_no = hreservasi.reservasi_no
+									WHERE hgi.gi_no = $gi_no");
 		return $query;
 	}
 }

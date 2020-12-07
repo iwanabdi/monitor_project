@@ -62,10 +62,10 @@ class reservasi extends CI_Controller {
 	public function edit_reservasi()
 	{
 		// var_dump($this->input->post());
-		$this->M_reservasi->proses_add_reservasi();
+		$this->M_reservasi->proses_edit_reservasi();
 		$this->session->set_flashdata('pesan', 
 			'<div class="alert alert-success" role="alert">
-				Data Berhasil Ditambah!
+				Data Berhasil Dirubah!
 			</div>');
 		redirect('reservasi','refresh');
 	}

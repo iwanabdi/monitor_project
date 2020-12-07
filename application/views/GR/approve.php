@@ -48,7 +48,7 @@
                             <td><label class="col-form-label">Total PO</label></td>
                             <td><input type="text" class="form-control text-right" value="Rp. <?=$gr->net_price?>" readonly></td>
                             <td><label class="col-form-label">Total GR</label></td>
-                            <td><input type="text" class="form-control text-right" value="Rp. <?=$gr->total_value?>" readonly></td>
+                            <td><input type="text" class="form-control text-right" value="Rp. <?=$gr->net_value?>" readonly></td>
                         </tr>
                         <tr>
                             <td colspan=2><label class="col-form-label">Pekerjaan dan QTY PO</label></td>

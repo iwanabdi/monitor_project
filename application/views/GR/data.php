@@ -50,7 +50,7 @@
                 <td>Rp. <?=$data->net_price?></td>
                 <td><?=$data->devdate_po?></td>
                 <td><?=$data->createon_gr?></td>
-                <td>Rp. <?=$data->total_value?></td>
+                <td>Rp. <?=$data->net_value?></td>
                 <td>
                   <?php if($data->gr_no == null) {?>
                   <a href="<?= site_url('GR/create/'.$data->po_no)?>" class="btn btn-success"><i class="fas fa-paper-plane"></i>Create</a> 

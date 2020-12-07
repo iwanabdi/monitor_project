@@ -60,4 +60,23 @@ class GR extends CI_Controller {
 			</div>');
 		redirect('GR','refresh');
 	}
+
+	public function edit($id)
+	{
+		$data['gr'] 	= $this->M_gr->get_gr($id)->row();
+		$po_no 			= $data['gr']->po_no;
+		$data['dpo']	= $this->M_po->get_dpo($po_no);
+		$data['dgr']	= $this->M_gr->get_dgr($id);
+		$this->template->load('template_pegawai', 'GR/edit', $data);
+	}
+
+	public function edit_po()
+	{
+		$this->M_gr->proses_edit_gr();
+		$this->session->set_flashdata('pesan', 
+			'<div class="alert alert-success" role="alert">
+				Berhasil Edit GR!
+			</div>');
+		redirect('GR','refresh');
+	}
 }

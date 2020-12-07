@@ -60,6 +60,41 @@ class M_reservasi extends CI_Model {
 		}
 	}
 
+	function proses_edit_reservasi()
+    {
+		$id = $this->input->post('reservasi_no');
+    	$data = [
+			"update_by"			=> $this->session->userdata('pegawai_id'),
+			"update_on"			=> date('Y-m-d')
+		];
+		$this->db->where('reservasi_no',$id);
+		$this->db->update('hreservasi', $data);
+		
+		$a = $this->input->post('material');
+		$b = $this->input->post('jumlah');
+		if ($a[0] !== null) {
+			for ($i=0;$i<sizeof($a);$i++) {
+				$data1 = [
+					'reservasi_no'	=> $id,
+					'material_id'	=> $a[$i],
+					'qty'			=> $b[$i],
+					'create_on'		=> date('Y-m-d'),
+					'create_by'		=> $this->session->userdata('pegawai_id')
+				];
+				$queryyy = $this->db->query("SELECT count(reservasi_no) as jum FROM `dreservasi` WHERE material_id=".$a[$i]." AND reservasi_no=".$id." ");
+				$rowww = $queryyy->row();
+				$cocok = $rowww->jum;
+				if ($cocok >0) {
+					$this->db->where('reservasi_no',$id);
+					$this->db->where('material_id',$a[$i]);
+					$this->db->update('dreservasi', $data1);
+				}else {
+					$this->db->insert('dreservasi', $data1);
+				}
+			}
+		}
+	}
+
 	function hreservasi($id)
 	{
 		$query = $this->db->query("SELECT dreservasi.*, material.nama_material, dreservasi.qty, 

@@ -91,7 +91,7 @@
             </div>
 	    	<div class="card-footer">
 	      	<!-- <div class="form-group row"> -->
-				<button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Create</button>
+				<button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Edit</button>
 				<button type="Reset" class="btn btn-secondary"><i class="fas fa-spinner"></i> Reset</button>
 			</div>
 			<!-- </div> -->

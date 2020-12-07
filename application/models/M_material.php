@@ -131,7 +131,25 @@ class M_material extends CI_Model {
     	$this->db->update('material', $data);
 	}
 	
-	
+	public function laporan_material($tgl_awal,$tgl_akhir)
+    {
+        $query = $this->db->query("SELECT dmaterial.material_id, material.nama_material, dmaterial.keterangan, dmaterial.create_on, COUNT(*) AS qty FROM dmaterial 
+            JOIN material ON dmaterial.material_id=material.material_id 
+            WHERE dmaterial.create_on >= '$tgl_awal' AND dmaterial.create_on <= '$tgl_akhir'
+            GROUP BY material_id, keterangan HAVING COUNT(*)>0");
+        return $query;
+    }
+
+    public function laporan_keluar($tgl_awal, $tgl_akhir)
+    {
+        $query = $this->db->query("SELECT dgi.material_id, material.nama_material, dgi.gi_no, hreservasi.no_wo, hreservasi.io, hreservasi.reservasi_no, dgi.create_on, COUNT(*) AS qty FROM dgi 
+            JOIN material ON dgi.material_id = material.material_id
+            JOIN hgi ON hgi.gi_no = dgi.gi_no
+            JOIN hreservasi ON hreservasi.reservasi_no = hgi.reservasi_no
+            WHERE dgi.create_on >= '$tgl_awal' AND dgi.create_on <= '$tgl_akhir'
+            GROUP BY gi_no, material_id HAVING COUNT(*)>0");
+        return $query;
+    }
 
 }
 

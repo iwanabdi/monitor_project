@@ -26,6 +26,10 @@
 	<script src="<?= base_url();?>assets/js/select2.min.js"></script>
 	<script type="text/javascript" src="<?= base_url();?>assets/tail.select/js/tail.select.min.js"></script>
 
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="<?= base_url();?>assets/js/jquery-ui-1.12.1/jquery-ui.css">
+
+
 </head>
 
 <body id="page-top">
@@ -173,9 +177,61 @@
         <div class="sidebar-heading">
           Menu Laporan
         </div>
+        
+      <!-- MENU LAPORAN -->
+      <li class="nav-item
+          <?= 
+          $this->uri->segment(2) == 'data_masuk' || 
+          $this->uri->segment(2) == 'data_keluar' ? 'active' : "" ?> ">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#laporan" aria-expanded="true" aria-controls="laporan">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Laporan Material</span>
+          </a>
+          <div id="laporan" class="collapse
+            <?= 
+            $this->uri->segment(2) == 'data_masuk' ||
+            $this->uri->segment(2) == 'data_keluar' ? 'show' : "" ?>" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item 
+              <?=$this->uri->segment(2) == 'data_masuk' ? 'active' : ""?>" 
+              href="<?= site_url('laporan_material/data_masuk')?>">
+                <i class="fas fa-fw fa-file-invoice mr-2"></i>Barang Masuk</a>
+              <a class="collapse-item 
+              <?=$this->uri->segment(2) == 'data_keluar' ? 'active' : ""?>" href="<?= site_url('laporan_material/data_keluar')?>">
+                <i class="fas fa-fw fa-file-invoice mr-2"></i>Barang Keluar
+              </a>
+            </div>
+          </div>
+        </li>
+
+      <li <?=$this->uri->segment(1) == 'laporan_pm'?'class="nav-item active"' : "" ?> class="nav-item">
+        <a class="nav-link" href="<?= site_url('laporan_pm')?>">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Laporan PM</span></a>
+      </li>
+
+      <li <?=$this->uri->segment(1) == 'laporan_mitra'?'class="nav-item active"' : "" ?> class="nav-item">
+        <a class="nav-link" href="<?= site_url('laporan_mitra')?>">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Laporan Mitra</span></a>
+      </li>
+
+      <li <?=$this->uri->segment(1) == 'status_project'?'class="nav-item active"' : "" ?> class="nav-item">
+        <a class="nav-link" href="<?= site_url('status_project')?>">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Status Project</span></a>
+      </li>
+
+      <li <?=$this->uri->segment(1) == 'performa_project'?'class="nav-item active"' : "" ?> class="nav-item">
+        <a class="nav-link" href="<?= site_url('performa_project')?>">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Performa Project</span></a>
+      </li>
+
+
 
         <!-- Nav Item - Tables -->
-        <li class="nav-item
+        <!-- <li class="nav-item
           <?= 
           $this->uri->segment(1) == 'laporan_material' ||
           $this->uri->segment(1) == 'laporan_pm' || 
@@ -216,7 +272,7 @@
               </a>
             </div>
           </div>
-        </li>
+        </li> -->
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -389,8 +445,8 @@
 
   <!-- Page level custom scripts -->
 	<script src="<?= base_url();?>assets/js/demo/datatables-demo.js"></script>
-	
-	
+  <!-- Date Picker -->
+  <script src="<?= base_url();?>assets/js/jquery-ui-1.12.1/jquery-ui.js"></script>
 
 </body>
 

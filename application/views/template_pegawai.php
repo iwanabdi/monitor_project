@@ -150,12 +150,6 @@
           <i class="fas fa-fw fa-business-time"></i>
           <span>Reservasi</span></a>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-business-time"></i>
-          <span>Laporan</span></a>
-			</li>
 			
 			<?php if ($this->session->userdata('jabatan') == 3 ||$this->session->userdata('jabatan') == -1 ) {?>
       <li <?=$this->uri->segment(1) == 'GI'?'class="nav-item active"' : "" ?> class="nav-item">

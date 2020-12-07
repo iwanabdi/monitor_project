@@ -175,16 +175,54 @@
       <hr class="sidebar-divider">
 
       <!-- Heading -->
-      <div class="sidebar-heading">
-        Menu Laporan
-      </div>
+      <?php if ($this->session->userdata('jabatan') <= 0) {?>
+        <div class="sidebar-heading">
+          Menu Laporan
+        </div>
 
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
-      </li>
+        <!-- Nav Item - Tables -->
+        <li class="nav-item
+          <?= 
+          $this->uri->segment(1) == 'laporan_material' ||
+          $this->uri->segment(1) == 'laporan_pm' || 
+          $this->uri->segment(1) == 'laporan_mitra' ||
+          $this->uri->segment(1) == 'status_project' ||   
+          $this->uri->segment(1) == 'performa_proect' ? 'active' : "" ?> ">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#laporan" aria-expanded="true" aria-controls="laporan">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Laporan</span>
+          </a>
+          <div id="laporan" class="collapse
+            <?= 
+            $this->uri->segment(1) == 'laporan_material' ||
+            $this->uri->segment(1) == 'laporan_pm' || 
+            $this->uri->segment(1) == 'laporan_mitra' ||
+            $this->uri->segment(1) == 'status_project' ||  
+            $this->uri->segment(1) == 'performa_project' ? 'show' : "" ?>" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item 
+              <?=$this->uri->segment(1) == 'laporan_material' ? 'active' : ""?>" 
+              href="<?= site_url('laporan_material')?>">
+                <i class="fas fa-fw fa-file-invoice mr-2"></i>Laporan Material</a>
+              <a class="collapse-item 
+              <?=$this->uri->segment(1) == 'laporan_pm' ? 'active' : ""?>" href="<?= site_url('laporan_pm')?>">
+                <i class="fas fa-fw fa-file-invoice mr-2"></i>Laporan PM
+              </a>
+              <a class="collapse-item 
+              <?=$this->uri->segment(1) == 'laporan_mitra' ? 'active' : ""?>" href="<?= site_url('laporan_mitra')?>">
+                <i class="fas fa-fw fa-file-invoice mr-2"></i>Laporan Mitra
+              </a>
+              <a class="collapse-item 
+              <?=$this->uri->segment(1) == 'status_project' ? 'active' : ""?>" href="<?= site_url('status_project')?>">
+                <i class="fas fa-fw fa-file-invoice mr-2"></i>Status Project
+              </a>
+              <a class="collapse-item 
+              <?=$this->uri->segment(1) == 'performa_project' ? 'active' : ""?>" href="<?= site_url('performa_project')?>">
+                <i class="fas fa-fw fa-file-invoice mr-2"></i>Performa Project
+              </a>
+            </div>
+          </div>
+        </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -193,6 +231,8 @@
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
+      <?php } ?>
+
 
     </ul>
     <!-- End of Sidebar -->

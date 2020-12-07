@@ -25,7 +25,7 @@
           <thead>
             <tr class="text-center">
               <th>Nomer PO</th>
-              <th>Project ID</th>
+              <th>Project Name</th>
               <th>Project Manager</th>
               <th>Mitra</th>
               <th>Nomer PR</th>

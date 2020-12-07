@@ -43,11 +43,23 @@ class reservasi extends CI_Controller {
 	public function edit($id)
 	{
 		$data['reservasi'] = $this->M_reservasi->get_reservasi($id)->row();
+		$data['dreservasi'] = $this->M_reservasi->get_dreservasi();
 		$data['material'] = $this->M_material->get_material();
 		$this->template->load('template_pegawai', 'reservasi/edit', $data);
 	}
 	
 	public function proses_reservasi()
+	{
+		// var_dump($this->input->post());
+		$this->M_reservasi->proses_add_reservasi();
+		$this->session->set_flashdata('pesan', 
+			'<div class="alert alert-success" role="alert">
+				Data Berhasil Ditambah!
+			</div>');
+		redirect('reservasi','refresh');
+	}
+
+	public function edit_reservasi()
 	{
 		// var_dump($this->input->post());
 		$this->M_reservasi->proses_add_reservasi();

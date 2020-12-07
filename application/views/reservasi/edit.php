@@ -66,7 +66,25 @@
 									<th width="200px"><button type="button" class="btn btn-info btn-block" id="add_material"><i class="fas fa-plus-circle"></i> Add Material</button></th>
 								</tr>
 							</thead>
-							<tbody></tbody>
+							<tbody>
+								<?php
+								foreach ($dreservasi->result() as $key => $data)  {
+									?>
+									<tr>
+										<td>
+											<select name="material[]" id="material[]" class="form-control custom-select project" required>
+												<?php foreach ($material->result() as $key => $data1) {?>
+													<option value="<?= $data1->material_id;?>" 
+													<?php if ($data->material_id==$data1->material_id) {?> selected <?php }?>>
+													<?=$data1->nama_material;?></option>
+												<?php }?>
+											</select>
+										</td>
+										<td class="text-center"><input type="number" name="jumlah[]" id="jumlah[]" class="form-control" required value=<?=$data->qty;?>></td>
+										<td class="text-center"> <button type="button" class="btn btn-sm btn-danger" id="HapusBaris" title="Hapus Baris"><i class="fas fa-times-circle"></i></button></td>
+									</tr>
+								<?php } ?>
+							</tbody>
 						</table>
 					</div>
 	    	    </div>

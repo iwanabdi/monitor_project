@@ -32,7 +32,8 @@
 				  <label class="col-sm-3 col-form-label">Mitra</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
-                        <!-- <input type="hidden" class="form-control" name="mitra_id" id="mitra_id" value="<?php if($mitra_pilih !=null){echo $mitra_pilih->mitra_id;} else {echo "";}?>" readonly required>     -->
+                        <input type="hidden" class="form-control" name="mitra_id" id="mitra_id" value="<?php if($mitra_pilih !=null){echo $mitra_pilih->mitra_id;} else {echo "DISPOSE DULU MITRA NYA";}?>" 
+						readonly required>    
 		                <input type="text" class="form-control" name="nama_mitra" id="nama_mitra" value="<?php if($mitra_pilih !=null){echo $mitra_pilih->nama_mitra;} else {echo "";}?>" readonly required>
 					</div>
 				  </div>
@@ -64,7 +65,7 @@
 									<th class="text-center">No</th>
 									<th class="text-center">Pekerjaan</th>
 									<th class="text-center">QTY</th>
-									<th width="200px"><button type="button" class="btn btn-info btn-block" id="add_project"><i class="fas fa-plus-circle"></i> Add Project</button></th>
+									<th width="200px"><button type="button" class="btn btn-info btn-block" id="add_project"><i class="fas fa-plus-circle"></i> Add Pekerjaan</button></th>
 								</tr>
 							</thead>
 							<tbody></tbody>
@@ -89,9 +90,6 @@
 <script type="text/javascript">
 
 	$(document).ready(function () {
-		for(i=1; i<=1; i++){
-			add_project();
-		}
 		$('#add_project').click(function (e) {
 			e.preventDefault();
 			add_project();
@@ -121,9 +119,9 @@
 			Baris += '</tr>';
 
 		$("#tableLoop tbody").append(Baris);
-		$("#tableLoop tbody tr").each(function(){
-			$(this).find('td:nth-child(2) select').focus();
-		});
+		// $("#tableLoop tbody tr").each(function(){
+		// 	$(this).find('td:nth-child(2) select').focus();
+		// });
 	}
 
 	$(document).on('click', '#HapusBaris', function(e) {
@@ -135,38 +133,5 @@
 			No++;
 		});
 	});
-
-	$(document).ready(function () {
-		$("#SimpanData").submit(function (e) {
-			e.preventDefault();
-			stg();
-		});
-	});
-
-	function stg() {
-		$.ajax({
-			url: $("#SimpanData").attr('action'),
-			type: 'POST',
-			cache: false,
-			dataType: "json",
-			data: $("#SimpanData").serialize(),
-			success:function(data){
-				if (data.success == true) {
-					$('.project').val('');
-					$('.qty').val();
-					$('#notif').fadeIn(800, function () {
-						$('#notif').html(data.notif).fadeOut(5000).delay(800);
-					});
-						myWindow.location.reload();
-				}
-				else{
-					$('#notif').html('<div class="alert alert-danger">Gagal Request PO</div>')
-				}
-			},
-			error:function(error) {
-				alert(error);
-			}
-		})
-	}
 
 </script>

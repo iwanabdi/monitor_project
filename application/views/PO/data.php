@@ -18,13 +18,6 @@
       <div class="col-10 p-0 p-2">
         <h5 class="m-0 font-weight-bold text-primary">Data PO</h5>
       </div>
-      <?php if ($this->session->userdata('jabatan')==2){?>
-        <div class="col-2 p-0">
-          <a href="<?= site_url('C_stg/buat')?>" class="btn btn-success btn-block" id="btn">
-          <i class="fas fa-plus"></i> BUAT STG
-          </a>
-        </div>
-      <?php }?>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -35,13 +28,49 @@
               <th>Project ID</th>
               <th>Project Manager</th>
               <th>Mitra</th>
-              <th>Nilai</th>
+              <th>Nomer PR</th>
+              <th>Nilai PR</th>
               <th>Tanggal Request</th>
-              <th>Create PO</th>
-              <th>Approve PO</th>
+              <th>Nilai PO</th>
+              <th>Dev Date</th>
+              <th>Opsi</th>
+              <th>Approve</th>
             </tr>
           </thead>
           <tbody>
+            <?php
+            foreach ($po->result() as $key => $data)  {
+              ?>
+            <tr>
+              <td><?=$data->po_no;?></td>
+              <td><?=$data->project_name?></td>
+              <td><?=$data->pm?></td>
+      			  <td><?=$data->mitrapr?></td>
+      			  <td><?=$data->pr_no?></td>
+      			  <td>Rp. <?=$data->sub_total?></td>
+      			  <td><?=$data->tgl_pr?></td>
+      			  <td>Rp. <?=$data->net_price?></td>
+      			  <td><?=$data->devdate_po?></td>
+              <td>
+                <?php if($data->po_no == null) {?>
+                  <a href="<?= site_url('PO/create/'.$data->pr_no)?>" class="btn btn-success"><i class="fas fa-paper-plane"></i>Create</a>
+                <?php } ?>     
+                <?php if($data->po_no != null) {?>           
+                <a href="<?= site_url('PO/edit/'.$data->pr_no)?>" class="btn btn-warning"><i class="fas fa-edit"></i>Edit</a>
+                <?php } ?>    
+                <?php if($data->status == 1 ) {?>           
+                <a href="<?= site_url()?>" class="btn btn-success"><i class="fas fa-download"></i>PDF</a>
+                <?php } ?>    
+              </td>
+              <td>
+                <?php if($data->status == 1) {  
+                  echo "<a href='#' class='btn btn-success btn-circle'><i class='fas fa-check'></i></a>";
+                }else if ($data->po_no != null || $data->status != 1){?>
+                    <a href="<?= site_url('PO/approve/'.$data->pr_no)?>" class="btn btn-danger btn-circle"><i class="fas fa-check"></i></a>
+                <?php } ?> 
+              </td>
+            </tr>
+          <?php } ?>
           </tbody>
         </table>
       </div>

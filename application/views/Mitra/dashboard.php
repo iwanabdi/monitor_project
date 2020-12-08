@@ -3,18 +3,18 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-      <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+      <a href="" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
     <!-- Content Row -->
     <div class="row">
       <!-- Earnings (Monthly) Card Example -->
       <div class="col-xl-6 col-md-6 mb-6">
-        <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card border-left-danger shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Project</div>
+                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Total Project</div>
                 <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
               </div>
               <div class="col-auto">
@@ -27,18 +27,18 @@
 
       <!-- Earnings (Monthly) Card Example -->
       <div class="col-xl-6 col-md-6 mb-6">
-        <div class="card border-left-info shadow h-100 py-2">
+        <div class="card border-left-danger shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Progress Project</div>
+                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Progress Project</div>
                 <div class="row no-gutters align-items-center">
                   <div class="col-auto">
                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">18</div>
                   </div>
                   <div class="col">
                     <div class="progress progress-sm mr-2">
-                      <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
                 </div>
@@ -51,6 +51,41 @@
         </div>
       </div>
     </div>
+
+
+  <div class="row">
+    <!-- Card line 1 -->
+    <div class="col-xl-4 col-md-4 mb-4">
+      <div class="card-img h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <img src="<?= base_url('assets/img/m1.svg')?>" width="100%">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 mb-4">
+      <div class="card-img h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <img src="<?= base_url('assets/img/m2.svg')?>" width="100%">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 mb-4">
+      <div class="card-img h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <img src="<?= base_url('assets/img/m3.svg')?>" width="100%">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
     <!-- Break to footer -->
     <div class="row">

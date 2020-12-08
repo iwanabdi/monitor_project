@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2020 at 03:37 PM
+-- Generation Time: Dec 07, 2020 at 11:08 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `mon_act`
 --
+CREATE DATABASE IF NOT EXISTS `mon_act` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `mon_act`;
 
 -- --------------------------------------------------------
 
@@ -152,6 +154,16 @@ CREATE TABLE `dgr` (
   `create_on` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `dgr`
+--
+
+INSERT INTO `dgr` (`gr_no`, `pekerjaan_id`, `qty`, `net_value`, `create_by`, `create_on`) VALUES
+(2, 1, 100, 400000, 7, '2020-12-23'),
+(2, 3, 4, 12000, 7, '2020-12-23'),
+(3, 1, 110, 440000, 7, '2020-12-31'),
+(3, 3, 10, 30000, 7, '2020-12-31');
+
 -- --------------------------------------------------------
 
 --
@@ -222,9 +234,11 @@ CREATE TABLE `dpo` (
 --
 
 INSERT INTO `dpo` (`po_no`, `pekerjaan_id`, `qty`, `total`, `create_on`, `create_by`) VALUES
-(2, 1, 100, 400000, '2020-12-07', 7),
+(2, 1, 110, 440000, '2020-12-07', 7),
 (2, 3, 10, 30000, '2020-12-07', 7),
-(3, 1, 5000, 4000, '2020-12-07', 7);
+(3, 1, 5000, 4000, '2020-12-07', 7),
+(4, 1, 100, 400000, '2020-12-07', 7),
+(4, 3, 4, 12000, '2020-12-07', 7);
 
 -- --------------------------------------------------------
 
@@ -249,7 +263,8 @@ CREATE TABLE `dpr` (
 INSERT INTO `dpr` (`pr_no`, `pekerjaan_id`, `qty`, `total`, `create_on`, `create_by`) VALUES
 (10, 1, 5, 4000, '2020-12-07', 7),
 (11, 1, 5000, 4000, '2020-12-07', 7),
-(12, 3, 10, 3000, '2020-12-07', 7);
+(12, 3, 10, 3000, '2020-12-07', 7),
+(13, 1, 8000, 4000, '2020-12-07', 7);
 
 -- --------------------------------------------------------
 
@@ -302,7 +317,8 @@ INSERT INTO `dreservasi` (`reservasi_no`, `material_id`, `qty`, `create_on`, `cr
 (15, 1, 2, '2020-11-24', 7, '0000-00-00', 0),
 (15, 3, 2, '2020-11-24', 7, '0000-00-00', 0),
 (16, 1, 1, '2020-12-07', 7, '0000-00-00', 0),
-(16, 3, 1, '2020-12-07', 7, '0000-00-00', 0);
+(16, 2, 10, '2020-12-07', 7, '0000-00-00', 0),
+(16, 3, 3, '2020-12-07', 7, '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -335,6 +351,36 @@ INSERT INTO `dstg` (`id_dstg`, `project_id`, `no_stg`, `target_date`, `create_on
 (8, 'PA-ACT-2011-0001', '1103005/STG/AKV/07/ICON+/2020', '2020-11-03', '2020-11-03', 3, '0000-00-00', 0, 1),
 (9, 'PA-ACT-2011-0002', '1117002/STG/AKV/07/ICON+/2020', '2020-11-17', '2020-11-17', 7, '2020-11-17', 7, 2),
 (10, 'PA-ACT-2011-0003', '', '0000-00-00', '2020-11-17', 7, '0000-00-00', 0, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `gr_view`
+-- (See below for the actual view)
+--
+DROP VIEW IF EXISTS `gr_view`;
+CREATE TABLE `gr_view` (
+`mitra` varchar(200)
+,`mitragr` varchar(200)
+,`pm` varchar(200)
+,`po_no` int(11)
+,`io_number` text
+,`pa_id` text
+,`mitra_id` int(11)
+,`net_price` int(11)
+,`devdate_po` date
+,`createon_po` date
+,`updateon_po` date
+,`rev` int(11)
+,`statuspo` int(11)
+,`gr_no` int(11)
+,`statusgr` int(11)
+,`createon_gr` date
+,`keterangan` text
+,`discount` int(11)
+,`total_value` int(11)
+,`net_value` int(11)
+);
 
 -- --------------------------------------------------------
 
@@ -378,17 +424,24 @@ INSERT INTO `hgi` (`gi_no`, `reservasi_no`, `mitra_id`, `create_by`, `create_on`
 DROP TABLE IF EXISTS `hgr`;
 CREATE TABLE `hgr` (
   `gr_no` int(11) NOT NULL,
+  `po_no` int(11) NOT NULL,
   `total_value` int(11) NOT NULL,
   `discount` int(11) NOT NULL,
   `net_value` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
   `create_on` date NOT NULL,
   `status` int(11) NOT NULL,
-  `update_on` date NOT NULL,
-  `update_by` int(11) NOT NULL,
   `mitra_id` int(11) NOT NULL,
-  `keterangan` int(11) NOT NULL
+  `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hgr`
+--
+
+INSERT INTO `hgr` (`gr_no`, `po_no`, `total_value`, `discount`, `net_value`, `create_by`, `create_on`, `status`, `mitra_id`, `keterangan`) VALUES
+(2, 4, 412000, 5, 391400, 7, '2020-12-23', 1, 1, 'PA-ACT-2010-0004 dispenda blitar blitar'),
+(3, 2, 470000, 3, 455900, 7, '2020-12-31', 0, 3, 'PA-ACT-2011-0003');
 
 -- --------------------------------------------------------
 
@@ -419,8 +472,9 @@ CREATE TABLE `hpo` (
 --
 
 INSERT INTO `hpo` (`po_no`, `pr_no`, `mitra_id`, `io_number`, `delivery_date`, `project_name`, `sub_total`, `net_price`, `create_on`, `create_by`, `update_by`, `update_on`, `rev`, `status`) VALUES
-(2, 10, 3, '112020B00003', '2020-12-25', 'PA-ACT-2011-0003', 430000, 430000, '2020-12-07', 7, 7, '2020-12-07', 2, 1),
-(3, 11, 2, '112020B00002', '2020-12-25', 'PA-ACT-2011-0002', 4000, 4000, '2020-12-07', 7, 0, '0000-00-00', 0, 0);
+(2, 10, 3, '112020B00003', '0000-00-00', 'PA-ACT-2011-0003', 470000, 470000, '2020-12-07', 7, 7, '2020-12-07', 4, 1),
+(3, 11, 2, '112020B00002', '2020-12-25', 'PA-ACT-2011-0002', 4000, 4000, '2020-12-07', 7, 0, '0000-00-00', 0, 0),
+(4, 13, 1, '102020B00001', '2020-12-31', 'PA-ACT-2010-0004 dispenda blitar blitar', 412000, 412000, '2020-12-07', 7, 7, '2020-12-07', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -447,7 +501,8 @@ CREATE TABLE `hpr` (
 INSERT INTO `hpr` (`pr_no`, `mitra_id`, `io_number`, `delivery_date`, `sub_total`, `create_on`, `project_name`, `create_by`) VALUES
 (10, 3, '112020B00003', '2020-12-25', 4000, '2020-12-07', 'PA-ACT-2011-0003', 7),
 (11, 2, '112020B00002', '2020-12-25', 4000, '2020-12-07', 'PA-ACT-2011-0002', 7),
-(12, 1, '112020B00001', '2020-12-25', 3000, '2020-12-07', 'PA-ACT-2011-0001', 7);
+(12, 1, '112020B00001', '2020-12-25', 3000, '2020-12-07', 'PA-ACT-2011-0001', 7),
+(13, 1, '102020B00001', '2020-12-31', 4000, '2020-12-07', 'PA-ACT-2010-0004 dispenda blitar blitar', 7);
 
 -- --------------------------------------------------------
 
@@ -488,7 +543,7 @@ INSERT INTO `hreservasi` (`reservasi_no`, `IO`, `no_wo`, `lokasi`, `create_by`, 
 (13, '112020B00002', 'PA-ACT-2011-0002 dispenda', 'Samsat Kediri Kota Jalan Anggrek Kota Kediri', 7, '2020-11-17', 7, '2020-11-17', 0),
 (14, '112020B00003', 'PA-ACT-2011-0003 dispenda', 'Samsat Jombang Jalan Arjomulyo Kabupaten Jombang', 7, '2020-11-17', 7, '2020-11-17', 0),
 (15, '112020B00003', 'PA-ACT-2011-0003 dispenda', 'Samsat Jombang Jalan Arjomulyo Kabupaten Jombang', 7, '2020-11-24', 0, '0000-00-00', 1),
-(16, '112020B00003', 'PA-ACT-2011-0003 dispenda', 'Samsat Jombang Jalan Arjomulyo Kabupaten Jombang', 7, '2020-12-07', 0, '0000-00-00', 1);
+(16, '112020B00003', 'PA-ACT-2011-0003 dispenda', 'Samsat Jombang Jalan Arjomulyo Kabupaten Jombang', 7, '2020-12-07', 7, '2020-12-07', 1);
 
 -- --------------------------------------------------------
 
@@ -931,6 +986,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure for view `gr_view`
+--
+DROP TABLE IF EXISTS `gr_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `gr_view`  AS  select `m`.`nama_mitra` AS `mitra`,`mgr`.`nama_mitra` AS `mitragr`,`p`.`nama_pegawai` AS `pm`,`po`.`po_no` AS `po_no`,`po`.`io_number` AS `io_number`,`po`.`project_name` AS `pa_id`,`po`.`mitra_id` AS `mitra_id`,`po`.`net_price` AS `net_price`,`po`.`delivery_date` AS `devdate_po`,`po`.`create_on` AS `createon_po`,`po`.`update_on` AS `updateon_po`,`po`.`rev` AS `rev`,`po`.`status` AS `statuspo`,`gr`.`gr_no` AS `gr_no`,`gr`.`status` AS `statusgr`,`gr`.`create_on` AS `createon_gr`,`gr`.`keterangan` AS `keterangan`,`gr`.`discount` AS `discount`,`gr`.`total_value` AS `total_value`,`gr`.`net_value` AS `net_value` from ((((`hpo` `po` left join `hgr` `gr` on(`po`.`po_no` = `gr`.`po_no`)) join `pegawai` `p` on(`po`.`create_by` = `p`.`pegawai_id`)) join `mitra` `m` on(`po`.`mitra_id` = `m`.`mitra_id`)) left join `mitra` `mgr` on(`gr`.`mitra_id` = `mgr`.`mitra_id`)) ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `po_view`
 --
 DROP TABLE IF EXISTS `po_view`;
@@ -1138,19 +1202,19 @@ ALTER TABLE `hgi`
 -- AUTO_INCREMENT for table `hgr`
 --
 ALTER TABLE `hgr`
-  MODIFY `gr_no` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `gr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `hpo`
 --
 ALTER TABLE `hpo`
-  MODIFY `po_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `po_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `hpr`
 --
 ALTER TABLE `hpr`
-  MODIFY `pr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `pr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `hreservasi`

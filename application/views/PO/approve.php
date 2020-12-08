@@ -52,7 +52,7 @@
                             <table>
                                 <?php foreach ($dpr->result() as $key => $data){?>
                                         <td><label class="col-form-label"><?=$data->nama_pekerjaan?></label></td>
-                                        <td class="text-center"><input type="text" class="form-control" value="<?=$data->qty?>" readonly></td>
+                                        <td class="text-center"><input type="text" class="form-control" value="<?=$data->qty?>" readonly></td></tr>
                                 <?php } ?>
                             </table>
                         </td>

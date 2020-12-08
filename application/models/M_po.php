@@ -14,6 +14,17 @@ class M_po extends CI_Model {
 		return $query;
 	}
 
+	function get_po_gr($id = null)
+	{
+		$this->db->select('*');
+		$this->db->from('po_view');
+		if ($id != null) {
+			$this->db->where('po_no', $id);
+		}
+		$query = $this->db->get();
+		return $query;
+	}
+
 	function get_dpr($id = null)
 	{
 		$this->db->select('*');
@@ -64,7 +75,8 @@ class M_po extends CI_Model {
 				// var_dump($no_reservasi);
 				$queryy = $this->db->query("SELECT price FROM `pekerjaan` WHERE pekerjaan_id=".$a[$i]."");
 				$roww = $queryy->row();
-				$total = $roww->price;
+				$tot = $roww->price;
+				$total = $tot*$b[$i];
 				$subtotal = $subtotal+$total;
 				$data1 = [
 					'pr_no'			=> $pr_no,
@@ -94,6 +106,7 @@ class M_po extends CI_Model {
 			"project_name"		=> $this->input->post('project_id'),
 			"create_by"			=> $this->session->userdata('pegawai_id'),
 			'delivery_date'		=> $this->input->post('devdate'),
+			'status'			=> 0,
 			"create_on"			=> date('Y-m-d')
     	];
 		$this->db->insert('hpo', $data);
@@ -108,7 +121,8 @@ class M_po extends CI_Model {
 			for ($i=0;$i<sizeof($a);$i++) {
 				$queryy = $this->db->query("SELECT price FROM `pekerjaan` WHERE pekerjaan_id=".$a[$i]."");
 				$roww = $queryy->row();
-				$total = $roww->price;
+				$tot = $roww->price;
+				$total = $tot*$b[$i];
 				$subtotal = $subtotal+$total;
 				$data1 = [
 					'po_no'			=> $po_no,
@@ -143,6 +157,7 @@ class M_po extends CI_Model {
 			"update_by"			=> $this->session->userdata('pegawai_id'),
 			'delivery_date'		=> $this->input->post('devdate'),
 			'rev'				=> $rev+1,
+			'status'			=> 0,
 			"update_on"			=> date('Y-m-d')
 		];
 		$this->db->where('po_no', $id);

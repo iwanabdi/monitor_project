@@ -16,7 +16,7 @@
 				  <label class="col-sm-3 col-form-label">ID Project</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
-		                <input type="text" class="form-control" name="project_id" id="project_id" value="<?=$project->project_id?>" readonly required>
+		                <input type="text" class="form-control" name="project_id" id="project_id" value="<?=$project->project_id." ".$project->nama_customer." ".$project->jalan_ter." ".$project->kota_ter?>" readonly required>
 					</div>
 				  </div>
 				</div>	

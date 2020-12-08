@@ -16,12 +16,51 @@ class Laporan_material extends CI_Controller {
 		$this->load->model('M_mitra'); 
 		$this->load->model('M_Testcom'); 
 		$this->load->model('M_Survey'); 
+		$this->load->model('M_material');
 		$this->load->model('M_LaporanMitra'); 
 	}
 
 	public function index()
 	{
-		$this->template->load('template_pegawai', 'Laporan/laporan_material');
+		$array = array(
+		 	'status' => '0'
+		 );
+		$status = $this->session->set_userdata($array);
+		$this->template->load('template_pegawai', 'Laporan/laporan_material',$status);
+	}
+
+	public function data_masuk()
+	{
+		$tgl_awal	= $this->input->post('tgl_awal');
+		$tgl_akhir	= $this->input->post('tgl_akhir');
+		// var_dump($tgl_awal,$tgl_akhir);
+		// exit;
+		$array = array(
+			'status' => '1'
+		);
+		$data['tgl_awal'] = $tgl_awal;
+		$data['tgl_akhir'] = $tgl_akhir;
+		$data['status'] = $this->session->set_userdata($array);
+		$data['row'] = $this->M_material->laporan_material($tgl_awal,$tgl_akhir);
+		$this->template->load('template_pegawai', 'Laporan/material/masuk', $data);
+		// var_dump($data['row']);
+	}
+
+	public function data_keluar()
+	{
+		$tgl_awal		= $this->input->post('tgl_awal');
+		$tgl_akhir		= $this->input->post('tgl_akhir');
+		// var_dump($tgl_awal,$tgl_akhir);
+		// exit;
+		$array = array(
+			'status' => '1'
+		);
+		$data['tgl_awal'] = $tgl_awal;
+		$data['tgl_akhir'] = $tgl_akhir;
+		$data['status'] = $this->session->set_userdata($array);
+		$data['row'] = $this->M_material->laporan_keluar($tgl_awal,$tgl_akhir);
+		$this->template->load('template_pegawai', 'Laporan/material/keluar', $data);
+		// var_dump($data['row']);
 	}
 
 }

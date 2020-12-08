@@ -18,11 +18,16 @@ class Laporan_mitra extends CI_Controller {
 		$this->load->model('M_Testcom'); 
 		$this->load->model('M_Survey'); 
 		$this->load->model('M_LaporanMitra'); 
+		$this->load->model('M_Laporan_Mitra'); 
 	}
 
 	public function index()
 	{
-		$this->template->load('template_pegawai', 'laporan/laporan_mitra');
+		$data=[];
+		$data['row'] = $this->M_Laporan_Mitra->get_mitra();
+		// var_dump($data);
+		// var_dump($data);exit;
+		$this->template->load('template_pegawai', 'laporan/laporan_mitra',$data);
 	}
 
 }

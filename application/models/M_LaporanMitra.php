@@ -3,6 +3,50 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_LaporanMitra extends CI_Model {
 
+	// Awal Functiion mitra untuk laporan status mitra diPegawai
+	function get_mitra($id = null)
+	{
+		$this->db->select('*');
+		$this->db->from('mitra');
+		if ($id != null) {
+			$this->db->where('mitra_id', $id);
+		}
+		$query = $this->db->get();
+		return $query;
+	}
+	public function get_jumlahproject($id = null)
+	{
+		$this->db->select('count(p.project_id)')
+				->from('project p')
+				->join('dstg d' , 'p.project_id=d.project_id')
+				->where('d.mitra_id',$id);
+				$query = $this->db->get();
+
+				
+				
+		return $query;		
+		
+		// SELECT  COUNT(p.`project_id`) 
+		// 	FROM project p JOIN dstg d ON p.`project_id`=d.`project_id`
+		// 	WHERE pegawai_id=2 ;
+	}
+	public function getStatus($id = null)
+	{
+		$this->db->select('p.status_project')
+				->from('project p')
+				->join('dstg d' , 'p.project_id=d.project_id')
+				->where('d.mitra_id',$id);
+				$query = $this->db->get()->result();
+
+	
+				
+		return $query;	
+	}
+
+	// Akhir Functiion mitra untuk laporan status mitra diPegawai
+	
+	
+	//awal function tampilan halaman mitra
 	function get_laporan($id = null)
 	{
 		$this->db->select('*');
@@ -141,6 +185,8 @@ class M_LaporanMitra extends CI_Model {
 		$this->db->where('project_id', $id);
 		$this->db->update('testcom', $data);
 	}
+	//awal function tampilan halaman mitra
+	
     
 
 }

@@ -18,16 +18,54 @@ class Laporan_mitra extends CI_Controller {
 		$this->load->model('M_Testcom'); 
 		$this->load->model('M_Survey'); 
 		$this->load->model('M_LaporanMitra'); 
-		$this->load->model('M_Laporan_Mitra'); 
+	
 	}
 
 	public function index()
 	{
 		$data=[];
-		$data['row'] = $this->M_Laporan_Mitra->get_mitra();
-		// var_dump($data);
-		// var_dump($data);exit;
+		$data['row'] = $this->M_LaporanMitra->get_mitra();
+	
 		$this->template->load('template_pegawai', 'laporan/laporan_mitra',$data);
+	}
+	public function cek()
+	{
+		$id = $_POST['mitra_id'];//mengambil mmitra id
+		$status = $this->M_LaporanMitra->getStatus($id);
+		// memisahkan status project
+		$diposisi = 0;$survey = 0;$progres = 0;$testcom = 0;$dokumen = 0;$QC = 0;$close = 0;$baps=0;
+		foreach ($status as $key => $data) {
+			$cek = $data->status_project;
+			
+			if($cek == 1)$diposisi++;
+			if($cek == 2)$survey++;
+			if($cek == 3)$progres++;
+			if($cek == 4)$testcom++;
+			if($cek == 5)$dokumen++;
+			if($cek == 6)$QC++;
+			if($cek == 7)$baps++;
+			if($cek == 8)$close++;
+
+		}
+		// $statusproject = array( 
+		// 	'diposisi' 	=> $diposisi,
+		// 	'survey' 	=> $survey,
+		// 	'progres' 	=> $progres,
+		// 	'testcom' 	=> $testcom,
+		// 	'dokumen' 	=> $dokumen,
+		// 	'QC' 		=> $QC,
+		// 	'close' 	=> $close,
+		// 	'baps' 		=> $baps
+			
+		// );
+		$data['row'] = $this->M_LaporanMitra->get_jumlahproject($id);
+		// $data['row'] = $statusproject;
+		$data['row'] = $this->M_LaporanMitra->get_mitra();
+		$this->template->load('template_pegawai', 'laporan/laporan_mitra',$data);
+	
+		// 1 diposisi, 2 survey, 3 progres, 4, testcom, 5 dokumen, 6 qc ok, 7 baps , 8 close
+	
+
 	}
 
 }

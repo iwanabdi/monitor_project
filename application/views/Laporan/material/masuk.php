@@ -60,25 +60,6 @@
     <div class="card-body">
       <div class="table-responsive">
   		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-      	<?php if ($this->session->userdata('status') == 0) {?>
-          <thead>
-            <tr class="text-center">
-              <th>Data Tidak Ditemukan</th>
-            </tr>
-          </thead>
-          <tfoot>
-            <tr class="text-center">
-              <th>Data Tidak Ditemukan</th>
-            </tr>
-          </tfoot>
-          <tbody>
-          		<tr>
-	              <td class="text-center">Silahkan Pilih Range Tanggal Dulu</td>
-	            </tr>
-          </tbody>
-        </table>
-      	<?php } ?>
-      	<?php if ($this->session->userdata('status') == 1) {?>
           <thead>
             <tr class="text-center">
               <th>No</th>
@@ -110,9 +91,7 @@
             <?php } ?>
           	<!-- <?= print_r($row);?> -->
           </tbody>
-      	<?php } ?>
         </table>
-      	<?= $this->session->userdata('status')?>
       </div>
     </div>
   </div>

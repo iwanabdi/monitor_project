@@ -114,4 +114,11 @@ class M_project extends CI_Model {
 		return $query->row();
 	}
 
+	public function get_pm()
+	{
+		$query = $this->db->query("SELECT DISTINCT p.pegawai_id, pg.nama_pegawai FROM project p
+									JOIN pegawai pg ON pg.pegawai_id = p.pegawai_id");
+		return $query;
+	}
+
 }

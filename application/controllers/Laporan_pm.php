@@ -22,7 +22,8 @@ class Laporan_pm extends CI_Controller {
 
 	public function index()
 	{
-		$this->template->load('template_pegawai', 'laporan/laporan_pm');
+		$data['row'] = $this->M_project->get_pm();
+		$this->template->load('template_pegawai', 'laporan/laporan_pm', $data);
 	}
 
 }

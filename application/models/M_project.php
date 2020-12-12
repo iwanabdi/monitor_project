@@ -116,8 +116,27 @@ class M_project extends CI_Model {
 
 	public function get_pm()
 	{
-		$query = $this->db->query("SELECT DISTINCT p.pegawai_id, pg.nama_pegawai FROM project p
-									JOIN pegawai pg ON pg.pegawai_id = p.pegawai_id");
+		$query = $this->db->query("SELECT DISTINCT p.pegawai_id, pg.nama_pegawai, COUNT(p.project_id) AS jumlah_project 
+									FROM project p
+									JOIN pegawai pg ON pg.pegawai_id = p.pegawai_id
+									GROUP BY p.pegawai_id HAVING COUNT(p.project_id)>0");
+		return $query;
+	}
+
+	public function project_pm($pm)
+	{
+		$query = $this->db->query("SELECT DISTINCT p.pegawai_id, COUNT(p.project_id) AS jumlah_project 
+									FROM project p
+									WHERE p.pegawai_id = '$pm'
+									GROUP BY p.pegawai_id HAVING COUNT(p.project_id)>0");
+		return $query;
+	}
+
+	public function get_status_project($pm)
+	{
+		$query = $this->db->query("SELECT pegawai_id, status_project, COUNT(*) AS qty FROM project 
+            WHERE pegawai_id = '$pm'
+            GROUP BY status_project HAVING COUNT(*)>0");
 		return $query;
 	}
 

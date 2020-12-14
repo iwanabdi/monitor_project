@@ -16,31 +16,59 @@ class M_LaporanMitra extends CI_Model {
 	}
 	public function get_jumlahproject($id = null)
 	{
-		$this->db->select('count(p.project_id)')
-				->from('project p')
-				->join('dstg d' , 'p.project_id=d.project_id')
-				->where('d.mitra_id',$id);
-				$query = $this->db->get();
-
+		$query = $this->db->query("SELECT COUNT(p.project_id)  as jumlah
+		FROM project p JOIN dstg d ON p.project_id=d.project_id
+		WHERE d.mitra_id='$id'");
+	
+		
+		return $query;
 				
 				
-		return $query;		
+		
 		
 		// SELECT  COUNT(p.`project_id`) 
 		// 	FROM project p JOIN dstg d ON p.`project_id`=d.`project_id`
 		// 	WHERE pegawai_id=2 ;
 	}
-	public function getStatus($id = null)
+	public function get_status_project($id = null)
 	{
-		$this->db->select('p.status_project')
-				->from('project p')
-				->join('dstg d' , 'p.project_id=d.project_id')
-				->where('d.mitra_id',$id);
-				$query = $this->db->get()->result();
-
+		
+		$query = $this->db->query("SELECT p.status_project, COUNT(p.status_project) AS qty
+		FROM dstg m
+		JOIN project p ON m.project_id=p.project_id
+		WHERE m.mitra_id='$id'
+		GROUP BY p.status_project HAVING COUNT(p.status_project>0)");
+		
 	
 				
-		return $query;	
+		return $query;
+		
+			// SELECT p.status_project, COUNT(p.status_project) AS jumlah
+			// FROM dstg m
+			// JOIN project p ON m.project_id=p.project_id
+			// WHERE m.mitra_id=1
+			// GROUP BY p.status_project HAVING COUNT(p.status_project>0)
+
+	}
+	public function get_performa($id = null)
+	{
+		$query = $this->db->query("SELECT a.performa,
+		COUNT(a.project_name) AS jumlah
+		FROM (
+			SELECT po.project_name ,t.tgl_testcom, po.delivery_date, 
+			CASE
+				WHEN DATE(t.tgl_testcom) <= DATE(po.delivery_date)  THEN 'tepat waktu'
+				ELSE 'terlambat'
+			END AS performa
+			FROM testcom t 
+			JOIN hpo po ON t.`project_id`=po.`project_name`
+			WHERE po.mitra_id='$id'
+		) a
+		GROUP BY a.performa");
+		return $query;
+
+
+
 	}
 
 	// Akhir Functiion mitra untuk laporan status mitra diPegawai

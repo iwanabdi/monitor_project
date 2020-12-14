@@ -60,7 +60,12 @@
                 <?php } ?>    
                 <?php if($data->status == 1 ) {?>           
                 <a href="<?= site_url()?>" class="btn btn-success"><i class="fas fa-download"></i>PDF</a>
-                <?php } ?>    
+								<?php } ?> 
+								<?php if($data->po_no != null) {?>           
+                <a href="<?= site_url('PO/detail_po/'.$data->pr_no)?>" class="btn btn-info"><i class="fas fa-eye"></i>Detail</a>
+                <?php } ?>
+
+							
               </td>
               <td>
                 <?php if($data->status == 1) {  

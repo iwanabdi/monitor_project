@@ -18,54 +18,42 @@ class Laporan_mitra extends CI_Controller {
 		$this->load->model('M_Testcom'); 
 		$this->load->model('M_Survey'); 
 		$this->load->model('M_LaporanMitra'); 
-	
 	}
 
 	public function index()
 	{
-		$data=[];
-		$data['row'] = $this->M_LaporanMitra->get_mitra();
+		$data['row'] = $this->M_mitra->get_mitra();
+		
+		$array = array(
+		 	'status' => '0'
+		 );
 	
-		$this->template->load('template_pegawai', 'laporan/laporan_mitra',$data);
+		$data['status'] = $this->session->set_userdata($array);
+		$this->template->load('template_pegawai', 'laporan/laporan_mitra', $data);
 	}
-	public function cek()
+
+	public function data_mitra()
 	{
-		$id = $_POST['mitra_id'];//mengambil mmitra id
-		$status = $this->M_LaporanMitra->getStatus($id);
-		// memisahkan status project
-		$diposisi = 0;$survey = 0;$progres = 0;$testcom = 0;$dokumen = 0;$QC = 0;$close = 0;$baps=0;
-		foreach ($status as $key => $data) {
-			$cek = $data->status_project;
-			
-			if($cek == 1)$diposisi++;
-			if($cek == 2)$survey++;
-			if($cek == 3)$progres++;
-			if($cek == 4)$testcom++;
-			if($cek == 5)$dokumen++;
-			if($cek == 6)$QC++;
-			if($cek == 7)$baps++;
-			if($cek == 8)$close++;
-
-		}
-		// $statusproject = array( 
-		// 	'diposisi' 	=> $diposisi,
-		// 	'survey' 	=> $survey,
-		// 	'progres' 	=> $progres,
-		// 	'testcom' 	=> $testcom,
-		// 	'dokumen' 	=> $dokumen,
-		// 	'QC' 		=> $QC,
-		// 	'close' 	=> $close,
-		// 	'baps' 		=> $baps
-			
-		// );
-		$data['row'] = $this->M_LaporanMitra->get_jumlahproject($id);
-		// $data['row'] = $statusproject;
-		$data['row'] = $this->M_LaporanMitra->get_mitra();
-		$this->template->load('template_pegawai', 'laporan/laporan_mitra',$data);
+		$mitra = $this->input->post('status');
 	
-		// 1 diposisi, 2 survey, 3 progres, 4, testcom, 5 dokumen, 6 qc ok, 7 baps , 8 close
 	
+		$array = array(
+		 	'status' => $mitra
+		 );
+		$data['status'] = $this->session->set_userdata($array);
+		$data['jproject'] = $this->M_LaporanMitra->get_jumlahproject($mitra);
+		$data['row'] = $this->M_mitra->get_mitra();
+		$data['performa'] = $this->M_LaporanMitra->get_performa($mitra)->result();
+		$data['rows'] = $this->M_LaporanMitra->get_status_project($mitra)->result();
+		$this->template->load('template_pegawai', 'laporan/laporan_mitra', $data);
+	}
 
+	public function detail_mitra()
+	{
+		$mitra = $this->input->post('id');
+		$data['project'] = $this->M_project->project_mitra($mitra)->row_array();
+		$data['rows'] = $this->M_project->get_status_project($mitra);
+		echo json_encode($mitra);
 	}
 
 }

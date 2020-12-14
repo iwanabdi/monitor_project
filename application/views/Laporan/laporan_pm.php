@@ -1,3 +1,4 @@
+<!-- <<<<<<< Updated upstream -->
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -82,7 +83,7 @@
 			          <div class="form-group row">
 			            <label class="col-sm-3 col-form-label">Status Project</label>
 			            <div class="col-sm-9">
-			            <?php foreach ($rows->result() as $key => $data) {?>
+			            <?php foreach ($rows as $key => $data) {?>
 			            	<?php if ($data->status_project == 1): ?>
 			            		<input type="text" class="form-control" id="nama_mitra" name="nama_mitra" required="" 
 			              		value="Disposisi : <?= $data->qty?>" readonly="">
@@ -133,20 +134,14 @@
 			              <div class="row no-gutters align-items-center">
 			                <div class="col-auto">
 			                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-			                  	<?php foreach ($rows->result() as $key => $data): ?>
-		                  			<?php if ($data->status_project == 4): ?>
-		                  				<?php $jml = $data->qty;?>
+			                  	<?php foreach ($rows as $key => $data): ?>
+			                  		<?php if ($data->status_project == 4): ?>
+			                  			<?php echo $data->qty;?>
 			                  			<?php $performa = 100 * $data->qty / $jumlah;?>
 			                  			<?php $tepat = $data->qty ?>
 			                  			<?php $terlambat = $jumlah - $data->qty;?>
-		                  			<?php elseif($data->status_project != 4): ?>
-		                  				<?php $jml = 0 ?>
-		                  				<?php $performa = 100 * 0 / $jumlah ?>
-			                  			<?php $tepat = 0 ?>
-			                  			<?php $terlambat = $jumlah - 0?>
-		                  			<?php endif ?>
+			                  		<?php endif ?>
 			                  	<?php endforeach ?>
-			                  	<?= $jml;?>
 			                  </div>
 			                </div>
 			                <div class="col">
@@ -197,3 +192,4 @@
 	});
 
 </script>
+

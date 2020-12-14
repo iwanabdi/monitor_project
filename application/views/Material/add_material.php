@@ -27,7 +27,7 @@
 				<div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Storage</label>
 		          <div class="col-sm-9">
-		          	<select name="storage_bin" id="storage_bin" class="form-control custom-select project" onchange="satuan(this.value)" required="">
+		          	<select name="storage_bin" id="storage_bin" class="form-control custom-select project" onchange="ketik()" required="">
 						<option selected="" disabled="" value="">-- Pilih Satuan Material --</option>
 							<option value="1">Unit</option>
 							<option value="2">Roll (1000 Unit)</option>
@@ -72,54 +72,45 @@
 </div>
 
 <script language='javascript'>
+var stat = 0;
 function validAngka(a)
 {
     if(!/^[0-9.]+$/.test(a.value))
     {
     a.value = a.value.substring(0,a.value.length-1000);
     }
-	ketik();
-}
-
-function satuan(sat)
-{
-	var text = "";
-	switch(sat)
-	{
-		case "2" :{
-			text = "<div class='form-group row'>\
-						<label class='col-sm-3 col-form-label'>SN - 1000 Unit</label>\
-							<div class='col-sm-9'>\
-							<input type='text' class='form-control' id='sn' required=' name='sn-1'>\
-							</div>\
-						</div>";
-		}break;
-		case "3" :{
-			text = "<div class='form-group row'>\
-						<label class='col-sm-3 col-form-label'>SN - 4000 Unit</label>\
-							<div class='col-sm-9'>\
-							<input type='text' class='form-control' id='sn' required=' name='sn-1'>\
-							</div>\
-						</div>";
-		}break;
-		default : text = "";
-	}
-	document.getElementById("cetak").innerHTML = text;
+    ketik();
 }
 
 function ketik()
 {
-	var x = document.getElementById("stok").value;
-	var text = "";
-	var head = "<div class='form-group row'>";
-	var label = "<label class='col-sm-3 col-form-label'>SN - ";
-	var input = "<div class='col-sm-9'>\
-		            <input type='text' class='form-control' id='sn' required='' ";
-	var tutup = ">\
+	var stat = $('.project option:selected').val();
+	if (stat == 1) {
+		var x = document.getElementById("stok").value;
+		var text = "";
+		var head = "<div class='form-group row'>";
+		var label = "<label class='col-sm-3 col-form-label'>SN - ";
+		var input = "<div class='col-sm-9'>\
+			            <input type='text' class='form-control' id='sn' required='' ";
+		var tutup = ">\
+					</div>";
+		for (let i = 1; i <= x; i++) {
+			text += head + label + i + "</label>" + input + "name='sn-" + i+"'" + tutup + "</div>";
+		}
+	}else if(stat == 2){
+		text = "<div class='form-group row'>\
+					<label class='col-sm-3 col-form-label'>SN - 1000 Unit</label>\
+					<div class='col-sm-9'>\
+					<input type='text' class='form-control' id='sn' required=' name='sn-1'>\
+					</div>\
 				</div>";
-	// var x;
-	for (let i = 1; i <= x; i++) {
-		text += head + label + i + "</label>" + input + "name='sn-" + i+"'" + tutup + "</div>";
+	}else if(stat == 3){
+		text = "<div class='form-group row'>\
+					<label class='col-sm-3 col-form-label'>SN - 4000 Unit</label>\
+					<div class='col-sm-9'>\
+					<input type='text' class='form-control' id='sn' required=' name='sn-1'>\
+					</div>\
+				</div>";
 	}
 	document.getElementById("cetak").innerHTML = text;
 }

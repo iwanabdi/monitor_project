@@ -211,7 +211,7 @@
       </li>
 
       <li <?=$this->uri->segment(1) == 'laporan_mitra'?'class="nav-item active"' : "" ?> class="nav-item">
-        <a class="nav-link" href="<?= site_url('laporan_mitra')?>">
+        <a class="nav-link" href="<?= site_url('Laporan_mitra/index')?>">
           <i class="fas fa-fw fa-table"></i>
           <span>Laporan Mitra</span></a>
       </li>

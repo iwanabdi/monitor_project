@@ -18,6 +18,10 @@ class M_stg extends CI_Model {
 	// 	$query = $this->db->get();
 	// 	return $query;
 	// }
+	public function get_mitra()
+	{
+		# code...
+	}
 
 	function get_stg_belum()
 	{

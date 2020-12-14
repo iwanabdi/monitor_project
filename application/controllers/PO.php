@@ -97,4 +97,17 @@ class PO extends CI_Controller {
 			</div>');
 		redirect('PO','refresh');
 	}
+	public function detail_po($no_po)
+	{
+		$data = [
+			'row_spv'	=> $this->M_stg->spv()->row(),
+			'row'		=> $this->M_stg->cetak(),
+			'invoice' 	=> $this->M_stg->cetak_stg($no_po)
+		];
+		// $data = [
+			
+		// 		'dmitra' 	=> $this->M_stg->cetak_s($no_po)
+		// ];
+		$this->load->view('PO/detail_po', $data);
+	}
 }

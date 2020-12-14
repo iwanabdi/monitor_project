@@ -43,7 +43,7 @@ class Laporan_mitra extends CI_Controller {
 		$data['status'] = $this->session->set_userdata($array);
 		$data['jproject'] = $this->M_LaporanMitra->get_jumlahproject($mitra);
 		$data['row'] = $this->M_mitra->get_mitra();
-		// $data['project'] = $this->M_project->project_mitra($mitra)->result();
+		$data['performa'] = $this->M_LaporanMitra->get_performa($mitra)->result();
 		$data['rows'] = $this->M_LaporanMitra->get_status_project($mitra)->result();
 		$this->template->load('template_pegawai', 'laporan/laporan_mitra', $data);
 	}

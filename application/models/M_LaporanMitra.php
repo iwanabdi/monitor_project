@@ -50,17 +50,24 @@ class M_LaporanMitra extends CI_Model {
 			// GROUP BY p.status_project HAVING COUNT(p.status_project>0)
 
 	}
-	public function performa()
+	public function get_performa($id = null)
 	{
-// 		SELECT po.project_name ,t.tgl_testcom, po.delivery_date, NVL(DATEDIFF(t.tgl_testcom, po.delivery_date),0) AS selisih,
-// CASE
-//     WHEN NVL(DATEDIFF(t.tgl_testcom, po.delivery_date),0) < 0  THEN 'tepat waktu'
-//     WHEN NVL(DATEDIFF(t.tgl_testcom, po.delivery_date),0) >= 0 THEN 'terlambat'
-//     ELSE 'The quantity is under 30'
-// END AS performa
-// FROM testcom t 
-// JOIN hpo po ON t.`project_id`=po.`project_name`
-// WHERE po.mitra_id=1;
+		$query = $this->db->query("SELECT a.performa,
+		COUNT(a.project_name) AS jumlah
+		FROM (
+			SELECT po.project_name ,t.tgl_testcom, po.delivery_date, 
+			CASE
+				WHEN DATE(t.tgl_testcom) <= DATE(po.delivery_date)  THEN 'tepat waktu'
+				ELSE 'terlambat'
+			END AS performa
+			FROM testcom t 
+			JOIN hpo po ON t.`project_id`=po.`project_name`
+			WHERE po.mitra_id='$id'
+		) a
+		GROUP BY a.performa");
+		return $query;
+
+
 
 	}
 

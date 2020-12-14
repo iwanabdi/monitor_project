@@ -127,49 +127,52 @@
 
 			            </div>
 			          </div>
-<!-- 
-			          <div class="row no-gutters align-items-center">
+
+					  <div class="row no-gutters align-items-center">
 			            <div class="col mr-2">
-			              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Performa PM</div>
-			              <div class="row no-gutters align-items-center">
-			                <div class="col-auto">
-			                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-			                  	<?php foreach ($rows as $key => $data): ?>
-			                  		<?php if ($data->status_project == 4): ?>
-			                  			<?php echo $data->qty;?>
-			                  			<?php $performa = 100 * $data->qty / $jumlah;?>
-			                  			<?php $tepat = $data->qty ?>
-			                  			<?php $terlambat = $jumlah - $data->qty;?>
-			                  		<?php endif ?>
-			                  	<?php endforeach ?>
-			                  </div>
-			                </div>
-			                <div class="col">
-			                  <div class="progress progress-sm mr-2">
-			                    <div class="progress-bar bg-warning" role="progressbar" style="width: <?= $performa;?>%" aria-valuenow="<?= $performa;?>" aria-valuemin="0%" aria-valuemax="100%"></div>
-			                  </div>
-			                </div>
+							  <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Performa Mitra</div>
+							  <div class="progress">
+									<?php foreach ($performa as $key => $data) {?>
+										<?php if ($data->performa == "tepat waktu"): ?>
+											<input type="text" class="form-control" id="nama_mitra" name="nama_mitra" required="" 
+											value="<?= $data->jumlah?> project" readonly="">
+										<?php endif ?>
+									<?php } ?>
+							   </div>
+							<div class="progress">
+
+								<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+							</div>
 			              </div>
 			            </div>
-			            <div class="col-auto">
-			              <i class="fas fa-project-diagram fa-2x"></i>
-			            </div>
+			          
 			          </div>
+					
+								
 
 			          <div class="form-group row" style="margin-top: 10px;">
 			            <label class="col-sm-3 col-form-label">Tepat Waktu</label>
 			            <div class="col-sm-9">
-			              <input type="text" class="form-control" id="nama_mitra" name="nama_mitra" required="" 
-			              value="<?= $tepat?> Project" readonly="">
+						<?php foreach ($performa as $key => $data) {?>
+							<?php if ($data->performa == "tepat waktu"): ?>
+			              		<input type="text" class="form-control" id="nama_mitra" name="nama_mitra" required="" 
+			              		value="<?= $data->jumlah?> project" readonly="">
+			            	<?php endif ?>
+						<?php } ?>
 			            </div>
-			          </div>
-			          <div class="form-group row">
+					  </div>
+					  <div class="form-group row" style="margin-top: 10px;">
 			            <label class="col-sm-3 col-form-label">Terlambat</label>
 			            <div class="col-sm-9">
-			              <input type="text" class="form-control" id="nama_mitra" name="nama_mitra" required="" 
-			              value="<?= $terlambat?> Project" readonly="">
+						<?php foreach ($performa as $key => $data) {?>
+							<?php if ($data->performa == "terlambat"): ?>
+			              		<input type="text" class="form-control" id="nama_mitra" name="nama_mitra" required="" 
+			              		value="<?= $data->jumlah?> project" readonly="">
+			            	<?php endif ?>
+						<?php } ?>
 			            </div>
-			          </div> -->
+			          </div>
+			          
 
 			        </div>
 			      </div>

@@ -40,7 +40,7 @@ class Laporan_pm extends CI_Controller {
 		$data['status'] = $this->session->set_userdata($array);
 		$data['row'] = $this->M_project->get_pm();
 		$data['project'] = $this->M_project->project_pm($pm)->result();
-		$data['rows'] = $this->M_project->get_status_project($pm);
+		$data['rows'] = $this->M_project->get_status_project($pm)->result();
 		$this->template->load('template_pegawai', 'laporan/laporan_pm', $data);
 	}
 
@@ -53,3 +53,7 @@ class Laporan_pm extends CI_Controller {
 	}
 
 }
+
+/* End of file laporan_pm.php */
+/* Location: ./application/controllers/laporan/laporan_pm.php */
+>>>>>>> Stashed changes

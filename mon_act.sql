@@ -107,6 +107,8 @@ CREATE TABLE `dgr` (
 
 /*Data for the table `dgr` */
 
+insert  into `dgr`(`gr_no`,`pekerjaan_id`,`qty`,`net_value`,`create_by`,`create_on`) values (2,1,100,400000,7,'2020-12-23'),(2,3,4,12000,7,'2020-12-23'),(3,1,110,440000,7,'2020-12-31'),(3,3,10,30000,7,'2020-12-31');
+
 /*Table structure for table `dmaterial` */
 
 DROP TABLE IF EXISTS `dmaterial`;
@@ -125,7 +127,7 @@ CREATE TABLE `dmaterial` (
 
 /*Data for the table `dmaterial` */
 
-insert  into `dmaterial`(`material_id`,`SN`,`keterangan`,`status`,`create_on`,`create_by`,`update_on`,`update_by`) values (1,'09876','PO nomer 11',1,'2020-11-17',7,'0000-00-00',0),(1,'123','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(1,'1234','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(1,'12342','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(1,'12345','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(1,'123456','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(1,'12347','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(1,'125','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(1,'143','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(1,'154','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(1,'1654','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(1,'54321','PO nomer 11',1,'2020-11-17',7,'0000-00-00',0),(1,'765432','PO nomer 11',1,'2020-11-17',7,'0000-00-00',0),(1,'7673','PO nomer 11',1,'2020-11-17',7,'0000-00-00',0),(1,'87654','PO nomer 11',1,'2020-11-17',7,'0000-00-00',0),(3,'123','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(3,'123455567','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(3,'123565678','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(3,'1265','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(3,'345','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(3,'5657','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(3,'678342','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(3,'785634534','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(3,'789','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(3,'78943','PO nomer 12',0,'2020-12-08',7,'2020-11-17',7);
+insert  into `dmaterial`(`material_id`,`SN`,`keterangan`,`status`,`create_on`,`create_by`,`update_on`,`update_by`) values (1,'09876','PO nomer 11',1,'2020-11-17',7,'0000-00-00',0),(1,'123','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(1,'1234','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(1,'12342','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(1,'12345','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(1,'123456','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(1,'12347','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(1,'125','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(1,'143','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(1,'154','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(1,'1654','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(1,'54321','PO nomer 11',1,'2020-11-17',7,'0000-00-00',0),(1,'765432','PO nomer 11',1,'2020-11-17',7,'0000-00-00',0),(1,'7673','PO nomer 11',1,'2020-11-17',7,'0000-00-00',0),(1,'87654','PO nomer 11',1,'2020-11-17',7,'0000-00-00',0),(3,'123','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(3,'123455567','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(3,'123565678','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(3,'1265','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(3,'345','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(3,'5657','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(3,'678342','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(3,'785634534','PO nomer 10',1,'2020-11-17',7,'0000-00-00',0),(3,'789','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7),(3,'78943','PO nomer 10',0,'2020-11-17',7,'2020-11-17',7);
 
 /*Table structure for table `dpo` */
 
@@ -143,7 +145,7 @@ CREATE TABLE `dpo` (
 
 /*Data for the table `dpo` */
 
-insert  into `dpo`(`po_no`,`pekerjaan_id`,`qty`,`total`,`create_on`,`create_by`) values (2,1,100,400000,'2020-12-07',7),(2,3,10,30000,'2020-12-07',7),(3,1,5000,4000,'2020-12-07',7);
+insert  into `dpo`(`po_no`,`pekerjaan_id`,`qty`,`total`,`create_on`,`create_by`) values (2,1,110,440000,'2020-12-07',7),(2,3,10,30000,'2020-12-07',7),(3,1,5000,4000,'2020-12-07',7),(4,1,100,400000,'2020-12-07',7),(4,3,4,12000,'2020-12-07',7);
 
 /*Table structure for table `dpr` */
 
@@ -161,7 +163,7 @@ CREATE TABLE `dpr` (
 
 /*Data for the table `dpr` */
 
-insert  into `dpr`(`pr_no`,`pekerjaan_id`,`qty`,`total`,`create_on`,`create_by`) values (10,1,5,4000,'2020-12-07',7),(11,1,5000,4000,'2020-12-07',7),(12,3,10,3000,'2020-12-07',7);
+insert  into `dpr`(`pr_no`,`pekerjaan_id`,`qty`,`total`,`create_on`,`create_by`) values (10,1,5,4000,'2020-12-07',7),(11,1,5000,4000,'2020-12-07',7),(12,3,10,3000,'2020-12-07',7),(13,1,8000,4000,'2020-12-07',7);
 
 /*Table structure for table `dreservasi` */
 
@@ -180,7 +182,7 @@ CREATE TABLE `dreservasi` (
 
 /*Data for the table `dreservasi` */
 
-insert  into `dreservasi`(`reservasi_no`,`material_id`,`qty`,`create_on`,`create_by`,`update_on`,`update_by`) values (10,1,1,'2020-11-17',7,'0000-00-00',0),(10,3,2,'2020-11-17',7,'0000-00-00',0),(11,1,1,'2020-11-17',7,'0000-00-00',0),(11,3,1,'2020-11-17',7,'0000-00-00',0),(12,1,1,'2020-11-17',7,'0000-00-00',0),(12,3,1,'2020-11-17',7,'0000-00-00',0),(13,1,1,'2020-11-17',7,'0000-00-00',0),(13,3,1,'2020-11-17',7,'0000-00-00',0),(14,1,2,'2020-11-17',7,'0000-00-00',0),(14,3,2,'2020-11-17',7,'0000-00-00',0),(15,1,2,'2020-11-24',7,'0000-00-00',0),(15,3,2,'2020-11-24',7,'0000-00-00',0),(16,1,1,'2020-12-07',7,'0000-00-00',0),(16,3,1,'2020-12-07',7,'0000-00-00',0);
+insert  into `dreservasi`(`reservasi_no`,`material_id`,`qty`,`create_on`,`create_by`,`update_on`,`update_by`) values (10,1,1,'2020-11-17',7,'0000-00-00',0),(10,3,2,'2020-11-17',7,'0000-00-00',0),(11,1,1,'2020-11-17',7,'0000-00-00',0),(11,3,1,'2020-11-17',7,'0000-00-00',0),(12,1,1,'2020-11-17',7,'0000-00-00',0),(12,3,1,'2020-11-17',7,'0000-00-00',0),(13,1,1,'2020-11-17',7,'0000-00-00',0),(13,3,1,'2020-11-17',7,'0000-00-00',0),(14,1,2,'2020-11-17',7,'0000-00-00',0),(14,3,2,'2020-11-17',7,'0000-00-00',0),(15,1,2,'2020-11-24',7,'0000-00-00',0),(15,3,2,'2020-11-24',7,'0000-00-00',0),(16,1,1,'2020-12-07',7,'0000-00-00',0),(16,2,10,'2020-12-07',7,'0000-00-00',0),(16,3,3,'2020-12-07',7,'0000-00-00',0);
 
 /*Table structure for table `dstg` */
 
@@ -226,20 +228,21 @@ DROP TABLE IF EXISTS `hgr`;
 
 CREATE TABLE `hgr` (
   `gr_no` int(11) NOT NULL AUTO_INCREMENT,
+  `po_no` int(11) NOT NULL,
   `total_value` int(11) NOT NULL,
   `discount` int(11) NOT NULL,
   `net_value` int(11) NOT NULL,
   `create_by` int(11) NOT NULL,
   `create_on` date NOT NULL,
   `status` int(11) NOT NULL,
-  `update_on` date NOT NULL,
-  `update_by` int(11) NOT NULL,
   `mitra_id` int(11) NOT NULL,
-  `keterangan` int(11) NOT NULL,
+  `keterangan` text NOT NULL,
   PRIMARY KEY (`gr_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `hgr` */
+
+insert  into `hgr`(`gr_no`,`po_no`,`total_value`,`discount`,`net_value`,`create_by`,`create_on`,`status`,`mitra_id`,`keterangan`) values (2,4,412000,5,391400,7,'2020-12-23',1,1,'PA-ACT-2010-0004 dispenda blitar blitar'),(3,2,470000,3,455900,7,'2020-12-31',0,3,'PA-ACT-2011-0003');
 
 /*Table structure for table `hpo` */
 
@@ -261,11 +264,11 @@ CREATE TABLE `hpo` (
   `rev` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`po_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `hpo` */
 
-insert  into `hpo`(`po_no`,`pr_no`,`mitra_id`,`io_number`,`delivery_date`,`project_name`,`sub_total`,`net_price`,`create_on`,`create_by`,`update_by`,`update_on`,`rev`,`status`) values (2,10,3,'112020B00003','2020-12-25','PA-ACT-2011-0003',430000,430000,'2020-12-07',7,7,'2020-12-07',2,1),(3,11,2,'112020B00002','2020-12-25','PA-ACT-2011-0002',4000,4000,'2020-12-07',7,0,'0000-00-00',0,0);
+insert  into `hpo`(`po_no`,`pr_no`,`mitra_id`,`io_number`,`delivery_date`,`project_name`,`sub_total`,`net_price`,`create_on`,`create_by`,`update_by`,`update_on`,`rev`,`status`) values (2,10,3,'112020B00003','0000-00-00','PA-ACT-2011-0003',470000,470000,'2020-12-07',7,7,'2020-12-07',4,1),(3,11,2,'112020B00002','2020-12-25','PA-ACT-2011-0002',4000,4000,'2020-12-07',7,0,'0000-00-00',0,0),(4,13,1,'102020B00001','2020-12-31','PA-ACT-2010-0004 dispenda blitar blitar',412000,412000,'2020-12-07',7,7,'2020-12-07',5,1);
 
 /*Table structure for table `hpr` */
 
@@ -281,11 +284,11 @@ CREATE TABLE `hpr` (
   `project_name` text NOT NULL,
   `create_by` int(11) NOT NULL,
   PRIMARY KEY (`pr_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `hpr` */
 
-insert  into `hpr`(`pr_no`,`mitra_id`,`io_number`,`delivery_date`,`sub_total`,`create_on`,`project_name`,`create_by`) values (10,3,'112020B00003','2020-12-25',4000,'2020-12-07','PA-ACT-2011-0003',7),(11,2,'112020B00002','2020-12-25',4000,'2020-12-07','PA-ACT-2011-0002',7),(12,1,'112020B00001','2020-12-25',3000,'2020-12-07','PA-ACT-2011-0001',7);
+insert  into `hpr`(`pr_no`,`mitra_id`,`io_number`,`delivery_date`,`sub_total`,`create_on`,`project_name`,`create_by`) values (10,3,'112020B00003','2020-12-25',4000,'2020-12-07','PA-ACT-2011-0003',7),(11,2,'112020B00002','2020-12-25',4000,'2020-12-07','PA-ACT-2011-0002',7),(12,1,'112020B00001','2020-12-25',3000,'2020-12-07','PA-ACT-2011-0001',7),(13,1,'102020B00001','2020-12-31',4000,'2020-12-07','PA-ACT-2010-0004 dispenda blitar blitar',7);
 
 /*Table structure for table `hreservasi` */
 
@@ -306,7 +309,7 @@ CREATE TABLE `hreservasi` (
 
 /*Data for the table `hreservasi` */
 
-insert  into `hreservasi`(`reservasi_no`,`IO`,`no_wo`,`lokasi`,`create_by`,`create_on`,`update_by`,`update_on`,`status`) values (1,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-14',0,'0000-00-00',1),(2,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(3,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(4,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(5,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(6,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(7,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(8,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(9,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(10,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',7,'2020-11-17',0),(11,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',7,'2020-11-17',0),(12,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',7,'2020-11-17',0),(13,'112020B00002','PA-ACT-2011-0002 dispenda','Samsat Kediri Kota Jalan Anggrek Kota Kediri',7,'2020-11-17',7,'2020-11-17',0),(14,'112020B00003','PA-ACT-2011-0003 dispenda','Samsat Jombang Jalan Arjomulyo Kabupaten Jombang',7,'2020-11-17',7,'2020-11-17',0),(15,'112020B00003','PA-ACT-2011-0003 dispenda','Samsat Jombang Jalan Arjomulyo Kabupaten Jombang',7,'2020-11-24',0,'0000-00-00',1),(16,'112020B00003','PA-ACT-2011-0003 dispenda','Samsat Jombang Jalan Arjomulyo Kabupaten Jombang',7,'2020-12-07',0,'0000-00-00',1);
+insert  into `hreservasi`(`reservasi_no`,`IO`,`no_wo`,`lokasi`,`create_by`,`create_on`,`update_by`,`update_on`,`status`) values (1,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-14',0,'0000-00-00',1),(2,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(3,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(4,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(5,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(6,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(7,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(8,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(9,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',0,'0000-00-00',1),(10,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',7,'2020-11-17',0),(11,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',7,'2020-11-17',0),(12,'102020B00001','PA-ACT-2010-0004 dispenda','blitar blitar',7,'2020-11-17',7,'2020-11-17',0),(13,'112020B00002','PA-ACT-2011-0002 dispenda','Samsat Kediri Kota Jalan Anggrek Kota Kediri',7,'2020-11-17',7,'2020-11-17',0),(14,'112020B00003','PA-ACT-2011-0003 dispenda','Samsat Jombang Jalan Arjomulyo Kabupaten Jombang',7,'2020-11-17',7,'2020-11-17',0),(15,'112020B00003','PA-ACT-2011-0003 dispenda','Samsat Jombang Jalan Arjomulyo Kabupaten Jombang',7,'2020-11-24',0,'0000-00-00',1),(16,'112020B00003','PA-ACT-2011-0003 dispenda','Samsat Jombang Jalan Arjomulyo Kabupaten Jombang',7,'2020-12-07',7,'2020-12-07',1);
 
 /*Table structure for table `hstg` */
 
@@ -356,7 +359,7 @@ CREATE TABLE `material` (
   `nama_material` varchar(200) NOT NULL,
   `brand` varchar(200) NOT NULL,
   `stok` int(20) NOT NULL,
-  `storage_bin` varchar(20) NOT NULL,
+  `storage_bin` varchar(200) NOT NULL,
   `create_by` int(10) NOT NULL,
   `create_on` date NOT NULL,
   `update_by` int(10) NOT NULL,
@@ -369,7 +372,7 @@ CREATE TABLE `material` (
 
 /*Data for the table `material` */
 
-insert  into `material`(`material_id`,`nama_material`,`brand`,`stok`,`storage_bin`,`create_by`,`create_on`,`update_by`,`update_on`,`delete_by`,`delete_on`,`status`) values (1,'mikrotik rb2011','mikrotik',9,'3',7,'2020-10-05',7,'2020-11-17',0,'0000-00-00',1),(2,'drop wire','fiberhome',1000,'2',5,'2020-10-05',0,'0000-00-00',0,'0000-00-00',1),(3,'access point ','unifi',3,'1',7,'2020-10-06',7,'2020-11-17',0,'0000-00-00',1);
+insert  into `material`(`material_id`,`nama_material`,`brand`,`stok`,`storage_bin`,`create_by`,`create_on`,`update_by`,`update_on`,`delete_by`,`delete_on`,`status`) values (1,'mikrotik rb2011','mikrotik',9,'1',7,'2020-10-05',7,'2020-11-17',0,'0000-00-00',1),(2,'drop wire','fiberhome',1000,'2',5,'2020-10-05',0,'0000-00-00',0,'0000-00-00',1),(3,'access point ','unifi',3,'3',7,'2020-10-06',7,'2020-11-17',0,'0000-00-00',1);
 
 /*Table structure for table `mitra` */
 
@@ -500,7 +503,7 @@ CREATE TABLE `project` (
 
 /*Data for the table `project` */
 
-insert  into `project`(`project_id`,`customer_id`,`pegawai_id`,`survey_id`,`testcom_id`,`alamat_ori`,`alamat_ter`,`product_id`,`laporan_id`,`IO`,`SID`,`status_project`,`create_on`,`create_by`,`update_on`,`update_by`,`delete_by`,`delete_on`,`status`,`keterangan`) values ('20',2,2,NULL,NULL,0,1,1,NULL,'102020B00006','1000000001',2,'2020-10-23',1,'2020-10-25',4,NULL,NULL,1,''),('21',2,2,NULL,NULL,0,1,1,NULL,'102020B00005','1000000002',3,'2020-10-24',1,'2020-10-25',4,NULL,NULL,1,''),('22',2,2,NULL,NULL,0,2,1,NULL,'102020B00003','1000000004',1,'2020-10-24',1,'2020-10-25',4,NULL,NULL,1,''),('PA-ACT-2010-',3,9,NULL,NULL,0,2,1,NULL,'102020B00002','1000000004',3,'2020-10-24',1,'2020-10-25',4,NULL,NULL,1,''),('PA-ACT-2010-0004',3,9,NULL,NULL,2,5,4,NULL,'102020B00001','4000000005',4,'2020-10-24',1,'2020-10-25',4,NULL,NULL,1,'aktivasi dispenda'),('PA-ACT-2011-0001',3,9,NULL,NULL,2,1,4,NULL,'112020B00001','4000000006',1,'2020-11-03',4,'2020-11-17',7,NULL,NULL,1,''),('PA-ACT-2011-0002',3,9,NULL,NULL,8,8,3,NULL,'112020B00002','3000000007',4,'2020-11-17',7,'2020-11-17',7,NULL,NULL,1,NULL),('PA-ACT-2011-0003',3,9,NULL,NULL,0,9,6,NULL,'112020B00003','6000000008',4,'2020-11-17',7,'2020-11-17',7,NULL,NULL,1,NULL);
+insert  into `project`(`project_id`,`customer_id`,`pegawai_id`,`survey_id`,`testcom_id`,`alamat_ori`,`alamat_ter`,`product_id`,`laporan_id`,`IO`,`SID`,`status_project`,`create_on`,`create_by`,`update_on`,`update_by`,`delete_by`,`delete_on`,`status`,`keterangan`) values ('20',2,2,NULL,NULL,0,1,1,NULL,'102020B00006','1000000001',1,'2020-10-23',1,'2020-10-25',4,NULL,NULL,1,''),('21',2,2,NULL,NULL,0,1,1,NULL,'102020B00005','1000000002',2,'2020-10-24',1,'2020-10-25',4,NULL,NULL,1,''),('22',2,2,NULL,NULL,0,2,1,NULL,'102020B00003','1000000004',3,'2020-10-24',1,'2020-10-25',4,NULL,NULL,1,''),('PA-ACT-2010-',3,2,NULL,NULL,0,2,1,NULL,'102020B00002','1000000004',4,'2020-10-24',1,'2020-10-25',4,NULL,NULL,1,''),('PA-ACT-2010-0004',3,9,NULL,NULL,2,5,4,NULL,'102020B00001','4000000005',1,'2020-10-24',1,'2020-10-25',4,NULL,NULL,1,'aktivasi dispenda'),('PA-ACT-2011-0001',3,9,NULL,NULL,2,1,4,NULL,'112020B00001','4000000006',3,'2020-11-03',4,'2020-11-17',7,NULL,NULL,1,''),('PA-ACT-2011-0002',3,9,NULL,NULL,8,8,3,NULL,'112020B00002','3000000007',2,'2020-11-17',7,'2020-11-17',7,NULL,NULL,1,NULL),('PA-ACT-2011-0003',3,9,NULL,NULL,0,9,6,NULL,'112020B00003','6000000008',2,'2020-11-17',7,'2020-11-17',7,NULL,NULL,1,NULL);
 
 /*Table structure for table `survey` */
 
@@ -542,7 +545,7 @@ CREATE TABLE `testcom` (
 
 /*Data for the table `testcom` */
 
-insert  into `testcom`(`testcom_id`,`project_id`,`file_bai`,`file_testcom`,`tgl_testcom`,`create_by`,`create_on`,`delete_by`,`delete_on`) values (1,'20','','',NULL,0,'0000-00-00',0,'0000-00-00'),(2,'21','Lamaran_Dinsos.pdf','Lamaran_Dinsos.pdf',NULL,0,'2020-11-20',0,'0000-00-00');
+insert  into `testcom`(`testcom_id`,`project_id`,`file_bai`,`file_testcom`,`tgl_testcom`,`create_by`,`create_on`,`delete_by`,`delete_on`) values (1,'20','','',NULL,0,'0000-00-00',0,'0000-00-00'),(2,'21','Lamaran_Dinsos.pdf','Lamaran_Dinsos.pdf',NULL,0,'0000-00-00',0,'0000-00-00');
 
 /*Table structure for table `dreser` */
 
@@ -558,6 +561,36 @@ DROP TABLE IF EXISTS `dreser`;
  `create_on` date ,
  `create_by` int(11) ,
  `nama_material` varchar(200) 
+)*/;
+
+/*Table structure for table `gr_view` */
+
+DROP TABLE IF EXISTS `gr_view`;
+
+/*!50001 DROP VIEW IF EXISTS `gr_view` */;
+/*!50001 DROP TABLE IF EXISTS `gr_view` */;
+
+/*!50001 CREATE TABLE  `gr_view`(
+ `mitra` varchar(200) ,
+ `mitragr` varchar(200) ,
+ `pm` varchar(200) ,
+ `po_no` int(11) ,
+ `io_number` text ,
+ `pa_id` text ,
+ `mitra_id` int(11) ,
+ `net_price` int(11) ,
+ `devdate_po` date ,
+ `createon_po` date ,
+ `updateon_po` date ,
+ `rev` int(11) ,
+ `statuspo` int(11) ,
+ `gr_no` int(11) ,
+ `statusgr` int(11) ,
+ `createon_gr` date ,
+ `keterangan` text ,
+ `discount` int(11) ,
+ `total_value` int(11) ,
+ `net_value` int(11) 
 )*/;
 
 /*Table structure for table `po_view` */
@@ -676,6 +709,13 @@ DROP TABLE IF EXISTS `stg_belum_view`;
 /*!50001 DROP VIEW IF EXISTS `dreser` */;
 
 /*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `dreser` AS select `d`.`reservasi_no` AS `reservasi_no`,`d`.`material_id` AS `material_id`,`d`.`qty` AS `qty`,`d`.`create_on` AS `create_on`,`d`.`create_by` AS `create_by`,`m`.`nama_material` AS `nama_material` from (`dreservasi` `d` join `material` `m` on((`d`.`material_id` = `m`.`material_id`))) where ((`d`.`create_on` - curdate()) > -(3)) */;
+
+/*View structure for view gr_view */
+
+/*!50001 DROP TABLE IF EXISTS `gr_view` */;
+/*!50001 DROP VIEW IF EXISTS `gr_view` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `gr_view` AS select `m`.`nama_mitra` AS `mitra`,`mgr`.`nama_mitra` AS `mitragr`,`p`.`nama_pegawai` AS `pm`,`po`.`po_no` AS `po_no`,`po`.`io_number` AS `io_number`,`po`.`project_name` AS `pa_id`,`po`.`mitra_id` AS `mitra_id`,`po`.`net_price` AS `net_price`,`po`.`delivery_date` AS `devdate_po`,`po`.`create_on` AS `createon_po`,`po`.`update_on` AS `updateon_po`,`po`.`rev` AS `rev`,`po`.`status` AS `statuspo`,`gr`.`gr_no` AS `gr_no`,`gr`.`status` AS `statusgr`,`gr`.`create_on` AS `createon_gr`,`gr`.`keterangan` AS `keterangan`,`gr`.`discount` AS `discount`,`gr`.`total_value` AS `total_value`,`gr`.`net_value` AS `net_value` from ((((`hpo` `po` left join `hgr` `gr` on((`po`.`po_no` = `gr`.`po_no`))) join `pegawai` `p` on((`po`.`create_by` = `p`.`pegawai_id`))) join `mitra` `m` on((`po`.`mitra_id` = `m`.`mitra_id`))) left join `mitra` `mgr` on((`gr`.`mitra_id` = `mgr`.`mitra_id`))) */;
 
 /*View structure for view po_view */
 

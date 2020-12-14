@@ -31,17 +31,30 @@ class M_material extends CI_Model {
         $this->db->where('material_id', $id);
 		$this->db->update('material', $data);
 		
-		for ($i=1; $i <= $this->input->post('tambah_stok'); $i++) { 
-			$data2 = [
-				"material_id" 		=> $id,
-				"SN"				=> $this->input->post('sn-'.$i),
-				"keterangan"		=> $this->input->post('keterangan'),
-				"create_on"				=> date('Y-m-d'),
-    			"create_by"				=> $this->session->userdata('pegawai_id'),
-				"status"				=> 1
-			];
-		$this->db->insert('dmaterial', $data2);
-		}
+        $sat = $this->input->post('sat', true);
+        if ($sat == 1) {
+            for ($i=1; $i <= $this->input->post('tambah_stok'); $i++) { 
+                $data2 = [
+                    "material_id"           => $id,
+                    "SN"                    => $this->input->post('sn-'.$i),
+                    "keterangan"            => $this->input->post('keterangan'),
+                    "create_on"             => date('Y-m-d'),
+                    "create_by"             => $this->session->userdata('pegawai_id'),
+                    "status"                => 1
+                ];
+            $this->db->insert('dmaterial', $data2);
+            }
+        }else{
+            $data2 = [
+                "material_id"           => $id,
+                "SN"                    => $this->input->post('sn-1'),
+                "keterangan"            => $this->input->post('keterangan'),
+                "create_on"             => date('Y-m-d'),
+                "create_by"             => $this->session->userdata('pegawai_id'),
+                "status"                => 1
+            ];
+            $this->db->insert('dmaterial', $data2);
+        }
     }
 
     function proses_add_data()
@@ -58,20 +71,47 @@ class M_material extends CI_Model {
 		];
 		$this->db->insert('material', $data);
 
-		$query = $this->db->query("select max(material_id) as total from material");
+		$query = $this->db->query("select max(material_id) as total, storage_bin from material");
 		$row = $query->row();
 		$count = $row->total;
-		for ($i=1; $i <= $this->input->post('stok'); $i++) { 
-			$data2 = [
-				"material_id" 		=> $count,
-				"SN"				=> $this->input->post('sn-'.$i),
-				"keterangan"		=> $this->input->post('keterangan'),
-				"create_on"				=> date('Y-m-d'),
-    			"create_by"				=> $this->session->userdata('pegawai_id'),
-				"status"				=> 1
-			];
-		$this->db->insert('dmaterial', $data2);
-		}
+
+        $query1 = $this->db->query("select storage_bin from material where material_id = $count");
+        $rows = $query1->row();
+        $cek = $rows->storage_bin;
+
+        if ($cek == 1) {
+            for ($i=1; $i <= $this->input->post('stok'); $i++) { 
+                $data2 = [
+                    "material_id"           => $count,
+                    "SN"                    => $this->input->post('sn-'.$i),
+                    "keterangan"            => $this->input->post('keterangan'),
+                    "create_on"             => date('Y-m-d'),
+                    "create_by"             => $this->session->userdata('pegawai_id'),
+                    "status"                => 1
+                ];
+            }
+            $this->db->insert('dmaterial', $data2);
+        }else if($cek == 2){
+                $data2 = [
+                    "material_id"           => $count,
+                    "SN"                    => $this->input->post('sn-roll'),
+                    "keterangan"            => $this->input->post('keterangan'),
+                    "create_on"             => date('Y-m-d'),
+                    "create_by"             => $this->session->userdata('pegawai_id'),
+                    "status"                => 1
+                ];
+            $this->db->insert('dmaterial', $data2);
+        }else if($cek == 3){
+            $data2 = [
+                "material_id"           => $count,
+                "SN"                    => $this->input->post('sn-drum'),
+                "keterangan"            => $this->input->post('keterangan'),
+                "create_on"             => date('Y-m-d'),
+                "create_by"             => $this->session->userdata('pegawai_id'),
+                "status"                => 1
+            ];
+            $this->db->insert('dmaterial', $data2);
+        }
 	}
 	
 

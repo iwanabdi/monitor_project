@@ -101,14 +101,14 @@ function ketik()
 		text = "<div class='form-group row'>\
 					<label class='col-sm-3 col-form-label'>SN - 1000 Unit</label>\
 					<div class='col-sm-9'>\
-					<input type='text' class='form-control' id='sn' required=' name='sn-1'>\
+					<input type='text' class='form-control' id='sn' required name='sn-roll'>\
 					</div>\
 				</div>";
 	}else if(stat == 3){
 		text = "<div class='form-group row'>\
 					<label class='col-sm-3 col-form-label'>SN - 4000 Unit</label>\
 					<div class='col-sm-9'>\
-					<input type='text' class='form-control' id='sn' required=' name='sn-1'>\
+					<input type='text' class='form-control' id='sn' required name='sn-drum'>\
 					</div>\
 				</div>";
 	}

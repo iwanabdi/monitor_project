@@ -14,6 +14,7 @@
 	    	<div class="card-body">
 
 	    		<input type="hidden" id="id" name="id" value="<?= $row->material_id?>">
+	    		<input type="hidden" name="sat" value="<?= $row->storage_bin?>">
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Nama Material</label>
 		          <div class="col-sm-9">
@@ -83,9 +84,7 @@ function ketik()
 		}
 	<?php else: ?>
 		var x = 1;
-		for (let i = 1; i <= x; i++) {
-			text += head + label + "<?=$satuan?>" + "</label>" + input + "name='sn-" + i +"'" + tutup + "</div>";
-		}
+			text += head + label + "<?=$satuan?>" + "</label>" + input + "name='sn-"+ x +"'" + tutup + "</div>";
 	<?php endif ?>
 	document.getElementById("cetak").innerHTML = text;
 }

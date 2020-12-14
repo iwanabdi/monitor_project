@@ -52,9 +52,9 @@ class Master_pegawai extends CI_Controller {
 		}else{
 			$this->M_pegawai->proses_add_data();
 			$this->session->set_flashdata('pesan', 
-			'<span class="alert alert-success" role="alert">
+			'<div class="alert alert-success" role="alert">
 				Data Berhasil Ditambah!
-			</span>');
+			</div>');
 			redirect('master_pegawai','refresh');
 		}
 		
@@ -80,8 +80,8 @@ class Master_pegawai extends CI_Controller {
 		}else{
 		$this->M_pegawai->proses_edit_data();
 		$this->session->set_flashdata('pesan', 
-			'<div class="alert alert-info" role="alert">
-				Data Berhasil Diubah!
+			'<div class="alert alert-success" role="alert">
+				Data Berhasil Ditambah!
 			</div>');
 		redirect('master_pegawai','refresh');
 		}

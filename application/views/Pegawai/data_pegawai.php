@@ -26,7 +26,6 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <!-- <?php print_r($row->result()) ?> -->
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr class="text-center">

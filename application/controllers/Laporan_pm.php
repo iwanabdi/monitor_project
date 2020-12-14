@@ -55,5 +55,5 @@ class Laporan_pm extends CI_Controller {
 }
 
 /* End of file laporan_pm.php */
-/* Location: ./application/controllers/laporan/laporan_pm.php */
->>>>>>> Stashed changes
+// /* Location: ./application/controllers/laporan/laporan_pm.php */
+// >>>>>>> Stashed changes

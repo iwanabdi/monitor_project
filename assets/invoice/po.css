@@ -1,0 +1,334 @@
+@font-face {
+  font-family: SourceSansPro;
+  src: url(SourceSansPro-Regular.ttf);
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+a {
+  color: #0087C3;
+  text-decoration: none;
+}
+
+body {
+  position: relative;
+  width: 25cm;  
+  height: 29.7cm; 
+  margin: 0 auto; 
+  /*color: #555555;*/
+  background: #FFFFFF; 
+  font-family: Arial, sans-serif; 
+  font-size: 14px; 
+  font-family: SourceSansPro;
+}
+
+header {
+  padding: 10px 0;
+  margin-bottom: 20px;
+  /* border-bottom: 1px solid #AAAAAA; */
+}
+
+#logo {
+  float: left;
+  margin-top: 8px;
+}
+
+#logo img {
+	width: 150px;
+	border: 1px solid black;
+}
+
+
+#logo1 {
+  float: right;
+  margin-top: 8px;
+}
+
+#logo1 img {
+  width: 120px;
+}
+
+#company {
+  float: right;
+  text-align: right;
+}
+
+
+#details {
+  margin-bottom: 30px;
+}
+
+#client {
+  padding-left: 6px;
+  border-left: 6px solid #0087C3;
+  float: left;
+}
+
+
+h2.name {
+  font-size: 1.5em;
+  font-weight: normal;
+  margin: 0;
+}
+/* ============================================== */
+#alamat {
+	float: left;
+	text-align: left;
+	margin-top: 0px;
+	margin-left: 20px;
+  color: #000000;
+	font-family: SourceSansPro;
+	font-size: 0.7em;
+	
+	
+}
+#txtpurchase {
+	float: right;
+	text-align: left;
+	margin-top: -130px;
+	margin-left: 180px;
+  color: #000000;
+	font-family: SourceSansPro;
+	font-size: 1.5em;
+	
+	
+}
+#barcode img{
+	width: 200px;
+	margin-top: 80px;
+	margin-left: 100px;
+
+}
+.kotak{
+	border:1px solid black;
+	width: 400px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	height: 230px;
+}
+.kotak .txtvendor{
+	margin-left: 10px;
+	line-height: 0.3em;
+}
+.kotak .txtinvoice{
+	margin-left: 10px;
+}
+
+.table1 {
+	font-family: sans-serif;
+	color: #232323;
+	border-collapse: collapse;
+	width:550px;
+}
+
+.kotak2{
+	
+	margin-top: -230px;
+	margin-left: 40px;
+
+
+}
+.table1, th, td {
+	border: 1px solid black;
+	padding: 8px 20px;
+	margin-top: -450px;
+	margin-left: 500px;
+}
+
+#kotak3{
+	border:1px solid black;
+	width: 400px;
+	margin-bottom: 10px;
+	margin-top: 40px;
+}
+#kotak3 .txtinvoice{
+	margin-left: 10px;
+}
+
+#kotak4{
+	border: 1px solid black;
+	margin-top: -220px;
+	margin-left: 540px;
+	width: 550px;
+	height: 210px;
+
+
+}
+#kotak4 .txtship{
+		margin-left: 10px;
+		line-height: 0.3em;
+
+}
+.kotak5{
+	border: 2px solid black;	
+	margin-top: 20px;
+	width: 1100px;
+	border-spacing: 0px;
+
+}
+.kotak5 #kiri{
+	/* border: 1px solid red; */
+	width: 840px;
+	height: 50px;
+	float: right;
+	border-left: solid;
+}
+.kotak5 #kanan{
+
+
+	width: 250px;
+	height: 33px;
+	text-align: center;
+	
+}
+.kotak5 #kiri h3{
+	/* border: 1px solid red; */
+	margin-left: 10px;
+}
+/* ============================================== */
+
+#invoice {
+  float: center;
+	text-align: center;
+	margin-top: 100px;
+  color: #000000;
+	font-family: SourceSansPro;
+}
+
+#invoice h1 {
+	/* text-: center; */
+  color: #000000;
+  font-size: 3.5em;
+  line-height: 0.3em;
+  font-weight: bold;
+  margin: 0  0 10px 0;
+}
+
+#invoice .date {
+  font-size: 1.1em;
+  color: #777777;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+  padding: 20px;
+  background: #EEEEEE;
+  text-align: center;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+.table th {
+  white-space: nowrap;        
+  font-weight: normal;
+}
+
+.table td {
+  text-align: right;
+}
+
+.table td h3{
+  color: #3989c6;
+  font-size: 1.2em;
+  font-weight: normal;
+  margin: 0 0 0.2em 0;
+}
+
+.table .no {
+  color: #FFFFFF;
+  font-size: 1.6em;
+  text-align:center;
+  background: #3989c6;
+}
+
+.table .desc {
+  text-align: left;
+}
+
+.table .tgl {
+  text-align:center;
+}
+
+.table .unit {
+  background: #DDDDDD;
+}
+
+.table .qty {
+}
+
+.table .total {
+  background: #57B223;
+  color: #FFFFFF;
+}
+
+.table td.unit,
+.table td.qty,
+.table td.total {
+  font-size: 1.2em;
+}
+
+.table tbody tr:last-child td {
+  border: none;
+}
+
+.table tfoot td {
+  padding: 10px 20px;
+  background: #FFFFFF;
+  border-bottom: none;
+  font-size: 1.2em;
+  white-space: nowrap; 
+  border-top: 1px solid #AAAAAA; 
+}
+
+.table tfoot tr:first-child td {
+  border-top: none; 
+}
+
+.table tfoot tr:last-child td {
+  color: #57B223;
+  font-size: 1.4em;
+  border-top: 1px solid #57B223; 
+
+}
+
+.table tfoot tr td:first-child {
+  border: none;
+}
+
+#thanks{
+  font-size: 2em;
+  margin-bottom: 50px;
+}
+
+#notices{
+  padding-left: 3px;
+  border-left: 6px solid #0087C3;  
+}
+
+#notices .notice {
+	color:red;
+	font-style: italic;
+  font-size: 2em;
+}
+
+footer {
+  color: #777777;
+  width: 100%;
+  height: 50px;
+  position: static;
+  bottom: 0;
+  border-top: 1px solid #AAAAAA;
+  padding: 8px 0;
+  text-align: left;
+}
+

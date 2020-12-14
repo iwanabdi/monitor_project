@@ -24,18 +24,22 @@ class M_Testcom extends CI_Model {
 		$this->db->from('testcom');
 		$this->db->where('project_id', $id);
 		$query = $this->db->get()->row();
-		// pengecekan apakah project_id sudah dibuat atau belum
+		// pengecekan apakah project_id sudah dibuat atau belum. jika belumm maka
     	if ($query == null) {
     		$data = [
 				"project_id" 		=> $this->input->post('id'),
 				"create_by"			=> $this->session->userdata('mitra_id'),
-				"file_bai"			=> $this->upload->data('file_name')
+				"file_bai"			=> $this->upload->data('file_name'),
+				"create_on"         => date('Y-m-d'),
+				"tgl_testcom"         => date('Y-m-d')
+				
 			];
 			$this->db->insert('testcom', $data);
 		}else{
 			// jika sudah dibuat maka akan melakukan update untuk file map
 			$data = [
-				"file_bai"			=> $this->upload->data('file_name')
+				"file_bai"			=> $this->upload->data('file_name'), 
+				
 			];	
 			$id = $this->input->post('id');
 			$this->db->where('project_id', $id);
@@ -56,7 +60,9 @@ class M_Testcom extends CI_Model {
     		$data = [
 				"project_id" 		=> $this->input->post('id'),
 				"create_by"			=> $this->session->userdata('mitra_id'),
-				"file_testcom"		=> $this->upload->data('file_name')
+				"file_testcom"		=> $this->upload->data('file_name'),
+				"create_on"         => date('Y-m-d'),
+				"tgl_testcom"         => date('Y-m-d'),
     		];
 			$this->db->insert('testcom', $data);
 		}else{

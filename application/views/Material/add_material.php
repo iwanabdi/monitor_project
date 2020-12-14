@@ -27,7 +27,12 @@
 				<div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Storage</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" name="storage_bin" id="storage_bin" required>
+		          	<select name="storage_bin" id="storage_bin" class="form-control custom-select project" onchange="satuan(this.value)" required="">
+						<option selected="" disabled="" value="">-- Pilih Satuan Material --</option>
+							<option value="1">Unit</option>
+							<option value="2">Roll (1000 Unit)</option>
+							<option value="3">Drum (4000 Unit)</option>
+					</select>
 		          </div>
 		        </div>
 		        <div class="form-group row">
@@ -76,10 +81,35 @@ function validAngka(a)
 	ketik();
 }
 
+function satuan(sat)
+{
+	var text = "";
+	switch(sat)
+	{
+		case "2" :{
+			text = "<div class='form-group row'>\
+						<label class='col-sm-3 col-form-label'>SN - 1000 Unit</label>\
+							<div class='col-sm-9'>\
+							<input type='text' class='form-control' id='sn' required=' name='sn-1'>\
+							</div>\
+						</div>";
+		}break;
+		case "3" :{
+			text = "<div class='form-group row'>\
+						<label class='col-sm-3 col-form-label'>SN - 4000 Unit</label>\
+							<div class='col-sm-9'>\
+							<input type='text' class='form-control' id='sn' required=' name='sn-1'>\
+							</div>\
+						</div>";
+		}break;
+		default : text = "";
+	}
+	document.getElementById("cetak").innerHTML = text;
+}
+
 function ketik()
 {
 	var x = document.getElementById("stok").value;
-
 	var text = "";
 	var head = "<div class='form-group row'>";
 	var label = "<label class='col-sm-3 col-form-label'>SN - ";

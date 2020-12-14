@@ -17,7 +17,7 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Nama Material</label>
 		          <div class="col-sm-9">
-		            <input type="text" class="form-control" name="nama_material" id="nama_material" value="<?= $row->nama_material;?>" disabled>
+		            <input type="text" class="form-control" name="nama_material" id="nama_material" value="<?= $row->nama_material;?> - <?= $satuan?>" disabled>
 		          </div>
 		        </div>
 		        <div class="form-group row">
@@ -35,7 +35,7 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Update By</label>
 		          <div class="col-sm-9">
-		            <input type="text" name="update_by" class="form-control" id="pegawai_id" value="<?= $this->session->userdata('nama_pegawai');?>" disabled></input>
+		            <input type="text" name="update_by" class="form-control" id="pegawai_id" value="<?= $this->session->userdata('nama_pegawai');?>" disabled>
 		          </div>
 				</div>
 				<hr>
@@ -68,8 +68,6 @@ function validAngka(a)
 
 function ketik()
 {
-	var x = document.getElementById("tambah_stok").value;
-
 	var text = "";
 	var head = "<div class='form-group row'>";
 	var label = "<label class='col-sm-3 col-form-label'>SN - ";
@@ -78,9 +76,17 @@ function ketik()
 	var tutup = ">\
 				</div>";
 	// var x;
-	for (let i = 1; i <= x; i++) {
-		text += head + label + i + "</label>" + input + "name='sn-" + i+"'" + tutup + "</div>";
-	}
+	<?php if ($row->storage_bin == 1): ?>
+		var x = document.getElementById("tambah_stok").value;
+		for (let i = 1; i <= x; i++) {
+			text += head + label + i + "</label>" + input + "name='sn-" + i +"'" + tutup + "</div>";
+		}
+	<?php else: ?>
+		var x = 1;
+		for (let i = 1; i <= x; i++) {
+			text += head + label + "<?=$satuan?>" + "</label>" + input + "name='sn-" + i +"'" + tutup + "</div>";
+		}
+	<?php endif ?>
 	document.getElementById("cetak").innerHTML = text;
 }
 

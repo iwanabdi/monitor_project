@@ -20,12 +20,12 @@
         <h5 class="m-0 font-weight-bold text-primary">Data material</h5>
       </div>
       <?php if ($this->session->userdata('jabatan')== -1 || $this->session->userdata('jabatan')== 3) {?>
-				<div class="col-2 p-0">
+        <div class="col-2 p-0">
           <a href="<?= site_url('master_material/add')?>" class="btn btn-success btn-block" id="btn">
           <i class="fas fa-plus"></i> Add Material
           </a>
         </div>
-			<?php }?>
+      <?php }?>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -38,7 +38,7 @@
               <th>Nama material</th>
               <th>Brand</th>
               <th>Stok</th>
-              <th>Storage</th>
+              <th>Satuan</th>
               <?php if ($this->session->userdata('jabatan')== -1 || $this->session->userdata('jabatan')== 3) {?>
                 <th>Opsi</th>
               <?php }?>
@@ -51,7 +51,7 @@
               <th>Nama material</th>
               <th>Brand</th>
               <th>Stok</th>
-              <th>Storage</th>
+              <th>Satuan</th>
               <?php if ($this->session->userdata('jabatan')== -1 || $this->session->userdata('jabatan')== 3) {?>
                 <th>Opsi</th>
               <?php }?>
@@ -66,17 +66,25 @@
               <td><?=$data->nama_material?></td>
               <td><?=$data->brand?></td>
               <td><?=$data->stok?></td>
-              <td><?=$data->storage_bin?></td>
+              <td>
+                <?php if ($data->storage_bin == 1) {
+                  echo "Unit";
+                } else if($data->storage_bin == 2) {
+                  echo "Roll (1000 Unit)";
+                } else if($data->storage_bin == 3) {
+                  echo "Drum (4000 Unit)";
+                }?>
+              </td>
               <?php if ($this->session->userdata('jabatan')== -1 || $this->session->userdata('jabatan')== 3) {?>
-								<td class="text-center" colspan="3">
-									<a href="<?= site_url('master_material/edit/'.$data->material_id)?>" class="btn btn-warning btn-circle">
+                <td class="text-center" colspan="3">
+                  <a href="<?= site_url('master_material/edit/'.$data->material_id)?>" class="btn btn-warning btn-circle">
                     <i class="fas fa-edit"></i>
                   </a>
-									<!-- <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->material_id;?>" data-backdrop="static" data-keyboard="false">
-											<i class="fas fa-trash-alt"></i>
-										</button> -->
-								</td>
-							<?php }?>
+                  <!-- <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#hapus_modal<?=$data->material_id;?>" data-backdrop="static" data-keyboard="false">
+                      <i class="fas fa-trash-alt"></i>
+                    </button> -->
+                </td>
+              <?php }?>
             </tr>
           <?php } ?>
           </tbody>

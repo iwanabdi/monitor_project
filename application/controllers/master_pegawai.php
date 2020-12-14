@@ -39,9 +39,10 @@ class Master_pegawai extends CI_Controller {
 		$this->db->select('*');
         $this->db->from('pegawai');
 		$this->db->where('email', $t_email);
-		$cek_email = $this->db->get()->result();
-		// print_r($cek_email);
-		if ($cek_email > 0) {
+		$cek_email = $this->db->get()->result_array();
+		$count = count($cek_email);
+		// echo $count;
+		if ($count > 0) {
 			$this->session->set_flashdata('msg_email', 
 			'<div class="alert alert-warning" role="alert">
 				Gagal Tambah Data - Email Sudah Digunakan!

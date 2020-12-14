@@ -39,7 +39,7 @@ class Laporan_pm extends CI_Controller {
 		$data['status'] = $this->session->set_userdata($array);
 		$data['row'] = $this->M_project->get_pm();
 		$data['project'] = $this->M_project->project_pm($pm)->result();
-		$data['rows'] = $this->M_project->get_status_project($pm)->result();
+		$data['rows'] = $this->M_project->get_status_project($pm);
 		$this->template->load('template_pegawai', 'laporan/laporan_pm', $data);
 	}
 

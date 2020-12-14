@@ -52,15 +52,15 @@ class M_LaporanMitra extends CI_Model {
 	}
 	public function performa()
 	{
-		SELECT po.project_name ,t.tgl_testcom, po.delivery_date, NVL(DATEDIFF(t.tgl_testcom, po.delivery_date),0) AS selisih,
-CASE
-    WHEN NVL(DATEDIFF(t.tgl_testcom, po.delivery_date),0) < 0  THEN 'tepat waktu'
-    WHEN NVL(DATEDIFF(t.tgl_testcom, po.delivery_date),0) >= 0 THEN 'terlambat'
-    ELSE 'The quantity is under 30'
-END AS performa
-FROM testcom t 
-JOIN hpo po ON t.`project_id`=po.`project_name`
-WHERE po.mitra_id=1;
+// 		SELECT po.project_name ,t.tgl_testcom, po.delivery_date, NVL(DATEDIFF(t.tgl_testcom, po.delivery_date),0) AS selisih,
+// CASE
+//     WHEN NVL(DATEDIFF(t.tgl_testcom, po.delivery_date),0) < 0  THEN 'tepat waktu'
+//     WHEN NVL(DATEDIFF(t.tgl_testcom, po.delivery_date),0) >= 0 THEN 'terlambat'
+//     ELSE 'The quantity is under 30'
+// END AS performa
+// FROM testcom t 
+// JOIN hpo po ON t.`project_id`=po.`project_name`
+// WHERE po.mitra_id=1;
 
 	}
 

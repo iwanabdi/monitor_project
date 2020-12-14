@@ -26,6 +26,13 @@ class Master_material extends CI_Controller {
 	public function edit($id)
 	{
 		$data['row'] = $this->M_material->get_material($id)->row();
+		if ($data['row']->storage_bin == 1) {
+			$data['satuan'] = "Unit";
+		}elseif ($data['row']->storage_bin == 2) {
+			$data['satuan'] = "Roll (1000 Unit)";
+		}elseif ($data['row']->storage_bin == 3) {
+			$data['satuan'] = "Drum (4000 Unit)";
+		}
 		$this->template->load('template_pegawai', 'material/edit_material', $data);
 	}
 

@@ -70,7 +70,7 @@ class Master_pegawai extends CI_Controller {
 		$cek_email = $this->db->get()->result_array();
 		$count = count($cek_email);
 		// print_r($cek_email);
-		if ($count > 0) {
+		if ($count > 1) {
 			$this->session->set_flashdata('msg_email', 
 			'<div class="alert alert-warning" role="alert">
 				Gagal Edit Data - Email Sudah Digunakan!
@@ -78,12 +78,12 @@ class Master_pegawai extends CI_Controller {
 			redirect('master_pegawai/edit/'.$id);
 			
 		}else{
-		$this->M_pegawai->proses_edit_data();
-		$this->session->set_flashdata('pesan', 
-			'<div class="alert alert-success" role="alert">
-				Data Berhasil Ditambah!
-			</div>');
-		redirect('master_pegawai','refresh');
+			$this->M_pegawai->proses_edit_data();
+			$this->session->set_flashdata('pesan', 
+				'<div class="alert alert-success" role="alert">
+					Data Berhasil Ditambah!
+				</div>');
+			redirect('master_pegawai','refresh');
 		}
 
 	}

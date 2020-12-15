@@ -44,7 +44,9 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Stok</label>
 		          <div class="col-sm-9">
-		            <input type="tel" oninput="validAngka(this)" class="form-control" name="stok" id="stok" required>
+		            <input type="number" oninput="validAngka(this)" class="form-control" name="stok" id="stok" required>
+		            <input type="hidden" class="form-control" name="stok_roll" id="stok_roll" value="">
+		            <input type="hidden" class="form-control" name="stok_drum" id="stok_drum" value="">
 		          </div>
 		        </div>
 		        <div class="form-group row">
@@ -85,32 +87,32 @@ function validAngka(a)
 function ketik()
 {
 	var stat = $('.project option:selected').val();
+	var x = document.getElementById("stok").value;
+	var text = "";
+	var head = "<div class='form-group row'>";
+	var label = "<label class='col-sm-3 col-form-label'>SN - ";
+	var input = "<div class='col-sm-9'>\
+		            <input type='text' class='form-control' id='sn' required='' ";
+	var tutup = ">\
+				</div>";
 	if (stat == 1) {
-		var x = document.getElementById("stok").value;
-		var text = "";
-		var head = "<div class='form-group row'>";
-		var label = "<label class='col-sm-3 col-form-label'>SN - ";
-		var input = "<div class='col-sm-9'>\
-			            <input type='text' class='form-control' id='sn' required='' ";
-		var tutup = ">\
-					</div>";
 		for (let i = 1; i <= x; i++) {
 			text += head + label + i + "</label>" + input + "name='sn-" + i+"'" + tutup + "</div>";
 		}
 	}else if(stat == 2){
-		text = "<div class='form-group row'>\
-					<label class='col-sm-3 col-form-label'>SN - 1000 Unit</label>\
-					<div class='col-sm-9'>\
-					<input type='text' class='form-control' id='sn' required name='sn-roll'>\
-					</div>\
-				</div>";
+		x = x / 1000;
+		$('#stok').attr('min', '1000');
+		$('#stok_roll').val(x);
+		for (let i = 1; i <= x; i++) {
+			text += head + label + i + "</label>" + input + "name='sn-" + i+"'" + tutup + "</div>";
+		}
 	}else if(stat == 3){
-		text = "<div class='form-group row'>\
-					<label class='col-sm-3 col-form-label'>SN - 4000 Unit</label>\
-					<div class='col-sm-9'>\
-					<input type='text' class='form-control' id='sn' required name='sn-drum'>\
-					</div>\
-				</div>";
+		x = x / 4000;
+		$('#stok').attr('min', '4000');
+		$('#stok_drum').val(x);
+		for (let i = 1; i <= x; i++) {
+			text += head + label + i + "</label>" + input + "name='sn-" + i+"'" + tutup + "</div>";
+		}
 	}
 	document.getElementById("cetak").innerHTML = text;
 }

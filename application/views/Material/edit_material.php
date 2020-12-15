@@ -30,7 +30,9 @@
 		        <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Tambah Stok</label>
 		          <div class="col-sm-9">
-		            <input type="tel" maxlength="14" oninput="validAngka(this)" class="form-control" name="tambah_stok" id="tambah_stok">
+		            <input type="number" maxlength="14" oninput="validAngka(this)" class="form-control" name="tambah_stok" id="tambah_stok">
+		            <input type="hidden" class="form-control" name="tambah_roll" id="tambah_roll" value="">
+		            <input type="hidden" class="form-control" name="tambah_drum" id="tambah_drum" value="">
 		          </div>
 		        </div>
 		        <div class="form-group row">
@@ -77,14 +79,27 @@ function ketik()
 	var tutup = ">\
 				</div>";
 	// var x;
+	var x = document.getElementById("tambah_stok").value;
 	<?php if ($row->storage_bin == 1): ?>
-		var x = document.getElementById("tambah_stok").value;
 		for (let i = 1; i <= x; i++) {
 			text += head + label + i + "</label>" + input + "name='sn-" + i +"'" + tutup + "</div>";
 		}
-	<?php else: ?>
-		var x = 1;
-			text += head + label + "<?=$satuan?>" + "</label>" + input + "name='sn-"+ x +"'" + tutup + "</div>";
+	<?php endif ?>
+	<?php if($row->storage_bin == 2): ?>
+		x = x / 1000;
+		$('#tambah_stok').attr('min', '1000');
+		$('#tambah_roll').val(x);
+		for (let i = 1; i <= x; i++) {
+			text += head + label + i + "</label>" + input + "name='sn-" + i +"'" + tutup + "</div>";
+		}
+	<?php endif ?>
+	<?php if($row->storage_bin == 3): ?>
+		x = x / 4000;
+		$('#tambah_stok').attr('min', '4000');
+		$('#tambah_drum').val(x);
+		for (let i = 1; i <= x; i++) {
+			text += head + label + i + "</label>" + input + "name='sn-" + i +"'" + tutup + "</div>";
+		}
 	<?php endif ?>
 	document.getElementById("cetak").innerHTML = text;
 }

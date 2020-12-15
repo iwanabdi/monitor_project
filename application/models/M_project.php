@@ -182,4 +182,12 @@ class M_project extends CI_Model {
 	//end -function menu status project 
 
 
+	public function chart_project()
+	{
+
+		$query = $this->db->query("SELECT status_project, COUNT(*) AS qty FROM project
+									GROUP BY status_project HAVING COUNT(*)");
+		return $query;
+	}
+
 }

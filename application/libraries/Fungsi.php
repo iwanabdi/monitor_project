@@ -38,6 +38,19 @@
 			return $this->CI->M_customer->get_customer()->num_rows();
 		}
 
+		function count_project()
+		{
+			$this->CI->load->model('M_project');
+			return $this->CI->M_project->get_project()->num_rows();
+		}
+
+		function chart_project()
+		{
+			$this->CI->load->model('M_project');
+			$project =  $this->CI->M_project->chart_project()->result();
+			return $project;
+		}
+
 	}
 
 ?>

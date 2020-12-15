@@ -92,24 +92,28 @@ class M_material extends CI_Model {
             }
             $this->db->insert('dmaterial', $data2);
         }else if($cek == 2){
+            for ($i=1; $i <= $this->input->post('stok_roll'); $i++) { 
                 $data2 = [
                     "material_id"           => $count,
-                    "SN"                    => $this->input->post('sn-roll'),
+                    "SN"                    => $this->input->post('sn-'.$i),
                     "keterangan"            => $this->input->post('keterangan'),
                     "create_on"             => date('Y-m-d'),
                     "create_by"             => $this->session->userdata('pegawai_id'),
                     "status"                => 1
                 ];
+            }
             $this->db->insert('dmaterial', $data2);
         }else if($cek == 3){
-            $data2 = [
-                "material_id"           => $count,
-                "SN"                    => $this->input->post('sn-drum'),
-                "keterangan"            => $this->input->post('keterangan'),
-                "create_on"             => date('Y-m-d'),
-                "create_by"             => $this->session->userdata('pegawai_id'),
-                "status"                => 1
-            ];
+            for ($i=1; $i <= $this->input->post('stok_drum'); $i++) { 
+                $data2 = [
+                    "material_id"           => $count,
+                    "SN"                    => $this->input->post('sn-'.$i),
+                    "keterangan"            => $this->input->post('keterangan'),
+                    "create_on"             => date('Y-m-d'),
+                    "create_by"             => $this->session->userdata('pegawai_id'),
+                    "status"                => 1
+                ];
+            }
             $this->db->insert('dmaterial', $data2);
         }
 	}

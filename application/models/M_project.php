@@ -139,6 +139,13 @@ class M_project extends CI_Model {
             GROUP BY status_project HAVING COUNT(*)>0");
 		return $query; 
 	}
+	public function chart_project()
+	{
+
+		$query = $this->db->query("SELECT status_project, COUNT(*) AS qty FROM project
+									GROUP BY status_project HAVING COUNT(*)");
+		return $query;
+	}
 
 	//start -function menu status project 
 	
@@ -179,15 +186,20 @@ class M_project extends CI_Model {
 		) a");
 
 	}
+	public function avgaging($tgl_awal = null ,$tgl_akhir = null)
+	{
+		// query mmengambl rata" dari table project_view
+		return $testcom = $this->db->query("SELECT 
+		AVG(a.aging) AS avgaging
+		FROM (
+			SELECT p.`project_id` AS PA, p.`aging` AS aging
+			FROM project_view p
+			WHERE p.create_on >= '$tgl_awal' AND p.create_on <= '$tgl_akhir'
+		) a");
+		
+	}
 	//end -function menu status project 
 
 
-	public function chart_project()
-	{
-
-		$query = $this->db->query("SELECT status_project, COUNT(*) AS qty FROM project
-									GROUP BY status_project HAVING COUNT(*)");
-		return $query;
-	}
 
 }

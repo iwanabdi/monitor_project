@@ -25,10 +25,10 @@ class Laporan_staspro extends CI_Controller {
 		$data['row'] = $this->M_mitra->get_mitra();
 		
 		$array = array(
-		 	'status' => '0'
+		 	'cek' => '0'
 		 );
 	
-		$data['status'] = $this->session->set_userdata($array);
+		$data['cek'] = $this->session->set_userdata($array);
 		$this->template->load('template_pegawai', 'laporan/status_project', $data);
 	}
 
@@ -39,24 +39,19 @@ class Laporan_staspro extends CI_Controller {
 		//  var_dump($tgl_awal,$tgl_akhir);
 		// exit;
 		$array = array(
-			'status' => '1'
+			'cek' => '1'
 		);
 		$data['tgl_awal'] = $tgl_awal;
 		$data['tgl_akhir'] = $tgl_akhir;
-		$data['status'] = $this->session->set_userdata($array);
+		$data['cek'] = $this->session->set_userdata($array);
 		$data['pa'] = $this->M_project->jumlahpa($tgl_awal,$tgl_akhir)->result();
 		$data['onproses'] = $this->M_project->jumlahonproses($tgl_awal,$tgl_akhir)->result();
 		$data['testcom'] = $this->M_project->jumlahtestcom($tgl_awal,$tgl_akhir)->result();
+		$data['avgaging'] = $this->M_project->avgaging($tgl_awal,$tgl_akhir)->result();
 		$this->template->load('template_pegawai', 'Laporan/status_project', $data);
 	}
 
-	public function detail_mitra()
-	{
-		$mitra = $this->input->post('id');
-		$data['project'] = $this->M_project->project_mitra($mitra)->row_array();
-		$data['rows'] = $this->M_project->get_status_project($mitra);
-		echo json_encode($mitra);
-	}
+	
 
 }
 

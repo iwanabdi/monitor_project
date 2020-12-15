@@ -24,11 +24,11 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text bg-info text-white" id="basic-addon1"><i class="fas fa-calendar-alt"></i></span>
 				</div>
-				<?php if ($this->session->userdata('status') == 0) {?>
+				<?php if ($this->session->userdata('cek') == 0) {?>
 					<input type="text" class="form-control" id="tgl_awal" name="tgl_awal" placeholder="Tanggal Awal" 
 					aria-label="Tanggal Awal" aria-describedby="basic-addon1" readonly=""/>
 				<?php } ?>
-				<?php if ($this->session->userdata('status') == 1) {?>
+				<?php if ($this->session->userdata('cek') == 1) {?>
 					<input type="text" class="form-control" id="tgl_awal" name="tgl_awal" placeholder="Tanggal Awal" 
 					aria-label="Tanggal Awal" aria-describedby="basic-addon1" readonly="" value="<?= $tgl_awal;?>"/>
 				<?php } ?>
@@ -37,10 +37,10 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text bg-info text-white" id="basic-addon1"><i class="fas fa-calendar-alt"></i></span>
 				</div>
-				<?php if ($this->session->userdata('status') == 0) {?>
+				<?php if ($this->session->userdata('cek') == 0) {?>
 					<input type="text" class="form-control" id="tgl_akhir" name="tgl_akhir" placeholder="Tanggal Akhir" aria-label="Tanggal Akhir" aria-describedby="basic-addon1" readonly=""/>
 				<?php } ?>
-				<?php if ($this->session->userdata('status') == 1) {?>
+				<?php if ($this->session->userdata('cek') == 1) {?>
 					<input type="text" class="form-control" id="tgl_akhir" name="tgl_akhir" placeholder="Tanggal Akhir" aria-label="Tanggal Akhir" aria-describedby="basic-addon1" readonly="" value="<?= $tgl_akhir;?>"/>
 				<?php } ?>
 			</div>
@@ -57,7 +57,7 @@
 		</form>
       
 	</div>
-	<?php if ($this->session->userdata('status') != 0): ?>
+	<?php if ($this->session->userdata('cek') != 0): ?>
 		<div class="row">
 			<div class="col">
 				<div class="card-img h-100 py-1">
@@ -101,6 +101,17 @@
 							<?php foreach ($testcom as $key => $data) {?>
 								<input type="text" class="form-control" id="nama_mitra" name="nama_mitra" required="" 
 									value="<?= $data->jumlahtestcom?> project" readonly="">
+								
+							<?php } ?>
+					</div>
+				</div>
+				<!-- row ke 4 -->
+				<div class="form-group row" style="margin-top: 10px;">
+					<label class="col-sm-3 col-form-label">Aging</label>
+					<div class="col-sm-9">
+							<?php foreach ($avgaging as $key => $data) {?>
+								<input type="text" class="form-control" id="nama_mitra" name="nama_mitra" required="" 
+									value="<?= $data->avgaging?>" readonly="">
 								
 							<?php } ?>
 					</div>

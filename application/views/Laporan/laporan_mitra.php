@@ -71,7 +71,7 @@
 
 			          <div class="form-group row">
 			            <label class="col-sm-3 col-form-label">Jumlah Project</label>
-			            <div class="col-sm-9">
+			            <div classs="col-sm-9">
 			            	<?php foreach ($jproject->result() as $key => $data): ?>
 			            		<input type="text" class="form-control" id="jumlah_project" name="jumlah_project" required
 			              			value="<?= $data->jumlah;?>" readonly="">
@@ -128,12 +128,13 @@
 			            </div>
 			          </div>
 
-					  <div class="row no-gutters align-items-center">
+					  <!-- <div class="row no-gutters align-items-center">
 			            <div class="col mr-2">
 							  <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Performa Mitra</div>
 							  <div class="progress">
 									<?php foreach ($performa as $key => $data) {?>
 										<?php if ($data->performa == "tepat waktu"): ?>
+											
 											<input type="text" class="form-control" id="nama_mitra" name="nama_mitra" required="" 
 											value="<?= $data->jumlah?> project" readonly="">
 										<?php endif ?>
@@ -147,7 +148,7 @@
 			            </div>
 			          
 			          </div>
-					
+					 -->
 								
 
 			          <div class="form-group row" style="margin-top: 10px;">

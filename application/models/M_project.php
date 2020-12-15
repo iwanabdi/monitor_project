@@ -59,7 +59,7 @@ class M_project extends CI_Model {
 
 	function pa_id()
 	{
-		$query = $this->db->query("SELECT lpad(COUNT(project_id)+1,4,0) as total FROM `project`WHERE MONTH(create_on) = MONTH(CURRENT_DATE()) AND YEAR(create_on) = YEAR(CURRENT_DATE())");
+		$query = $this->db->query("SELECT lpad(COUNT(project_id)+1,4,0) as total FROM projectWHERE MONTH(create_on) = MONTH(CURRENT_DATE()) AND YEAR(create_on) = YEAR(CURRENT_DATE())");
 		$row = $query->row();
 		$belakang = $row->total;
 		$awal=date('ym');
@@ -92,7 +92,7 @@ class M_project extends CI_Model {
 
 	function genreate_io($pid)
     {
-		$query = $this->db->query("SELECT lpad(COUNT(IO)+1,5,0) as total FROM `project` WHERE MONTH(create_on) = MONTH(CURRENT_DATE()) AND YEAR(create_on) = YEAR(CURRENT_DATE()) AND IO is not null");
+		$query = $this->db->query("SELECT lpad(COUNT(IO)+1,5,0) as total FROM project WHERE MONTH(create_on) = MONTH(CURRENT_DATE()) AND YEAR(create_on) = YEAR(CURRENT_DATE()) AND IO is not null");
 		$row = $query->row();
 		$belakang = $row->total;
 		$awal=date('mY');
@@ -137,7 +137,49 @@ class M_project extends CI_Model {
 		$query = $this->db->query("SELECT pegawai_id, status_project, COUNT(*) AS qty FROM project 
             WHERE pegawai_id = '$pm'
             GROUP BY status_project HAVING COUNT(*)>0");
-		return $query;
+		return $query; 
 	}
+
+	//start -function menu status project 
+	
+
+	public function jumlahpa($tgl_awal = null ,$tgl_akhir = null)
+	{
+		// query mmmengambil jumlah pa 
+		return $pa = $this->db->query("SELECT 
+		COUNT(a.pa) AS jumlahpa
+		FROM (
+			select p.project_id as pa, p.status_project , p.create_on
+			from project p
+			where p.create_on >= '$tgl_awal' AND p.create_on <= '$tgl_akhir'
+		) a");
+	}
+	public function jumlahonproses($tgl_awal = null ,$tgl_akhir = null)
+	{
+		// query mmmengambil jumlah onproses
+		return $onproses = $this->db->query("SELECT 
+		COUNT(a.onproses) AS jumlahonproses
+		FROM (
+			SELECT p.project_id AS onproses, p.status_project , p.create_on
+			FROM project p
+			WHERE p.status_project<4  AND p.create_on >= '$tgl_awal' AND p.create_on <= '$tgl_akhir'
+		) a
+		");
+	}
+	public function jumlahtestcom($tgl_awal = null ,$tgl_akhir = null)
+	{
+		// query mmmengambil jumlah testcom
+		return $testcom = $this->db->query("SELECT 
+		COUNT(a.testcom) AS jumlahtestcom
+		FROM (
+			SELECT p.project_id AS testcom, p.status_project , p.create_on
+			FROM project p
+			
+			WHERE p.status_project>=4 and p.create_on >= '$tgl_awal' AND p.create_on <= '$tgl_akhir'
+		) a");
+
+	}
+	//end -function menu status project 
+
 
 }

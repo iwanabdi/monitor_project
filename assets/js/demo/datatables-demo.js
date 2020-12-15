@@ -1,14 +1,20 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
-  $('#dataTable').DataTable();
+  $('#dataTable').DataTable({
+  	"scrollX" : true
+  });
 });
 
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
-  $('#dataTable1').DataTable();
+  $('#dataTable1').DataTable({
+  	"scrollX" : true
+  });
 });
 
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
-  $('#dataTable2').DataTable();
+  $('#dataTable2').DataTable({
+  	"scrollX" : true
+  });
 });

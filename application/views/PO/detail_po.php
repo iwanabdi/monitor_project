@@ -16,9 +16,8 @@
 			</div>
 			<div id="txtpurchase">
 				<h1>PURCHASE ORDER</h1>
-			</div>
-			<div id="barcode">
-        <img src="<?=base_url();?>assets/invoice/barcode.png" >
+				<br>
+        		<img src="<?=base_url();?>assets/invoice/barcode.png" >
 			</div>
 
 		</header>

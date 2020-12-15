@@ -216,8 +216,8 @@
           <span>Laporan Mitra</span></a>
       </li>
 
-      <li <?=$this->uri->segment(1) == 'status_project'?'class="nav-item active"' : "" ?> class="nav-item">
-        <a class="nav-link" href="<?= site_url('status_project')?>">
+      <li <?=$this->uri->segment(1) == 'laporan_staspro'?'class="nav-item active"' : "" ?> class="nav-item">
+        <a class="nav-link" href="<?= site_url('laporan_staspro')?>">
           <i class="fas fa-fw fa-table"></i>
           <span>Status Project</span></a>
       </li>

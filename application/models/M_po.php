@@ -225,7 +225,7 @@ class M_po extends CI_Model {
 
 	public function detail_vendor($po_no)
 	{
-		$query = $this->db->query("SELECT hpo.po_no, mitra.* FROM hpo
+		$query = $this->db->query("SELECT hpo.po_no,hpo.project_name, mitra.* FROM hpo
 									JOIN mitra ON hpo.mitra_id = mitra.mitra_id
 									WHERE hpo.po_no = '$po_no'");
 		return $query;

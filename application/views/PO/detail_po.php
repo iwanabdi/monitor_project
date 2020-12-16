@@ -88,19 +88,19 @@
 				<table width="980px" style="border-collapse: collapse;border-spacing: 0;">
 					<tr>
 						<th style="text-align: left" width="30%">Project Name</th>
-						<th style="text-align: left">Sunardi - Komplek PLN Gitet Krian Driyorejo Gresik/Komplek PLN Gitet Krian Driyorejo Gresik
+						<th style="text-align: left"><?= $vendor->project_name;?>
 						</th>
 					</tr>
 				</table>
 			</div>
-			<div class="kotak5">
+			<!-- <div class="kotak5">
 				<table width="980px" style="border-collapse: collapse;border-spacing: 0;">
 					<tr>
 						<th style="text-align: left" width="30%">Additional Instructions : </th>
 						<th style="text-align: left">No PA : SPA/ACT/2008/0005458</th>
 					</tr>
 				</table>
-			</div>
+			</div> -->
 			<div class="kotak5">
 					<table width="980px" style="border-collapse: collapse;border-spacing: 0;">
 						<tr>
@@ -113,7 +113,7 @@
 							<th>Unit Price (IDR)</th>
 							<th>Total (IDR)</th>
 						</tr>
-						<?= $grand = 0;?>
+						<?php $grand = 0;?>
 						<?php foreach ($data_po->result() as $key => $data){
 							$no = 1;?>
 							<tr>
@@ -126,7 +126,7 @@
 								<td>Rp. <?= $data->price;?></td>
 								<td>Rp. <?= $data->total;?></td>
 							</tr>
-							<?= $grand += $data->total;?>
+							<?php $grand += $data->total;?>
 						<?php } ?>
 						<tr>
 							<td colspan="6" style="border: 0px;"></td>

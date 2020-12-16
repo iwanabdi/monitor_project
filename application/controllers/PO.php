@@ -112,10 +112,11 @@ class PO extends CI_Controller {
 			'vendor'	=> $this->M_po->detail_vendor($po_no)->row(),
 			'data_po' 	=> $this->M_po->data_po($po_no)
 		];
-		
-		$html = $this->load->view('PO/detail_po', $data, true);
-		$mpdf = new \Mpdf\Mpdf();
 
+		// $this->load->view('PO/pdf_po', $data, FALSE);
+		
+		$html = $this->load->view('PO/pdf_po', $data, true);
+		$mpdf = new \Mpdf\Mpdf();
 		// Write some HTML code:
 		$mpdf->WriteHTML($html);
 		$nama_file_pdf = url_title($po_no,'dash','true').'-'.'PO'.'.pdf';

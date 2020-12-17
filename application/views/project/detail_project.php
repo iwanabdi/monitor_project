@@ -84,7 +84,7 @@
     </div>
   </div>
   &nbsp;
-  <
+  
   <div class="row">
     <div class="col-12">
     <!-- Collapsable Card General -->

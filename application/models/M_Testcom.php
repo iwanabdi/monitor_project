@@ -16,10 +16,10 @@ class M_Testcom extends CI_Model {
 		$query= $this->db->get();
 		return $query;
 	}
-
-    public function add_bai()
-    {
+	public function add_file($bai,$testcom)
+	{
 		$id = $this->input->post('id');
+		$tanggal = $this->input->post('tanggal');
 		$this->db->select('project_id');
 		$this->db->from('testcom');
 		$this->db->where('project_id', $id);
@@ -29,76 +29,112 @@ class M_Testcom extends CI_Model {
     		$data = [
 				"project_id" 		=> $this->input->post('id'),
 				"create_by"			=> $this->session->userdata('mitra_id'),
-				"file_bai"			=> $this->upload->data('file_name'),
+				"file_bai"			=> $bai,
+				"file_testcom"			=> $testcom,
 				"create_on"         => date('Y-m-d'),
-				"tgl_testcom"         => date('Y-m-d')
+				"tgl_testcom"         => $tanggal
 				
 			];
 			$this->db->insert('testcom', $data);
-		}else{
-			// jika sudah dibuat maka akan melakukan update untuk file map
-			$data = [
-				"file_bai"			=> $this->upload->data('file_name'), 
-				
-			];	
-			$id = $this->input->post('id');
-			$this->db->where('project_id', $id);
-			$this->db->update('testcom', $data);
 		}
-		// var_dump($query);
-		// print_r($data);exit;
 	}
 
-    public function add_testcom()
-    {
-		$id = $this->input->post('id');
-		$this->db->select('project_id');
-		$this->db->from('testcom');
-		$this->db->where('project_id', $id);
-		$query = $this->db->get()->row();
-    	if ($query == null) {
-    		$data = [
-				"project_id" 		=> $this->input->post('id'),
-				"create_by"			=> $this->session->userdata('mitra_id'),
-				"file_testcom"		=> $this->upload->data('file_name'),
-				"create_on"         => date('Y-m-d'),
-				"tgl_testcom"         => date('Y-m-d'),
-    		];
-			$this->db->insert('testcom', $data);
-		}else{
-			// jika sudah dibuat maka akan melakukan update untuk file map
-			$data = [
-				"file_testcom"		=> $this->upload->data('file_name')
-			];
-			$id = $this->input->post('id');
-			$this->db->where('project_id', $id);
-			$this->db->update('testcom', $data);
-		}
-	}
+    // public function add_bai()
+    // {
+	// 	$id = $this->input->post('id');
+	// 	$this->db->select('project_id');
+	// 	$this->db->from('testcom');
+	// 	$this->db->where('project_id', $id);
+	// 	$query = $this->db->get()->row();
+	// 	// pengecekan apakah project_id sudah dibuat atau belum. jika belumm maka
+    // 	if ($query == null) {
+    // 		$data = [
+	// 			"project_id" 		=> $this->input->post('id'),
+	// 			"create_by"			=> $this->session->userdata('mitra_id'),
+	// 			"file_bai"			=> $this->upload->data('file_name'),
+	// 			"create_on"         => date('Y-m-d'),
+	// 			"tgl_testcom"         => date('Y-m-d')
+				
+	// 		];
+	// 		$this->db->insert('testcom', $data);
+	// 	}else{
+	// 		// jika sudah dibuat maka akan melakukan update untuk file map
+	// 		$data = [
+	// 			"file_bai"			=> $this->upload->data('file_name'), 
+				
+	// 		];	
+	// 		$id = $this->input->post('id');
+	// 		$this->db->where('project_id', $id);
+	// 		$this->db->update('testcom', $data);
+	// 	}
+	// 	// var_dump($query);
+	// 	// print_r($data);exit;
+	// }
+
+    // public function add_testcom()
+    // {
+	// 	$id = $this->input->post('id');
+	// 	$this->db->select('project_id');
+	// 	$this->db->from('testcom');
+	// 	$this->db->where('project_id', $id);
+	// 	$query = $this->db->get()->row();
+    // 	if ($query == null) {
+    // 		$data = [
+	// 			"project_id" 		=> $this->input->post('id'),
+	// 			"create_by"			=> $this->session->userdata('mitra_id'),
+	// 			"file_testcom"		=> $this->upload->data('file_name'),
+	// 			"create_on"         => date('Y-m-d'),
+	// 			"tgl_testcom"         => date('Y-m-d'),
+    // 		];
+	// 		$this->db->insert('testcom', $data);
+	// 	}else{
+	// 		// jika sudah dibuat maka akan melakukan update untuk file map
+	// 		$data = [
+	// 			"file_testcom"		=> $this->upload->data('file_name')
+	// 		];
+	// 		$id = $this->input->post('id');
+	// 		$this->db->where('project_id', $id);
+	// 		$this->db->update('testcom', $data);
+	// 	}
+	// }
 	
-    public function update_bai()
-    {
-    	if ($this->input->post('id') !== null) {
-    		$data = [
-				"file_bai"			=> $this->upload->data('file_name')
-    		];
-		}
-		$id = $this->input->post('id');
-		$this->db->where('project_id', $id);
-		$this->db->update('testcom', $data);
-	}
+    // public function update_bai()
+    // {
+    // 	if ($this->input->post('id') !== null) {
+    // 		$data = [
+	// 			"file_bai"			=> $this->upload->data('file_name')
+    // 		];
+	// 	}
+	// 	$id = $this->input->post('id');
+	// 	$this->db->where('project_id', $id);
+	// 	$this->db->update('testcom', $data);
+	// }
 
-    public function update_testcom()
-    {
-    	if ($this->input->post('id') !== null) {
-    		$data = [
-				"file_testcom"			=> $this->upload->data('file_name')
-    		];
-		}
-		$id = $this->input->post('id');
-		$this->db->where('project_id', $id);
-		$this->db->update('testcom', $data);
-	}
+    // public function update_testcom()
+    // {
+    // 	if ($this->input->post('id') !== null) {
+    // 		$data = [
+	// 			"file_testcom"			=> $this->upload->data('file_name')
+    // 		];
+	// 	}
+	// 	$id = $this->input->post('id');
+	// 	$this->db->where('project_id', $id);
+	// 	$this->db->update('testcom', $data);
+	// }
+	// public function upload_file($bai,$testcom)
+	// {
+		
+    // 	if ($this->input->post('id') !== null) {
+    // 		$data = [
+	// 			"file_testcom"			=> $bai,
+	// 			"file_bai"				=>	$testcom
+    // 		];
+	// 	}
+	// 	$id = $this->input->post('id');
+	// 	$this->db->where('project_id', $id);
+	// 	$this->db->update('testcom', $data);
+		
+	// }
     
 
 }

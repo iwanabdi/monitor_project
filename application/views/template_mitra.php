@@ -23,7 +23,16 @@
       background-image: linear-gradient(180deg,#dc2323 10%,#dc2323 100%) !important;
     }
   </style>
-  <link href="<?=base_url();?>assets/css/sb-admin-2.min.css" rel="stylesheet">
+	<link href="<?=base_url();?>assets/css/sb-admin-2.min.css" rel="stylesheet">
+	  <!-- <link rel="stylesheet" href=""> -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <link rel="stylesheet" href="<?= base_url();?>assets/css/select2.min.css">
+	<script src="<?= base_url();?>assets/js/select2.min.js"></script>
+	<script type="text/javascript" src="<?= base_url();?>assets/tail.select/js/tail.select.min.js"></script>
+
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="<?= base_url();?>assets/js/jquery-ui-1.12.1/jquery-ui.css">
+
 
 </head>
 
@@ -257,7 +266,9 @@
 
   <!-- Page level custom scripts -->
   <!-- <script src="<?=base_url();?>assets/js/demo/chart-area-demo.js"></script> -->
-  <!-- <script src="<?=base_url();?>assets/js/demo/chart-pie-demo.js"></script> -->
+	<!-- <script src="<?=base_url();?>assets/js/demo/chart-pie-demo.js"></script> -->
+	 <!-- Date Picker -->
+	 <script src="<?= base_url();?>assets/js/jquery-ui-1.12.1/jquery-ui.js"></script>
 
 </body>
 

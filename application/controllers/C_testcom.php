@@ -24,7 +24,7 @@ class C_testcom extends CI_Controller {
 		$id= $this->session->userdata('mitra_id');
 		$data['row'] = $this->M_Testcom->get_testcom($id);
 		$data['pegawai'] = $this->M_pegawai->get_pm();
-		$this->template->load('template_mitra', 'Testcom/data_new',$data);
+		$this->template->load('template_mitra', 'Testcom/data_testcom',$data);
 	}
 	public function detail($id)
 	{
@@ -114,14 +114,10 @@ class C_testcom extends CI_Controller {
 
 	public function upload_file()
 	{
-
-
-		$idProject = $this->input->post('id');
 		$jumlah_berkas = count($_FILES['berkas']['name']);
 		// var_dump($jumlah_berkas);exit;
 		$idProject = $this->input->post('id');
 		$fileName = array($idProject. '_bai', $idProject. '_testcom');
-		$filedatabase =[];
 		
 		// pengecekan apakah file kosong
 		if(!empty($_FILES['berkas']['name'][0])&&!empty($_FILES['berkas']['name'][1])){
@@ -170,7 +166,7 @@ class C_testcom extends CI_Controller {
 				if($this->upload->do_upload('file')){
 							
 					$uploadData = $this->upload->data();
-					$this->M_Testcom->add_testcom($fileName[0],$fileName[1]);
+					$this->M_Testcom->add_file($fileName[0],$fileName[1]);
 					$this->session->set_flashdata('pesan', 
 					'<div class="alert alert-success" role="alert">
 						Data Berhasil Ditambah!

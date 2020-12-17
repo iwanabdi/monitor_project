@@ -26,13 +26,13 @@
 		          </div>
 				</div>	
                 <div class="form-group row">
-		          <label class="col-sm-3 col-form-label">Project ID</label>
-		          <div class="col-sm-9">
-		            <div class="input-group">
-		              <input type="text" class="form-control" name="project_id1" id="project_id1" disabled="" required>
-		            </div>
-		          </div>
-				</div>
+									<label class="col-sm-3 col-form-label">Project ID</label>
+									<div class="col-sm-9">
+										<div class="input-group">
+											<input type="text" class="form-control" name="project_id1" id="project_id1" disabled="" required>
+										</div>
+		          		</div>
+							</div>
                 <div class="form-group row">
 		          <label class="col-sm-3 col-form-label">Customer Name</label>
 		          <div class="col-sm-9">

@@ -8,15 +8,6 @@
 				<i class="fas fa-undo-alt"></i> Back
 				</a>
     </div>
-    <div class="right">
-        <?php 
-          if ($mitraterpilih == null ) {
-            if ($this->session->userdata('pegawai_id')==$row->pegawai_id || $this->session->userdata('jabatan')==-1) {
-           ?>
-				<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#pilimitra" data-backdrop="static" data-keyboard="false">
-        <i class="fas fa-plus"> Dispos Mitra</i></button>
-          <?php }}?>
-		</div>
 		
     <div class="col-0">
       <?= $this->session->flashdata('pesan'); ?>
@@ -192,6 +183,32 @@
         </div>
       </div>
     <!-- </div> -->
+
+    <!-- Collapsable Card STG -->
+    <!-- <div class="row"> -->
+    <div class="card shadow mb-2">
+        <!-- Card Header - Accordion -->
+        <a href="#SuratTugas" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="SuratTugas">
+          <h6 class="m-0 font-weight-bold text-primary">Surat Tugas</h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse" id="SuratTugas">
+          <div class="col-lg-0">
+          <table class="table table-bordered" width="100%" cellspacing="0">
+          <tr>
+              <th>NO STG</th>
+              <th>PRINT</th>
+          </tr>
+          <tr>
+              <td> <?= $mitraterpilih->no_stg ?> </td>
+              <td><a href="<?=site_url('C_MitraProject/cetak_stg/'.$mitraterpilih->no_stg)?>" class='btn btn-success' id='btn'><i class='fas fa-plus'></i> Print STG</a></td>
+          </tr>
+          </table>
+          </div>
+        </div>
+    </div>
+    <!-- </div> -->
+
 
     <!-- Collapsable Card Survey -->
     <!-- <div class="row"> -->

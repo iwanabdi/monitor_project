@@ -28,13 +28,6 @@ class M_MitraProject extends CI_Model {
 						
 		
 		return $query;
-
-
-		// SELECT p.project_id , c.nama_customer, h.mitra_id , p.jalan_ter , p.kota_ter , p.provinsi_ter
-		// FROM project_view p 
-		// JOIN dstg d ON p.project_id=d.project_id
-		// JOIN hstg h ON h.no_stg=d.no_stg
-		// JOIN customer c ON c.customer_id=p.customer_idWHERE h.mitra_id=2;
 	}
 
     public function add_pdf()

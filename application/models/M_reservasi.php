@@ -58,6 +58,19 @@ class M_reservasi extends CI_Model {
 				$this->db->insert('dreservasi', $data1);
 			}
 		}
+
+		//update project
+		$IO =  $this->input->post('IO');
+		$query = $this->db->query("SELECT * FROM `project` WHERE IO like '%$IO%' ");
+		$row = $query->row();
+		if ($row->status_project <3) {
+			$datares = [
+				"status_project"			=> 3
+			];
+			$this->db->where('project_id',$row->project_id);
+			$this->db->update('project', $datares);
+		}
+		
 	}
 
 	function proses_edit_reservasi()

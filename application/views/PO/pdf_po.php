@@ -39,7 +39,7 @@
 		  	float: left;
 			/*margin-bottom: -1px;*/
 			margin-top: 10px;
-			height: 157px;
+			height: 120px;
 		}
 		#kotak3 .txtinvoice{
 			margin-left: 10px;
@@ -54,7 +54,7 @@
 		  /*margin-left: 50px;*/
 		  	float: right;
 			width: 50%;
-			height: 157px;
+			height: 120px;
 
 
 		}

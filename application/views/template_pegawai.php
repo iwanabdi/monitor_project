@@ -125,31 +125,31 @@
 			</li>
 			<?php } ?>
 			
-      <li class="nav-item">
+      <li <?=$this->uri->segment(1) == 'project'?'class="nav-item active"' : "" ?> class="nav-item">
         <a class="nav-link" href="<?= site_url('project')?>">
           <i class="fas fa-fw fa-business-time"></i>
           <span>Project</span></a>
       </li>
 
-      <li class="nav-item">
+      <li <?=$this->uri->segment(1) == 'C_stg'?'class="nav-item active"' : "" ?> class="nav-item">
         <a class="nav-link" href="<?= site_url('C_stg')?>">
           <i class="fas fa-fw fa-business-time"></i>
           <span>Surat Tugas</span></a>
       </li>
 
-      <li class="nav-item">
+      <li <?=$this->uri->segment(1) == 'PO'?'class="nav-item active"' : "" ?> class="nav-item">
         <a class="nav-link" href="<?= site_url('PO')?>">
           <i class="fas fa-fw fa-business-time"></i>
           <span>Purchase Order</span></a>
       </li>
 
-      <li class="nav-item">
+      <li <?=$this->uri->segment(1) == 'GR'?'class="nav-item active"' : "" ?> class="nav-item">
         <a class="nav-link" href="<?= site_url('GR')?>">
           <i class="fas fa-fw fa-business-time"></i>
           <span>Good Receipt</span></a>
       </li>
 
-      <li class="nav-item">
+      <li <?=$this->uri->segment(1) == 'reservasi'?'class="nav-item active"' : "" ?> class="nav-item">
         <a class="nav-link" href="<?= site_url('reservasi')?>">
           <i class="fas fa-fw fa-business-time"></i>
           <span>Reservasi</span></a>
@@ -211,7 +211,7 @@
       </li>
 
       <li <?=$this->uri->segment(1) == 'laporan_mitra'?'class="nav-item active"' : "" ?> class="nav-item">
-        <a class="nav-link" href="<?= site_url('Laporan_mitra/index')?>">
+        <a class="nav-link" href="<?= site_url('Laporan_mitra')?>">
           <i class="fas fa-fw fa-table"></i>
           <span>Laporan Mitra</span></a>
       </li>
@@ -222,11 +222,11 @@
           <span>Status Project</span></a>
       </li>
 
-      <li <?=$this->uri->segment(1) == 'performa_project'?'class="nav-item active"' : "" ?> class="nav-item">
+      <!-- <li <?=$this->uri->segment(1) == 'performa_project'?'class="nav-item active"' : "" ?> class="nav-item">
         <a class="nav-link" href="<?= site_url('performa_project')?>">
           <i class="fas fa-fw fa-table"></i>
           <span>Performa Project</span></a>
-      </li>
+      </li> -->
 
 
 

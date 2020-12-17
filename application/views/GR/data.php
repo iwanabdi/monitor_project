@@ -33,7 +33,7 @@
               <th>Dev Date</th>
 							<th>GR Date</th>
 							<th>Nilai GR</th>
-              <th width="15%">Opsi</th>
+              <th width="10%">Opsi</th>
               <th>Approve</th>
             </tr>
           </thead>
@@ -58,9 +58,9 @@
                   <?php if($data->gr_no != null) {?>
                   <a href="<?= site_url('GR/edit/'.$data->gr_no)?>" class="btn btn-warning"><i class="fas fa-edit"></i>Edit</a> 
                   <?php } ?>
-                  <?php if($data->statusgr == 1 ) {?>           
+                  <!-- <?php if($data->statusgr == 1 ) {?>           
                   <a href="<?= site_url()?>" class="btn btn-success"><i class="fas fa-download"></i>PDF</a>
-                  <?php } ?>
+                  <?php } ?> -->
               </td>
               <td class="text-center">
                 <?php if($data->statusgr == 1) {  

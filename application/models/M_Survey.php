@@ -17,6 +17,19 @@ class M_survey extends CI_Model {
 		return $query;
 	}
 
+	function get_hasil($id = null)
+	{
+		$this->db->select('p.project_id , s.file_map, s.file_excel')
+						->from('project_view p')
+						->join('survey s','p.project_id=s.project_id')
+						->join('customer c','c.customer_id=p.customer_id');
+		if ($id != null) {
+			$this->db->where('p.project_id',$id);
+		}
+		$query= $this->db->get();
+		return $query;
+	}
+
     public function add_map()
     {
 		$id = $this->input->post('id');
@@ -32,6 +45,13 @@ class M_survey extends CI_Model {
 				"file_map"			=> $this->upload->data('file_name')
 			];
 			$this->db->insert('survey', $data);
+
+			$data2 = [
+				"status_project" 		=> 2
+			];
+			$id = $this->input->post('id');
+			$this->db->where('project_id', $id);
+			$this->db->update('project', $data2);
 		}else{
 			// jika sudah dibuat maka akan melakukan update untuk file map
 			$data = [
@@ -60,6 +80,13 @@ class M_survey extends CI_Model {
 				"file_excel"		=> $this->upload->data('file_name')
     		];
 			$this->db->insert('survey', $data);
+
+			$data2 = [
+				"status_project" 		=> 2
+			];
+			$id = $this->input->post('id');
+			$this->db->where('project_id', $id);
+			$this->db->update('project', $data2);
 		}else{
 			// jika sudah dibuat maka akan melakukan update untuk file map
 			$data = [

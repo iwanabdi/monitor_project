@@ -56,7 +56,7 @@
 							<td><?=$data->create_on?></td>
 							<td class="text-center" colspan="3">
                 
-                <a href="<?= site_url('reservasi/pdf/'.$data->reservasi_no)?>" target="_blank" class="btn btn-success"><i class="fas fa-download"></i> PDF
+                <a href="<?= site_url('C_MitraReservasi/pdf/'.$data->reservasi_no)?>" target="_blank" class="btn btn-success"><i class="fas fa-download"></i> PDF
                 </a>
 		          </td>
               

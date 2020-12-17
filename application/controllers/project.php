@@ -18,6 +18,7 @@ class project extends CI_Controller {
 		$this->load->model('M_stg');
 		$this->load->model('M_Survey'); 
 		$this->load->model('M_Testcom'); 
+		$this->load->model('M_po');
 	}
 
 	public function index()
@@ -34,6 +35,17 @@ class project extends CI_Controller {
 		$data['mitraterpilih'] = $this->M_stg->get_stg($id)->row();
 		$data['row_survey']	= $this->M_Survey->get_hasil($id)->row();
 		$data['row_testcom']	= $this->M_Testcom->get_testcom($id)->row();
+		
+		$query = $this->db->query("SELECT * FROM `project` WHERE project_id like '%$id%' ");
+		$row = $query->row();
+		$IOnum = $row->IO;
+		$query = $this->db->query("SELECT * FROM `hpo` WHERE io_number like '%$IOnum%' ");
+		$row = $query->row();
+		$PO = $row->po_no;
+		
+		$data['po'] = $this->M_po->get_po_gr($PO)->row();
+
+		
 		$this->template->load('template_pegawai', 'project/detail_project', $data);
 	}
 

@@ -86,6 +86,8 @@ class M_GI extends CI_Model {
 		];
 		$this->db->where('reservasi_no', $this->input->post('reservasi_no'));
 		$this->db->update('hreservasi', $datares);
+
+		
 	}
 
 	function cek_sn($sn,$id)

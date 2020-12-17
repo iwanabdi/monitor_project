@@ -36,78 +36,81 @@ class C_survey extends CI_Controller {
 		$this->template->load('template_mitra', 'survey/detail_survey', $data);
 	}
 	
-	public function upload_map()
-	{	
+
+	public function upload_file()
+	{
+		$jumlah_berkas = count($_FILES['berkas']['name']);
+		// var_dump($jumlah_berkas);exit;
 		$idProject = $this->input->post('id');
-		$config['upload_path']          = './assets/survey';
-		if(!is_dir($config['upload_path'])){
-		    //Directory does not exist, so lets create it.
-		    mkdir($config['upload_path'], 0755, true);
-		}
-		$config['allowed_types']        = 'jpeg|png|jpg|gdb|gpx|rar|zip';
-		$config['overwrite']        	=  true;
-		$config['file_name']        	=  $idProject.'_survey_map';
-		$this->upload->initialize($config);
-
-		if ( ! $this->upload->do_upload('map'))
-		{
-				
-			$error = array('error' => $this->upload->display_errors());
-			$this->session->set_flashdata('pesan', 
-				'<div class="alert alert-danger" role="alert">
-					'.implode($error).'
-				</div>');
-				redirect('C_survey');
-				
-		}
-		else
-		{
-			$this->M_Survey->add_map();
-			$this->session->set_flashdata('pesan', 
-			'<div class="alert alert-success" role="alert">
-				Data Berhasil Ditambah!
-			</div>');
-			// $this->template->load('template_mitra', 'Survey/detail_uploads');
-
-			redirect('C_survey');
-		}
-	}
-
-	public function upload_excel()
-	{	
+		$fileName = array($idProject. '_map', $idProject. '_excel');
 		
-		$idProject = $this->input->post('id');
-		$config['upload_path']          = './assets/survey';
-		if(!is_dir($config['upload_path'])){
-		    //Directory does not exist, so lets create it.
-		    mkdir($config['upload_path'], 0755, true);
-		}
-		$config['allowed_types']        = 'xls|xlsx';
-		$config['overwrite']        	=  true;
-		$config['file_name']        	=   $idProject.'_survey_excel';
-		$this->upload->initialize($config);
+		// pengecekan apakah file kosong
+		if(!empty($_FILES['berkas']['name'][0])&&!empty($_FILES['berkas']['name'][1])){
+			//fffile tidak kosong
+			for($i = 0; $i < $jumlah_berkas;$i++)
+				{
+				
+					if(!empty($_FILES['berkas']['name'][$i])){
+		
+						
+						$_FILES['file']['name'] = $_FILES['berkas']['name'][$i];
+						$_FILES['file']['type'] = $_FILES['berkas']['type'][$i];
+						$_FILES['file']['tmp_name'] = $_FILES['berkas']['tmp_name'][$i];
+						$_FILES['file']['error'] = $_FILES['berkas']['error'][$i];
+						$_FILES['file']['size'] = $_FILES['berkas']['size'][$i];
 
-		if ( ! $this->upload->do_upload('excel'))
-		{
+
+						$config['upload_path']          = './assets/survey';
+						// jika ffolder path belum di buat
+						if(!is_dir($config['upload_path'])){
+							
+							mkdir($config['upload_path'], 0755, true);
+						}
+						$config['allowed_types']        = 'pdf';
+						$config['overwrite']        	=  true;
+						$config['file_name']= $fileName[$i];
+
+
+						$this->upload->initialize($config);
+						
+						// jika error
+						if(!$this->upload->do_upload('file')){
+							$error = array('error' => $this->upload->display_errors());
+							$this->session->set_flashdata('pesan', 
+								'<div class="alert alert-danger" role="alert">
+									'.implode($error).'
+								</div>');
+							redirect('C_survey');
+							
+							
+						}
+					}
+				}
+				// var_dump($fileName[0]);exit;
+			
+				if($this->upload->do_upload('file')){
+							
+					$uploadData = $this->upload->data();
+					$this->M_Survey->add_file($fileName[0],$fileName[1]);
+					$this->session->set_flashdata('pesan', 
+					'<div class="alert alert-success" role="alert">
+						Data Berhasil Ditambah!
+					</div>');
+					redirect('C_survey');
+					
+					
+				}
+			
 				
-			$error = array('error' => $this->upload->display_errors());
-			$this->session->set_flashdata('pesan', 
-				'<div class="alert alert-danger" role="alert">
-					'.implode($error).'
-				</div>');
-				redirect('C_survey');
 				
+
 		}
-		else
-		{
-			$this->M_Survey->add_excel();
+		else{
 			$this->session->set_flashdata('pesan', 
 			'<div class="alert alert-success" role="alert">
-				Data Berhasil Ditambah!
+				tidak ada file yang di upload/pastikan file BAI atau testcom sudah di upload!
 			</div>');
-			// $this->template->load('template_mitra', 'Survey/detail_uploads');
-
-			redirect('C_survey');
+			redirect('C_testcom');
 		}
 	}
 

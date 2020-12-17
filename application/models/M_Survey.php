@@ -16,6 +16,30 @@ class M_survey extends CI_Model {
 		$query= $this->db->get();
 		return $query;
 	}
+	// start Mitra - Menu Survey - upload file
+	public function add_file($map,$excel)
+	{
+		$id = $this->input->post('id');
+		$this->db->select('project_id');
+		$this->db->from('survey');
+		$this->db->where('project_id', $id);
+		$query = $this->db->get()->row();
+		// pengecekan apakah project_id sudah dibuat atau belum. jika belumm maka
+    	if ($query == null) {
+    		$data = [
+				"project_id" 		=> $this->input->post('id'),
+				"create_by"			=> $this->session->userdata('mitra_id'),
+				"file_map"			=> $map,
+				"file_excel"		=> $excel,
+				"create_on"         => date('Y-m-d'),
+			
+				
+			];
+			$this->db->insert('survey', $data);
+		}
+	}
+
+	// end Mitra - Menu Survey - upload file
 
 	function get_hasil($id = null)
 	{

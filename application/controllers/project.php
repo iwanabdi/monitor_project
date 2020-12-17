@@ -41,7 +41,8 @@ class project extends CI_Controller {
 		$IOnum = $row->IO;
 		$query = $this->db->query("SELECT * FROM `hpo` WHERE io_number like '%$IOnum%' ");
 		$row = $query->row();
-		$PO = $row->po_no;
+		$PO = $row['po_no'];
+		// echo $row['po_no'];
 		
 		$data['po'] = $this->M_po->get_po_gr($PO)->row();
 

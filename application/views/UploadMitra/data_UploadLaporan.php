@@ -2,14 +2,14 @@
 
   	<div class="card shadow mb-4">
 	    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-			<h5 class="m-0 font-weight-bold text-primary">Form Survey</h5>
+			<h5 class="m-0 font-weight-bold text-primary">Form Laporan Mitra</h5>
 			<div class="col-4">
 				<?= $this->session->flashdata('pesan'); ?>
 			</div>
 		
 	    </div>
 		<div class="card-body">
-		<?php echo form_open_multipart('C_survey/upload_file')?>
+		<?php echo form_open_multipart('C_LaporanMitra/upload_file')?>
 			<div class="form-group row">		       
 		          <label class="col-sm-3 col-form-label">Pilih PA</label>
 		          <div class="col-sm-9">
@@ -25,7 +25,7 @@
 		
 
 		        <div class="form-group row">
-		          <label class="col-sm-3 col-form-label">Masukan File MAP</label>
+		          <label class="col-sm-3 col-form-label">Masukan File PDF</label>
 		          <div class="col-sm-9 custom-file">
 								<div class="custom-file">
 									<input type="file" class="custom-file-input" name="berkas[]">
@@ -34,7 +34,16 @@
 		          </div>
 		        </div>
 		        <div class="form-group row">
-		          <label class="col-sm-3 col-form-label">Masukan File EXCEL</label>
+		          <label class="col-sm-3 col-form-label">Masukan File GDB</label>
+		          <div class="col-sm-9">
+								<div class="custom-file">
+									<input type="file" class="custom-file-input" name="berkas[]">
+									<label class="custom-file-label" for="inputGroupFile01">Klik Disini</label>
+								</div>
+		          </div>
+						</div>
+						<div class="form-group row">
+		          <label class="col-sm-3 col-form-label">Masukan File BOM</label>
 		          <div class="col-sm-9">
 								<div class="custom-file">
 									<input type="file" class="custom-file-input" name="berkas[]">
@@ -80,7 +89,7 @@
 					<tbody>
 						<?php foreach ($row->result() as $key => $data)  {?>
 							<tr>
-								<td><a href="<?= site_url('C_testcom/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
+								<td><?=$data->project_id?></a></td>
 								<td><?=$data->nama_customer?></td>
 								<td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>
 								<td class="text-center" colspan="2">

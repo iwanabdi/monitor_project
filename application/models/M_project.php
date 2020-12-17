@@ -59,7 +59,7 @@ class M_project extends CI_Model {
 
 	function pa_id()
 	{
-		$query = $this->db->query("SELECT lpad(COUNT(project_id)+1,4,0) as total FROM projectWHERE MONTH(create_on) = MONTH(CURRENT_DATE()) AND YEAR(create_on) = YEAR(CURRENT_DATE())");
+		$query = $this->db->query("SELECT lpad(COUNT(project_id)+1,4,0) as total FROM project WHERE MONTH(create_on) = MONTH(CURRENT_DATE()) AND YEAR(create_on) = YEAR(CURRENT_DATE())");
 		$row = $query->row();
 		$belakang = $row->total;
 		$awal=date('ym');

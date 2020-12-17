@@ -97,17 +97,31 @@ class PO extends CI_Controller {
 			</div>');
 		redirect('PO','refresh');
 	}
-	public function detail_po($no_po)
+	public function detail_po($po_no)
+	{
+		$data['row'] = $this->M_po->detail_po($po_no)->row();
+		$data['vendor'] = $this->M_po->detail_vendor($po_no)->row();
+		$data['data_po'] = $this->M_po->data_po($po_no);
+		$this->load->view('PO/detail_po', $data);
+	}
+
+	public function pdf($po_no)
 	{
 		$data = [
-			'row_spv'	=> $this->M_stg->spv()->row(),
-			'row'		=> $this->M_stg->cetak(),
-			'invoice' 	=> $this->M_stg->cetak_stg($no_po)
+			'row'		=> $this->M_po->detail_po($po_no)->row(),
+			'vendor'	=> $this->M_po->detail_vendor($po_no)->row(),
+			'data_po' 	=> $this->M_po->data_po($po_no)
 		];
-		// $data = [
-			
-		// 		'dmitra' 	=> $this->M_stg->cetak_s($no_po)
-		// ];
-		$this->load->view('PO/detail_po', $data);
+
+		// $this->load->view('PO/pdf_po', $data, FALSE);
+		
+		$html = $this->load->view('PO/pdf_po', $data, true);
+		$mpdf = new \Mpdf\Mpdf();
+		// Write some HTML code:
+		$mpdf->WriteHTML($html);
+		$nama_file_pdf = url_title($po_no,'dash','true').'-'.'PO'.'.pdf';
+		// Output a PDF file directly to the browser
+		// $mpdf->Output();
+		$mpdf->Output($nama_file_pdf,'I');
 	}
 }

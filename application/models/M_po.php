@@ -213,4 +213,29 @@ class M_po extends CI_Model {
 		$this->db->where('po_no', $id);
 		$this->db->update('hpo', $data);
 	}
+
+	public function detail_po($po_no)
+	{
+		$this->db->select('*');
+		$this->db->from('hpo');
+		$this->db->where('po_no',$po_no);
+		$query = $this->db->get();
+		return $query;
+	}
+
+	public function detail_vendor($po_no)
+	{
+		$query = $this->db->query("SELECT hpo.po_no,hpo.project_name, mitra.* FROM hpo
+									JOIN mitra ON hpo.mitra_id = mitra.mitra_id
+									WHERE hpo.po_no = '$po_no'");
+		return $query;
+	}
+
+	public function data_po($po_no)
+	{
+		$query = $this->db->query("SELECT dpo.po_no,dpo.qty,dpo.total, pekerjaan.* FROM dpo
+									JOIN pekerjaan ON dpo.pekerjaan_id = pekerjaan.pekerjaan_id
+									WHERE dpo.po_no = '$po_no'");
+		return $query;
+	}
 }

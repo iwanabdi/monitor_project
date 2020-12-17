@@ -33,7 +33,7 @@
               <th>Dev Date</th>
 							<th>GR Date</th>
 							<th>Nilai GR</th>
-              <th>Opsi</th>
+              <th width="15%">Opsi</th>
               <th>Approve</th>
             </tr>
           </thead>
@@ -51,7 +51,7 @@
                 <td><?=$data->devdate_po?></td>
                 <td><?=$data->createon_gr?></td>
                 <td>Rp. <?=$data->net_value?></td>
-                <td>
+                <td class="text-center">
                   <?php if($data->gr_no == null) {?>
                   <a href="<?= site_url('GR/create/'.$data->po_no)?>" class="btn btn-success"><i class="fas fa-paper-plane"></i>Create</a> 
                   <?php } ?>
@@ -62,7 +62,7 @@
                   <a href="<?= site_url()?>" class="btn btn-success"><i class="fas fa-download"></i>PDF</a>
                   <?php } ?>
               </td>
-              <td>
+              <td class="text-center">
                 <?php if($data->statusgr == 1) {  
                   echo "<a href='#' class='btn btn-success btn-circle'><i class='fas fa-check'></i></a>";
                 }else if ($data->po_no != null || $data->status != 1){?>

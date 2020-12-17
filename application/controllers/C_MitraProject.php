@@ -44,9 +44,19 @@ class C_MitraProject extends CI_Controller {
 			$data['row'] = $this->M_project->get_detail($id)->row();
 			$data['mitra'] = $this->M_mitra->get_mitra();
 			$data['mitraterpilih'] = $this->M_stg->get_stg($id)->row();
-			$data['row_survey']	= $this->M_Survey->get_survey($id)->row();
+			$data['row_survey']	= $this->M_Survey->get_hasil($id)->row();
 			$data['row_testcom']	= $this->M_Testcom->get_testcom($id)->row();
 			$this->template->load('template_mitra', 'MitraProject/detail_project', $data);
+	}
+
+	public function cetak_stg($no_stg)
+	{
+		$data = [
+			'row_spv'	=> $this->M_stg->spv()->row(),
+			'row'		=> $this->M_stg->cetak(),
+			'invoice' 	=> $this->M_stg->cetak_stg($no_stg)
+		];
+		$this->load->view('SuratTugas/cetak_stg', $data);
 	}
 	
 	

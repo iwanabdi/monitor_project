@@ -18,6 +18,7 @@ class M_GI extends CI_Model {
 		$gi_no = $row->total;
 		$a = $this->input->post('material_id');
 		$b = $this->input->post('sn');
+		$c = $this->input->post('qty');
 		if ($a[0] !== null) {
 			for ($i=0;$i<sizeof($a);$i++) {
 				if ($this->cek_sn($b[$i],$a[$i])==1) {
@@ -37,13 +38,14 @@ class M_GI extends CI_Model {
 						'gi_no'			=> $gi_no,
 						'material_id'	=> $material_id,
 						'serial_number'	=> $b[$i],
-						'qty'			=> 1,
+						'qty'			=> $c[$i],
 						'create_on'		=> date('Y-m-d'),
 						'create_by'		=> $this->session->userdata('pegawai_id')
 					];
 					$this->db->insert('dgi', $data1);
 
 					//update status dmaterial
+				if ($c[$i]<=1) {
 					$dataupd = [
 						"status	"			=> 0,
 						"update_by"			=> $this->session->userdata('pegawai_id'),
@@ -52,9 +54,18 @@ class M_GI extends CI_Model {
 					$this->db->where('material_id', $material_id);
 					$this->db->where('SN',$b[$i]);
 					$this->db->update('dmaterial', $dataupd);
+				}else {
+					$dataupd = [
+						"update_by"			=> $this->session->userdata('pegawai_id'),
+						"update_on"			=> date('Y-m-d')
+					];
+					$this->db->where('material_id', $material_id);
+					$this->db->where('SN',$b[$i]);
+					$this->db->update('dmaterial', $dataupd);
+				}
 
 					//update stok material
-					$queryupd = $this->db->query("SELECT MAX(stok)-1 as total FROM material WHERE material_id = $material_id");
+					$queryupd = $this->db->query("SELECT MAX(stok)-".$c[$i]." as total FROM material WHERE material_id = $material_id");
 					$hasil = $queryupd->row()->total;
 					$datamat = [
 						"stok"				=> $hasil,
@@ -79,7 +90,7 @@ class M_GI extends CI_Model {
 
 	function cek_sn($sn,$id)
     {
-    	$query = $this->db->query("SELECT COUNT(material_id) as total FROM dmaterial WHERE SN = $sn AND material_id = $id AND status= 1");
+    	$query = $this->db->query("SELECT COUNT(material_id) as total FROM dmaterial WHERE SN like '%$sn%' AND material_id = $id AND status= 1");
 		$row = $query->row();
 		$belakang = $row->total;
 		return $belakang;

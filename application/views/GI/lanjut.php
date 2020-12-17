@@ -49,13 +49,33 @@
 					</thead>
 					<tbody>
 						<?php foreach ($dreservasi->result() as $key => $data)  {
+							if ($data->satuan==1) {
 							for ($i=0; $i < $data->qty; $i++) {?>
 							<tr>
+							<input type="hidden" class="form-control" name="qty[]" id="qty[]" value="1" readonly required>
 							<td><input type="text" class="form-control" name="material_id[]" id="material_id[]" value="<?=$data->material_id?>" readonly required></td>
 							<td><input type="text" class="form-control" name="nama_material[]" id="nama_material[]" value="<?=$data->nama_material?>" readonly required></td>
 							<td><input type="text" class="form-control" name="sn[]" id="sn[]" required></td>
 							</tr>
-						<?php }} ?>
+						<?php }} 
+							else if ($data->satuan==3) {
+							for ($i=0; $i < $data->qty/4000; $i++) {?>
+							<tr>
+							<input type="hidden" class="form-control" name="qty[]" id="qty[]" value="<?=$data->qty?>" readonly required>
+							<td><input type="text" class="form-control" name="material_id[]" id="material_id[]" value="<?=$data->material_id?>" readonly required></td>
+							<td><input type="text" class="form-control" name="nama_material[]" id="nama_material[]" value="<?=$data->nama_material?>" readonly required></td>
+							<td><input type="text" class="form-control" name="sn[]" id="sn[]" required></td>
+							</tr>
+						<?php }} 
+							else if ($data->satuan==2) {
+							for ($i=0; $i < $data->qty/1000; $i++) {?>
+							<tr>
+							<input type="hidden" class="form-control" name="qty[]" id="qty[]" value="<?=$data->qty?>" readonly required>
+							<td><input type="text" class="form-control" name="material_id[]" id="material_id[]" value="<?=$data->material_id?>" readonly required></td>
+							<td><input type="text" class="form-control" name="nama_material[]" id="nama_material[]" value="<?=$data->nama_material?>" readonly required></td>
+							<td><input type="text" class="form-control" name="sn[]" id="sn[]" required></td>
+							</tr>
+						<?php	}}} ?>
 					</tbody>
 				</table>
 

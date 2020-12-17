@@ -38,7 +38,7 @@
 						foreach ($row->result() as $key => $data)  {?>
 					
 							<tr>
-								<td><a href="<?= site_url('C_survey/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
+								<td><a href="<?= site_url('C_MitraProject/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
 								<td><?=$data->nama_customer?></td>
 					
 								<td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>

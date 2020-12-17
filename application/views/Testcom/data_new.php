@@ -21,37 +21,37 @@
     </div>
     <div class="card-body">
 		
-      	<div class="table-responsive">
-			<!-- <?php print_r($row->result()) ?> -->
-			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-				<thead>
-					<tr class="text-center">
-									<th>Project ID</th>
-									<th>Nama Customer</th>				
-									<th>Alamat Terminating</th>
-									<th>Upload File</th>			  
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach ($row->result() as $key => $data)  {?>
-						<tr>
-							<td><a href="<?= site_url('C_testcom/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
-							<td><?=$data->nama_customer?></td>
-							<td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>
-							<td class="text-center" colspan="2">
-								<button type="button" class="btn btn-info btn-square" data-toggle="modal" title="File Map" 
-												data-target="#select_bai<?= $data->project_id;?>" data-backdrop="static" data-keyboard="false" data-id="<?=$data->project_id?>">
-														<i class="fas fa-file-pdf"></i> Upload
-								</button>		
-							</td>
-									
-								
-						</tr>
-								
-					<?php } ?>
-				</tbody>
-			</table>
-		</div>
+      		<div class="table-responsive">
+						<!-- <?php print_r($row->result()) ?> -->
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+							<thead>
+								<tr class="text-center">
+												<th>Project ID</th>
+												<th>Nama Customer</th>				
+												<th>Alamat Terminating</th>
+												<th>Upload File</th>			  
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach ($row->result() as $key => $data)  {?>
+									<tr>
+										<td><a href="<?= site_url('C_testcom/detail/'.$data->project_id)?>"><?=$data->project_id?></a></td>
+										<td><?=$data->nama_customer?></td>
+										<td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>
+										<td class="text-center" colspan="2">
+											<button type="button" class="btn btn-info btn-square" data-toggle="modal" title="File Map" 
+															data-target="#select_bai<?= $data->project_id;?>" data-backdrop="static" data-keyboard="false" data-id="<?=$data->project_id?>">
+																	<i class="fas fa-file-pdf"></i> Upload
+											</button>		
+										</td>
+												
+											
+									</tr>
+											
+								<?php } ?>
+							</tbody>
+						</table>
+					</div>
 	
     </div>
   </div>
@@ -74,7 +74,7 @@
       <div class="modal-body">
         <div class="form-group row">
           <div class="table-responsive">
-		  <?php echo validation_errors(); ?>
+		 
 						<?php echo form_open_multipart('C_testcom/upload_file')?>
 						<input type="hidden" name="id" name = "id" value="<?=$data->project_id?>">
 						<label for="berkas">File BAI</label>

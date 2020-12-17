@@ -91,13 +91,13 @@
               <td><?=$data->jalan_ter,', ',$data->kota_ter,', ',$data->provinsi_ter?></td>
 			  			<td><?=$data->create_on?></td>
               <?php if ($this->session->userdata('jabatan') == 0 || $this->session->userdata('jabatan') == -1){
+              echo "<td class='text-center'>";
                 if ($data->nama_pegawai == null) {?>
-                <td class="text-center">
                   <button type="button" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#pilih_pm<?=$data->project_id?>" data-backdrop="static" data-keyboard="false">
                       <i class="fas fa-user-times"></i>
                   </button>
-                </td>
-              <?php }}?>
+              <?php }
+              echo "</td>"; }?>
             </tr>
           <?php } ?>
           </tbody>

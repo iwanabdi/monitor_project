@@ -211,7 +211,7 @@
       </li>
 
       <li <?=$this->uri->segment(1) == 'laporan_mitra'?'class="nav-item active"' : "" ?> class="nav-item">
-        <a class="nav-link" href="<?= site_url('Laporan_mitra/index')?>">
+        <a class="nav-link" href="<?= site_url('Laporan_mitra')?>">
           <i class="fas fa-fw fa-table"></i>
           <span>Laporan Mitra</span></a>
       </li>
@@ -222,11 +222,11 @@
           <span>Status Project</span></a>
       </li>
 
-      <li <?=$this->uri->segment(1) == 'performa_project'?'class="nav-item active"' : "" ?> class="nav-item">
+      <!-- <li <?=$this->uri->segment(1) == 'performa_project'?'class="nav-item active"' : "" ?> class="nav-item">
         <a class="nav-link" href="<?= site_url('performa_project')?>">
           <i class="fas fa-fw fa-table"></i>
           <span>Performa Project</span></a>
-      </li>
+      </li> -->
 
 
 

@@ -28,7 +28,7 @@ class M_LaporanMitra extends CI_Model {
 		FROM dstg m
 		JOIN project p ON m.project_id=p.project_id
 		WHERE m.mitra_id='$id'
-		GROUP BY p.status_project HAVING COUNT(p.status_project>0)");	
+		GROUP BY p.status_project HAVING COUNT(p.status_project)>0");	
 		return $query;
 	}
 	public function get_performa($id = null)
@@ -47,9 +47,6 @@ class M_LaporanMitra extends CI_Model {
 		) a
 		GROUP BY a.performa");
 		return $query;
-
-
-
 	}
 
 	// end - pegawai -  laporan mitra

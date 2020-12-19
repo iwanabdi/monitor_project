@@ -302,22 +302,20 @@
         <!-- Card Content - Collapse -->
         <div class="collapse" id="PurchaseOrder">
           <div class="card-body">
-          <?php
-          if ($po != null) {?>
-         <table class="table table-bordered" width="100%" cellspacing="0">
-          <tr>
-              <th>NO PO</th>
-              <th>PRINT</th>
-          </tr>
-          <tr>
-              <td> <?= $po->po_no ?> </td>
-              <td><a href="<?=site_url('PO/pdf/'.$po->po_no)?>" class='btn btn-success' id='btn'><i class='fas fa-plus'></i> Print PO</a></td>
-          </tr>
-          </table>
-          <?php } else { ?>
+            <?php if ($po != null): ?>
+               <table class="table table-bordered" width="100%" cellspacing="0">
+                <tr>
+                    <th>NO PO</th>
+                    <th>PRINT</th>
+                </tr>
+                <tr>
+                    <td> <?= $po->po_no;?> </td>
+                    <td><a href="<?=site_url('PO/pdf/'.$po->po_no)?>" class='btn btn-success' id='btn'><i class='fas fa-plus'></i> Print PO</a></td>
+                </tr>
+                </table>
+            <?php else: ?>
               <a href="<?=site_url('PO/req/'.$row->project_id)?>" class='btn btn-success' id='btn'><i class='fas fa-plus'></i> Request PO</a>
-          </div>
-          <?php } ?>
+            <?php endif ?>
         </div>
         </div>
       </div>

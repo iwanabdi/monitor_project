@@ -41,9 +41,19 @@ class project extends CI_Controller {
 		$IOnum = $row->IO;
 		$query = $this->db->query("SELECT * FROM `hpo` WHERE io_number like '%$IOnum%' ");
 		$row = $query->row();
-		$PO = $row->po_no;
-		
-		$data['po'] = $this->M_po->get_po_gr($PO)->row();
+		// $a = count($row);
+		// var_dump($row);
+		// exit;
+		if ($row != null) {
+			// foreach ($row as $key => $a) {
+				$PO = $row->po_no;
+				// var_dump($a);
+				// exit;
+			$data['po'] = $this->M_po->get_po_gr($PO)->row();
+		}else{
+			// $PO = null;
+			$data['po'] = null;
+		}
 
 		
 		$this->template->load('template_pegawai', 'project/detail_project', $data);

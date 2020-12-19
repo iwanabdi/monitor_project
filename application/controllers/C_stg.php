@@ -31,9 +31,27 @@ class C_stg extends CI_Controller {
 		$data = [
 			'mitra'		=> $this->M_mitra->get_mitra(),
 			'project'	=> $this->M_stg->get_stg_belum(),
-			'pegawai'	=> $this->M_pegawai->get_pm()
+			'pegawai'	=> $this->M_pegawai->get_pm(),
 		];
 		$this->template->load('template_pegawai', 'SuratTugas/stg' , $data);
+	}
+
+	public function ajax()
+	{
+		$ajx = $this->input->post('input_ajx');
+		$ini = $this->M_stg->stg_ajax($ajx)->result();
+		// $data = [
+		// 	'mitra'		=> $this->M_mitra->get_mitra(),
+		// 	'project'	=> $this->M_stg->stg_ajax($ajx),
+		// 	'pegawai'	=> $this->M_pegawai->get_pm(),
+		// 	'ini'		=> $this->M_stg->stg_ajax($ajx)->result()
+		// ];
+		// $ini = [
+		// 	'jx'		=> $this->M_stg->stg_ajax($ajx)->result_array(),
+		// 	'jp'	=> $this->M_stg->stg_ajax(),
+		// ];
+		// $this->template->load('template_pegawai', 'SuratTugas/stg' , $data);
+		echo json_encode($ini);
 	}
 	
 	public function add_stg()
@@ -65,7 +83,6 @@ class C_stg extends CI_Controller {
 					$i++;
 				}
 			}
-		}
 
 		$arr['success'] = true;
 		$arr['notif']	= '<div class="alert alert-success">
@@ -73,6 +90,14 @@ class C_stg extends CI_Controller {
 							</div>';
 		// redirect('C_stg', 'refresh');
 		return $this->output->set_output(json_encode($arr));
+		}else{
+			$arr['success'] = false;
+			$arr['notif']	= '<div class="alert alert-danger">
+								<i class="fas fa-times"></i> Surat Tugas Gagal Dibuat
+								</div>';
+			return $this->output->set_output(json_encode($arr));
+		}
+
 		
 	}
 

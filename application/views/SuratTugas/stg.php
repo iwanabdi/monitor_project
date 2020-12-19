@@ -26,7 +26,8 @@
 				  </div>
 				</div>	
 		        <div class="form-group row">
-				  <input type="hidden" name="mitra_id" id="mitra_id"> 
+				  <input type="hidden" name="mitra_id" id="mitra_id">
+				  <!-- <input type="hidden" name="nama_mitra" id="nama_mitra">  -->
 				  <label class="col-sm-3 col-form-label">Pilih Mitra</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
@@ -49,7 +50,7 @@
 									<th class="text-center">No</th>
 									<th class="text-center">Project</th>
 									<th class="text-center">Target Date</th>
-									<th width="200px"><button type="button" class="btn btn-info btn-block" id="add_project"><i class="fas fa-plus-circle"></i> Add Project</button></th>
+									<th class="text-center">Hapus Project</th>
 								</tr>
 							</thead>
 							<tbody></tbody>
@@ -117,7 +118,7 @@
   </div>
 </div>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   $(document).ready(function() {
     $(document).on('click', '#select', function() {
       let mitra_id = $(this).data('id');
@@ -125,9 +126,11 @@
       $('#mitra_id').val(mitra_id);
       $('#nama_mitra').val(nama_mitra);
       $('#pilihmitra').modal('hide');
+      	var a = document.getElementById('nama_mitra').value;
+		console.log(a);
     });
   });
-</script>
+</script> -->
 <!-- akhir modal mitra -->
 
 
@@ -196,14 +199,79 @@
 
 <script type="text/javascript">
 
+	
 	$(document).ready(function () {
-		for(i=1; i<=1; i++){
-			add_project();
-		}
-		$('#add_project').click(function (e) {
-			e.preventDefault();
-			add_project();
-		});
+
+		$(document).on('click', '#select', function() {
+	      let mitra_id = $(this).data('id');
+	      let nama_mitra = $(this).data('nama');
+	      $('#mitra_id').val(mitra_id);
+	      $('#nama_mitra').val(nama_mitra);
+	      $('#pilihmitra').modal('hide');
+
+			var isi = nama_mitra;
+		    // console.log(isi);
+		    $.ajax({
+		      method: 'POST',
+		      dataType: 'json',
+		      url: '<?= site_url('C_stg/ajax')?>',
+		      data: {
+		        input_ajx: isi
+		      },
+		      success: function(result) {
+		        console.log(result);
+		        if (result == '') {
+	        	  alert("Tidak Ada Project Untuk Mitra ini !!!")
+		        } else {
+	        	  $("#hasil").remove();
+	        	  $("#tableLoop tbody tr").remove();
+		          // $("tr").remove();
+		          // $("td").remove();
+		          // for (var i = 0; i < result.length; i++) {
+		          //   var isivalue = "<h5 style='border-bottom:1px solid #878787;margin-top:20px;'>" + result[i].id_dstg + " | " + result[i].project_id + "</h5><br>";
+		          //   $(".hasil").append(isivalue);
+		          // }
+			  //       for (var i = 0; i < result.length; i++) {
+			  //         	e.preventDefault();
+					// 	$(this).parent().parent().remove();
+					// 	$('tableLoop tbody tr').each(function() {
+					// 		$(this).find('td:nth-child(1)').html(i);
+					// 	});
+					// }
+			          for (var i = 0; i < result.length; i++) {
+			          var No = $("#tableLoop tbody tr").length+1;
+						var Baris = '<tr>';
+								Baris += '<td class="text-center">'+No+'</td>';
+								Baris += '<td>';
+								Baris += '<select name="project[]" id="project[]" class="form-control custom-select project" required>';
+								Baris += '<option selected ' + 'value=' +result[i].id_dstg + '>' + result[i].project_id + '</option>';
+								Baris += '</select>';
+								Baris += '</td>';
+								Baris += '<td>';
+									Baris += '<input type="date" name="tgl_stg[]" id="tgl_stg[]" value="<?= date('Y-m-d');?>" class="form-control tgl_stg" required>';
+								Baris += '</td>';
+								Baris += '<td class="text-center">';
+									Baris += '<button type="button" class="btn btn-sm btn-danger" id="HapusBaris" title="Hapus Baris"><i class="fas fa-times-circle"></i></button>';
+								Baris += '</td>';
+							Baris += '</tr>';
+
+						$("#tableLoop tbody").append(Baris);
+						$("#tableLoop tbody tr").each(function(){
+							$(this).find('td:nth-child(2) select').focus();
+						});
+					}
+		        }
+		      }
+		    })
+	    });
+
+		// for(i=1; i<=1; i++){
+		// 	// add_project();
+		// }
+		// $('#add_project').click(function (e) {
+		// 	e.preventDefault();
+		// 	add_project();
+		// });
 
 	});
 
@@ -262,14 +330,19 @@
 				if (data.success == true) {
 					$('.project').val('');
 					$('.tgl_stg').val('<?= date('Y-m-d')?>');
+	        	  	$("#hasil").remove();
+	        	  	$("#tableLoop tbody tr").remove();
 					$('#notif').fadeIn(800, function () {
-						$('#notif').html(data.notif).fadeOut(5000).delay(800);
+					$('#notif').html(data.notif).fadeOut(5000).delay(800);
 					window.open('<?= site_url('C_stg/cetak_pdf'); ?>');
 					// window.print();
+					console.log(data);
 					});
 				}
 				else{
-					$('#notif').html('<div class="alert alert-danger">Surat Tugas Gagal Dibuat</div>')
+					$('#notif').fadeIn(800, function () {
+					$('#notif').html(data.notif).fadeOut(5000).delay(800);
+					});
 				}
 			},
 			error:function(error) {

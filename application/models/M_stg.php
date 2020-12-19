@@ -32,6 +32,12 @@ class M_stg extends CI_Model {
 		return $query;
 	}
 
+	function stg_ajax($mitra)
+	{
+		$query = $this->db->query("SELECT * FROM stg_belum_view WHERE no_stg = '' AND nama_mitra = '$mitra'");
+		return $query;
+	}
+
 	function get_stg($id = null)
 	{
 		$this->db->select('*');

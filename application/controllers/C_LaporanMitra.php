@@ -23,9 +23,7 @@ class C_LaporanMitra extends CI_Controller {
 	public function index()
 	{
 		$id= $this->session->userdata('mitra_id');
-		$data['view'] = $this->M_LaporanMitra->get_view($id);
-		
-		$data['row'] = $this->M_project->get_project();
+		$data['row'] = $this->M_LaporanMitra->get_view($id);
 		$data['pegawai'] = $this->M_pegawai->get_pm();
 		$this->template->load('template_mitra', 'UploadMitra/data_UploadLaporan',$data);
 	}
@@ -39,113 +37,86 @@ class C_LaporanMitra extends CI_Controller {
 		]; 
 		$this->template->load('template_mitra', 'UploadMitra/detail_laporan', $data);
 	}
-	
-	public function upload_pdf()
-	{	
+
+	public function upload_file()
+	{
+		$jumlah_berkas = count($_FILES['berkas']['name']);
+		// var_dump($jumlah_berkas);exit;
+		$idProject = $this->input->post('id');
+		$fileName = array($idProject. '_pdf', $idProject. '_gdb',  $idProject. '_bom');
 		
-		$idProject = $this->input->post('id');
-		$config['upload_path']          = './assets/LaporanMitra/pdf';
-		$config['allowed_types']        = 'pdf|rar|zip';
-		$config['overwrite']        	=  true;
-		$config['file_name']        	=  $idProject.'_laporan_pdf';
-		$this->upload->initialize($config);
-
-		if ( ! $this->upload->do_upload('berkas'))
-		{
+		// pengecekan apakah file kosong
+		if(!empty($_FILES['berkas']['name'][0])&&!empty($_FILES['berkas']['name'][1])){
+			//fffile tidak kosong
+			for($i = 0; $i < $jumlah_berkas;$i++)
+				{
 				
-				$error = array('error' => $this->upload->display_errors());
-				$this->session->set_flashdata('pesan', 
-					'<div class="alert alert-danger" role="alert">
-						'.implode($error).'
+					if(!empty($_FILES['berkas']['name'][$i])){
+		
+						
+						$_FILES['file']['name'] = $_FILES['berkas']['name'][$i];
+						$_FILES['file']['type'] = $_FILES['berkas']['type'][$i];
+						$_FILES['file']['tmp_name'] = $_FILES['berkas']['tmp_name'][$i];
+						$_FILES['file']['error'] = $_FILES['berkas']['error'][$i];
+						$_FILES['file']['size'] = $_FILES['berkas']['size'][$i];
+
+
+						$config['upload_path']          = './assets/LaporanMitra';
+						// jika ffolder path belum di buat
+						if(!is_dir($config['upload_path'])){
+							
+							mkdir($config['upload_path'], 0755, true);
+						}
+						$config['allowed_types']        = 'pdf|xls|xlsx|pdf|rar|zip|gdb|gpx';
+						$config['overwrite']        	=  true;
+						$config['file_name']= $fileName[$i];
+
+
+						$this->upload->initialize($config);
+						
+						// jika error
+						if(!$this->upload->do_upload('file')){
+							$error = array('error' => $this->upload->display_errors());
+							$this->session->set_flashdata('pesan', 
+								'<div class="alert alert-danger" role="alert">
+									'.implode($error).'
+								</div>');
+							redirect('C_LaporanMitra');
+							
+							
+						}
+					}
+				}
+				// var_dump($fileName[0]);exit;
+			
+				if($this->upload->do_upload('file')){
+							
+				
+					$uploadData = $this->upload->data();
+					$this->M_LaporanMitra->add_file($fileName[0],$fileName[1],$fileName[2]);
+					$this->session->set_flashdata('pesan', 
+					'<div class="alert alert-success" role="alert">
+						Data Berhasil Ditambah!
 					</div>');
-				redirect('C_LaporanMitra');
+					redirect('C_LaporanMitra');
+					
+					
+				}
+			
 				
+				
+
 		}
-		else
-		{
-			$this->M_LaporanMitra->add_pdf();
+		else{
 			$this->session->set_flashdata('pesan', 
 			'<div class="alert alert-success" role="alert">
-				File PDF berhasil di upload!
+				tidak ada file yang di upload/pastikan file BAI atau testcom sudah di upload!
 			</div>');
-			// $this->template->load('template_mitra', 'Survey/detail_uploads');
-
-			redirect('C_LaporanMitra');
-		}
-	}
-
-	public function upload_gdb()
-	{	
-		$idProject = $this->input->post('id');
-		$config['upload_path']          = './assets/LaporanMitra/gdb';
-		if(!is_dir($config['upload_path'])){
-		    //Directory does not exist, so lets create it.
-		    mkdir($config['upload_path'], 0755, true);
-		}
-		$config['allowed_types']        = 'rar|zip|gdb|gpx';
-		$config['overwrite']        	=  true;
-		$config['file_name']        	=  $idProject.'_laporan_gdb';
-		$this->upload->initialize($config);
-
-		if ( ! $this->upload->do_upload('berkas'))
-		{
-				
-			$error = array('error' => $this->upload->display_errors());
-			$this->session->set_flashdata('pesan', 
-				'<div class="alert alert-danger" role="alert">
-					'.implode($error).'
-				</div>');
-			redirect('C_LaporanMitra');
-		}
-		else
-		{
-			$this->M_LaporanMitra->add_gdb();
-			$this->session->set_flashdata('pesan', 
-			'<div class="alert alert-success" role="alert">
-				File GDP berhasil di upload!
-			</div>');
-			// $this->template->load('template_mitra', 'Survey/detail_uploads');
-
-			redirect('C_LaporanMitra');
-		}
-	}
-	public function upload_bom()
-	{	
-		$idProject = $this->input->post('id');
-		$config['upload_path']          = './assets/LaporanMitra/bom';
-		if(!is_dir($config['upload_path'])){
-		    //Directory does not exist, so lets create it.
-		    mkdir($config['upload_path'], 0755, true);
-		}
-		$config['allowed_types']        = 'zip|rar|xls|xlsx';
-		$config['overwrite']        	=  true;
-		$config['file_name']        	=  $idProject.'_laporan_bom';
-		$this->upload->initialize($config);
-
-		if ( ! $this->upload->do_upload('berkas'))
-		{
-				
-			$error = array('error' => $this->upload->display_errors());
-			$this->session->set_flashdata('pesan', 
-				'<div class="alert alert-danger" role="alert">
-					'.implode($error).'
-				</div>');
-			redirect('C_LaporanMitra');
-				
-		}
-		else
-		{
-			$this->M_LaporanMitra->add_bom();
-			$this->session->set_flashdata('pesan', 
-			'<div class="alert alert-success" role="alert">
-				File BOM berhasil di upload!
-			</div>');
-			// $this->template->load('template_mitra', 'Survey/detail_uploads');
-
-			redirect('C_LaporanMitra');
+			redirect('C_testcom');
 		}
 	}
 	
+
 
 	
 	

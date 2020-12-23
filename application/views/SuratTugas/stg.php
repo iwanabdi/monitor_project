@@ -25,9 +25,8 @@
 					</div>
 				  </div>
 				</div>	
-		        <div class="form-group row">
+		        <!-- <div class="form-group row">
 				  <input type="hidden" name="mitra_id" id="mitra_id">
-				  <!-- <input type="hidden" name="nama_mitra" id="nama_mitra">  -->
 				  <label class="col-sm-3 col-form-label">Pilih Mitra</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
@@ -38,24 +37,21 @@
 		              </div>
 					</div>
 				  </div>
-				</div>	
+				</div>	 -->
 				<!-- akhir row pilih mitra -->
 
-<!-- 
+
 		        <div class="form-group row">
-				  <input type="hidden" name="mitra_id" id="mitra_id">
+				  <!-- <input type="hidden" name="mitra_id" id="mitra_id"> -->
 				  <label class="col-sm-3 col-form-label">Pilih Mitra</label>
 		          <div class="col-sm-9">
 		            <div class="input-group">
-		              <select name="project[]" id="project[]" class="form-control custom-select project" required>
+		            	<select name="mitra_id" id="mitra_id" onchange="test()" class="form-control custom-select mitra" required>\
 		              	<option selected disabled value="">--Pilih Mitra--</option>
-						<?php foreach ($mitra->result() as $key => $data) {?>
-							<option value="<?= $data->mitra_id;?>"><?=$data->nama_mitra;?></option>
-						<?php }?>
-		              </select>
+		              	</select>
 					</div>
 				  </div>
-				</div>	 -->
+				</div>	
 				<!-- akhir row pilih mitra -->
 
 				<div class="form-group row">
@@ -204,6 +200,34 @@
       $('#pm_id').val(pm_id);
       $('#nama_pm').val(nama_pm);
       $('#pilihpm').modal('hide');
+
+      var isi = nama_pm;
+      // alert(isi);
+		    $.ajax({
+		      method: 'POST',
+		      dataType: 'json',
+		      url: '<?= site_url('C_stg/ajax1')?>',
+		      data: {
+		        input_ajx: isi
+		      },
+		      success: function(result) {
+		        console.log(result);
+        	    $("#hasil").remove();
+        	    $("#tableLoop tbody tr").remove();
+		        if (result == '') {
+	        	  alert("Tidak Ada Mitra Untuk PM ini !!!")
+		        } else {
+		        	$('.mitra option').remove();
+		        	var Baris = '';
+		        	Baris += '<option selected value="">' + '--Pilih Mitra--' + '</option>';
+						for (var i = 0; i < result.length; i++) {
+							Baris += '<option ' + 'value="' + result[i].mitra_id + '">' + result[i].nama_mitra + '</option>';
+						}
+                		$(".mitra").append(Baris);
+		        }
+		      }
+		    })
+
     });
   });
 </script>
@@ -216,97 +240,80 @@
 
 <script type="text/javascript">
 
-	
-	$(document).ready(function () {
+	function test(){
+	 var a = $('.mitra option:selected').val();
+	 var b = $('#nama_pm').val();
+	 // alert(b);
+	    $.ajax({
+	      method: 'POST',
+	      dataType: 'json',
+	      url: '<?= site_url('C_stg/ajax')?>',
+	      data: {
+	        input_ajx: a,
+	        input_ajx1: b
+	      },
+	      success: function(result) {
+	        console.log(result);
+    	    $("#hasil").remove();
+    	    $("#tableLoop tbody tr").remove();
+	        if (result == '') {
+        	  alert("Tidak Ada Project Untuk Mitra ini !!!")
+	        } else {
+        	  $("#hasil").remove();
+        	  $("#tableLoop tbody tr").remove();
+		          for (var i = 0; i < result.length; i++) {
+		          var No = $("#tableLoop tbody tr").length+1;
+					var Baris = '<tr>';
+							Baris += '<td class="text-center">'+No+'</td>';
+							Baris += '<td>';
+							Baris += '<select name="project[]" id="project[]" class="form-control custom-select project" required>';
+							Baris += '<option selected ' + 'value=' +result[i].id_dstg + '>' + result[i].project_id + '</option>';
+							Baris += '</select>';
+							Baris += '</td>';
+							Baris += '<td>';
+								Baris += '<input type="date" name="tgl_stg[]" id="tgl_stg[]" value="<?= date('Y-m-d');?>" class="form-control tgl_stg" required>';
+							Baris += '</td>';
+							Baris += '<td class="text-center">';
+								Baris += '<button type="button" class="btn btn-sm btn-danger" id="HapusBaris" title="Hapus Baris"><i class="fas fa-times-circle"></i></button>';
+							Baris += '</td>';
+						Baris += '</tr>';
 
-		$(document).on('click', '#select', function() {
-	      let mitra_id = $(this).data('id');
-	      let nama_mitra = $(this).data('nama');
-	      $('#mitra_id').val(mitra_id);
-	      $('#nama_mitra').val(nama_mitra);
-	      $('#pilihmitra').modal('hide');
-
-			var isi = nama_mitra;
-		    // console.log(isi);
-		    $.ajax({
-		      method: 'POST',
-		      dataType: 'json',
-		      url: '<?= site_url('C_stg/ajax')?>',
-		      data: {
-		        input_ajx: isi
-		      },
-		      success: function(result) {
-		        console.log(result);
-        	    $("#hasil").remove();
-        	    $("#tableLoop tbody tr").remove();
-		        if (result == '') {
-	        	  alert("Tidak Ada Project Untuk Mitra ini !!!")
-		        } else {
-	        	  $("#hasil").remove();
-	        	  $("#tableLoop tbody tr").remove();
-			          for (var i = 0; i < result.length; i++) {
-			          var No = $("#tableLoop tbody tr").length+1;
-						var Baris = '<tr>';
-								Baris += '<td class="text-center">'+No+'</td>';
-								Baris += '<td>';
-								Baris += '<select name="project[]" id="project[]" class="form-control custom-select project" required>';
-								Baris += '<option selected ' + 'value=' +result[i].id_dstg + '>' + result[i].project_id + '</option>';
-								Baris += '</select>';
-								Baris += '</td>';
-								Baris += '<td>';
-									Baris += '<input type="date" name="tgl_stg[]" id="tgl_stg[]" value="<?= date('Y-m-d');?>" class="form-control tgl_stg" required>';
-								Baris += '</td>';
-								Baris += '<td class="text-center">';
-									Baris += '<button type="button" class="btn btn-sm btn-danger" id="HapusBaris" title="Hapus Baris"><i class="fas fa-times-circle"></i></button>';
-								Baris += '</td>';
-							Baris += '</tr>';
-
-						$("#tableLoop tbody").append(Baris);
-						$("#tableLoop tbody tr").each(function(){
-							$(this).find('td:nth-child(2) select').focus();
-						});
-					}
-		        }
-		      }
-		    })
-	    });
-
-		// for(i=1; i<=1; i++){
-		// 	// add_project();
-		// }
-		// $('#add_project').click(function (e) {
-		// 	e.preventDefault();
-		// 	add_project();
-		// });
-
-	});
-
-	function add_project()
-	{
-		var No = $("#tableLoop tbody tr").length+1;
-		var Baris = '<tr>';
-				Baris += '<td  class="text-center">'+No+'</td>';
-				Baris += '<td>';
-					Baris += '<select name="project[]" id="project[]" class="form-control custom-select project" required>\
-									<option selected disabled value="">--Pilih Project--</option>\
-									<?php foreach ($project->result() as $key => $data) {?>\
-										<option value="<?= $data->id_dstg;?>"><?=$data->project_id;?></option>\
-									<?php }?>\
-								</select>';
-				Baris += '</td>';
-				Baris += '<td class="text-center">';
-					Baris += '<input type="date" name="tgl_stg[]" id="tgl_stg[]" value="<?= date('Y-m-d');?>" class="form-control tgl_stg" required>';
-				Baris += '</td>';
-				Baris += '<td class="text-center">';
-					Baris += '<button type="button" class="btn btn-sm btn-danger" id="HapusBaris" title="Hapus Baris"><i class="fas fa-times-circle"></i></button>';
-				Baris += '</td>';
-			Baris += '</tr>';
-
-		$("#tableLoop tbody").append(Baris);
-		$("#tableLoop tbody tr").each(function(){
-			$(this).find('td:nth-child(2) select').focus();
-		});
+					$("#tableLoop tbody").append(Baris);
+					$("#tableLoop tbody tr").each(function(){
+						$(this).find('td:nth-child(2) select').focus();
+					});
+				}
+	        }
+	      }
+	    })
 	}
+
+	// function add_project()
+	// {
+	// 	var No = $("#tableLoop tbody tr").length+1;
+	// 	var Baris = '<tr>';
+	// 			Baris += '<td  class="text-center">'+No+'</td>';
+	// 			Baris += '<td>';
+	// 				Baris += '<select name="project[]" id="project[]" class="form-control custom-select project" required>\
+	// 								<option selected disabled value="">--Pilih Project--</option>\
+	// 								<?php foreach ($project->result() as $key => $data) {?>\
+	// 									<option value="<?= $data->id_dstg;?>"><?=$data->project_id;?></option>\
+	// 								<?php }?>\
+	// 							</select>';
+	// 			Baris += '</td>';
+	// 			Baris += '<td class="text-center">';
+	// 				Baris += '<input type="date" name="tgl_stg[]" id="tgl_stg[]" value="<?= date('Y-m-d');?>" class="form-control tgl_stg" required>';
+	// 			Baris += '</td>';
+	// 			Baris += '<td class="text-center">';
+	// 				Baris += '<button type="button" class="btn btn-sm btn-danger" id="HapusBaris" title="Hapus Baris"><i class="fas fa-times-circle"></i></button>';
+	// 			Baris += '</td>';
+	// 		Baris += '</tr>';
+
+	// 	$("#tableLoop tbody").append(Baris);
+	// 	$("#tableLoop tbody tr").each(function(){
+	// 		$(this).find('td:nth-child(2) select').focus();
+	// 	});
+	// }
 
 	$(document).on('click', '#HapusBaris', function(e) {
 		e.preventDefault();

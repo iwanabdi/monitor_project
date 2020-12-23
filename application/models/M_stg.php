@@ -18,9 +18,10 @@ class M_stg extends CI_Model {
 	// 	$query = $this->db->get();
 	// 	return $query;
 	// }
-	public function get_mitra()
+	public function get_mitra($tl = null)
 	{
-		# code...
+		$query = $this->db->query("SELECT DISTINCT mitra_id,nama_mitra FROM stg_belum_view WHERE nama_pegawai = '$tl'");
+		return $query;
 	}
 
 	function get_stg_belum()
@@ -32,9 +33,9 @@ class M_stg extends CI_Model {
 		return $query;
 	}
 
-	function stg_ajax($mitra)
+	function stg_ajax($mitra,$pm)
 	{
-		$query = $this->db->query("SELECT * FROM stg_belum_view WHERE no_stg = '' AND nama_mitra = '$mitra'");
+		$query = $this->db->query("SELECT * FROM stg_belum_view WHERE no_stg = '' AND mitra_id = '$mitra' AND nama_pegawai = '$pm'");
 		return $query;
 	}
 

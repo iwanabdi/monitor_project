@@ -67,7 +67,14 @@ class project extends CI_Controller {
 		$this->template->load('template_pegawai', 'project/add_project', $data);
 	}
 
-	function proses_add_data()
+	public function ajax()
+	{
+		$ajx = $this->input->post('input_ajx');
+		$ini = $this->M_alamat->get_alamat_cus($ajx)->result();
+		echo json_encode($ini);
+	}
+
+	public function proses_add_data()
 	{
 		$this->M_project->proses_add_data();
 		$this->session->set_flashdata('pesan', 
@@ -77,7 +84,7 @@ class project extends CI_Controller {
 		redirect('project','refresh');
 	}
 
-	function dispos_pm()
+	public function dispos_pm()
 	{
 		$this->M_project->proses_dispos_pm();
 		$this->session->set_flashdata('pesan', 
@@ -87,7 +94,7 @@ class project extends CI_Controller {
 		redirect('project','refresh');
 	}
 
-	function dispos_mitra()
+	public function dispos_mitra()
 	{
 		$this->M_project->proses_dispos_mitra();
 		$this->session->set_flashdata('pesan', 
@@ -97,7 +104,7 @@ class project extends CI_Controller {
 		redirect('project','refresh');
 	}
 
-	function genio($id)
+	public function genio($id)
 	{
 		$data = $this->M_project->get_project($id)->row();
 		if ($this->session->userdata('pegawai_id')==$data->pegawai_id || $this->session->userdata('jabatan')==-1){

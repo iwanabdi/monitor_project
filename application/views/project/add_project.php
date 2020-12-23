@@ -144,22 +144,62 @@
       $('#nama_customer').val(nama_customer);
       $('#pilihcustomer').modal('hide');
 
-      var isi = nama_mitra;
-        // console.log(isi);
+      var isi = customer_id;
+        console.log(isi);
         $.ajax({
           method: 'POST',
           dataType: 'json',
-          url: '<?= site_url('C_stg/ajax')?>',
+          url: '<?= site_url('project/ajax')?>',
           data: {
             input_ajx: isi
           },
           success: function(result) {
             console.log(result);
             if (result == '') {
-              alert("Tidak Ada Project Untuk Mitra ini !!!")
+              $("#dataTable2 tbody tr").remove();
+              $("#dataTable3 tbody tr").remove();
+              alert("Tidak Ada Alamat Untuk Customer ini !!!")
             } else {
-              $("#hasil").remove();
-              $("#tableLoop tbody tr").remove();
+              $("#dataTable2 tbody tr").remove();
+              $("#dataTable3 tbody tr").remove();
+              var Baris =  '';
+              var Baris1 = '';
+              for (var i = 0; i < result.length; i++) {
+                Baris += '<tr>';
+                  Baris +=  '<td>' +result[i].alamat_id + '</td>\
+                            <td>' +result[i].nama_customer + '</td>\
+                            <td>' +result[i].jalan + '</td>\
+                            <td>' +result[i].kota + '</td>\
+                            <td>' +result[i].provinsi +'</td>\
+                            <td>' +result[i].koordinat+'</td>\
+                            <td class="text-center">\
+                            <button class="btn btn-info" id="selectalamat"\
+                            data-id="' +result[i].alamat_id +'"\
+                            data-alamat="' +result[i].jalan+ ', '+result[i].kota+', '+result[i].provinsi+ '"\
+                            data-pilih="' +result[i].nama_customer + '">Pilih\
+                            </button>\
+                            </td>';
+                  Baris += '</tr>';
+
+
+                Baris1 += '<tr>';
+                  Baris1 +=  '<td>' +result[i].alamat_id + '</td>\
+                            <td>' +result[i].nama_customer + '</td>\
+                            <td>' +result[i].jalan + '</td>\
+                            <td>' +result[i].kota + '</td>\
+                            <td>' +result[i].provinsi +'</td>\
+                            <td>' +result[i].koordinat+'</td>\
+                            <td class="text-center">\
+                            <button class="btn btn-info" id="selectalamat1"\
+                            data-id="' +result[i].alamat_id +'"\
+                            data-alamat="' +result[i].jalan+ ', '+result[i].kota+', '+result[i].provinsi+ '"\
+                            data-pilih="' +result[i].nama_customer + '">Pilih\
+                            </button>\
+                            </td>';
+                  Baris1 += '</tr>';
+              }
+              $("#dataTable2 tbody").append(Baris);
+              $("#dataTable3 tbody").append(Baris1);
             }
           }
         })
@@ -181,7 +221,7 @@
       <div class="modal-body">
         <div class="form-group row">
           <div class="table-responsive">
-            <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
+            <table class="table table-bordered" width="100%" id="dataTable2" cellspacing="0">
               <thead>
               <tr class="text-center">
                 <th>ID</th>
@@ -194,24 +234,6 @@
               </tr>
             </thead>
             <tbody>
-              <?php
-              foreach($alamat->result() as $i => $data)  {?>
-              <tr>
-                <td><?=$data->alamat_id?></td>
-                <td><?=$data->nama_customer?></td>
-				<td><?=$data->jalan?></td>
-				<td><?=$data->kota?></td>
-				<td><?=$data->provinsi?></td>
-                <td><?=$data->koordinat?></td>
-                <td class="text-center">
-                <button class="btn btn-info" id="selectalamat"
-                data-id="<?= $data->alamat_id?>" 
-                data-alamat="<?= $data->jalan,', ',$data->kota,', ',$data->provinsi?>"
-                data-pilih="<?= $data->nama_customer?>">Pilih
-                </button>
-                </td>
-              </tr>
-            <?php } ?>
             </tbody>
             </table>
           </div>
@@ -247,7 +269,7 @@
       <div class="modal-body">
         <div class="form-group row">
           <div class="table-responsive">
-            <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
+            <table class="table table-bordered" width="100%" id="dataTable3" cellspacing="0">
               <thead>
               <tr class="text-center">
                 <th>ID</th>
@@ -265,9 +287,9 @@
               <tr>
                 <td><?=$data->alamat_id?></td>
                 <td><?=$data->nama_customer?></td>
-				<td><?=$data->jalan?></td>
-				<td><?=$data->kota?></td>
-				<td><?=$data->provinsi?></td>
+        				<td><?=$data->jalan?></td>
+        				<td><?=$data->kota?></td>
+        				<td><?=$data->provinsi?></td>
                 <td><?=$data->koordinat?></td>
                 <td class="text-center">
                 <button class="btn btn-info" id="selectalamat1"
@@ -313,13 +335,13 @@
       <div class="modal-body">
         <div class="form-group row">
           <div class="table-responsive">
-            <table class="table table-bordered" width="100%" id="dataTable1" cellspacing="0">
+            <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
               <thead>
               <tr class="text-center">
                 <th>ID</th>
                 <th>Nama Product</th>
                 <th>Bandwith</th>
-				<th>Satuan</th>
+			          <th>Satuan</th>
                 <th>Pilih</th>
               </tr>
             </thead>

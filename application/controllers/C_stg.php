@@ -36,10 +36,18 @@ class C_stg extends CI_Controller {
 		$this->template->load('template_pegawai', 'SuratTugas/stg' , $data);
 	}
 
+	public function ajax1()
+	{
+		$ajx = $this->input->post('input_ajx');
+		$ini = $this->M_stg->get_mitra($ajx)->result();
+		echo json_encode($ini);
+	}
+
 	public function ajax()
 	{
 		$ajx = $this->input->post('input_ajx');
-		$ini = $this->M_stg->stg_ajax($ajx)->result();
+		$ajx1 = $this->input->post('input_ajx1');
+		$ini = $this->M_stg->stg_ajax($ajx,$ajx1)->result();
 		// $data = [
 		// 	'mitra'		=> $this->M_mitra->get_mitra(),
 		// 	'project'	=> $this->M_stg->stg_ajax($ajx),

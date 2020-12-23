@@ -41,6 +41,23 @@
 				</div>	
 				<!-- akhir row pilih mitra -->
 
+<!-- 
+		        <div class="form-group row">
+				  <input type="hidden" name="mitra_id" id="mitra_id">
+				  <label class="col-sm-3 col-form-label">Pilih Mitra</label>
+		          <div class="col-sm-9">
+		            <div class="input-group">
+		              <select name="project[]" id="project[]" class="form-control custom-select project" required>
+		              	<option selected disabled value="">--Pilih Mitra--</option>
+						<?php foreach ($mitra->result() as $key => $data) {?>
+							<option value="<?= $data->mitra_id;?>"><?=$data->nama_mitra;?></option>
+						<?php }?>
+		              </select>
+					</div>
+				  </div>
+				</div>	 -->
+				<!-- akhir row pilih mitra -->
+
 				<div class="form-group row">
 					<label class="col-sm-3 col-form-label">Project dan Tanggal</label>
 					<div class="col-sm-9">
@@ -220,24 +237,13 @@
 		      },
 		      success: function(result) {
 		        console.log(result);
+        	    $("#hasil").remove();
+        	    $("#tableLoop tbody tr").remove();
 		        if (result == '') {
 	        	  alert("Tidak Ada Project Untuk Mitra ini !!!")
 		        } else {
 	        	  $("#hasil").remove();
 	        	  $("#tableLoop tbody tr").remove();
-		          // $("tr").remove();
-		          // $("td").remove();
-		          // for (var i = 0; i < result.length; i++) {
-		          //   var isivalue = "<h5 style='border-bottom:1px solid #878787;margin-top:20px;'>" + result[i].id_dstg + " | " + result[i].project_id + "</h5><br>";
-		          //   $(".hasil").append(isivalue);
-		          // }
-			  //       for (var i = 0; i < result.length; i++) {
-			  //         	e.preventDefault();
-					// 	$(this).parent().parent().remove();
-					// 	$('tableLoop tbody tr').each(function() {
-					// 		$(this).find('td:nth-child(1)').html(i);
-					// 	});
-					// }
 			          for (var i = 0; i < result.length; i++) {
 			          var No = $("#tableLoop tbody tr").length+1;
 						var Baris = '<tr>';

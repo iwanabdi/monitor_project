@@ -7,7 +7,7 @@ class M_alamat extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('alamat as a');
-		$this->db->join('customer as c','a.customer_id=c.customer_id',"LEFT");
+		$this->db->join('customer as c','a.customer_id = c.customer_id',"LEFT");
 		if ($id != null) {
 			$this->db->where('a.alamat_id', $id);
 		}
@@ -16,11 +16,13 @@ class M_alamat extends CI_Model {
 		return $query;
 	}
 
+
+
 	function get_alamat_cus($id = null)
 	{
 		$this->db->select('*');
 		$this->db->from('alamat as a');
-		$this->db->join('customer as c','a.customer_id=c.customer_id',"LEFT");
+		$this->db->join('customer as c','a.customer_id = c.customer_id',"LEFT");
 		if ($id != null) {
 			$this->db->where('a.customer_id', $id);
 		}

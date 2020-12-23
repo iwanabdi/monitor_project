@@ -143,11 +143,30 @@
       $('#customer_id').val(customer_id);
       $('#nama_customer').val(nama_customer);
       $('#pilihcustomer').modal('hide');
+
+      var isi = nama_mitra;
+        // console.log(isi);
+        $.ajax({
+          method: 'POST',
+          dataType: 'json',
+          url: '<?= site_url('C_stg/ajax')?>',
+          data: {
+            input_ajx: isi
+          },
+          success: function(result) {
+            console.log(result);
+            if (result == '') {
+              alert("Tidak Ada Project Untuk Mitra ini !!!")
+            } else {
+              $("#hasil").remove();
+              $("#tableLoop tbody tr").remove();
+            }
+          }
+        })
     })
   })
 </script>
 <!-- Akhir Modal customer Data -->
-
 
 <!-- Modal alamat-->
 <div class="modal fade" id="pilihalamat" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
